@@ -7,8 +7,6 @@ redirect_from:
   - /about.html
 ---
 
-# OSMAN YILDIRIM
-
 ## HAKKIMDA
 
 Merhaba! Ben Osman YILDIRIM. Makine mühendisliği alanında eğitim görmekte olan bir son sınıf öğrencisiyim. Mühendislik yazılımları konusunda kendimi geliştirmiş olarak, özellikle Solidworks, AutoCAD ve Zetacad gibi programları ileri düzeyde kullanabilmekteyim. Aynı zamanda, akışkanlar mekaniği ve ısı transfer temel mühendislik prensiplerine hakimiyetimle, teorik bilgiyi pratik uygulamaya dönüştürme konusunda kendime güvenmekteyim.
