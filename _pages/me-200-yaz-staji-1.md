@@ -4,7 +4,7 @@ title: "ME 200 - YAZ STAJI I"
 author_profile: true
 ---
 
-![Logo](page_0_Picture_1.jpeg)
+![Logo](/files/me-200-yaz-staji-1/page_0_Picture_1.jpeg)
 
 ## ME 200 - YAZ STAJI I (İMALAT STAJI)
 
