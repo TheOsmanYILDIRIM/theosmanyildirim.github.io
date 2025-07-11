@@ -70,11 +70,3 @@ Ayrıca, İngilizce (B1–B2 düzeyinde) ve Japonca (temel seviye) dil bilgisine
 ### Yabancı Diller
 - **İngilizce:** B1–B2 düzeyinde
 - **Japonca:** Temel seviye
-
----
-
-## KİŞİSEL ÖZELLİKLER
-
-Hızlı öğrenme yeteneğim, uyum kabiliyetim ve geniş bir hayal gücüne sahip olmam, beni her türlü yeni deneyime açık, esnek ve yeniliklere açık biri yapıyor. Kendimi sürekli olarak geliştirmek ve ilerlemek için motive ediyorum.
-
-Yenilikçi teknolojilere olan ilgim ve problem çözme becerilerim, mühendislik alanında başarılı bir kariyer geliştirmeme yardımcı olacak temel özelliklerimdir.
