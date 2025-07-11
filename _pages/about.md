@@ -33,7 +33,7 @@ Ayrıca, İngilizce (B1–B2 düzeyinde) ve Japonca (temel seviye) dil bilgisine
 - TS 283.24 ve 00053.24 numaralı siparişlerin üretim süreçleri, teknik resimleri ve kalite kontrol aşamaları takip edilerek sipariş yönetimi ve süreç takibi konularında deneyim kazanıldı.
 - İş Sağlığı ve Güvenliği (İSG) uygulamaları kapsamında üretim alanlarında alınan önlemler gözlemlendi ve güvenli çalışma ortamı kurallarına uygun hareket edildi.
 
-**Staj sürecine ilişkin detaylı içeriği:** [me-200-yaz-staji-1/](/me-200-yaz-staji-1/)
+**Staj sürecine ilişkin detaylı içerik:** [me-200-yaz-staji-1/](/me-200-yaz-staji-1/)
 
 ---
 
