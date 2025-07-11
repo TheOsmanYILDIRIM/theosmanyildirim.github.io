@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "tr-TR"
 site_theme               : "dark"
-title                    : "Osman Yıldırım"
+title                    : "Osman YILDIRIM"
 title_separator          : "-"
-name                     : &name "Osman Yıldırım"
-description              : &description "personal description"
+name                     : &name "Osman YILDIRIM"
+description              : &description "Makine Mühendisliği Öğrencisi - SolidWorks, AutoCAD, Python, Unity, Unreal Engine"
 url                      : https://theosmanyildirim.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "theosmanyildirim/theosmanyildirim.github.io"
@@ -25,10 +25,10 @@ author:
   avatar           : "profile.jpg"
   name             : "Osman Yıldırım"
   pronouns         : # example: "she/her"  
-  bio              : "Makina Mühendisi"
-  location         : "Kahramanmaraş/Türkiye"
+  bio              : "Makine Mühendisliği Son Sınıf Öğrencisi"
+  location         : "Kahramanmaraş, Türkiye"
   employer         : "Sütçü İmam Üniversitesi"
-  uri              : # URL
+  uri              : "https://theosmanyildirim.github.io"
   email            : "osman1429@hotmail.com" 
 
   # Academic websites
@@ -61,7 +61,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : "theosmanyildirim"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
@@ -139,7 +139,7 @@ facebook:
   app_id                 :
   publisher              :
 og_image                 :  # Social media default site image
-og_description           :  # Social media default site image description
+og_description           : "Makine Mühendisliği Öğrencisi - SolidWorks, AutoCAD, Python, Unity, Unreal Engine uzmanı"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
