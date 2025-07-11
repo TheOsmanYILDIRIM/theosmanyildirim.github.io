@@ -4,7 +4,7 @@ title: "ME 200 - YAZ STAJI I"
 author_profile: true
 ---
 
-![Logo](_page_0_Picture_1.jpeg)
+![Logo](page_0_Picture_1.jpeg)
 
 ## ME 200 - YAZ STAJI I (İMALAT STAJI)
 
@@ -93,9 +93,9 @@ Akkuyu NGS, dünya genelinde nükleer güç santralleri arasında dört adet VVE
 
 **SAYFA NR:** 02
 
-![Yerleşim Planı 1](_page_5_Picture_2.jpeg)
+![Yerleşim Planı 1](page_5_Picture_2.jpeg)
 
-![Yerleşim Planı 2](_page_5_Picture_3.jpeg)
+![Yerleşim Planı 2](page_5_Picture_3.jpeg)
 
 **Yerleşim Planı Açıklaması:**
 - 90 VFD - Ofisler
@@ -104,15 +104,15 @@ Akkuyu NGS, dünya genelinde nükleer güç santralleri arasında dört adet VVE
 - 90 VFA - Endüstriyel üretim alanı
 - 90 VFB - Üretim benzeri alanlar
 
-![Yerleşim Planı 3](_page_6_Figure_0.jpeg)
+![Yerleşim Planı 3](page_6_Figure_0.jpeg)
 
-![Yerleşim Planı 4](_page_7_Figure_2.jpeg)
+![Yerleşim Planı 4](page_7_Figure_2.jpeg)
 
-![Yerleşim Planı 5](_page_7_Figure_3.jpeg)
+![Yerleşim Planı 5](page_7_Figure_3.jpeg)
 
-![Yerleşim Planı 6](_page_8_Figure_3.jpeg)
+![Yerleşim Planı 6](page_8_Figure_3.jpeg)
 
-![Yerleşim Planı 7](_page_9_Figure_0.jpeg)
+![Yerleşim Planı 7](page_9_Figure_0.jpeg)
 
 **SAYFA NR:** 06
 
@@ -186,9 +186,9 @@ Akkuyu NGS, dünya genelinde nükleer güç santralleri arasında dört adet VVE
 
 **SAYFA NR:** 10
 
-![Kaynak Makinesi 1](_page_14_Picture_3.jpeg)
+![Kaynak Makinesi 1](page_14_Picture_3.jpeg)
 
-![Kaynak Makinesi 2](_page_14_Picture_4.jpeg)
+![Kaynak Makinesi 2](page_14_Picture_4.jpeg)
 
 **Mesh Weld Makinesi:** İntegrasyon için tasarlanmış özel bir makine
 
@@ -273,11 +273,11 @@ Kurum, 6331 Sayılı İş Sağlığı ve Güvenliği Kanunu'na uygun olarak çal
 
 **SMARC SM6336 FREZE MAKİNESİ:** Servo motorlu otomatik tabla hareketli 1 adet bulunmaktadır.
 
-![Freze Makinesi](_page_21_Picture_4.jpeg)
+![Freze Makinesi](page_21_Picture_4.jpeg)
 
 **CRAFT MC50:** Sert metal, Matkap tezgahı. Plakalara çelik delme için kullanılır.
 
-![Matkap Tezgahı](_page_21_Picture_6.jpeg)
+![Matkap Tezgahı](page_21_Picture_6.jpeg)
 
 **SAYFA NR:** 18
 
@@ -405,11 +405,11 @@ Kurum, 6331 Sayılı İş Sağlığı ve Güvenliği Kanunu'na uygun olarak çal
 
 **SAYFA NR:** 34
 
-![Montaj Teknik Resmi 1](_page_37_Figure_1.jpeg)
+![Montaj Teknik Resmi 1](page_37_Figure_1.jpeg)
 
-![Montaj Teknik Resmi 2](_page_37_Figure_2.jpeg)
+![Montaj Teknik Resmi 2](page_37_Figure_2.jpeg)
 
-![Montaj Teknik Resmi 3](_page_38_Picture_0.jpeg)
+![Montaj Teknik Resmi 3](page_38_Picture_0.jpeg)
 
 **Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
 **Öğrencinin İmzası:** Osman YILDIRIM
