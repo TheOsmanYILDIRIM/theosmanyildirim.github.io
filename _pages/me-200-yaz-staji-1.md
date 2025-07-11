@@ -8,6 +8,46 @@ author_profile: true
 
 ## ME 200 - YAZ STAJI I (İMALAT STAJI)
 
+### 📋 STAJ ÖZETİ
+
+Bu staj sürecinde aşağıdaki alanlarda deneyim kazanılmıştır:
+
+**🏭 Üretim Süreçleri:**
+- Talaşlı imalat, kaynak, metal şekillendirme işlemleri
+- Diş açma ve bükme operasyonları
+- CNC makineleri, torna, freze kullanımı
+- Kalite kontrol ve test süreçleri
+
+**🔧 Teknik Beceriler:**
+- SolidWorks, AutoCAD, Zetacad yazılımları ile tasarım
+- Teknik resim okuma ve çizme
+- Malzeme özellikleri ve standartları
+- Üretim planlama ve sipariş takibi
+
+**⚙️ Makine ve Ekipman:**
+- Dextra diş açma makineleri (16 set)
+- Ajan CNC plasma kesici
+- SMARC torna ve freze makineleri
+- Kaynak makineleri (TIG, tozaltı, argon)
+
+**📊 Proje Deneyimi:**
+- TS 283.24 ve 00053.24 numaralı siparişlerin takibi
+- Akkuyu NGS projesi için çelik yapı elemanları üretimi
+- Sipariş yönetimi ve süreç optimizasyonu
+
+**🛡️ İş Güvenliği:**
+- İSG kuralları ve uygulamaları
+- Kişisel koruyucu ekipman kullanımı
+- Güvenli çalışma ortamı kuralları
+
+**📈 Öğrenilen Dersler:**
+- Endüstriyel üretim süreçlerinin pratik uygulaması
+- Mühendislik problemlerine çözüm üretme
+- Takım çalışması ve iletişim becerileri
+- Kalite standartlarına uygun üretim
+
+---
+
 **ADI SOYADI:** Osman YILDIRIM  
 **OKUL NUMARASI:** 22110081305  
 **ÖĞRETİM TÜRÜ:** I. Öğretim
@@ -19,7 +59,7 @@ author_profile: true
 **ÖĞRENCİ NUMARASI:** 22110081305  
 **ÖĞRETİM TÜRÜ:** I. Öğretim  
 
-**İŞYERİ ADI:** 16 İGAAS Endüstriyel Boru Lojistik ve İnşaat  
+**İŞYERİ ADI:** İÇTAŞ Endüstriyel Boru Lojistik ve İnşaat  
 **ADRESİ / TELEFON NUMARASI:** Silifke/Mersin  
 
 **STAJ TÜRÜ:** ME 200 - YAZ STAJI I (İMALAT STAJI)  
@@ -80,12 +120,10 @@ author_profile: true
 
 **SAYFA NR:** 01
 
-16 İGAAS Endüstriyel Boru Lojistik ve İnşaat (İGAAS), İGAAS Holding'in bir parçası olup, İGAAS Nükleer (İCM) ve İGAAS İnşaat ile birlikte faaliyet gösteren bir endüstriyel şirkettir. Akkuyu Nükleer Güç Santrali (NGS) inşaatında çelik, endüstriyel, güvenlik elementleri, boru garaj elementleri ve benzerlerini üretmektedir.
+İÇTAŞ Endüstriyel Boru Lojistik ve İnşaat (İÇTAŞ), İÇTAŞ Holding'in bir parçası olup, İÇTAŞ Nükleer (İCM) ve İÇTAŞ İnşaat ile birlikte faaliyet gösteren bir endüstriyel şirkettir. Akkuyu Nükleer Güç Santrali (NGS) inşaatında çelik, endüstriyel, güvenlik elementleri, boru garaj elementleri ve benzerlerini üretmektedir.
 
 Akkuyu NGS, dünya genelinde nükleer güç santralleri arasında dört adet VVER-1200 reaktörünün aynı anda inşa edildiği ilk santral olup, 4100 kişilik 200'den fazla şirket çalışanı ile Akkuyu NGS'de çalışmaktadır.
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
 ---
 
@@ -130,8 +168,6 @@ Akkuyu NGS, dünya genelinde nükleer güç santralleri arasında dört adet VVE
 
 **Toplam:** 19 Beyaz yaka, 258 Toplam çalışan
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
 ---
 
@@ -139,7 +175,7 @@ Akkuyu NGS, dünya genelinde nükleer güç santralleri arasında dört adet VVE
 
 **SAYFA NR:** 07
 
-16 İGAAS Endüstriyel Boru Lojistik ve İnşaat, çelik ve endüstriyel üretim alanında faaliyet göstermektedir.
+İÇTAŞ Endüstriyel Boru Lojistik ve İnşaat, çelik ve endüstriyel üretim alanında faaliyet göstermektedir.
 
 **Talaşlı İmalat:** Malzemelerin işlenmesi için gerekli fiziksel işlemler belirli standartlarda talaş alınarak çelik üretimi yapılmaktadır.
 
@@ -147,8 +183,6 @@ Akkuyu NGS, dünya genelinde nükleer güç santralleri arasında dört adet VVE
 
 **Kaynak:** Çelik üretimi için gerekli olan kaynak işlemleri bu alanda yapılmaktadır.
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
 ---
 
@@ -169,8 +203,6 @@ Akkuyu NGS, dünya genelinde nükleer güç santralleri arasında dört adet VVE
 
 **Threading (Diş Açma):** Son olarak genişletilen uç gerekli uzunlukta diş açılır.
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
 ---
 
@@ -199,8 +231,6 @@ Akkuyu NGS, dünya genelinde nükleer güç santralleri arasında dört adet VVE
 - 6 metre boyunda her 2 metrede bir kaynak yapılır
 - 1 metre altındaki parçalar kullanılmaz
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
 ---
 
@@ -213,8 +243,6 @@ Akkuyu NGS, dünya genelinde nükleer güç santralleri arasında dört adet VVE
 **Karkas:** Armature için kullanılan çelik parçalar
 **Armature:** Demir veya çelik işleri için kullanılır. Kolon ve kirişler arasında bulunur.
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
 ---
 
@@ -244,8 +272,6 @@ Kurum, 6331 Sayılı İş Sağlığı ve Güvenliği Kanunu'na uygun olarak çal
 
 **Sigara İçme:** Sigara içme alanları olup, bunun dışında hiçbir alanda sigara içilmesi yasaktır.
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
 ---
 
@@ -285,8 +311,6 @@ Kurum, 6331 Sayılı İş Sağlığı ve Güvenliği Kanunu'na uygun olarak çal
 
 **Behringer BMSS 270 DEH:** 450-600°C arası açı. Kesim yapabilir. Hidrolik sistemdir. Otomatik çalışıyor.
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
 ---
 
@@ -306,8 +330,6 @@ Kurum, 6331 Sayılı İş Sağlığı ve Güvenliği Kanunu'na uygun olarak çal
 
 **Diş Açma Makinesi (Dextra):** 12 ile 40 mm çap arasında kullanılabilir. Versiyon çapına göre ayarlanır.
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
 ---
 
@@ -326,8 +348,6 @@ Kurum, 6331 Sayılı İş Sağlığı ve Güvenliği Kanunu'na uygun olarak çal
 
 **Bükme Makinesi:** 20 ile 40 mm arasında 0°, 45°, 90° ile 180° arasında bükme yapabilir.
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
 ---
 
@@ -385,8 +405,6 @@ Kurum, 6331 Sayılı İş Sağlığı ve Güvenliği Kanunu'na uygun olarak çal
 
 **Poz-40:** 40 mm çap aralığında L = 39 mm boyunda demirler
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
 ---
 
@@ -411,6 +429,4 @@ Kurum, 6331 Sayılı İş Sağlığı ve Güvenliği Kanunu'na uygun olarak çal
 
 ![Montaj Teknik Resmi 3](/files/me-200-yaz-staji-1/page_38_Picture_0.jpeg)
 
-**Staj Yeri Yetkilisinin Adı, Soyadı, İmzası:** Bünyamin KIRAN  
-**Öğrencinin İmzası:** Osman YILDIRIM
 
