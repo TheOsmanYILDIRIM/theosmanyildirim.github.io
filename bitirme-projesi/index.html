@@ -460,29 +460,56 @@
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
                   <div>
                     <h5 class="fw-bold mb-0 text-white"><i class="fa-solid fa-cube text-info me-2"></i> Canlı 3D Model Görüntüleyici (Three.js WebGL)</h5>
-                    <small class="text-white-50">Modeli parmağınızla veya farenizle 360° döndürebilir ve yakınlaştırabilirsiniz.</small>
+                    <small class="text-white-50">Modeli parmağınızla veya farenizle 360° döndürebilir, yakınlaştırabilir ve katmanları seçebilirsiniz.</small>
                   </div>
                   <span class="badge bg-info text-dark font-monospace">INTERACTIVE 3D</span>
                 </div>
 
-                <div id="cad-3d-viewer" style="width: 100%; height: 380px; border-radius: 8px; background: #0f172a; position: relative; overflow: hidden;">
+                <!-- Model Seçici Buton Grubu -->
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <button type="button" class="btn btn-sm btn-info font-monospace model-switch-btn active" data-model="plastic_part_and_runner">
+                    <i class="fa-solid fa-layer-group me-1"></i> Plastik Parça + Yolluk (Part + Runner)
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn" data-model="helical_conformal_cooling_channels">
+                    <i class="fa-solid fa-water me-1"></i> Helisel Soğutma Kanalları
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn" data-model="plastic_part">
+                    <i class="fa-solid fa-cubes me-1"></i> Sadece Parça (PEEK)
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn" data-model="hot_runner_system">
+                    <i class="fa-solid fa-diagram-project me-1"></i> Sadece Yolluk (Runner)
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn" data-model="conformal_mold_core_assembly">
+                    <i class="fa-solid fa-industry me-1"></i> Kalıp Çekirdek Montajı
+                  </button>
+                </div>
+
+                <div id="cad-3d-viewer" style="width: 100%; height: 420px; border-radius: 8px; background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); position: relative; overflow: hidden;">
                   <div id="viewer-loading" class="d-flex flex-column align-items-center justify-content-center h-100 text-white-50 font-monospace">
                     <div class="spinner-border text-info mb-2" role="status"></div>
-                    <span>3D CAD Geometrisi Yükleniyor...</span>
+                    <span id="loading-text">3D CAD Geometrisi Yükleniyor...</span>
+                  </div>
+                  
+                  <!-- Model Bilgi Rozeti -->
+                  <div id="model-info-badge" class="position-absolute bottom-0 start-0 m-3 px-3 py-1 rounded bg-black bg-opacity-75 small font-monospace text-info border border-secondary">
+                    <i class="fa-solid fa-check-circle me-1"></i> <span id="model-info-text">Yükleniyor...</span>
                   </div>
                 </div>
 
                 <!-- 3D Format İndirme Butonları -->
                 <div class="mt-3 pt-3 border-top border-secondary d-flex flex-wrap gap-2 align-items-center">
-                  <span class="small text-white-50 me-2"><strong>Dönüştürülen Render Formatları:</strong></span>
-                  <a href="../files/3d/helical_conformal_cooling_channels.glb" download class="btn btn-sm btn-outline-info font-monospace">
+                  <span class="small text-white-50 me-2"><strong>Aktif Modeli İndir:</strong></span>
+                  <a id="btn-dl-glb" href="../files/3d/plastic_part_and_runner.glb" download class="btn btn-sm btn-outline-info font-monospace">
                     <i class="fa-solid fa-download me-1"></i> GLB (Vectary / Web3D)
                   </a>
-                  <a href="../files/3d/helical_conformal_cooling_channels.obj" download class="btn btn-sm btn-outline-light font-monospace">
+                  <a id="btn-dl-obj" href="../files/3d/plastic_part_and_runner.obj" download class="btn btn-sm btn-outline-light font-monospace">
                     <i class="fa-solid fa-download me-1"></i> OBJ (Blender / Maya)
                   </a>
-                  <a href="../files/3d/helical_conformal_cooling_channels.stl" download class="btn btn-sm btn-outline-light font-monospace">
+                  <a id="btn-dl-stl" href="../files/3d/plastic_part_and_runner.stl" download class="btn btn-sm btn-outline-light font-monospace">
                     <i class="fa-solid fa-download me-1"></i> STL (3D Baskı / CAM)
+                  </a>
+                  <a id="btn-dl-ply" href="../files/3d/plastic_part_and_runner.ply" download class="btn btn-sm btn-outline-secondary font-monospace">
+                    <i class="fa-solid fa-download me-1"></i> PLY (MeshLab)
                   </a>
                 </div>
               </div>
@@ -854,43 +881,150 @@
       controls.autoRotateSpeed = 1.2;
 
       // Işıklandırma
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
       scene.add(ambientLight);
 
-      const dirLight1 = new THREE.DirectionalLight(0x00e5ff, 1.6);
-      dirLight1.position.set(100, 150, 100);
+      const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.4);
+      dirLight1.position.set(120, 180, 120);
       scene.add(dirLight1);
 
-      const dirLight2 = new THREE.DirectionalLight(0xffffff, 0.8);
-      dirLight2.position.set(-100, -50, -100);
+      const dirLight2 = new THREE.DirectionalLight(0x38bdf8, 1.0);
+      dirLight2.position.set(-120, -60, -120);
       scene.add(dirLight2);
 
-      // GLB Modelini Yükle
+      let currentModel = null;
       const loader = new THREE.GLTFLoader();
-      loader.load('../files/3d/helical_conformal_cooling_channels.glb', function(gltf) {
-        const model = gltf.scene;
-        
-        model.traverse(function(child) {
-          if (child.isMesh) {
-            child.material = new THREE.MeshStandardMaterial({
-              color: 0x00d2ff,
-              metalness: 0.85,
-              roughness: 0.25,
-              emissive: 0x003344,
-              emissiveIntensity: 0.2
-            });
-          }
-        });
 
-        const box = new THREE.Box3().setFromObject(model);
-        const center = box.getCenter(new THREE.Vector3());
-        model.position.sub(center);
-        scene.add(model);
+      const modelMeta = {
+        'plastic_part_and_runner': {
+          title: 'Plastik Parça (PEEK) + Sıcak Yolluk (Hot Runner)',
+          file: 'plastic_part_and_runner'
+        },
+        'helical_conformal_cooling_channels': {
+          title: 'Helisel Conformal Soğutma Kanalları (Ø10mm Su)',
+          file: 'helical_conformal_cooling_channels'
+        },
+        'plastic_part': {
+          title: 'Ana Plastik Parça (Victrex PEEK 450CA30)',
+          file: 'plastic_part'
+        },
+        'hot_runner_system': {
+          title: 'Sıcak Yolluk Sistemi (Sprue, Runner & Side Gates)',
+          file: 'hot_runner_system'
+        },
+        'conformal_mold_core_assembly': {
+          title: 'Kalıp Çekirdeği ve Uyumlu Soğutma Montajı',
+          file: 'conformal_mold_core_assembly'
+        }
+      };
 
+      function updateDownloadLinks(fileBase) {
+        document.getElementById('btn-dl-glb').href = `../files/3d/${fileBase}.glb`;
+        document.getElementById('btn-dl-obj').href = `../files/3d/${fileBase}.obj`;
+        document.getElementById('btn-dl-stl').href = `../files/3d/${fileBase}.stl`;
+        document.getElementById('btn-dl-ply').href = `../files/3d/${fileBase}.ply`;
+      }
+
+      function loadModel(modelKey) {
+        const meta = modelMeta[modelKey] || modelMeta['plastic_part_and_runner'];
         const loadingElem = document.getElementById('viewer-loading');
-        if (loadingElem) loadingElem.style.display = 'none';
-      }, undefined, function(error) {
-        console.warn('GLB load error:', error);
+        const loadingText = document.getElementById('loading-text');
+        const badgeText = document.getElementById('model-info-text');
+
+        if (loadingElem) loadingElem.style.display = 'flex';
+        if (loadingText) loadingText.innerText = `${meta.title} Yükleniyor...`;
+
+        updateDownloadLinks(meta.file);
+
+        loader.load(`../files/3d/${meta.file}.glb`, function(gltf) {
+          if (currentModel) {
+            scene.remove(currentModel);
+          }
+
+          currentModel = gltf.scene;
+
+          currentModel.traverse(function(child) {
+            if (child.isMesh) {
+              const name = (child.name || '').toLowerCase();
+              if (name.includes('runner') || name.includes('sprue') || modelKey === 'hot_runner_system') {
+                // Hot Runner Material (Vibrant Hot Crimson)
+                child.material = new THREE.MeshStandardMaterial({
+                  color: 0xef4444,
+                  metalness: 0.35,
+                  roughness: 0.25,
+                  emissive: 0x5a0b0b,
+                  emissiveIntensity: 0.2
+                });
+              } else if (name.includes('cooling') || name.includes('channel') || modelKey === 'helical_conformal_cooling_channels') {
+                // Cooling Channel Material (Glossy Cyan Fluid)
+                child.material = new THREE.MeshStandardMaterial({
+                  color: 0x00d2ff,
+                  metalness: 0.85,
+                  roughness: 0.25,
+                  emissive: 0x003344,
+                  emissiveIntensity: 0.25
+                });
+              } else if (name.includes('core') || name.includes('plate') || modelKey === 'conformal_mold_core_assembly') {
+                // Steel P20 Mold Plate
+                child.material = new THREE.MeshStandardMaterial({
+                  color: 0x94a3b8,
+                  metalness: 0.75,
+                  roughness: 0.35,
+                  transparent: true,
+                  opacity: 0.8
+                });
+              } else {
+                // Victrex PEEK Polymer Material (Engineered Amber-Gold)
+                child.material = new THREE.MeshStandardMaterial({
+                  color: 0xf59e0b,
+                  metalness: 0.15,
+                  roughness: 0.4,
+                  emissive: 0x3d2402,
+                  emissiveIntensity: 0.15
+                });
+              }
+            }
+          });
+
+          // Model Merkezleme ve Ölçekleme
+          const box = new THREE.Box3().setFromObject(currentModel);
+          const center = box.getCenter(new THREE.Vector3());
+          const size = box.getSize(new THREE.Vector3());
+          const maxDim = Math.max(size.x, size.y, size.z);
+
+          currentModel.position.sub(center);
+          scene.add(currentModel);
+
+          // Kamerayı model boyutuna göre ayarla
+          const fov = camera.fov * (Math.PI / 180);
+          let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2)) * 1.6;
+          camera.position.set(cameraZ * 0.7, cameraZ * 0.5, cameraZ * 0.9);
+          controls.target.set(0, 0, 0);
+          controls.update();
+
+          if (loadingElem) loadingElem.style.display = 'none';
+          if (badgeText) badgeText.innerText = meta.title;
+        }, undefined, function(err) {
+          console.warn('GLB Load Error:', err);
+          if (loadingText) loadingText.innerText = 'Model yüklenemedi.';
+        });
+      }
+
+      // Başlangıçta Plastik Parça + Yolluk modelini yükle
+      loadModel('plastic_part_and_runner');
+
+      // Model Switcher Buton Dinleyicileri
+      document.querySelectorAll('.model-switch-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.model-switch-btn').forEach(b => {
+            b.classList.remove('active', 'btn-info');
+            b.classList.add('btn-outline-light');
+          });
+          this.classList.add('active', 'btn-info');
+          this.classList.remove('btn-outline-light');
+          const modelKey = this.getAttribute('data-model');
+          loadModel(modelKey);
+        });
       });
 
       function animate() {
