@@ -588,12 +588,12 @@
         <div class="col-lg-4 text-center mt-4 mt-lg-0">
           <div class="p-3 cad-preview-card">
             <div class="d-flex justify-content-between align-items-center mb-2 px-1 text-slate-300 font-monospace small">
-              <span class="d-flex align-items-center gap-1"><i class="fa-solid fa-cube text-info"></i> SOLIDWORKS CAD &amp; CGI</span>
-              <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4);">Conformal Hero</span>
+              <span class="d-flex align-items-center gap-1"><i class="fa-solid fa-cube text-info"></i> SOLIDWORKS CAD &amp; 8K CGI</span>
+              <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4);">Raytraced Studio Hero</span>
             </div>
-            <img src="../images/bitirme-projesi/conformal_cooling_hero_cgi.jpg" class="img-fluid rounded" alt="Helisel Conformal Soğutma Kalıp Çekirdeği CGI Render">
+            <img src="../images/bitirme-projesi/conformal_studio_raytrace.jpg" class="img-fluid rounded" alt="Helisel Conformal Soğutma Kalıp Çekirdeği 8K Studio CGI Render">
             <div class="mt-2 text-slate-300 font-monospace small">
-              Helisel Conformal Kalıp Çekirdeği
+              Helisel Conformal Kalıp &amp; Sıcak Yolluk
             </div>
           </div>
         </div>
@@ -1052,14 +1052,14 @@
               <div class="row g-3 my-2">
                 <div class="col-md-6">
                   <div class="figure-card h-100">
-                    <img src="../images/bitirme-projesi/peek_part_runner_macro_cgi_1789652025012.jpg" class="img-fluid" alt="PEEK Parça ve Sıcak Yolluk CGI">
-                    <div class="figure-caption"><strong>Şekil 8:</strong> Victrex PEEK 450CA30 plastik parça ve 2-noktalı sıcak yolluk (Side Gates) besleme geometrisi.</div>
+                    <img src="../images/bitirme-projesi/peek_runner_studio_macro.jpg" class="img-fluid" alt="PEEK Parça ve Sıcak Yolluk Studio CGI">
+                    <div class="figure-caption"><strong>Şekil 8:</strong> Victrex PEEK 450CA30 plastik parça ve 2-noktalı sıcak yolluk (Side Gates) besleme geometrisi (Studio Işık Efektli Render).</div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="figure-card h-100">
-                    <img src="../images/bitirme-projesi/conformal_helix_part_assembly_cgi_1789652046501.jpg" class="img-fluid" alt="Helisel Kanal ve Parça Bütünleşik Montajı CGI">
-                    <div class="figure-caption"><strong>Şekil 9:</strong> Helisel conformal soğutma kanallarının plastik parça profilini saran çift taraflı çalışma pozisyonu.</div>
+                    <img src="../images/bitirme-projesi/conformal_studio_raytrace.jpg" class="img-fluid" alt="Helisel Conformal Kalıp ve Yolluk Bütünleşik Studio CGI">
+                    <div class="figure-caption"><strong>Şekil 9:</strong> Helisel conformal soğutma kanallarının kalıp çekirdeği ve sıcak yolluk sistemi ile bütünleşik 8K raytraced montajı.</div>
                   </div>
                 </div>
               </div>
@@ -1548,10 +1548,10 @@
       app.stage.addChild(mainContainer);
 
       const layers = {
-        part: new PIXI.Sprite(),
-        runner: new PIXI.Sprite(),
         traditional: new PIXI.Sprite(),
-        helical: new PIXI.Sprite()
+        part: new PIXI.Sprite(),
+        helical: new PIXI.Sprite(),
+        runner: new PIXI.Sprite()
       };
 
       // Flow particle system container
@@ -1561,10 +1561,11 @@
         alpha: true
       });
 
-      mainContainer.addChild(layers.part);
-      mainContainer.addChild(layers.runner);
+      // Layer Order from bottom to top: Traditional -> PEEK Part -> Helical Helix -> Hot Runner -> Coolant Particles
       mainContainer.addChild(layers.traditional);
+      mainContainer.addChild(layers.part);
       mainContainer.addChild(layers.helical);
+      mainContainer.addChild(layers.runner);
       mainContainer.addChild(particleContainer);
 
       // Initial visibility states
@@ -1584,15 +1585,15 @@
           traditional: '../images/bitirme-projesi/cad_renders/06_traditional_baffle_cooling_isometric.png'
         },
         front: {
-          part: '../images/bitirme-projesi/cad_renders/02_plastic_part_peek_side.png',
+          part: '../images/bitirme-projesi/cad_renders/02_plastic_part_peek_front.png',
           runner: '../images/bitirme-projesi/cad_renders/03_hot_runner_system_front.png',
           helical: '../images/bitirme-projesi/cad_renders/04_helical_conformal_cooling_front.png',
-          traditional: '../images/bitirme-projesi/cad_renders/05_complete_conformal_assembly_front.png'
+          traditional: '../images/bitirme-projesi/cad_renders/06_traditional_baffle_cooling_isometric.png'
         },
         top: {
-          part: '../images/bitirme-projesi/cad_renders/01_part_and_runner_top.png',
-          runner: '../images/bitirme-projesi/cad_renders/01_part_and_runner_top.png',
-          helical: '../images/bitirme-projesi/cad_renders/04_helical_conformal_cooling_isometric.png',
+          part: '../images/bitirme-projesi/cad_renders/02_plastic_part_peek_top.png',
+          runner: '../images/bitirme-projesi/cad_renders/03_hot_runner_system_top.png',
+          helical: '../images/bitirme-projesi/cad_renders/04_helical_conformal_cooling_top.png',
           traditional: '../images/bitirme-projesi/cad_renders/06_traditional_baffle_cooling_isometric.png'
         }
       };
@@ -1792,14 +1793,14 @@
     })();
 
     /* =========================================================================
-       3. THREE.JS 3D INTERACTIVE SOLID CAD ENGINE
+       3. THREE.JS 3D INTERACTIVE SOLID CAD ENGINE (Studio Lighting & PBR)
        ========================================================================= */
     (function() {
       const container = document.getElementById('cad-3d-viewer');
       if (!container) return;
 
       const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x0f172a);
+      scene.background = new THREE.Color(0x0a0f1d);
 
       const width = container.clientWidth || 600;
       const height = container.clientHeight || 420;
@@ -1810,7 +1811,7 @@
       renderer.setSize(width, height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.1;
+      renderer.toneMappingExposure = 1.15;
       container.appendChild(renderer.domElement);
 
       const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -1832,21 +1833,52 @@
         }, 3000);
       });
 
-      // Lighting Setup
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
+      // Studio Lighting Setup (4-Point Studio Lighting Rig)
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
       scene.add(ambientLight);
 
-      const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.3);
-      dirLight1.position.set(150, 200, 150);
-      scene.add(dirLight1);
+      const hemiLight = new THREE.HemisphereLight(0x7dd3fc, 0x0f172a, 0.85);
+      scene.add(hemiLight);
 
-      const dirLight2 = new THREE.DirectionalLight(0x38bdf8, 0.9);
-      dirLight2.position.set(-150, -80, -150);
-      scene.add(dirLight2);
+      // Key Light (Warm Sunlight / Main Softbox)
+      const keyLight = new THREE.DirectionalLight(0xfffaed, 2.6);
+      keyLight.position.set(150, 220, 160);
+      scene.add(keyLight);
 
-      const dirLight3 = new THREE.DirectionalLight(0xf59e0b, 0.6);
-      dirLight3.position.set(0, 150, -150);
-      scene.add(dirLight3);
+      // Fill Light (Cool Sky Cyan Fill)
+      const fillLight = new THREE.DirectionalLight(0x38bdf8, 1.4);
+      fillLight.position.set(-160, 60, 120);
+      scene.add(fillLight);
+
+      // Rim / Kicker Light (High-Contrast Backlight for Edge Glint)
+      const rimLight = new THREE.DirectionalLight(0xffffff, 3.0);
+      rimLight.position.set(-80, 180, -180);
+      scene.add(rimLight);
+
+      // Bounce Light (Floor Warm Reflection)
+      const bounceLight = new THREE.DirectionalLight(0xf59e0b, 0.8);
+      bounceLight.position.set(0, -120, 80);
+      scene.add(bounceLight);
+
+      // Studio Radial Contact Shadow Disk
+      const shadowCanvas = document.createElement('canvas');
+      shadowCanvas.width = 256;
+      shadowCanvas.height = 256;
+      const sctx = shadowCanvas.getContext('2d');
+      const grad = sctx.createRadialGradient(128, 128, 10, 128, 128, 120);
+      grad.addColorStop(0, 'rgba(0, 0, 0, 0.75)');
+      grad.addColorStop(0.5, 'rgba(0, 0, 0, 0.35)');
+      grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      sctx.fillStyle = grad;
+      sctx.fillRect(0, 0, 256, 256);
+
+      const shadowTexture = new THREE.CanvasTexture(shadowCanvas);
+      const shadowPlane = new THREE.Mesh(
+        new THREE.PlaneGeometry(160, 160),
+        new THREE.MeshBasicMaterial({ map: shadowTexture, transparent: true, opacity: 0.85, depthWrite: false })
+      );
+      shadowPlane.rotation.x = -Math.PI / 2;
+      scene.add(shadowPlane);
 
       let currentModel = null;
       let currentLoadId = 0;
@@ -1909,37 +1941,63 @@
 
           currentModel.traverse(function(child) {
             if (child.isMesh) {
-              const name = (child.name || '').toLowerCase();
-              if (name.includes('runner') || name.includes('sprue') || modelKey === 'hot_runner_system') {
-                child.material = new THREE.MeshStandardMaterial({
+              // Smooth Normals for CAD Meshes
+              if (child.geometry) {
+                child.geometry.computeVertexNormals();
+              }
+
+              const name = (child.name || child.parent?.name || '').toLowerCase();
+              const isRunner = name.includes('runner') || name.includes('sprue') || name.includes('gate') || modelKey === 'hot_runner_system';
+              const isCooling = name.includes('cooling') || name.includes('channel') || name.includes('helix') || modelKey === 'helical_conformal_cooling_channels';
+              const isCore = name.includes('core') || name.includes('plate') || modelKey === 'conformal_mold_core_assembly';
+
+              if (isRunner) {
+                // Hot Runner: High-Gloss Metallic Tool Steel with Emissive Thermal Core
+                child.material = new THREE.MeshPhysicalMaterial({
                   color: 0xef4444,
-                  metalness: 0.35,
-                  roughness: 0.25,
-                  emissive: 0x5a0b0b,
-                  emissiveIntensity: 0.2
+                  metalness: 0.65,
+                  roughness: 0.18,
+                  clearcoat: 0.90,
+                  clearcoatRoughness: 0.10,
+                  emissive: 0x881111,
+                  emissiveIntensity: 0.38
                 });
-              } else if (name.includes('cooling') || name.includes('channel') || modelKey === 'helical_conformal_cooling_channels') {
-                child.material = new THREE.MeshStandardMaterial({
+              } else if (isCooling) {
+                // Helical Cooling: Luminous Electric Cyan Translucent Coolant Fluid
+                child.material = new THREE.MeshPhysicalMaterial({
                   color: 0x00d2ff,
-                  metalness: 0.85,
-                  roughness: 0.2,
-                  emissive: 0x003344,
-                  emissiveIntensity: 0.25
-                });
-              } else if (name.includes('core') || name.includes('plate') || modelKey === 'conformal_mold_core_assembly') {
-                child.material = new THREE.MeshStandardMaterial({
-                  color: 0x94a3b8,
-                  metalness: 0.75,
-                  roughness: 0.35,
+                  metalness: 0.25,
+                  roughness: 0.12,
+                  clearcoat: 1.0,
+                  clearcoatRoughness: 0.08,
+                  transmission: 0.45,
+                  ior: 1.33,
                   transparent: true,
-                  opacity: 0.82
+                  opacity: 0.92,
+                  emissive: 0x004466,
+                  emissiveIntensity: 0.45
+                });
+              } else if (isCore) {
+                // Mold Core Steel Plate
+                child.material = new THREE.MeshPhysicalMaterial({
+                  color: 0x94a3b8,
+                  metalness: 0.85,
+                  roughness: 0.25,
+                  clearcoat: 0.70,
+                  transparent: true,
+                  opacity: 0.85
                 });
               } else {
-                child.material = new THREE.MeshStandardMaterial({
+                // PEEK Polymer: Amber Gold Polymer with Clearcoat Gloss & Micro-Sheen
+                child.material = new THREE.MeshPhysicalMaterial({
                   color: 0xf59e0b,
-                  metalness: 0.15,
-                  roughness: 0.4,
-                  emissive: 0x3d2402,
+                  metalness: 0.10,
+                  roughness: 0.22,
+                  clearcoat: 0.95,
+                  clearcoatRoughness: 0.12,
+                  sheen: 0.60,
+                  sheenColor: new THREE.Color(0xffedd5),
+                  emissive: 0x2b1500,
                   emissiveIntensity: 0.15
                 });
               }
@@ -1953,6 +2011,10 @@
 
           currentModel.position.sub(center);
           scene.add(currentModel);
+
+          // Position floor shadow under model
+          shadowPlane.position.y = -(size.y / 2) - 1.5;
+          shadowPlane.scale.setScalar(maxDim / 80);
 
           const fov = camera.fov * (Math.PI / 180);
           let dist = Math.abs(maxDim / 2 / Math.tan(fov / 2)) * 1.55;
