@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Osman Yıldırım | Sahne Akışlı Portfolyo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #050811;
+      color: #f1f5f9;
+      overflow-x: hidden;
+    }
+    .stage-container {
+      display: flex;
+      width: 500vw;
+      height: 100vh;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stage-panel {
+      width: 100vw;
+      height: 100vh;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 2rem 2rem 2rem;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-cyan-500 selection:text-black">
+
+  <!-- SABİT ÜST BAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 backdrop-blur-lg bg-[#050811]/80 border-b border-slate-800/80">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded bg-cyan-500 text-black font-mono font-bold flex items-center justify-center text-xs">
+        OY
+      </div>
+      <div>
+        <span class="font-display font-bold text-sm tracking-wide text-white">OSMAN YILDIRIM</span>
+        <span class="text-xs font-mono text-cyan-400 block -mt-0.5">Makine Mühendisi</span>
+      </div>
+    </div>
+
+    <!-- Sahne Butonları -->
+    <nav class="hidden md:flex items-center gap-1 bg-slate-900/90 p-1 rounded-lg border border-slate-800 text-xs font-mono">
+      <button onclick="goToStage(0)" class="stage-btn px-3 py-1.5 rounded bg-cyan-500 text-black font-bold transition-all">01. GİRİŞ</button>
+      <button onclick="goToStage(1)" class="stage-btn px-3 py-1.5 rounded text-slate-400 hover:text-white transition-all">02. BİTİRME PROJESİ</button>
+      <button onclick="goToStage(2)" class="stage-btn px-3 py-1.5 rounded text-slate-400 hover:text-white transition-all">03. PIPEDATA</button>
+      <button onclick="goToStage(3)" class="stage-btn px-3 py-1.5 rounded text-slate-400 hover:text-white transition-all">04. AI & MOBİL</button>
+      <button onclick="goToStage(4)" class="stage-btn px-3 py-1.5 rounded text-slate-400 hover:text-white transition-all">05. STAJLAR</button>
+    </nav>
+
+    <!-- CV Butonları -->
+    <div class="flex items-center gap-2">
+      <a href="/files/osman-yildirim-cv-tr.pdf" download target="_blank" class="px-3 py-1.5 rounded bg-cyan-500 hover:bg-cyan-400 text-black font-bold text-xs flex items-center gap-1 shadow-md shadow-cyan-500/20">
+        <i class="fa-solid fa-file-pdf"></i> CV (TR)
+      </a>
+      <a href="/files/osman-yildirim-cv-en.pdf" download target="_blank" class="px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs flex items-center gap-1">
+        <i class="fa-solid fa-download"></i> CV (EN)
+      </a>
+    </div>
+  </header>
+
+  <!-- YATAY SAHNE TAŞIYICISI (Stage Container) -->
+  <div id="stageContainer" class="stage-container">
+
+    <!-- SAHNE 1: GİRİŞ -->
+    <section class="stage-panel bg-gradient-to-br from-[#050811] via-[#0b1329] to-[#050811]">
+      <div class="max-w-4xl mx-auto text-center space-y-6">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-mono">
+          <span>● PORTFOLYO SAHNESİ // 2026</span>
+        </div>
+        <h1 class="text-4xl md:text-7xl font-display font-extrabold text-white tracking-tight leading-tight">
+          Mekanik İmalat & <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+            Yapay Zeka Mimarisi
+          </span>
+        </h1>
+        <p class="text-slate-300 text-base md:text-lg max-w-2xl mx-auto">
+          Akkuyu NGS nükleer kalite ve borulama saha tecrübesi, SolidWorks CAD modelleme ve modern otonom AI geliştirme kabiliyeti.
+        </p>
+        <div class="flex items-center justify-center gap-4 pt-4">
+          <button onclick="goToStage(1)" class="px-6 py-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black font-bold text-sm flex items-center gap-2 transition-all">
+            <span>Sıradaki Sahne: Bitirme Projesi</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAHNE 2: BİTİRME PROJESİ -->
+    <section class="stage-panel bg-gradient-to-br from-[#050811] via-[#1a120b] to-[#050811]">
+      <div class="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-4">
+          <span class="text-xs font-mono text-amber-400 font-bold">SAHNE 02 // BİTİRME PROJESİ</span>
+          <h2 class="text-3xl md:text-5xl font-display font-bold text-white">
+            Nükleer Borulama & <br>
+            <span class="text-amber-400">Gerilme Analizi</span>
+          </h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Akkuyu Nükleer Güç Santrali çelik yapı ve borulama hatları için ASME B31.3 ve Rus Nükleer Standardı (PNAE G-7) uyumlu izometrik 3D gerilme ve NDT kalite doğrulama çalışması.
+          </p>
+          <div class="flex gap-2 font-mono text-xs text-amber-300">
+            <span class="p-1.5 rounded bg-amber-950/60 border border-amber-500/30">#ASME_B31.3</span>
+            <span class="p-1.5 rounded bg-amber-950/60 border border-amber-500/30">#PNAE_G7</span>
+            <span class="p-1.5 rounded bg-amber-950/60 border border-amber-500/30">#NDT_Inspection</span>
+          </div>
+        </div>
+        <div class="bg-slate-900/90 border border-amber-500/30 p-6 rounded-2xl space-y-3 font-mono text-xs">
+          <div class="text-amber-400 font-bold border-b border-slate-800 pb-2">TEKNİK KAPSAM</div>
+          <div class="text-slate-200">• SolidWorks 3D Borulama & Spool Çizimleri</div>
+          <div class="text-slate-200">• Hidrostatik Basınç Test Paketi Hazırlığı</div>
+          <div class="text-slate-200">• Radyografik (RT) ve Görsel (VT) Kaynak Muayenesi</div>
+          <div class="pt-2 text-right">
+            <button onclick="goToStage(2)" class="text-xs font-bold text-cyan-400 hover:underline">Sonraki: PipeData →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAHNE 3: PIPEDATA -->
+    <section class="stage-panel bg-gradient-to-br from-[#050811] via-[#0c1e2b] to-[#050811]">
+      <div class="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-4">
+          <span class="text-xs font-mono text-cyan-400 font-bold">SAHNE 03 // ENDÜSTRİYEL YAZILIM</span>
+          <h2 class="text-3xl md:text-5xl font-display font-bold text-white">
+            PipeData <br>
+            <span class="text-cyan-400">Borulama Standartları</span>
+          </h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            ASME B16.5, DIN ve API standartlarında boru, flanş, cıvata ve conta ölçülerini hesaplayan, sıfır fallback garantili endüstriyel mühendislik kütüphanesi.
+          </p>
+          <a href="https://github.com/TheOsmanYILDIRIM/pipedata" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:underline">
+            <i class="fa-brands fa-github"></i> github.com/TheOsmanYILDIRIM/pipedata
+          </a>
+        </div>
+        <div class="bg-slate-900/90 border border-cyan-500/30 p-6 rounded-2xl space-y-3 font-mono text-xs">
+          <div class="text-cyan-400 font-bold border-b border-slate-800 pb-2">HESAPLAMA MOTORU</div>
+          <div class="text-slate-300">Basınç Sınıfları: 150#, 300#, 600#, 900#, 1500#, 2500#</div>
+          <div class="text-slate-300">Normlar: ASME B16.5, B16.47, B36.10, DIN EN 1092</div>
+          <div class="pt-2 text-right">
+            <button onclick="goToStage(3)" class="text-xs font-bold text-purple-400 hover:underline">Sonraki: AI & Mobil →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAHNE 4: AI & MOBİL -->
+    <section class="stage-panel bg-gradient-to-br from-[#050811] via-[#1a0f2e] to-[#050811]">
+      <div class="max-w-5xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-4">
+          <span class="text-xs font-mono text-purple-400 font-bold">SAHNE 04 // MOBİL AI SİSTEMLERİ</span>
+          <h2 class="text-3xl md:text-5xl font-display font-bold text-white">
+            Antigravity Android & <br>
+            <span class="text-purple-400">Touch-CAD Mimarisi</span>
+          </h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Jetpack Compose Native Android AI istemcisi, Termux Linux köprüsü ve mobil dokunmatik CAD modelleme mimarisi.
+          </p>
+        </div>
+        <div class="bg-slate-900/90 border border-purple-500/30 p-6 rounded-2xl space-y-3 font-mono text-xs">
+          <div class="text-purple-400 font-bold border-b border-slate-800 pb-2">MOBİL & AI YETKİNLİK</div>
+          <div class="text-slate-300">• Jetpack Compose Declarative UI</div>
+          <div class="text-slate-300">• Termux NDK & Agentic AI Otomasyonu</div>
+          <div class="text-slate-300">• Vibe Coding: Doğal Dil ile Hızlı Yazılım Üretimi</div>
+          <div class="pt-2 text-right">
+            <button onclick="goToStage(4)" class="text-xs font-bold text-emerald-400 hover:underline">Sonraki: Staj & İletişim →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAHNE 5: STAJLAR & İLETİŞİM -->
+    <section class="stage-panel bg-gradient-to-br from-[#050811] via-[#092019] to-[#050811]">
+      <div class="max-w-4xl mx-auto text-center space-y-6">
+        <span class="text-xs font-mono text-emerald-400 font-bold">SAHNE 05 // SAHA DENEYİMİ & İLETİŞİM</span>
+        <h2 class="text-3xl md:text-5xl font-display font-bold text-white">
+          Akkuyu Nükleer Güç Santrali Stajları
+        </h2>
+        <p class="text-slate-300 text-sm max-w-2xl mx-auto">
+          İÇTAŞ Endüstriyel Boru & Çelik İmalatları: ME 322 (Organizasyon) & ME 200 (İmalat - 30 İş Günü) saha deneyimi.
+        </p>
+        <div class="flex items-center justify-center gap-4 pt-4">
+          <a href="mailto:osman1429@hotmail.com" class="px-6 py-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black font-bold text-sm flex items-center gap-2">
+            <i class="fa-solid fa-envelope"></i> osman1429@hotmail.com
+          </a>
+          <button onclick="goToStage(0)" class="px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm">
+            Başa Dön ↺
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    let currentStage = 0;
+    const stageContainer = document.getElementById('stageContainer');
+    const stageBtns = document.querySelectorAll('.stage-btn');
+
+    function goToStage(index) {
+      currentStage = index;
+      stageContainer.style.transform = `translateX(-${index * 100}vw)`;
+      
+      stageBtns.forEach((btn, idx) => {
+        if (idx === index) {
+          btn.className = 'stage-btn px-3 py-1.5 rounded bg-cyan-500 text-black font-bold transition-all';
+        } else {
+          btn.className = 'stage-btn px-3 py-1.5 rounded text-slate-400 hover:text-white transition-all';
+        }
+      });
+    }
+
+    // Klavye yön tuşları ile geçiş desteği
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && currentStage < 4) goToStage(currentStage + 1);
+      if (e.key === 'ArrowLeft' && currentStage > 0) goToStage(currentStage - 1);
+    });
+  </script>
+</body>
+</html>

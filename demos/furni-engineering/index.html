@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Osman YILDIRIM | Makine Mühendisi & AI Developer</title>
+  
+  <!-- Tailwind CSS & İkonlar -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              primary: '#0d9488',   // Furni petrol yeşili tonu
+              primaryDark: '#0f766e',
+              accent: '#f59e0b',    // Sıcak Amber / Altın
+              navy: '#0b1329',      // Lüks Koyu Lacivert
+              slate: '#1e293b',
+              surface: '#0f172a',
+              card: '#1e293b',
+              light: '#f8fafc',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Özel Yumuşak Arka Plan & Cam Efektleri */
+    .hero-gradient {
+      background: radial-gradient(circle at top right, rgba(13, 148, 136, 0.15), transparent 50%),
+                  radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.08), transparent 40%),
+                  #070b14;
+    }
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .video-glow {
+      box-shadow: 0 20px 50px -15px rgba(13, 148, 136, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-[#070b14] text-slate-100 font-sans antialiased selection:bg-teal-500 selection:text-black">
+
+  <!-- ==================== 1. ÜST NAVİGASYON (FURNI STYLE SLEEK HEADER) ==================== -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#070b14]/85 border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Marka / Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center font-mono font-bold text-slate-950 text-base shadow-lg shadow-teal-500/20 group-hover:scale-105 transition-all">
+          OY
+        </div>
+        <div>
+          <span class="text-base font-extrabold tracking-tight text-white block">OSMAN YILDIRIM</span>
+          <span class="text-[11px] font-mono text-teal-400 font-medium block -mt-1">Makine Mühendisi</span>
+        </div>
+      </a>
+
+      <!-- Menü Linkleri -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#hakkimda" class="hover:text-teal-400 transition-colors">Hakkımda</a>
+        <a href="#yetkinlikler" class="hover:text-teal-400 transition-colors">Yetkinlikler</a>
+        <a href="#projeler" class="hover:text-teal-400 transition-colors flex items-center gap-1.5">
+          <span>Bitirme Projeleri</span>
+          <span class="px-1.5 py-0.5 text-[10px] font-bold rounded bg-teal-500/20 text-teal-300 border border-teal-500/30">CANLI</span>
+        </a>
+        <a href="#simulasyon" class="hover:text-teal-400 transition-colors">Simülasyon & Analiz</a>
+        <a href="#deneyim" class="hover:text-teal-400 transition-colors">Akkuyu NGS Stajları</a>
+      </nav>
+
+      <!-- Hızlı CV İndirme & İletişim Butonları -->
+      <div class="flex items-center gap-3">
+        <a href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download class="px-4 py-2 rounded-xl text-xs font-bold bg-teal-500 hover:bg-teal-400 text-slate-950 transition-all flex items-center gap-2 shadow-md shadow-teal-500/25">
+          <i class="fa-solid fa-file-pdf"></i>
+          <span>CV (TR)</span>
+        </a>
+        <a href="/files/osman-yildirim-cv-en.pdf" target="_blank" download class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-all flex items-center gap-2">
+          <i class="fa-solid fa-download"></i>
+          <span>CV (EN)</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 2. HERO BÖLÜMÜ (FURNI TARZI FERAH & VİDEO ÖNİZLEMELİ) ==================== -->
+  <section class="hero-gradient pt-12 pb-20 px-6 border-b border-slate-800/60 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Sol: Güçlü Tipografi & Tanıtım -->
+      <div class="lg:col-span-6 space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-950/60 border border-teal-500/30 text-teal-300 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>MEZUNİYET // SÜTÇÜ İMAM ÜNİVERSİTESİ 2026</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+          Fiziksel İmalat, <br>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-300 to-amber-300">
+            Dijital Simülasyonla
+          </span> <br>
+          Bütünleşiyor.
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
+          Akkuyu Nükleer Güç Santrali şantiyesinde çelik konstrüksiyon imalatı, NDT (RT/UT) kalite kontrolleri ve ASME B31.3 borulama tecrübesi; ileri düzey CAD modelleme ve modern yapay zeka (Vibe Coding) mimarileri ile buluşuyor.
+        </p>
+
+        <!-- Aksiyon Butonları -->
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a href="#projeler" class="px-7 py-3.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-sm flex items-center gap-2.5 transition-all shadow-lg shadow-teal-500/25">
+            <span>Bitirme Projelerini Keşfet</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#simulasyon" class="px-6 py-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm transition-all flex items-center gap-2">
+            <i class="fa-solid fa-play text-teal-400"></i>
+            <span>Simülasyonu İzle</span>
+          </a>
+        </div>
+
+        <!-- Sayaç & Telemetri Rozetleri -->
+        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/80">
+          <div>
+            <div class="text-2xl lg:text-3xl font-extrabold text-white font-mono">2x</div>
+            <div class="text-xs text-slate-400 font-medium mt-0.5">Nükleer Saha Stajı (ME 322 & ME 200)</div>
+          </div>
+          <div>
+            <div class="text-2xl lg:text-3xl font-extrabold text-teal-400 font-mono">ASME</div>
+            <div class="text-xs text-slate-400 font-medium mt-0.5">B31.3 & PNAE G-7 Standartları</div>
+          </div>
+          <div>
+            <div class="text-2xl lg:text-3xl font-extrabold text-amber-400 font-mono">AI</div>
+            <div class="text-xs text-slate-400 font-medium mt-0.5">Vibe Coding & Otomasyon</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sağ: Simülasyon Videosu / CAD Görsel Çerçevesi (Furni'nin Görsel Odak Noktası) -->
+      <div class="lg:col-span-6 relative">
+        <!-- Ana Simülasyon Video / Görsel Kutusu -->
+        <div class="relative rounded-3xl overflow-hidden glass-panel border border-teal-500/30 video-glow p-2">
+          
+          <!-- Simülasyon Başlık Çubuğu -->
+          <div class="bg-slate-950/80 px-4 py-2.5 rounded-t-2xl flex items-center justify-between border-b border-slate-800 text-xs font-mono">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+              <span class="text-slate-400 ml-2">SIMULATION_VIEWPORT // NDT_STRESS_FEA.mp4</span>
+            </div>
+            <span class="text-teal-400 font-bold">60 FPS</span>
+          </div>
+
+          <!-- Video / Animasyon Canvas Alanı -->
+          <div class="relative aspect-video bg-slate-950 rounded-b-2xl overflow-hidden flex items-center justify-center group">
+            
+            <!-- Canlı Canvas Simülasyon Efekti (Gerilme & Akışkan Simülatörü) -->
+            <canvas id="simulationCanvas" class="w-full h-full object-cover"></canvas>
+
+            <!-- Video Oynat Buton Maskesi (Gerçek Video Geldiğinde Doğrudan Oynatır) -->
+            <div class="absolute inset-0 bg-slate-950/40 backdrop-blur-[2px] flex flex-col items-center justify-center p-6 text-center group-hover:bg-slate-950/20 transition-all">
+              <div class="w-16 h-16 rounded-full bg-teal-500/90 text-slate-950 flex items-center justify-center text-xl shadow-xl shadow-teal-500/40 group-hover:scale-110 transition-transform cursor-pointer">
+                <i class="fa-solid fa-play ml-1"></i>
+              </div>
+              <div class="mt-4">
+                <span class="text-sm font-bold text-white block">3D Boru Hattı & Gerilme Dağılım Simülasyonu</span>
+                <span class="text-xs text-teal-300 font-mono">ASME B31.3 Hidrostatik Basınç ve Sonlu Elemanlar (FEA)</span>
+              </div>
+            </div>
+
+            <!-- Sağ Üst Canlı Telemetri Rozeti -->
+            <div class="absolute top-4 right-4 bg-slate-950/80 border border-teal-500/40 rounded-xl px-3 py-1.5 text-[11px] font-mono text-teal-300 backdrop-blur-md shadow-lg">
+              <div>MAX STRESS: <span class="text-amber-400 font-bold">142.6 MPa</span></div>
+              <div>SAFETY FACTOR: <span class="text-emerald-400 font-bold">2.41</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Üzerine Binen Alt Yüzen Bilgi Kartı (Furni Floating Card) -->
+        <div class="absolute -bottom-6 -left-6 bg-slate-900/90 border border-slate-700/80 rounded-2xl p-4 shadow-2xl backdrop-blur-xl hidden sm:flex items-center gap-3.5 max-w-xs">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xl flex-shrink-0">
+            <i class="fa-solid fa-certificate"></i>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-white">Nükleer Kalite & NDT</div>
+            <div class="text-[11px] text-slate-400 leading-tight mt-0.5">PNAE G-7 ve ASME Sec. IX kaynak denetim prosedürleri.</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 3. 4'LÜ MÜHENDİSLİK YETKİNLİK ŞERİDİ (FURNI 'WHY CHOOSE US') ==================== -->
+  <section id="yetkinlikler" class="py-20 px-6 bg-[#090e1a] border-b border-slate-800/60">
+    <div class="max-w-7xl mx-auto space-y-12">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-2">01 // UZMANLIK ALANLARI</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Mühendislik & Yazılım Yetkinlikleri</h2>
+        </div>
+        <p class="text-slate-400 text-sm max-w-md">
+          Mekanik tasarımın teorik kuralları ile modern üretim ve otonom yazılım geliştirme araçlarının kusursuz entegrasyonu.
+        </p>
+      </div>
+
+      <!-- 4 Kolonlu Kart Yapısı -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Kart 1: CAD & Tasarım -->
+        <div class="bg-slate-900/60 border border-slate-800 hover:border-teal-500/40 p-7 rounded-2xl transition-all group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-teal-500/10 text-teal-400 flex items-center justify-center text-2xl mb-5 group-hover:bg-teal-500 group-hover:text-slate-950 transition-all">
+            <i class="fa-solid fa-compass-drafting"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">3D CAD & Modelleme</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">
+            SolidWorks (Orta-İleri), AutoCAD, Zetacad ve Onshape ile montaj modelleme, tolerans analizi ve teknik resim çıkarma.
+          </p>
+          <div class="text-[11px] font-mono text-teal-400 font-semibold">SolidWorks &bull; AutoCAD</div>
+        </div>
+
+        <!-- Kart 2: Borulama & Standartlar -->
+        <div class="bg-slate-900/60 border border-slate-800 hover:border-amber-500/40 p-7 rounded-2xl transition-all group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-5 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all">
+            <i class="fa-solid fa-arrows-split-up-and-left"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">ASME Borulama & İmalat</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">
+            ASME B31.3 proses borulama, B16.5 flanş standartları, izometrik spool çizimleri ve hidrostatik test paketleri.
+          </p>
+          <div class="text-[11px] font-mono text-amber-400 font-semibold">ASME B31.3 &bull; PipeData</div>
+        </div>
+
+        <!-- Kart 3: NDT & Kalite Kontrol -->
+        <div class="bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 p-7 rounded-2xl transition-all group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl mb-5 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all">
+            <i class="fa-solid fa-microscope"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">NDT & Kalite Kontrol</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">
+            Akkuyu NGS'de PNAE G-7 standardına uygun Radyografik (RT) ve Görsel (VT) kaynak muayeneleri, İSG saha protokolleri.
+          </p>
+          <div class="text-[11px] font-mono text-emerald-400 font-semibold">NDT &bull; PNAE G-7 &bull; İSG</div>
+        </div>
+
+        <!-- Kart 4: AI & Vibe Coding -->
+        <div class="bg-slate-900/60 border border-slate-800 hover:border-purple-500/40 p-7 rounded-2xl transition-all group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-2xl mb-5 group-hover:bg-purple-500 group-hover:text-slate-950 transition-all">
+            <i class="fa-solid fa-brain"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2">AI Vibe Coding & Yazılım</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">
+            Python otomasyonu, Jetpack Compose Native Android uygulamaları, Termux Linux köprüleri ve çoklu yapay zeka ajanları.
+          </p>
+          <div class="text-[11px] font-mono text-purple-400 font-semibold">Python &bull; Kotlin &bull; Agents</div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 4. BİTİRME & MÜHENDİSLİK PROJELERİ VİTRİNİ (FURNI PRODUCT GRID) ==================== -->
+  <section id="projeler" class="py-24 px-6 border-b border-slate-800/60">
+    <div class="max-w-7xl mx-auto space-y-12">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block mb-2">02 // PROJE GALERİSİ</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Öne Çıkan Mühendislik Eserleri</h2>
+        </div>
+        <div class="text-sm font-mono text-slate-400">
+          Simülasyon Videoları &bull; CAD Çizimleri &bull; Canlı Repolar
+        </div>
+      </div>
+
+      <!-- Proje Kartları (3 Kolonlu Furni Tarzı Vitrin) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- PROJE 1: ME BİTİRME PROJESİ (Nükleer Borulama) -->
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 rounded-3xl overflow-hidden transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <!-- Video / Grafik Önizleme Alanı -->
+            <div class="relative aspect-[16/10] bg-slate-950 overflow-hidden">
+              <img src="/files/me-200-yaz-staji-1/page_37_Figure_1.jpeg" onerror="this.src='https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80'" alt="Nükleer Borulama" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+              
+              <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-amber-500 text-slate-950 text-xs font-extrabold font-mono">
+                BİTİRME PROJESİ
+              </div>
+              <div class="absolute bottom-4 right-4 px-2.5 py-1 rounded bg-slate-900/80 border border-slate-700 text-[11px] font-mono text-slate-300 backdrop-blur-md">
+                ASME B31.3
+              </div>
+            </div>
+
+            <div class="p-7 space-y-3">
+              <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                Nükleer Santral Borulama & Gerilme Doğrulama
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed">
+                Akkuyu NGS boru spool hatları için izometrik esneklik analizi, hidrostatik basınç testi paketleri ve Tahribatsız Muayene (RT/UT) denetim simülasyonu.
+              </p>
+            </div>
+          </div>
+
+          <div class="px-7 pb-7 pt-2 border-t border-slate-800/80 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-400">SolidWorks &bull; NDT</div>
+            <a href="/files/osman-yildirim-cv-tr.pdf" class="w-9 h-9 rounded-full bg-slate-800 text-slate-200 group-hover:bg-amber-500 group-hover:text-slate-950 flex items-center justify-center transition-all">
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJE 2: PIPEDATA HESAPLAMA MOTORU -->
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-teal-500/50 rounded-3xl overflow-hidden transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <!-- Video / Grafik Alanı -->
+            <div class="relative aspect-[16/10] bg-slate-950 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?w=800&auto=format&fit=crop&q=80" alt="PipeData" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+              
+              <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-teal-500 text-slate-950 text-xs font-extrabold font-mono">
+                ENDÜSTRİYEL YAZILIM
+              </div>
+              <div class="absolute bottom-4 right-4 px-2.5 py-1 rounded bg-slate-900/80 border border-slate-700 text-[11px] font-mono text-slate-300 backdrop-blur-md">
+                ASME &bull; DIN &bull; API
+              </div>
+            </div>
+
+            <div class="p-7 space-y-3">
+              <h3 class="text-xl font-bold text-white group-hover:text-teal-400 transition-colors">
+                PipeData: Borulama & Flanş Hesaplayıcı
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed">
+                Mühendisler için ASME B16.5, B16.47 ve DIN standartlarında boru ölçüleri, cıvata torkları ve basınç sınıflarını anlık hesaplayan referans kütüphanesi.
+              </p>
+            </div>
+          </div>
+
+          <div class="px-7 pb-7 pt-2 border-t border-slate-800/80 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-400">Python &bull; SQLite</div>
+            <a href="https://github.com/TheOsmanYILDIRIM/pipedata" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 text-slate-200 group-hover:bg-teal-500 group-hover:text-slate-950 flex items-center justify-center transition-all">
+              <i class="fa-brands fa-github text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJE 3: ANTIGRAVITY ANDROID & TOUCH-CAD -->
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 rounded-3xl overflow-hidden transition-all duration-300 group flex flex-col justify-between">
+          <div>
+            <!-- Video / Grafik Alanı -->
+            <div class="relative aspect-[16/10] bg-slate-950 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80" alt="Antigravity Android" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80 group-hover:opacity-100">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+              
+              <div class="absolute top-4 left-4 px-3 py-1 rounded-full bg-purple-500 text-white text-xs font-extrabold font-mono">
+                MOBİL AI & CAD
+              </div>
+              <div class="absolute bottom-4 right-4 px-2.5 py-1 rounded bg-slate-900/80 border border-slate-700 text-[11px] font-mono text-slate-300 backdrop-blur-md">
+                Compose UI
+              </div>
+            </div>
+
+            <div class="p-7 space-y-3">
+              <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
+                Antigravity Android & Touch-CAD
+              </h3>
+              <p class="text-slate-300 text-xs leading-relaxed">
+                Jetpack Compose native Android AI istemcisi, Termux Linux köprüsü ve mobil dokunmatik CAD modelleme mimarisi.
+              </p>
+            </div>
+          </div>
+
+          <div class="px-7 pb-7 pt-2 border-t border-slate-800/80 flex items-center justify-between">
+            <div class="text-[11px] font-mono text-slate-400">Kotlin &bull; Jetpack Compose</div>
+            <a href="https://github.com/TheOsmanYILDIRIM" target="_blank" class="w-9 h-9 rounded-full bg-slate-800 text-slate-200 group-hover:bg-purple-500 group-hover:text-white flex items-center justify-center transition-all">
+              <i class="fa-brands fa-github text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 5. SİMÜLASYON & ANALİZ BÜYÜK VİTRİNİ (FURNI SPLIT SHOWCASE) ==================== -->
+  <section id="simulasyon" class="py-24 px-6 bg-[#090e1a] border-b border-slate-800/60">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Sol: Büyük Grafik / Simülasyon Video Player Alanı -->
+      <div class="lg:col-span-6 space-y-4">
+        <div class="relative rounded-3xl overflow-hidden glass-panel border border-slate-700/80 p-3 shadow-2xl">
+          <div class="relative aspect-video bg-slate-950 rounded-2xl overflow-hidden">
+            <!-- Simülasyon Görseli / Video Yer Tutucu -->
+            <img src="/files/me-200-yaz-staji-1/page_37_Figure_2.jpeg" onerror="this.src='https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop&q=80'" alt="Montaj Simülasyonu" class="w-full h-full object-cover">
+            
+            <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center">
+              <div class="px-4 py-2 rounded-xl bg-slate-900/90 border border-teal-500/40 text-xs font-mono text-teal-300 backdrop-blur-md shadow-xl flex items-center gap-2">
+                <i class="fa-solid fa-chart-line text-amber-400"></i>
+                <span>GERİLME & ISI DAĞILIM EĞRİSİ: AKTİF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 font-mono text-xs text-slate-400">
+          <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+            <span class="text-slate-500 block text-[10px]">Test Standardı:</span>
+            <span class="text-white font-bold">ASME B31.3 Kuralı</span>
+          </div>
+          <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+            <span class="text-slate-500 block text-[10px]">Kalite Kriteri:</span>
+            <span class="text-emerald-400 font-bold">PNAE G-7 Uygunluğu</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sağ: Vaka Analizi & Metodoloji -->
+      <div class="lg:col-span-6 space-y-6">
+        <span class="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block">03 // ANALİZ METODOLOJİSİ</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+          Yüksek Hassasiyetli Mühendislik Doğrulaması
+        </h2>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Bitirme çalışmasında, karmaşık nükleer boru hatları izometrik olarak modellenmiş; hidrostatik basınç, termal genleşme ve mekanik yükler altında gerilme dağılımları simüle edilmiştir.
+        </p>
+
+        <div class="space-y-3 text-xs text-slate-300">
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-xs mt-0.5 flex-shrink-0">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div><strong>Sıfır Hata Toleransı:</strong> Tahribatsız muayene (NDT) radyografik film değerlendirmeleriyle kaynak dikişlerinde mikro gözenek tespiti.</div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-xs mt-0.5 flex-shrink-0">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div><strong>Saha ile Tam Uyum:</strong> İÇTAŞ Akkuyu NGS tesislerinde gözlemlenen CNC plazma ve kaynak imalat prosedürlerinin birebir simülasyonu.</div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-5 h-5 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-xs mt-0.5 flex-shrink-0">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <div><strong>Otomasyon & Yazılım:</strong> Borulama parametrelerinin Python algoritmalarıyla otomatik tork ve basınç tablosuna dökülmesi.</div>
+          </div>
+        </div>
+
+        <div class="pt-2">
+          <a href="/me-200-yaz-staji-1/" class="inline-flex items-center gap-2 text-sm font-bold text-teal-400 hover:text-teal-300">
+            <span>Staj Raporu ve Saha Detaylarını İncele</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 6. SAHA DENEYİMİ ZAMAN ÇİZELGESİ (AKKUYU NGS) ==================== -->
+  <section id="deneyim" class="py-24 px-6 border-b border-slate-800/60">
+    <div class="max-w-5xl mx-auto space-y-12">
+      
+      <div class="text-center space-y-3">
+        <span class="text-xs font-mono font-bold text-teal-400 uppercase tracking-widest block">04 // SAHA KARİYERİ</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Akkuyu Nükleer Güç Santrali Stajları</h2>
+        <p class="text-slate-400 text-sm max-w-xl mx-auto">
+          İÇTAŞ Endüstriyel Boru Lojistik ve Çelik İmalatları A.Ş. bünyesinde gerçekleştirilen endüstriyel saha görevleri.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- ME 322 Organizasyon Stajı -->
+        <div class="bg-slate-900/60 border border-slate-800 hover:border-teal-500/40 p-8 rounded-3xl transition-all space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 text-xs font-mono font-bold">ME 322 STAJI</span>
+            <span class="text-xs font-mono text-slate-400">Mart 2026 – Nisan 2026</span>
+          </div>
+          <h3 class="text-xl font-bold text-white">Organizasyon & Kalite Kontrol</h3>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Akkuyu NGS projesi çelik konstrüksiyon iş akışları, PNAE G-7 standartlarında Kalite Kontrol ve NDT süreçlerinin denetimi, üretim verilerinin raporlanması ve İSG saha kuralları.
+          </p>
+          <div class="pt-2 text-xs font-mono text-teal-400">Silifke, Mersin</div>
+        </div>
+
+        <!-- ME 200 İmalat Stajı -->
+        <div class="bg-slate-900/60 border border-slate-800 hover:border-amber-500/40 p-8 rounded-3xl transition-all space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-mono font-bold">ME 200 İMALAT STAJI</span>
+            <span class="text-xs font-mono text-slate-400">Temmuz 2024 – Ağustos 2024</span>
+          </div>
+          <h3 class="text-xl font-bold text-white">30 Günlük İmalat & Üretim</h3>
+          <p class="text-slate-300 text-xs leading-relaxed">
+            Talaşlı imalat, TIG/Argon/Tozaltı kaynağı, CNC plazma kesici, SMARC torna/freze, Dextra diş açma ve bükme işlemleri. TS 283.24 ve 00053.24 sipariş süreçleri.
+          </p>
+          <div class="pt-2">
+            <a href="/me-200-yaz-staji-1/" class="text-xs font-mono text-amber-400 hover:underline inline-flex items-center gap-1.5">
+              <span>Staj Notlarını & Teknik Resimleri Oku</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 7. İLETİŞİM & FOOTER ==================== -->
+  <footer id="iletisim" class="py-16 px-6 bg-[#050810] text-slate-400 text-xs font-mono">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-800/80 pb-10">
+      
+      <div>
+        <div class="text-base font-bold text-white font-sans mb-1">Osman YILDIRIM</div>
+        <div>Makine Mühendisi & AI Developer &bull; Kahramanmaraş / Mersin, Türkiye</div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="mailto:osman1429@hotmail.com" class="px-4 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold font-sans transition-all flex items-center gap-2">
+          <i class="fa-solid fa-envelope"></i>
+          <span>osman1429@hotmail.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/theosmanyildirim" target="_blank" class="p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white">
+          <i class="fa-brands fa-linkedin text-base"></i>
+        </a>
+        <a href="https://github.com/TheOsmanYILDIRIM" target="_blank" class="p-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white">
+          <i class="fa-brands fa-github text-base"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-500 text-[11px]">
+      <div>&copy; 2026 Osman YILDIRIM. Tüm Hakları Saklıdır.</div>
+      <div>ASME B31.3 &bull; SolidWorks &bull; NDT &bull; Vibe Coding</div>
+    </div>
+  </footer>
+
+  <!-- CANLI GERİLME SİMÜLASYON ANİMASYONU (Canvas JS) -->
+  <script>
+    const canvas = document.getElementById('simulationCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = canvas.offsetWidth;
+      let height = canvas.height = canvas.offsetHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = canvas.offsetWidth;
+        height = canvas.height = canvas.offsetHeight;
+      });
+
+      let t = 0;
+      function renderSimulation() {
+        ctx.fillStyle = '#050811';
+        ctx.fillRect(0, 0, width, height);
+
+        // 3D Izometrik Boru & Gerilme Dalgası Çizimi
+        const cols = 20;
+        const rows = 12;
+        const cellW = width / cols;
+        const cellH = height / rows;
+
+        for (let i = 0; i < cols; i++) {
+          for (let j = 0; j < rows; j++) {
+            const x = i * cellW;
+            const y = j * cellH;
+            const dist = Math.sin(i * 0.4 + t) * Math.cos(j * 0.4 + t);
+            
+            // Isı Haritası Renkleri (Mavi -> Yeşil -> Amber -> Kırmızı)
+            let color = '#06b6d4';
+            if (dist > 0.4) color = '#f59e0b';
+            if (dist > 0.7) color = '#ef4444';
+            if (dist < -0.3) color = '#3b82f6';
+
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1.2;
+            ctx.strokeRect(x + 2, y + 2, cellW - 4, cellH - 4);
+          }
+        }
+
+        // Merkez Basınç Hattı
+        ctx.beginPath();
+        ctx.moveTo(0, height / 2);
+        for (let x = 0; x < width; x += 10) {
+          const y = height / 2 + Math.sin(x * 0.02 + t * 2) * 25;
+          ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = '#22d3ee';
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        t += 0.03;
+        requestAnimationFrame(renderSimulation);
+      }
+      renderSimulation();
+    }
+  </script>
+</body>
+</html>

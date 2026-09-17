@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Osman Yıldırım — Makine Mühendisi</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#faf9f6] text-[#1a1a1a] font-sans antialiased selection:bg-stone-200">
+
+  <!-- ==================== ÜST MENÜ (SADE & ZARİF) ==================== -->
+  <header class="sticky top-0 z-50 bg-[#faf9f6]/90 backdrop-blur-md border-b border-stone-200/80">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="text-sm font-semibold tracking-tight text-stone-900 hover:text-stone-600 transition-colors">
+        Osman Yıldırım
+      </a>
+
+      <nav class="hidden sm:flex items-center gap-6 text-xs font-medium text-stone-600">
+        <a href="#hakkimda" class="hover:text-stone-900 transition-colors">Hakkımda</a>
+        <a href="#bitirme-projesi" class="hover:text-stone-900 transition-colors">Bitirme Projesi</a>
+        <a href="#yazilimlar" class="hover:text-stone-900 transition-colors">Yazılımlar & Araçlar</a>
+        <a href="#stajlar" class="hover:text-stone-900 transition-colors">Akkuyu NGS Stajları</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download class="px-3 py-1.5 rounded text-xs font-medium bg-stone-900 text-stone-50 hover:bg-stone-800 transition-colors">
+          CV (TR)
+        </a>
+        <a href="/files/osman-yildirim-cv-en.pdf" target="_blank" download class="px-3 py-1.5 rounded text-xs font-medium border border-stone-300 text-stone-700 hover:bg-stone-100 transition-colors">
+          CV (EN)
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO BÖLÜMÜ (DOĞAL & EDİTORYAL) ==================== -->
+  <main class="max-w-5xl mx-auto px-6 pt-16 pb-24 space-y-24">
+
+    <section id="hakkimda" class="space-y-6 max-w-3xl">
+      <span class="text-xs font-mono uppercase tracking-widest text-stone-500">Makine Mühendisi</span>
+      
+      <h1 class="text-3xl sm:text-5xl font-serif font-normal text-stone-900 leading-tight">
+        Endüstriyel imalat, borulama standartları ve mühendislik yazılımları üzerine çalışıyorum.
+      </h1>
+
+      <p class="text-stone-600 text-base sm:text-lg leading-relaxed font-normal">
+        Sütçü İmam Üniversitesi Makine Mühendisliği bölümünden 2026 yılında mezun oldum. Öğrencilik sürecimde Akkuyu Nükleer Güç Santrali çelik yapı imalat sahasında iki dönem staj yaptım (ME 200 ve ME 322). Akışkanlar mekaniği, izometrik borulama hatları (ASME B31.3), tahribatsız muayene (NDT) ve Python/modern yazılım araçlarıyla mühendislik hesaplamaları geliştiriyorum.
+      </p>
+
+      <div class="flex items-center gap-4 text-xs font-mono text-stone-500 pt-2">
+        <span>📍 Kahramanmaraş / Mersin</span>
+        <span>•</span>
+        <a href="mailto:osman1429@hotmail.com" class="text-stone-800 underline hover:text-stone-600">osman1429@hotmail.com</a>
+        <span>•</span>
+        <a href="https://github.com/TheOsmanYILDIRIM" target="_blank" class="text-stone-800 underline hover:text-stone-600">GitHub</a>
+        <span>•</span>
+        <a href="https://www.linkedin.com/in/theosmanyildirim" target="_blank" class="text-stone-800 underline hover:text-stone-600">LinkedIn</a>
+      </div>
+    </section>
+
+    <!-- ==================== 1. BİTİRME PROJESİ (VİDEO / SİMÜLASYON ODAKLI) ==================== -->
+    <section id="bitirme-projesi" class="space-y-8 pt-8 border-t border-stone-200">
+      
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-stone-500 block mb-1">Lisans Bitirme Çalışması</span>
+          <h2 class="text-2xl sm:text-3xl font-serif text-stone-900">
+            Nükleer Güç Santrali Borulama & Gerilme Analizi
+          </h2>
+        </div>
+        <span class="text-xs font-mono text-stone-500">ASME B31.3 &bull; PNAE G-7</span>
+      </div>
+
+      <!-- Simülasyon Videosu / Görsel Alanı -->
+      <div class="bg-stone-900 rounded-lg overflow-hidden shadow-sm">
+        <!-- Video Yer Tutucu (Gerçek Video / Simülasyon Oynatıcı) -->
+        <div class="relative aspect-[16/9] w-full bg-stone-950 flex items-center justify-center">
+          <img src="/files/me-200-yaz-staji-1/page_37_Figure_1.jpeg" onerror="this.style.display='none'" class="absolute inset-0 w-full h-full object-contain p-4 opacity-90">
+          
+          <!-- Video Oynatıcı Kontrol Çubuğu Mockup'ı -->
+          <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent flex items-center justify-between text-xs font-mono text-stone-300">
+            <div class="flex items-center gap-3">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span>İzometrik Spool Gerilme & Deplasman Simülasyonu</span>
+            </div>
+            <span>SolidWorks FEA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proje Açıklaması ve Teknik Rapor Maddeleri -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-2">
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold text-stone-900 font-sans">Kapsam & Modelleme</h3>
+          <p class="text-stone-600 text-xs leading-relaxed">
+            Akkuyu NGS saha izometrik resimlerine dayalı 3D boru spool hatlarının SolidWorks ortamında modellenmesi ve ASME B31.3 tasarım toleranslarına göre boyutlandırılması.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold text-stone-900 font-sans">Basınç & Gerilme Testi</h3>
+          <p class="text-stone-600 text-xs leading-relaxed">
+            İşletme basıncı ve hidrostatik test yükleri altında boru dirsekleri ve kaynak ağızlarında oluşan von Mises gerilme dağılımlarının analizi.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-sm font-semibold text-stone-900 font-sans">NDT ve Kalite Doğrulama</h3>
+          <p class="text-stone-600 text-xs leading-relaxed">
+            Rus Nükleer Standardı (PNAE G-7) gereğince kaynak dikişlerinde uygulanan Radyografik (RT) ve Görsel (VT) muayene kriterlerinin dokümantasyonu.
+          </p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== 2. MÜHENDİSLİK YAZILIMLARI & ARAÇLAR ==================== -->
+    <section id="yazilimlar" class="space-y-8 pt-8 border-t border-stone-200">
+      
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-stone-500 block mb-1">Geliştirilen Yazılımlar</span>
+        <h2 class="text-2xl sm:text-3xl font-serif text-stone-900">Mühendislik Hesaplama Araçları</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- PipeData Kartı -->
+        <div class="border border-stone-200 rounded-lg p-6 bg-white space-y-4 hover:border-stone-400 transition-colors">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono text-stone-500">Açık Kaynak</span>
+            <a href="https://github.com/TheOsmanYILDIRIM/pipedata" target="_blank" class="text-xs font-mono text-stone-800 underline hover:text-stone-500">
+              GitHub →
+            </a>
+          </div>
+          <h3 class="text-lg font-semibold text-stone-900">PipeData: Borulama ve Flanş Referansı</h3>
+          <p class="text-stone-600 text-xs leading-relaxed">
+            ASME B16.5, B16.47, ASME B36.10 ve DIN standartlarındaki flanş, boru, conta ve cıvata ölçülerini anlık hesaplayan Python ve SQLite tabanlı CLI/kütüphane aracı.
+          </p>
+          <div class="text-[11px] font-mono text-stone-500 pt-2 border-t border-stone-100">
+            Python &bull; SQLite &bull; ASME B16.5 &bull; DIN EN 1092
+          </div>
+        </div>
+
+        <!-- Touch-CAD & Android Kartı -->
+        <div class="border border-stone-200 rounded-lg p-6 bg-white space-y-4 hover:border-stone-400 transition-colors">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono text-stone-500">Mobil Yazılım</span>
+            <a href="https://github.com/TheOsmanYILDIRIM" target="_blank" class="text-xs font-mono text-stone-800 underline hover:text-stone-500">
+              GitHub →
+            </a>
+          </div>
+          <h3 class="text-lg font-semibold text-stone-900">Touch-CAD & Antigravity Android</h3>
+          <p class="text-stone-600 text-xs leading-relaxed">
+            Jetpack Compose ile geliştirilmiş native Android AI asistanı ve mobil ortamda dokunmatik CAD/teknik resim inceleme mimarisi.
+          </p>
+          <div class="text-[11px] font-mono text-stone-500 pt-2 border-t border-stone-100">
+            Kotlin &bull; Jetpack Compose &bull; Termux NDK
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== 3. AKKUYU NGS SAHA STAJLARI ==================== -->
+    <section id="stajlar" class="space-y-8 pt-8 border-t border-stone-200">
+      
+      <div>
+        <span class="text-xs font-mono uppercase tracking-widest text-stone-500 block mb-1">Saha Deneyimi</span>
+        <h2 class="text-2xl sm:text-3xl font-serif text-stone-900">Akkuyu Nükleer Güç Santrali Stajları</h2>
+      </div>
+
+      <div class="space-y-8 divide-y divide-stone-200">
+        
+        <!-- ME 322 -->
+        <div class="pt-6 first:pt-0 space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-stone-500">
+            <span class="font-semibold text-stone-900">İÇTAŞ Endüstriyel Boru Lojistik ve Çelik İmalatları A.Ş.</span>
+            <span>Mart 2026 – Nisan 2026 | Silifke, Mersin</span>
+          </div>
+          <h3 class="text-base font-semibold text-stone-900">ME 322 Organizasyon Stajı</h3>
+          <p class="text-stone-600 text-xs leading-relaxed">
+            Akkuyu Nükleer Güç Santrali projesinde çelik konstrüksiyon üretim hatlarının iş akışları ve organizasyonel yapısı incelendi. Rus Nükleer standartlarına (PNAE G-7) uygun Kalite Kontrol ve NDT (Tahribatsız Muayene) süreçleri, üretim veri takibi ve İş Sağlığı ve Güvenliği (İSG) saha uygulamaları yerinde takip edildi.
+          </p>
+        </div>
+
+        <!-- ME 200 -->
+        <div class="pt-6 space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-stone-500">
+            <span class="font-semibold text-stone-900">İÇTAŞ Endüstriyel Boru Lojistik ve Çelik İmalatları A.Ş.</span>
+            <span>Temmuz 2024 – Ağustos 2024 | Silifke, Mersin</span>
+          </div>
+          <h3 class="text-base font-semibold text-stone-900">ME 200 İmalat Stajı (30 İş Günü)</h3>
+          <p class="text-stone-600 text-xs leading-relaxed">
+            Talaşlı imalat, TIG/Argon/Tozaltı kaynağı, CNC plazma kesici, SMARC torna/freze ve Dextra diş açma makinelerinde imalat aşamaları gözlemlendi. TS 283.24 ve 00053.24 siparişlerinin teknik resim ve kalite süreçleri yürütüldü.
+          </p>
+          <div class="pt-1">
+            <a href="/me-200-yaz-staji-1/" class="text-xs font-mono text-stone-900 underline hover:text-stone-600">
+              30 Günlük Staj Raporu ve Teknik Çizimler →
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="pt-12 border-t border-stone-200 text-xs font-mono text-stone-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>&copy; 2026 Osman Yıldırım. Sütçü İmam Üniversitesi Makine Mühendisliği.</div>
+      <div class="flex items-center gap-4">
+        <a href="mailto:osman1429@hotmail.com" class="hover:text-stone-900 underline">E-posta</a>
+        <a href="https://github.com/TheOsmanYILDIRIM" target="_blank" class="hover:text-stone-900 underline">GitHub</a>
+        <a href="https://www.linkedin.com/in/theosmanyildirim" target="_blank" class="hover:text-stone-900 underline">LinkedIn</a>
+      </div>
+    </footer>
+
+  </main>
+
+</body>
+</html>

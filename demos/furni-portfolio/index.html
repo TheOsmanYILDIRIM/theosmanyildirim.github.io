@@ -1,0 +1,392 @@
+<!-- /*
+* Bootstrap 5
+* Template Name: Furni (Adapted for Osman Yıldırım Engineering Portfolio)
+* Template Author: Untree.co
+*/ -->
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Osman Yıldırım">
+  <link rel="shortcut icon" href="images/favicon.png">
+
+  <meta name="description" content="Osman Yıldırım — Makine Mühendisi & AI Geliştirici Portfolyosu" />
+  <meta name="keywords" content="Makine Mühendisliği, SolidWorks, ASME B31.3, NDT, Akkuyu NGS, Python, AI" />
+
+  <!-- Bootstrap CSS & Furni Orijinal Stilleri -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="css/tiny-slider.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <title>Osman Yıldırım | Makine Mühendisi</title>
+</head>
+
+<body>
+
+  <!-- ==================== 1. START HEADER / NAVIGATION ==================== -->
+  <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Osman Yıldırım<span>.</span></a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsFurni">
+        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Ana Sayfa</a>
+          </li>
+          <li><a class="nav-link" href="#projeler">Bitirme Projesi</a></li>
+          <li><a class="nav-link" href="#yetkinlikler">Yetkinlikler</a></li>
+          <li><a class="nav-link" href="#simulasyon">Simülasyon & Analiz</a></li>
+          <li><a class="nav-link" href="#stajlar">Akkuyu NGS Stajları</a></li>
+          <li><a class="nav-link" href="#iletisim">İletişim</a></li>
+        </ul>
+
+        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+          <li class="me-2">
+            <a class="btn btn-secondary btn-sm text-dark font-weight-bold" href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download>
+              <i class="fa-solid fa-file-pdf me-1"></i> CV (TR)
+            </a>
+          </li>
+          <li>
+            <a class="btn btn-white-outline btn-sm" href="/files/osman-yildirim-cv-en.pdf" target="_blank" download>
+              <i class="fa-solid fa-download me-1"></i> CV (EN)
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Header/Navigation -->
+
+  <!-- ==================== 2. START HERO SECTION ==================== -->
+  <div class="hero">
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-lg-5">
+          <div class="intro-excerpt">
+            <h1>Mekanik İmalat <span class="d-block">& Simülasyon Stüdyosu</span></h1>
+            <p class="mb-4">
+              Sütçü İmam Üniversitesi Makine Mühendisliği 2026 mezunuyum. Akkuyu Nükleer Güç Santrali çelik yapı imalatı, NDT muayeneleri, ASME B31.3 borulama analizleri ve modern mühendislik yazılımları geliştiriyorum.
+            </p>
+            <p>
+              <a href="#projeler" class="btn btn-secondary me-2">Bitirme Projeleri</a>
+              <a href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download class="btn btn-white-outline">Özgeçmiş İndir</a>
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="hero-img-wrap">
+            <!-- Furni'nin Hero Sağ Görsel Alanı: Simülasyon / CAD 3D Model Çerçevesi -->
+            <div class="p-3 bg-dark rounded shadow-lg border border-secondary" style="max-width: 580px; margin-left: auto;">
+              <div class="d-flex justify-content-between align-items-center mb-2 px-2 text-white-50" style="font-size: 11px; font-family: monospace;">
+                <span>FEA_SIMULATION_VIEWPORT // ASME_B31.3</span>
+                <span class="text-warning">● ACTIVE</span>
+              </div>
+              <img src="/files/me-200-yaz-staji-1/page_37_Figure_1.jpeg" onerror="this.src='images/couch.png'" class="img-fluid rounded" alt="3D Borulama Simülasyonu">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Hero Section -->
+
+  <!-- ==================== 3. START PRODUCT SECTION (ÖNE ÇIKAN PROJELER) ==================== -->
+  <div class="product-section" id="projeler">
+    <div class="container">
+      <div class="row">
+
+        <!-- Start Column 1 (Başlık ve Keşfet Butonu) -->
+        <div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
+          <h2 class="mb-4 section-title">Hassas Mühendislik & Yazılım Projeleri.</h2>
+          <p class="mb-4">
+            Akkuyu Nükleer Santral saha standartlarına dayalı boru gerilme analizleri, ASME/DIN borulama hesaplama kütüphaneleri ve mobil CAD mimarileri.
+          </p>
+          <p><a href="https://github.com/TheOsmanYILDIRIM" target="_blank" class="btn">GitHub'da İncele</a></p>
+        </div> 
+        <!-- End Column 1 -->
+
+        <!-- Start Column 2: Bitirme Projesi -->
+        <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+          <a class="product-item" href="/files/osman-yildirim-cv-tr.pdf" target="_blank">
+            <img src="/files/me-200-yaz-staji-1/page_37_Figure_2.jpeg" onerror="this.src='images/product-1.png'" class="img-fluid product-thumbnail" alt="Nükleer Borulama">
+            <h3 class="product-title">Nükleer Borulama & Gerilme Analizi</h3>
+            <strong class="product-price">ASME B31.3 &bull; NDT</strong>
+
+            <span class="icon-cross">
+              <img src="images/cross.svg" class="img-fluid">
+            </span>
+          </a>
+        </div> 
+        <!-- End Column 2 -->
+
+        <!-- Start Column 3: PipeData -->
+        <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+          <a class="product-item" href="https://github.com/TheOsmanYILDIRIM/pipedata" target="_blank">
+            <img src="/files/me-200-yaz-staji-1/page_38_Picture_0.jpeg" onerror="this.src='images/product-2.png'" class="img-fluid product-thumbnail" alt="PipeData">
+            <h3 class="product-title">PipeData: Borulama Referansı</h3>
+            <strong class="product-price">ASME &bull; DIN &bull; API</strong>
+
+            <span class="icon-cross">
+              <img src="images/cross.svg" class="img-fluid">
+            </span>
+          </a>
+        </div>
+        <!-- End Column 3 -->
+
+        <!-- Start Column 4: Touch-CAD / Android -->
+        <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+          <a class="product-item" href="https://github.com/TheOsmanYILDIRIM" target="_blank">
+            <img src="/files/me-200-yaz-staji-1/page_14_Picture_3.jpeg" onerror="this.src='images/product-3.png'" class="img-fluid product-thumbnail" alt="Touch-CAD">
+            <h3 class="product-title">Touch-CAD & Antigravity Client</h3>
+            <strong class="product-price">Jetpack Compose &bull; AI</strong>
+
+            <span class="icon-cross">
+              <img src="images/cross.svg" class="img-fluid">
+            </span>
+          </a>
+        </div>
+        <!-- End Column 4 -->
+
+      </div>
+    </div>
+  </div>
+  <!-- End Product Section -->
+
+  <!-- ==================== 4. START WHY CHOOSE US SECTION (YETKİNLİKLER) ==================== -->
+  <div class="why-choose-section" id="yetkinlikler">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-6">
+          <h2 class="section-title">Mühendislik & İmalat Yetkinlikleri</h2>
+          <p>
+            Teorik makine mühendisliği prensiplerini, nükleer santral şantiye imalatı ve modern yazılım otomasyonu ile birleştiriyorum.
+          </p>
+
+          <div class="row my-5">
+            <div class="col-6 col-md-6">
+              <div class="feature">
+                <div class="icon">
+                  <img src="images/truck.svg" alt="CAD" class="imf-fluid">
+                </div>
+                <h3>3D CAD & Modelleme</h3>
+                <p>SolidWorks (Orta Seviye), AutoCAD, Zetacad ve Onshape ile parametrik parça ve montaj modelleme.</p>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-6">
+              <div class="feature">
+                <div class="icon">
+                  <img src="images/bag.svg" alt="ASME" class="imf-fluid">
+                </div>
+                <h3>ASME & Borulama</h3>
+                <p>ASME B31.3 proses borulama, izometrik spool çizimi ve hidrostatik test paketleri hazırlığı.</p>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-6">
+              <div class="feature">
+                <div class="icon">
+                  <img src="images/support.svg" alt="NDT" class="imf-fluid">
+                </div>
+                <h3>NDT & Kalite Kontrol</h3>
+                <p>Rus Nükleer Standardı (PNAE G-7), Radyografik (RT) ve Görsel (VT) kaynak muayeneleri farkındalığı.</p>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-6">
+              <div class="feature">
+                <div class="icon">
+                  <img src="images/return.svg" alt="Yazılım" class="imf-fluid">
+                </div>
+                <h3>Python & AI Geliştirme</h3>
+                <p>Mühendislik hesaplama algoritmaları, Vibe Coding, Jetpack Compose native Android ve Git/GitHub.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="img-wrap">
+            <img src="/files/me-200-yaz-staji-1/page_0_Picture_1.jpeg" onerror="this.src='images/why-choose-us-img.jpg'" alt="Akkuyu NGS İmalat" class="img-fluid rounded shadow">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End Why Choose Us Section -->
+
+  <!-- ==================== 5. START WE HELP SECTION (SİMÜLASYON & VAKA İNCELEMESİ) ==================== -->
+  <div class="we-help-section" id="simulasyon">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-lg-7 mb-5 mb-lg-0">
+          <div class="imgs-grid">
+            <div class="grid grid-1"><img src="/files/me-200-yaz-staji-1/page_5_Picture_2.jpeg" onerror="this.src='images/img-grid-1.jpg'" alt="Teknik Resim 1"></div>
+            <div class="grid grid-2"><img src="/files/me-200-yaz-staji-1/page_5_Picture_3.jpeg" onerror="this.src='images/img-grid-2.jpg'" alt="Teknik Resim 2"></div>
+            <div class="grid grid-3"><img src="/files/me-200-yaz-staji-1/page_6_Figure_0.jpeg" onerror="this.src='images/img-grid-3.jpg'" alt="Teknik Resim 3"></div>
+          </div>
+        </div>
+        <div class="col-lg-5 ps-lg-5">
+          <h2 class="section-title mb-4">Bitirme Projesi Simülasyonu & Saha Doğrulaması</h2>
+          <p>
+            Bitirme çalışmasında, nükleer santral borulama hatlarında basınç ve termal yükler altında oluşan gerilme dağılımları simüle edilmiş ve imalat kriterleri incelenmiştir.
+          </p>
+
+          <ul class="list-unstyled custom-list my-4">
+            <li>ASME B31.3 tasarım kurallarına tam uyumlu izometrik spool analizi</li>
+            <li>İşletme basıncı ve hidrostatik test yüklerinde von Mises gerilme doğrulaması</li>
+            <li>PNAE G-7 kalite standartlarında kaynak dikiş denetimi</li>
+            <li>İÇTAŞ Akkuyu NGS saha imalat ve sipariş verileriyle mutabakat</li>
+          </ul>
+          <p><a href="/me-200-yaz-staji-1/" class="btn">Staj Notlarını & Raporu Oku</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End We Help Section -->
+
+  <!-- ==================== 6. START BLOG SECTION (AKKUYU NGS STAJLARI) ==================== -->
+  <div class="blog-section" id="stajlar">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-6">
+          <h2 class="section-title">Akkuyu Nükleer Güç Santrali Stajları</h2>
+        </div>
+        <div class="col-md-6 text-start text-md-end">
+          <a href="/me-200-yaz-staji-1/" class="more">Detaylı Raporları İncele</a>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <!-- Staj 1 -->
+        <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+          <div class="post-entry">
+            <a href="/me-200-yaz-staji-1/" class="post-thumbnail"><img src="/files/me-200-yaz-staji-1/page_14_Picture_4.jpeg" onerror="this.src='images/post-1.jpg'" alt="ME 322" class="img-fluid"></a>
+            <div class="post-content-entry">
+              <h3><a href="#">ME 322 Organizasyon Stajı</a></h3>
+              <div class="meta">
+                <span>Mart 2026 – Nisan 2026</span> &bull; <span>İÇTAŞ Silifke, Mersin</span>
+              </div>
+              <p>Çelik konstrüksiyon iş akışları, PNAE G-7 Kalite Kontrol ve NDT süreçleri, üretim veri raporlama ve İSG saha kuralları.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Staj 2 -->
+        <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+          <div class="post-entry">
+            <a href="/me-200-yaz-staji-1/" class="post-thumbnail"><img src="/files/me-200-yaz-staji-1/page_21_Picture_4.jpeg" onerror="this.src='images/post-2.jpg'" alt="ME 200" class="img-fluid"></a>
+            <div class="post-content-entry">
+              <h3><a href="/me-200-yaz-staji-1/">ME 200 İmalat Stajı (30 Gün)</a></h3>
+              <div class="meta">
+                <span>Temmuz 2024 – Ağustos 2024</span> &bull; <span>İÇTAŞ Silifke, Mersin</span>
+              </div>
+              <p>Talaşlı imalat, TIG/Argon kaynağı, CNC plazma kesici, SMARC torna/freze ve Dextra diş açma operasyonları.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Yazı 3 -->
+        <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+          <div class="post-entry">
+            <a href="https://github.com/TheOsmanYILDIRIM/pipedata" target="_blank" class="post-thumbnail"><img src="/files/me-200-yaz-staji-1/page_21_Picture_6.jpeg" onerror="this.src='images/post-3.jpg'" alt="PipeData" class="img-fluid"></a>
+            <div class="post-content-entry">
+              <h3><a href="https://github.com/TheOsmanYILDIRIM/pipedata" target="_blank">PipeData: Borulama & Standartlar</a></h3>
+              <div class="meta">
+                <span>Açık Kaynak Proje</span> &bull; <span>Python & SQLite</span>
+              </div>
+              <p>ASME B16.5 ve DIN flanş/boru ölçülerini hesaplayan, mühendislik toleransları içeren referans aracı.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- End Blog Section -->
+
+  <!-- ==================== 7. START FOOTER SECTION ==================== -->
+  <footer class="footer-section" id="iletisim">
+    <div class="container relative">
+
+      <div class="row g-5 mb-5">
+        <div class="col-lg-4">
+          <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Osman Yıldırım<span>.</span></a></div>
+          <p class="mb-4">
+            Makine Mühendisliği (Lisans Mezunu 2026). Akışkanlar mekaniği, borulama standartları, NDT kalite kontrol ve yazılım otomasyonu.
+          </p>
+
+          <ul class="list-unstyled custom-social">
+            <li><a href="mailto:osman1429@hotmail.com"><span class="fa-solid fa-envelope"></span></a></li>
+            <li><a href="https://www.linkedin.com/in/theosmanyildirim" target="_blank"><span class="fa-brands fa-linkedin"></span></a></li>
+            <li><a href="https://github.com/TheOsmanYILDIRIM" target="_blank"><span class="fa-brands fa-github"></span></a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="row links-wrap">
+            <div class="col-6 col-sm-6 col-md-4">
+              <ul class="list-unstyled">
+                <li><strong>Hızlı Erişim</strong></li>
+                <li><a href="#projeler">Bitirme Projesi</a></li>
+                <li><a href="#yetkinlikler">Yetkinlikler</a></li>
+                <li><a href="#simulasyon">Simülasyon & Analiz</a></li>
+                <li><a href="#stajlar">Akkuyu NGS Stajları</a></li>
+              </ul>
+            </div>
+
+            <div class="col-6 col-sm-6 col-md-4">
+              <ul class="list-unstyled">
+                <li><strong>Özgeçmiş Dosyaları</strong></li>
+                <li><a href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download>📄 Türkçe CV (PDF İndir)</a></li>
+                <li><a href="/files/osman-yildirim-cv-en.pdf" target="_blank" download>📄 English CV (PDF Download)</a></li>
+                <li><a href="/cv/">Web Formatında CV</a></li>
+              </ul>
+            </div>
+
+            <div class="col-6 col-sm-6 col-md-4">
+              <ul class="list-unstyled">
+                <li><strong>İletişim & Konum</strong></li>
+                <li><a href="mailto:osman1429@hotmail.com">osman1429@hotmail.com</a></li>
+                <li><a href="#">+90 546 841 3204</a></li>
+                <li><a href="#">Kahramanmaraş / Mersin, Türkiye</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="border-top copyright">
+        <div class="row pt-4">
+          <div class="col-lg-6">
+            <p class="mb-2 text-center text-lg-start">Copyright &copy; 2026 Osman Yıldırım. Tüm hakları saklıdır. &mdash; Template: <a href="https://untree.co">Furni by Untree.co</a></p>
+          </div>
+
+          <div class="col-lg-6 text-center text-lg-end">
+            <ul class="list-unstyled d-inline-flex ms-auto">
+              <li class="me-4"><a href="#">ASME B31.3</a></li>
+              <li><a href="#">PNAE G-7</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </footer>
+  <!-- End Footer Section -->
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/tiny-slider.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+</html>
