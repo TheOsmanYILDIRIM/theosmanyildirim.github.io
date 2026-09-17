@@ -18,144 +18,510 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
+    :root {
+      /* Furni & Emerald Palette */
+      --furni-primary: #3b5d50;
+      --furni-dark: #2f4d42;
+      --furni-gold: #f9bf29;
+      --furni-gold-hover: #e5ab19;
+      --emerald-conformal: #10b981;
+      --emerald-conformal-dark: #065f46;
+      --emerald-conformal-light: #d1fae5;
+      
+      /* Engineering Theme Accents */
+      --cyan-coolant: #00d2ff;
+      --cyan-coolant-dark: #0284c7;
+      --cyan-coolant-light: #e0f2fe;
+      --amber-peek: #f59e0b;
+      --amber-peek-dark: #b45309;
+      --amber-peek-light: #fef3c7;
+      --red-runner: #ef4444;
+      --red-runner-dark: #b91c1c;
+      --red-runner-light: #fee2e2;
+
+      /* Deep Slate Dark System */
+      --slate-950: #020617;
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+
+      /* Standard Surfaces & Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+      --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.25), 0 8px 10px -6px rgba(15, 23, 42, 0.15);
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-pill: 9999px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
-      background-color: #f8f9fa;
-      color: #2f4d42;
+      background-color: var(--slate-50);
+      color: var(--slate-800);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       scroll-behavior: smooth;
+      overflow-x: hidden;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
+    /* ==================== HIGH-CONTRAST SEMANTIC TEXT & ACCENTS ==================== */
+    .text-eng-emerald { color: #047857 !important; font-weight: 700; }
+    .text-eng-primary { color: #0369a1 !important; font-weight: 700; }
+    .text-eng-danger  { color: #b91c1c !important; font-weight: 700; }
+    .text-eng-amber   { color: #b45309 !important; font-weight: 700; }
+    .text-slate-300   { color: var(--slate-300) !important; }
+    .text-slate-400   { color: var(--slate-400) !important; }
+    .text-slate-500   { color: var(--slate-500) !important; }
+    .text-slate-600   { color: var(--slate-600) !important; }
+    .text-slate-700   { color: var(--slate-700) !important; }
+    .text-slate-800   { color: var(--slate-800) !important; }
+
+    /* ==================== 1. BAŞLIK VE METRİKLER ==================== */
     .project-header {
-      background-color: #3b5d50;
+      background-color: var(--furni-primary);
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
       color: #ffffff;
-      padding: 60px 0 40px 0;
+      padding: clamp(32px, 6vw, 60px) 0 clamp(24px, 4vw, 40px) 0;
+      border-bottom: 3px solid var(--emerald-conformal-dark);
+    }
+    .project-title {
+      font-size: clamp(1.35rem, 4.5vw, 2.2rem);
+      line-height: 1.3;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+    .univ-badge {
+      font-size: clamp(0.68rem, 2.4vw, 0.78rem);
+      white-space: normal;
+      max-width: 100%;
+      line-height: 1.4;
+      display: inline-block;
+      word-break: break-word;
+      background: #ffffff;
+      color: var(--furni-dark);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
     }
     .metric-card {
       background: #ffffff;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e9ecef;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-radius: var(--radius-lg);
+      padding: clamp(16px, 3vw, 24px);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--slate-200);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+      height: 100%;
     }
     .metric-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--emerald-conformal);
     }
     .metric-value {
-      font-size: 2.2rem;
+      font-size: clamp(1.75rem, 5vw, 2.2rem);
       font-weight: 800;
-      color: #3b5d50;
       font-family: monospace;
+      line-height: 1.2;
     }
     .chart-container {
       background: #ffffff;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e9ecef;
+      border-radius: var(--radius-lg);
+      padding: clamp(16px, 3vw, 24px);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--slate-200);
       margin-bottom: 24px;
+      transition: box-shadow 0.2s ease;
+    }
+    .chart-container:hover {
+      box-shadow: var(--shadow-lg);
     }
     .comparison-badge {
       font-size: 0.75rem;
       font-weight: 700;
-      padding: 4px 8px;
-      border-radius: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      line-height: 1.3;
+      white-space: normal;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
     .badge-conformal {
-      background-color: #d1e7dd;
-      color: #0f5132;
+      background-color: var(--emerald-conformal-light);
+      color: var(--emerald-conformal-dark);
+      border: 1px solid #a7f3d0;
     }
     .badge-traditional {
-      background-color: #f8d7da;
-      color: #842029;
+      background-color: var(--red-runner-light);
+      color: var(--red-runner-dark);
+      border: 1px solid #fecaca;
     }
     .tech-pill {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      background: #e9ecef;
-      color: #495057;
-      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: #ffffff;
+      color: var(--slate-700);
+      font-size: clamp(0.75rem, 2.5vw, 0.82rem);
       font-weight: 600;
       margin-right: 6px;
       margin-bottom: 6px;
+      line-height: 1.3;
+      border: 1px solid var(--slate-200);
+      box-shadow: var(--shadow-sm);
+    }
+    .tech-pill-header {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .cad-preview-card {
+      background: var(--slate-900);
+      border: 1px solid var(--slate-700);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
     }
 
-    /* Akademik Makale / Rapor Stilleri */
+    /* ==================== 2. AKADEMİK MAKALE & DOKÜMAN YAPISI ==================== */
     .article-container {
       background: #ffffff;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
-      border: 1px solid #e9ecef;
+      border-radius: var(--radius-xl);
+      padding: clamp(18px, 4vw, 40px);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--slate-200);
     }
     .sticky-toc {
       position: sticky;
       top: 24px;
       background: #ffffff;
-      border-radius: 12px;
+      border-radius: var(--radius-lg);
       padding: 20px;
-      border: 1px solid #e9ecef;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      border: 1px solid var(--slate-200);
+      box-shadow: var(--shadow-sm);
     }
     .toc-link {
-      display: block;
-      padding: 6px 10px;
-      color: #495057;
+      display: flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 8px 12px;
+      color: var(--slate-600);
       text-decoration: none;
       font-size: 0.88rem;
-      border-radius: 6px;
+      font-weight: 500;
+      border-radius: var(--radius-md);
       transition: all 0.2s ease;
+      touch-action: manipulation;
     }
     .toc-link:hover, .toc-link.active {
-      color: #3b5d50;
+      color: var(--furni-primary);
       background-color: #f0fdf4;
-      font-weight: 600;
+      font-weight: 700;
       padding-left: 14px;
+      border-left: 3px solid var(--emerald-conformal);
+    }
+    .mobile-toc-container {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      border: 1px solid var(--slate-200);
+      box-shadow: var(--shadow-sm);
+    }
+    .mobile-toc-btn {
+      min-height: 44px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 600;
+      touch-action: manipulation;
     }
     .article-section-title {
-      color: #3b5d50;
-      font-weight: 700;
-      border-bottom: 2px solid #e9ecef;
-      padding-bottom: 8px;
+      color: var(--furni-dark);
+      font-weight: 800;
+      border-bottom: 2px solid var(--slate-200);
+      padding-bottom: 10px;
       margin-top: 36px;
       margin-bottom: 20px;
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      letter-spacing: -0.01em;
+      position: relative;
     }
-    .article-body p {
-      font-size: 1rem;
-      line-height: 1.75;
-      color: #333333;
-      margin-bottom: 1.25rem;
+    .article-section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 60px;
+      height: 2px;
+      background: var(--emerald-conformal);
+    }
+    .article-body p, .article-body li {
+      font-size: clamp(0.95rem, 2.5vw, 1.02rem);
+      line-height: 1.8;
+      color: var(--slate-800);
+    }
+    .summary-callout-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-left: 4px solid var(--emerald-conformal);
+      border-radius: var(--radius-lg);
     }
     .figure-card {
-      background: #fdfdfd;
-      border: 1px solid #eaeaea;
-      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: var(--radius-lg);
       padding: 16px;
       margin: 24px 0;
       text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .figure-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
     }
     .figure-card img {
       max-height: 480px;
+      width: 100%;
+      height: auto;
       object-fit: contain;
-      border-radius: 8px;
+      border-radius: var(--radius-md);
       background: #ffffff;
     }
     .figure-caption {
-      font-size: 0.85rem;
-      color: #6c757d;
-      margin-top: 10px;
-      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--slate-600);
+      margin-top: 12px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .figure-caption strong {
+      color: var(--slate-900);
+    }
+
+    /* ==================== 3. TABLO VE MOBİL YATAY KAYDIRMA ==================== */
+    .table-responsive {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--slate-200);
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .table-scroll-hint {
+      font-size: 0.78rem;
+      color: var(--emerald-conformal-dark);
+      background-color: var(--emerald-conformal-light);
+      border: 1px solid #a7f3d0;
+      padding: 6px 12px;
+      border-radius: var(--radius-md);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .academic-table {
+      min-width: 520px;
+      margin-bottom: 0;
     }
     .academic-table th {
-      background-color: #3b5d50;
+      background: linear-gradient(135deg, var(--furni-dark) 0%, var(--furni-primary) 100%);
       color: #ffffff;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
+      padding: 12px 14px;
+      white-space: nowrap;
+      border-color: var(--furni-dark);
+      letter-spacing: 0.01em;
     }
     .academic-table td {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       vertical-align: middle;
+      padding: 12px 14px;
+      color: var(--slate-800);
+      border-color: var(--slate-200);
+    }
+    .academic-table tbody tr:hover {
+      background-color: var(--slate-50);
+    }
+
+    /* ==================== 4. CAD VIEWER VE TOUCH TARGET STANDARTLARI ==================== */
+    .btn-touch {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      transition: all 0.15s ease-in-out;
+      text-align: center;
+      white-space: normal;
+    }
+    .btn-xs {
+      min-height: 38px;
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      line-height: 1.3;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: manipulation;
+      transition: all 0.15s ease-in-out;
+      white-space: normal;
+      text-align: center;
+    }
+    .cad-viewer-panel {
+      background: var(--slate-900);
+      border: 1px solid var(--slate-700);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      position: relative;
+    }
+    .viewer-toolbar {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--slate-700);
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .viewer-panel {
+      position: relative;
+    }
+    .cad-canvas-box {
+      width: 100%;
+      height: clamp(290px, 50vh, 440px);
+      border-radius: var(--radius-md);
+      background: radial-gradient(circle at center, var(--slate-800) 0%, var(--slate-900) 100%);
+      border: 1px solid var(--slate-700);
+      position: relative;
+      overflow: hidden;
+    }
+    #pixi-canvas-stage canvas, #cad-3d-viewer canvas {
+      outline: none;
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    .canvas-overlay-badge {
+      max-width: 88%;
+      font-size: clamp(0.68rem, 2.3vw, 0.78rem);
+      line-height: 1.3;
+      pointer-events: none;
+      z-index: 10;
+      background: rgba(15, 23, 42, 0.9) !important;
+      border: 1px solid rgba(56, 189, 248, 0.35) !important;
+      color: #38bdf8 !important;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* CAD Kontrol Buton Stilleri */
+    .cad-viewer-panel .btn-outline-light {
+      border-color: var(--slate-600);
+      color: var(--slate-300);
+      background: rgba(30, 41, 59, 0.6);
+    }
+    .cad-viewer-panel .btn-outline-light:hover {
+      background: var(--slate-700);
+      color: #ffffff;
+      border-color: var(--slate-500);
+    }
+    .cad-viewer-panel .engine-btn.active {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+      color: #ffffff !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.35);
+    }
+    .cad-viewer-panel .pixi-angle-btn.active,
+    .cad-viewer-panel .model-switch-btn.active {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+      color: #ffffff !important;
+      border-color: #38bdf8 !important;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
+    .cad-viewer-panel .pixi-layer-btn.btn-warning {
+      background: #d97706 !important;
+      border-color: #f59e0b !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+    }
+    .cad-viewer-panel .pixi-layer-btn.btn-danger {
+      background: #dc2626 !important;
+      border-color: #ef4444 !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+    }
+    .cad-viewer-panel .pixi-layer-btn.btn-info {
+      background: #0284c7 !important;
+      border-color: #00d2ff !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    }
+    .cad-viewer-panel .pixi-layer-btn.btn-secondary {
+      background: #475569 !important;
+      border-color: #64748b !important;
+      color: #ffffff !important;
+    }
+    .report-conclusion-card {
+      background: var(--slate-900);
+      border: 1px solid var(--slate-700);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Küçük ekran ve büyük font medya kuralları */
+    @media (max-width: 767.98px) {
+      .project-header {
+        padding: 32px 0 20px 0;
+      }
+      .custom-navbar-cta {
+        margin-top: 12px;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .custom-navbar-cta li {
+        width: 100%;
+        margin-right: 0 !important;
+      }
+      .custom-navbar-cta .btn {
+        width: 100%;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .engine-btn {
+        min-height: 44px;
+        font-size: 0.85rem;
+      }
+      .model-switch-btn {
+        min-height: 42px;
+        font-size: 0.82rem;
+        flex: 1 1 calc(50% - 6px);
+      }
     }
   </style>
 </head>
@@ -163,11 +529,15 @@
 <body>
 
   <!-- ==================== ÜST NAVİGASYON ==================== -->
-  <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+  <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
     <div class="container">
       <a class="navbar-brand" href="../index.html">Osman Yıldırım<span>.</span></a>
 
-      <div class="collapse navbar-collapse show" id="navbarsFurni">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Menüyü Göster/Gizle">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsFurni">
         <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
           <li><a class="nav-link" href="../index.html">← Ana Sayfaya Dön</a></li>
           <li class="active"><a class="nav-link" href="#">Bitirme Projesi</a></li>
@@ -175,14 +545,14 @@
           <li><a class="nav-link" href="#makale">Makale / Rapor Metni</a></li>
         </ul>
 
-        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-4">
-          <li class="me-2">
-            <a class="btn btn-secondary btn-sm text-dark font-weight-bold" href="rapor.md" download>
+        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-md-4">
+          <li class="me-md-2 mb-2 mb-md-0">
+            <a class="btn btn-secondary btn-sm text-dark font-weight-bold btn-touch" href="rapor.md" download>
               <i class="fa-solid fa-file-code me-1"></i> Markdown (.md)
             </a>
           </li>
           <li>
-            <a class="btn btn-white-outline btn-sm" href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download>
+            <a class="btn btn-white-outline btn-sm btn-touch" href="../files/osman-yildirim-cv-tr.pdf" target="_blank" download>
               <i class="fa-solid fa-file-pdf me-1"></i> CV İndir
             </a>
           </li>
@@ -196,30 +566,34 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-8">
-          <div class="d-inline-block px-3 py-1 rounded-pill bg-white text-dark font-monospace fw-bold mb-3" style="font-size: 0.75rem;">
+          <div class="univ-badge px-3 py-2 rounded-pill font-monospace fw-bold mb-3">
             🎓 KAHRAMANMARAŞ SÜTÇÜ İMAM ÜNİVERSİTESİ &bull; LİSANS BİTİRME PROJESİ (2026)
           </div>
-          <h1 class="fw-bold text-white mb-3" style="font-size: 2.2rem; line-height: 1.25;">
+          <h1 class="project-title text-white mb-3">
             Plastik Enjeksiyon Kalıplarında Warping (Çarpılma) Azaltmak İçin Eklemeli İmalat ve Geleneksel Çözümlerin Kıyaslanması
           </h1>
-          <p class="text-white-50 mb-4" style="font-size: 1rem;">
+          <p class="text-white-50 mb-4" style="font-size: clamp(0.92rem, 2.5vw, 1.05rem); line-height: 1.5;">
             <strong>Yazar:</strong> Osman YILDIRIM (Öğrenci No: 22110081305) &bull; Makine Mühendisliği Bölümü
           </p>
 
           <div class="d-flex flex-wrap gap-2">
-            <span class="tech-pill bg-light text-dark"><i class="fa-solid fa-cube me-1"></i> Autodesk Moldflow</span>
-            <span class="tech-pill bg-light text-dark"><i class="fa-solid fa-compass-drafting me-1"></i> SolidWorks 2022 CAD</span>
-            <span class="tech-pill bg-light text-dark"><i class="fa-solid fa-layer-group me-1"></i> Victrex PEEK 450CA30</span>
-            <span class="tech-pill bg-light text-dark"><i class="fa-solid fa-shield-halved me-1"></i> P20 Kalıp Çeliği</span>
-            <span class="tech-pill bg-light text-dark"><i class="fa-solid fa-arrows-spin me-1"></i> Conformal Cooling</span>
+            <span class="tech-pill tech-pill-header"><i class="fa-solid fa-cube me-1" style="color: #34d399;"></i> Autodesk Moldflow</span>
+            <span class="tech-pill tech-pill-header"><i class="fa-solid fa-compass-drafting me-1" style="color: #38bdf8;"></i> SolidWorks 2022 CAD</span>
+            <span class="tech-pill tech-pill-header"><i class="fa-solid fa-layer-group me-1" style="color: #fbbf24;"></i> Victrex PEEK 450CA30</span>
+            <span class="tech-pill tech-pill-header"><i class="fa-solid fa-shield-halved me-1" style="color: #cbd5e1;"></i> P20 Kalıp Çeliği</span>
+            <span class="tech-pill tech-pill-header"><i class="fa-solid fa-arrows-spin me-1" style="color: #00d2ff;"></i> Conformal Cooling</span>
           </div>
         </div>
 
         <div class="col-lg-4 text-center mt-4 mt-lg-0">
-          <div class="p-3 bg-dark rounded-3 shadow border border-secondary">
-            <img src="../images/bitirme-projesi/image3.png" class="img-fluid rounded" alt="Helisel Soğutma Kanalı CAD Modeli">
-            <div class="mt-2 text-white-50 font-monospace" style="font-size: 11px;">
-              SolidWorks 2022 CAD: Helisel Conformal Tasarımı
+          <div class="p-3 cad-preview-card">
+            <div class="d-flex justify-content-between align-items-center mb-2 px-1 text-slate-300 font-monospace small">
+              <span class="d-flex align-items-center gap-1"><i class="fa-solid fa-cube text-info"></i> SOLIDWORKS CAD &amp; CGI</span>
+              <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4);">Conformal Hero</span>
+            </div>
+            <img src="../images/bitirme-projesi/conformal_cooling_hero_cgi.jpg" class="img-fluid rounded" alt="Helisel Conformal Soğutma Kalıp Çekirdeği CGI Render">
+            <div class="mt-2 text-slate-300 font-monospace small">
+              Helisel Conformal Kalıp Çekirdeği
             </div>
           </div>
         </div>
@@ -234,40 +608,40 @@
       <!-- Metrik 1 -->
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="metric-card text-center">
-          <div class="text-muted text-uppercase font-monospace mb-1" style="font-size: 0.75rem;">Soğutma Kaynaklı Çarpılma</div>
-          <div class="metric-value text-success">-%47.4</div>
-          <div class="small text-muted mt-2">2.246 mm &rarr; <strong>1.182 mm</strong></div>
-          <span class="comparison-badge badge-conformal mt-2 d-inline-block">Conformal Üstünlüğü</span>
+          <div class="text-slate-500 text-uppercase font-monospace mb-1 fw-semibold" style="font-size: 0.75rem; letter-spacing: 0.04em;">Soğutma Kaynaklı Çarpılma</div>
+          <div class="metric-value text-eng-emerald">-%47.4</div>
+          <div class="small text-slate-600 mt-2">2.246 mm &rarr; <strong class="text-slate-900">1.182 mm</strong></div>
+          <span class="comparison-badge badge-conformal mt-2 d-inline-block"><i class="fa-solid fa-circle-check me-1"></i> Conformal Üstünlüğü</span>
         </div>
       </div>
 
       <!-- Metrik 2 -->
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="metric-card text-center">
-          <div class="text-muted text-uppercase font-monospace mb-1" style="font-size: 0.75rem;">Kritik Düğüm 71077</div>
-          <div class="metric-value text-primary">-%53.0</div>
-          <div class="small text-muted mt-2">Taban çeperinde net deformasyon düşüşü</div>
-          <span class="comparison-badge badge-conformal mt-2 d-inline-block">Yüksek Hassasiyet</span>
+          <div class="text-slate-500 text-uppercase font-monospace mb-1 fw-semibold" style="font-size: 0.75rem; letter-spacing: 0.04em;">Kritik Düğüm 71077</div>
+          <div class="metric-value text-eng-primary">-%53.0</div>
+          <div class="small text-slate-600 mt-2">Taban çeperinde net deformasyon düşüşü</div>
+          <span class="comparison-badge badge-conformal mt-2 d-inline-block"><i class="fa-solid fa-circle-check me-1"></i> Yüksek Hassasiyet</span>
         </div>
       </div>
 
       <!-- Metrik 3 -->
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="metric-card text-center">
-          <div class="text-muted text-uppercase font-monospace mb-1" style="font-size: 0.75rem;">İç Duvar Sıcaklığı</div>
-          <div class="metric-value text-danger">-107.5°C</div>
-          <div class="small text-muted mt-2">199.2°C &rarr; <strong>91.65°C</strong></div>
-          <span class="comparison-badge badge-conformal mt-2 d-inline-block">Homojen Soğuma</span>
+          <div class="text-slate-500 text-uppercase font-monospace mb-1 fw-semibold" style="font-size: 0.75rem; letter-spacing: 0.04em;">İç Duvar Sıcaklığı</div>
+          <div class="metric-value text-eng-danger">-107.55°C</div>
+          <div class="small text-slate-600 mt-2">199.2°C &rarr; <strong class="text-slate-900">91.65°C</strong></div>
+          <span class="comparison-badge badge-conformal mt-2 d-inline-block"><i class="fa-solid fa-circle-check me-1"></i> Homojen Soğuma</span>
         </div>
       </div>
 
       <!-- Metrik 4 -->
       <div class="col-12 col-sm-6 col-lg-3">
         <div class="metric-card text-center">
-          <div class="text-muted text-uppercase font-monospace mb-1" style="font-size: 0.75rem;">Maks. Kalıp Sıcaklığı</div>
-          <div class="metric-value text-warning">-109.5°C</div>
-          <div class="small text-muted mt-2">269.1°C &rarr; <strong>159.6°C</strong></div>
-          <span class="comparison-badge badge-conformal mt-2 d-inline-block">Termal Kararlılık</span>
+          <div class="text-slate-500 text-uppercase font-monospace mb-1 fw-semibold" style="font-size: 0.75rem; letter-spacing: 0.04em;">Maks. Kalıp Sıcaklığı</div>
+          <div class="metric-value text-eng-amber">-109.50°C</div>
+          <div class="small text-slate-600 mt-2">269.1°C &rarr; <strong class="text-slate-900">159.6°C</strong></div>
+          <span class="comparison-badge badge-conformal mt-2 d-inline-block"><i class="fa-solid fa-circle-check me-1"></i> Termal Kararlılık</span>
         </div>
       </div>
     </div>
@@ -276,8 +650,8 @@
     <section id="grafikler" class="mb-5">
       <div class="d-flex align-items-center justify-content-between mb-4">
         <div>
-          <h2 class="fw-bold mb-1" style="color: #3b5d50;">Mühendislik Simülasyon Verileri & Grafikler</h2>
-          <p class="text-muted mb-0">Autodesk Moldflow ile gerçekleştirilen sayısal kıyaslama bulguları.</p>
+          <h2 class="fw-bold mb-1" style="color: #3b5d50; font-size: clamp(1.25rem, 4vw, 1.75rem);">Mühendislik Simülasyon Verileri & Grafikler</h2>
+          <p class="text-muted mb-0 small">Autodesk Moldflow ile gerçekleştirilen sayısal kıyaslama bulguları.</p>
         </div>
       </div>
 
@@ -287,7 +661,9 @@
         <div class="col-lg-6">
           <div class="chart-container">
             <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-chart-column text-success me-2"></i> Çarpılma Değerleri Karşılaştırması (mm)</h5>
-            <canvas id="warpageChart" height="220"></canvas>
+            <div style="position: relative; height: 260px; width: 100%;">
+              <canvas id="warpageChart"></canvas>
+            </div>
             <div class="small text-muted mt-3">
               * Eklemeli imalatla üretilen helisel conformal kanallar, soğutmadan kaynaklı çarpılmayı %47.4 oranında düşürmüştür.
             </div>
@@ -298,7 +674,9 @@
         <div class="col-lg-6">
           <div class="chart-container">
             <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-temperature-arrow-down text-danger me-2"></i> Sıcaklık Dağılımı (°C)</h5>
-            <canvas id="tempChart" height="220"></canvas>
+            <div style="position: relative; height: 260px; width: 100%;">
+              <canvas id="tempChart"></canvas>
+            </div>
             <div class="small text-muted mt-3">
               * Geleneksel düz delik/baffle sisteminde parça içinde ısı adacıkları oluşurken, helisel tasarım sıcaklığı 91.65°C seviyesine çekmiştir.
             </div>
@@ -309,7 +687,9 @@
         <div class="col-lg-12">
           <div class="chart-container">
             <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-bullseye text-primary me-2"></i> Kritik Mesh Düğüm Noktalarındaki İyileşme Oranları (%)</h5>
-            <canvas id="nodeChart" height="100"></canvas>
+            <div style="position: relative; height: 200px; width: 100%;">
+              <canvas id="nodeChart"></canvas>
+            </div>
           </div>
         </div>
 
@@ -320,29 +700,55 @@
     <section id="makale" class="my-5">
       <div class="row">
         
-        <!-- Sol Sütun: Sticky İçindekiler (TOC) -->
+        <!-- Sol Sütun: Masaüstü Sticky İçindekiler (TOC) -->
         <div class="col-lg-3 d-none d-lg-block">
           <div class="sticky-toc">
             <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-list-ol me-2 text-success"></i> İçindekiler</h6>
             <nav class="nav flex-column">
-              <a class="toc-link" href="#ozet">Özet ve Temel Bulgular</a>
-              <a class="toc-link" href="#giris">1. Giriş</a>
-              <a class="toc-link" href="#malzeme-ekipmanlar">2. Malzeme ve Ekipmanlar</a>
-              <a class="toc-link" href="#tasarim-sureci">3. Tasarım & Modelleme</a>
-              <a class="toc-link" href="#moldflow-sureci">4. Moldflow Analiz Aşamaları</a>
-              <a class="toc-link" href="#sonuclar">5. Simülasyon Sonuçları & Kıyas</a>
-              <a class="toc-link" href="#degerlendirme">6. Sonuç & Mühendislik Çıkarımı</a>
+              <a class="toc-link" href="#ozet"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> Özet ve Temel Bulgular</a>
+              <a class="toc-link" href="#giris"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 1. Giriş</a>
+              <a class="toc-link" href="#malzeme-ekipmanlar"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 2. Malzeme ve Ekipmanlar</a>
+              <a class="toc-link" href="#tasarim-sureci"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 3. Tasarım & Modelleme</a>
+              <a class="toc-link" href="#moldflow-sureci"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 4. Moldflow Analiz Aşamaları</a>
+              <a class="toc-link" href="#sonuclar"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 5. Simülasyon Sonuçları & Kıyas</a>
+              <a class="toc-link" href="#degerlendirme"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 6. Sonuç & Mühendislik Çıkarımı</a>
             </nav>
 
             <hr class="my-3">
 
             <div class="d-grid gap-2">
-              <a href="rapor.md" download class="btn btn-outline-success btn-sm font-monospace">
+              <a href="rapor.md" download class="btn btn-outline-success btn-touch font-monospace">
                 <i class="fa-solid fa-download me-1"></i> Raporu .md İndir
               </a>
-              <a href="../files/osman-yildirim-cv-tr.pdf" target="_blank" download class="btn btn-outline-secondary btn-sm">
+              <a href="../files/osman-yildirim-cv-tr.pdf" target="_blank" download class="btn btn-outline-secondary btn-touch">
                 <i class="fa-solid fa-file-pdf me-1"></i> CV (PDF)
               </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobil Hızlı İçindekiler Paneli (Ekran < 992px) -->
+        <div class="col-12 d-lg-none mb-4">
+          <div class="mobile-toc-container">
+            <button class="btn btn-outline-success mobile-toc-btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileTocCollapse" aria-expanded="false" aria-controls="mobileTocCollapse">
+              <span><i class="fa-solid fa-list-ol me-2"></i> Rapor İçindekiler & Hızlı Bölüm Seç</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="collapse mt-2" id="mobileTocCollapse">
+              <nav class="nav flex-column p-2 bg-light rounded">
+                <a class="toc-link" href="#ozet"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> Özet ve Temel Bulgular</a>
+                <a class="toc-link" href="#giris"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 1. Giriş</a>
+                <a class="toc-link" href="#malzeme-ekipmanlar"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 2. Malzeme ve Ekipmanlar</a>
+                <a class="toc-link" href="#tasarim-sureci"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 3. Tasarım & Modelleme (CAD)</a>
+                <a class="toc-link" href="#moldflow-sureci"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 4. Moldflow Analiz Aşamaları</a>
+                <a class="toc-link" href="#sonuclar"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 5. Simülasyon Sonuçları & Kıyas</a>
+                <a class="toc-link" href="#degerlendirme"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 6. Sonuç & Mühendislik Çıkarımı</a>
+              </nav>
+              <div class="d-grid gap-2 mt-2">
+                <a href="rapor.md" download class="btn btn-outline-success btn-touch font-monospace">
+                  <i class="fa-solid fa-download me-1"></i> Raporu .md İndir
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -371,7 +777,8 @@
               <p>
                 Bu çalışmada, plastik enjeksiyon kalıplarında eklemeli imalat (3D Printing) teknolojisinin sunduğu serbest form tasarım kabiliyetleri kullanılarak geliştirilen <strong>Helisel Conformal Cooling (Uyumlu Soğutma)</strong> kanalları ile sanayide yaygın olarak kullanılan <strong>Geleneksel (Baffle tipi)</strong> soğutma kanalları sayısal simülasyonlarla kıyaslanmıştır.
               </p>
-              <div class="p-3 bg-light rounded-3 border mb-4">
+              <div class="p-3 p-md-4 summary-callout-box mb-4">
+                <h6 class="fw-bold text-eng-emerald mb-3"><i class="fa-solid fa-square-poll-vertical me-2"></i> Temel Sayısal Simülasyon Çıkarımları</h6>
                 <ul class="mb-0 ps-3">
                   <li class="mb-2"><strong>Soğutma Kaynaklı Çarpılma (Differential Cooling):</strong> 2.246 mm'den <strong>1.182 mm</strong>'ye düşürülerek <strong>%47.4 iyileşme</strong> sağlanmıştır.</li>
                   <li class="mb-2"><strong>Kritik Mesh Düğümü 71077 (Taban Çeperi):</strong> Deformasyon miktarı <strong>%53.0</strong> oranında azaltılmıştır.</li>
@@ -385,17 +792,17 @@
             <section id="giris">
               <h3 class="article-section-title">1. Giriş</h3>
               
-              <h5 class="fw-bold text-dark mt-4">1.1 Eklemeli İmalat (Additive Manufacturing)</h5>
+              <h5 class="fw-bold text-slate-900 mt-4">1.1 Eklemeli İmalat (Additive Manufacturing)</h5>
               <p>
                 Eklemeli imalat, bir ürünün sanal 3 Boyutlu geometrik verilerinin yazıcı tarafından katman katman olacak şekilde eklenmesiyle yapılan bir imalat yöntemidir. İlk başta prototip üretimi için düşünülmüş ve kullanılmış daha sonraysa seri üretim için kullanılmaya başlanmıştır <em>(Özsoy ve Duman, 2017)</em>. Formula 1 ve havacılık gibi hızlı ve fazla prototiplemenin olduğu alanlarda sıklıkla kullanılmaktadır. Günümüzde maliyetlerinin azalmasıyla kalıpçılık sektöründe geleneksel CNC delme operasyonlarıyla imkansız olan kavisli ve parçayı homojen saran soğutma kanallarının imalatında devrim yaratmıştır.
               </p>
 
-              <h5 class="fw-bold text-dark mt-4">1.2 Plastik Enjeksiyon ve Soğuma Süresi</h5>
+              <h5 class="fw-bold text-slate-900 mt-4">1.2 Plastik Enjeksiyon ve Soğuma Süresi</h5>
               <p>
                 Isıtılmış termoplastik veya termoset plastik malzemelerin, yüksek basınçla bir kalıp boşluğuna enjekte edilmesi ve soğumasıyla kalıbın şeklini alarak parçaların üretildiği imalat yöntemidir. Hızlı ve ekonomik bir yöntemdir. Burada çevrim hızını belirleyen en kritik faktörlerden birisi <strong>soğuma süresidir</strong>. Kalıp içindeki soğumanın homojen gerçekleşmemesi, parçanın farklı bölgelerinde gerilme birikmelerine ve montaj hassasiyetini bozan boyutsal çarpılmalara (<strong>warping</strong>) yol açmaktadır.
               </p>
 
-              <h5 class="fw-bold text-dark mt-4">1.3 Yöntem ve Amaç</h5>
+              <h5 class="fw-bold text-slate-900 mt-4">1.3 Yöntem ve Amaç</h5>
               <p>
                 Bu çalışmada, plastik enjeksiyon yöntemiyle üretimde kullanılan kalıpların soğutma kanalları incelenmiştir. Geleneksel yöntemler yerine eklemeli imalat kullanılarak, bu teknolojinin sunduğu esnek tasarım imkanları ile geliştirilen soğutma kanalı tasarımlarının, hem imalat süresini ne kadar kısaltabileceği hem de nihai üründe meydana gelen çarpılmayı (warping) ne kadar azaltabileceği gösterilmiştir.
               </p>
@@ -408,7 +815,10 @@
                 Çalışmada kullanılan dijital modelleme ve analiz süreçleri için belirli malzeme ve yazılım tercihleri yapılmıştır:
               </p>
 
-              <div class="table-responsive my-4">
+              <div class="table-scroll-hint d-md-none">
+                <i class="fa-solid fa-arrows-left-right"></i> Tabloyu parmağınızla yana kaydırabilirsiniz
+              </div>
+              <div class="table-responsive my-3">
                 <table class="table table-bordered academic-table">
                   <thead>
                     <tr>
@@ -451,66 +861,132 @@
             <!-- 3. TASARIM VE MODELLEME SÜRECİ -->
             <section id="tasarim-sureci">
               <h3 class="article-section-title">3. Tasarım ve Modelleme Süreci</h3>
-              <p>
-                Parçanın formundan dolayı hem dış çeperden hem de iç kısımdan çift taraflı soğutma gerekmektedir. Eklemeli imalatla üretilen kalıp ek parçaları, konvansiyonel CNC talaşlı imalat yöntemleriyle delinmesi fiziksel olarak imkansız olan kavisli çift helis soğutma kanallarının imalatına olanak tanımıştır.
-              </p>
-
-              <!-- ==================== CANLI 3D WEBGL GÖRÜNTÜLEYİCİ ==================== -->
-              <div class="my-4 p-4 rounded-3 border bg-dark text-white shadow">
+              
+              <!-- ==================== CANLI ETKİLEŞİMLİ CAD GÖRÜNTÜLEYİCİ (PIXIJS + THREE.JS) ==================== -->
+              <div class="my-4 p-3 p-md-4 cad-viewer-panel text-white shadow-xl">
+                <!-- Başlık ve Motor Seçici -->
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
                   <div>
-                    <h5 class="fw-bold mb-0 text-white"><i class="fa-solid fa-cube text-info me-2"></i> Canlı 3D Model Görüntüleyici (Three.js WebGL)</h5>
-                    <small class="text-white-50">Modeli parmağınızla veya farenizle 360° döndürebilir, yakınlaştırabilir ve katmanları seçebilirsiniz.</small>
-                  </div>
-                  <span class="badge bg-info text-dark font-monospace">INTERACTIVE 3D</span>
-                </div>
-
-                <!-- Model Seçici Buton Grubu -->
-                <div class="d-flex flex-wrap gap-2 mb-3">
-                  <button type="button" class="btn btn-sm btn-info font-monospace model-switch-btn active" data-model="plastic_part_and_runner">
-                    <i class="fa-solid fa-layer-group me-1"></i> Plastik Parça + Yolluk (Part + Runner)
-                  </button>
-                  <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn" data-model="helical_conformal_cooling_channels">
-                    <i class="fa-solid fa-water me-1"></i> Helisel Soğutma Kanalları
-                  </button>
-                  <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn" data-model="plastic_part">
-                    <i class="fa-solid fa-cubes me-1"></i> Sadece Parça (PEEK)
-                  </button>
-                  <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn" data-model="hot_runner_system">
-                    <i class="fa-solid fa-diagram-project me-1"></i> Sadece Yolluk (Runner)
-                  </button>
-                  <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn" data-model="conformal_mold_core_assembly">
-                    <i class="fa-solid fa-industry me-1"></i> Kalıp Çekirdek Montajı
-                  </button>
-                </div>
-
-                <div id="cad-3d-viewer" style="width: 100%; height: 420px; border-radius: 8px; background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); position: relative; overflow: hidden;">
-                  <div id="viewer-loading" class="d-flex flex-column align-items-center justify-content-center h-100 text-white-50 font-monospace">
-                    <div class="spinner-border text-info mb-2" role="status"></div>
-                    <span id="loading-text">3D CAD Geometrisi Yükleniyor...</span>
+                    <h5 class="fw-bold mb-1 text-white d-flex align-items-center gap-2">
+                      <i class="fa-solid fa-microchip text-info"></i> Etkileşimli CAD & Soğutma Simülasyonu
+                    </h5>
+                    <small class="text-slate-300 d-block">Mobil öncelikli yüksek performanslı PixiJS WebGL veya Three.js 3D katı model görüntüleyiciyi seçebilirsiniz.</small>
                   </div>
                   
-                  <!-- Model Bilgi Rozeti -->
-                  <div id="model-info-badge" class="position-absolute bottom-0 start-0 m-3 px-3 py-1 rounded bg-black bg-opacity-75 small font-monospace text-info border border-secondary">
-                    <i class="fa-solid fa-check-circle me-1"></i> <span id="model-info-text">Yükleniyor...</span>
+                  <!-- Engine Toggle Tabs -->
+                  <div class="btn-group w-100 w-sm-auto mt-2 mt-sm-0" role="group" aria-label="Viewer Engine">
+                    <button type="button" class="btn btn-sm btn-info font-monospace engine-btn active flex-fill btn-touch" id="btn-engine-pixi" data-engine="pixi">
+                      <i class="fa-solid fa-bolt text-warning me-1"></i> PixiJS (Mobil / 60 FPS)
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-light font-monospace engine-btn flex-fill btn-touch" id="btn-engine-three" data-engine="three">
+                      <i class="fa-solid fa-cube text-info me-1"></i> Three.js (3D Katı Model)
+                    </button>
+                  </div>
+                </div>
+
+                <!-- ==================== 1. PIXIJS GÖRÜNTÜLEYİCİ PANELİ (MOBİL ÖNCELİKLİ) ==================== -->
+                <div id="pixi-viewer-container" class="viewer-panel">
+                  <!-- Katman Görünürlük & Açı Kontrolleri -->
+                  <div class="viewer-toolbar p-2 mb-3">
+                    <!-- Açı Seçici -->
+                    <div class="d-flex flex-wrap gap-1 align-items-center mb-2 pb-2 border-bottom border-secondary border-opacity-25">
+                      <span class="small text-slate-300 me-2"><strong><i class="fa-solid fa-camera me-1"></i> Kamera Açısı:</strong></span>
+                      <div class="d-flex flex-wrap gap-1 flex-grow-1">
+                        <button type="button" class="btn btn-xs btn-info pixi-angle-btn active flex-fill" data-angle="isometric">İzometrik</button>
+                        <button type="button" class="btn btn-xs btn-outline-light pixi-angle-btn flex-fill" data-angle="front">Ön (Front)</button>
+                        <button type="button" class="btn btn-xs btn-outline-light pixi-angle-btn flex-fill" data-angle="top">Üst (Top)</button>
+                      </div>
+                    </div>
+
+                    <!-- Katman Toggle Butonları -->
+                    <div class="d-flex flex-wrap gap-1 align-items-center">
+                      <span class="small text-slate-300 me-2"><strong><i class="fa-solid fa-layer-group me-1"></i> Katmanlar:</strong></span>
+                      <div class="d-flex flex-wrap gap-1 flex-grow-1">
+                        <button type="button" class="btn btn-xs btn-warning pixi-layer-btn active" data-layer="part">
+                          <i class="fa-solid fa-check me-1"></i> PEEK Parça
+                        </button>
+                        <button type="button" class="btn btn-xs btn-danger pixi-layer-btn active" data-layer="runner">
+                          <i class="fa-solid fa-check me-1"></i> Sıcak Yolluk
+                        </button>
+                        <button type="button" class="btn btn-xs btn-info pixi-layer-btn active" data-layer="helical">
+                          <i class="fa-solid fa-check me-1"></i> Helisel Conformal
+                        </button>
+                        <button type="button" class="btn btn-xs btn-outline-light pixi-layer-btn" data-layer="traditional">
+                          <i class="fa-regular fa-square me-1"></i> Baffle Soğutma
+                        </button>
+                        <button type="button" class="btn btn-xs btn-outline-info pixi-flow-btn ms-auto" id="btn-toggle-flow">
+                          <i class="fa-solid fa-water me-1"></i> Akış Simülasyonu
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- PixiJS Canvas Sahnesi -->
+                  <div id="pixi-canvas-stage" class="cad-canvas-box" style="touch-action: none;">
+                    <!-- Akış & Bilgi İpuçları -->
+                    <div class="position-absolute top-0 start-0 m-2 m-md-3 px-2 py-1 rounded font-monospace text-info canvas-overlay-badge">
+                      <i class="fa-solid fa-gauge-high me-1"></i> <span id="pixi-status-text">PixiJS WebGL 2D Motoru Aktif (60 FPS)</span>
+                    </div>
+                    
+                    <div class="position-absolute bottom-0 end-0 m-2 m-md-3 px-2 py-1 rounded font-monospace text-slate-300 canvas-overlay-badge">
+                      <i class="fa-solid fa-hand-pointer me-1"></i> Kaydırarak inceleyin
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ==================== 2. THREE.JS 3D GÖRÜNTÜLEYİCİ PANELİ ==================== -->
+                <div id="three-viewer-container" class="viewer-panel" style="display: none;">
+                  <!-- Model Seçici Buton Grubu -->
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <button type="button" class="btn btn-sm btn-info font-monospace model-switch-btn active btn-touch" data-model="plastic_part_and_runner">
+                      <i class="fa-solid fa-layer-group me-1"></i> Parça + Yolluk (Part + Runner)
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn btn-touch" data-model="helical_conformal_cooling_channels">
+                      <i class="fa-solid fa-water me-1"></i> Helisel Soğutma Kanalları
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn btn-touch" data-model="plastic_part">
+                      <i class="fa-solid fa-cubes me-1"></i> Sadece Parça (PEEK)
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn btn-touch" data-model="hot_runner_system">
+                      <i class="fa-solid fa-diagram-project me-1"></i> Sadece Yolluk (Runner)
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn btn-touch" data-model="conformal_mold_core_assembly">
+                      <i class="fa-solid fa-industry me-1"></i> Kalıp Çekirdek Montajı
+                    </button>
+                  </div>
+
+                  <div id="cad-3d-viewer" class="cad-canvas-box">
+                    <div id="viewer-loading" class="d-flex flex-column align-items-center justify-content-center h-100 text-slate-300 font-monospace">
+                      <div class="spinner-border text-info mb-2" role="status"></div>
+                      <span id="loading-text">3D CAD Geometrisi Yükleniyor...</span>
+                    </div>
+                    
+                    <!-- Model Bilgi Rozeti -->
+                    <div id="model-info-badge" class="position-absolute bottom-0 start-0 m-2 m-md-3 px-2 py-1 rounded font-monospace text-info canvas-overlay-badge">
+                      <i class="fa-solid fa-check-circle me-1"></i> <span id="model-info-text">Yükleniyor...</span>
+                    </div>
                   </div>
                 </div>
 
                 <!-- 3D Format İndirme Butonları -->
-                <div class="mt-3 pt-3 border-top border-secondary d-flex flex-wrap gap-2 align-items-center">
-                  <span class="small text-white-50 me-2"><strong>Aktif Modeli İndir:</strong></span>
-                  <a id="btn-dl-glb" href="../files/3d/plastic_part_and_runner.glb" download class="btn btn-sm btn-outline-info font-monospace">
-                    <i class="fa-solid fa-download me-1"></i> GLB (Vectary / Web3D)
-                  </a>
-                  <a id="btn-dl-obj" href="../files/3d/plastic_part_and_runner.obj" download class="btn btn-sm btn-outline-light font-monospace">
-                    <i class="fa-solid fa-download me-1"></i> OBJ (Blender / Maya)
-                  </a>
-                  <a id="btn-dl-stl" href="../files/3d/plastic_part_and_runner.stl" download class="btn btn-sm btn-outline-light font-monospace">
-                    <i class="fa-solid fa-download me-1"></i> STL (3D Baskı / CAM)
-                  </a>
-                  <a id="btn-dl-ply" href="../files/3d/plastic_part_and_runner.ply" download class="btn btn-sm btn-outline-secondary font-monospace">
-                    <i class="fa-solid fa-download me-1"></i> PLY (MeshLab)
-                  </a>
+                <div class="mt-3 pt-3 border-top border-secondary border-opacity-25 d-flex flex-wrap gap-2 align-items-center justify-content-between">
+                  <div class="d-flex flex-wrap gap-2 align-items-center">
+                    <span class="small text-slate-300 me-2"><strong>Orijinal CAD Modellerini İndir:</strong></span>
+                    <a id="btn-dl-glb" href="../files/3d/plastic_part_and_runner.glb" download class="btn btn-sm btn-outline-info font-monospace btn-touch">
+                      <i class="fa-solid fa-download me-1"></i> GLB (Web3D)
+                    </a>
+                    <a id="btn-dl-obj" href="../files/3d/plastic_part_and_runner.obj" download class="btn btn-sm btn-outline-light font-monospace btn-touch">
+                      <i class="fa-solid fa-download me-1"></i> OBJ (Blender)
+                    </a>
+                    <a id="btn-dl-stl" href="../files/3d/plastic_part_and_runner.stl" download class="btn btn-sm btn-outline-light font-monospace btn-touch">
+                      <i class="fa-solid fa-download me-1"></i> STL (CAM/3D)
+                    </a>
+                    <a id="btn-dl-ply" href="../files/3d/plastic_part_and_runner.ply" download class="btn btn-sm btn-outline-secondary font-monospace btn-touch">
+                      <i class="fa-solid fa-download me-1"></i> PLY
+                    </a>
+                  </div>
+                  
+                  <span class="badge" style="background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid #475569; font-family: monospace; padding: 6px 10px;">SolidWorks 2022 Verified</span>
                 </div>
               </div>
 
@@ -552,6 +1028,41 @@
               <p>
                 Geleneksel soğutma çözümünde iç çekirdek Baffle perdeleriyle, dış hatlar ise doğrusal CNC delikleriyle soğutulmuştur. Helisel tasarımda ise eklemeli imalatın sağladığı özgürlükle cidar mesafesi sabit tutulan 10 mm çapında dairesel kesitli çift helis kullanılmıştır.
               </p>
+
+              <h5 class="fw-bold text-slate-900 mt-4">3.3 Fotogerçekçi CGI Görselleştirme &amp; Kalıp Montaj Detayları</h5>
+              <p>
+                SolidWorks 3D modelleme geometrisi ve helisel conformal soğutma mimarisi; eklemeli imalat öncesi montaj uyumunu ve soğutucu kanal yerleşimini doğrulamak adına yüksek çözünürlüklü fotogerçekçi CGI render motoru ile görselleştirilmiştir:
+              </p>
+
+              <div class="row g-3 my-2">
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/conformal_exploded_assembly_cgi.jpg" class="img-fluid" alt="Patlatılmış Kalıp Montajı CGI">
+                    <div class="figure-caption"><strong>Şekil 6:</strong> Patlatılmış Kalıp Montajı: PEEK Parça, Sıcak Yolluk, Çift Helisel Soğutma Kanalları ve Çelik Kalıp Çekirdeği.</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/conformal_core_macro_render.jpg" class="img-fluid" alt="Kalıp Çekirdeği Makro Detayı CGI">
+                    <div class="figure-caption"><strong>Şekil 7:</strong> Eklemeli imalatla üretilecek kalıp çekirdeğinin iç helis su giriş/çıkış kanalları makro detayı.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row g-3 my-2">
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/peek_part_runner_macro_cgi_1789652025012.jpg" class="img-fluid" alt="PEEK Parça ve Sıcak Yolluk CGI">
+                    <div class="figure-caption"><strong>Şekil 8:</strong> Victrex PEEK 450CA30 plastik parça ve 2-noktalı sıcak yolluk (Side Gates) besleme geometrisi.</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/conformal_helix_part_assembly_cgi_1789652046501.jpg" class="img-fluid" alt="Helisel Kanal ve Parça Bütünleşik Montajı CGI">
+                    <div class="figure-caption"><strong>Şekil 9:</strong> Helisel conformal soğutma kanallarının plastik parça profilini saran çift taraflı çalışma pozisyonu.</div>
+                  </div>
+                </div>
+              </div>
             </section>
 
             <!-- 4. AUTODESK MOLDFLOW ANALİZ AŞAMALARI -->
@@ -565,13 +1076,13 @@
                 <div class="col-md-6">
                   <div class="figure-card h-100">
                     <img src="../images/bitirme-projesi/image17.png" class="img-fluid" alt="Mesh Parametreleri">
-                    <div class="figure-caption">Şekil 4: Solid mesh oluşturma ayarları ve kavisli kenar yoğunlukları.</div>
+                    <div class="figure-caption"><strong>Şekil 10:</strong> Solid mesh oluşturma ayarları ve kavisli kenar yoğunlukları.</div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="figure-card h-100">
                     <img src="../images/bitirme-projesi/image23.png" class="img-fluid" alt="Runner ve Gates">
-                    <div class="figure-caption">Şekil 5: Sıcak yolluk (Runner) ve besleme kapısı (Gate) Beam elemanları.</div>
+                    <div class="figure-caption"><strong>Şekil 11:</strong> Sıcak yolluk (Runner) ve besleme kapısı (Gate) Beam elemanları.</div>
                   </div>
                 </div>
               </div>
@@ -582,7 +1093,7 @@
 
               <div class="figure-card">
                 <img src="../images/bitirme-projesi/image35.png" class="img-fluid" alt="Soğutma Giriş Tanımları">
-                <div class="figure-caption">Şekil 6: Dış ve iç soğutma çevrimlerinin bağımsız akış ve sıcaklık giriş noktaları (Set Coolant Inlets).</div>
+                <div class="figure-caption"><strong>Şekil 12:</strong> Dış ve iç soğutma çevrimlerinin bağımsız akış ve sıcaklık giriş noktaları (Set Coolant Inlets).</div>
               </div>
 
               <p>
@@ -594,7 +1105,7 @@
             <section id="sonuclar">
               <h3 class="article-section-title">5. Simülasyon Sonuçları ve Kıyaslama</h3>
               
-              <h5 class="fw-bold text-dark mt-4">5.1 Flow (Akış & Dolum) Sonuçları</h5>
+              <h5 class="fw-bold text-slate-900 mt-4">5.1 Flow (Akış &amp; Dolum) Sonuçları</h5>
               <p>
                 Parça kalıp boşluğunu <strong>15.9 saniyede</strong> tamamen doldurmuştur. İki yönden besleme yapıldığı için akış cepheleri ortada karşılaşmış ve bu noktalarda kaynak çizgileri (Weld Lines) ile hava tuzakları (Air Traps) oluştuğu gözlemlenmiştir.
               </p>
@@ -603,27 +1114,30 @@
                 <div class="col-md-6">
                   <div class="figure-card h-100">
                     <img src="../images/bitirme-projesi/image46.png" class="img-fluid" alt="Dolum Süresi">
-                    <div class="figure-caption">Şekil 7: 15.9 saniyelik Flow dolum süresi simülasyon çıktısı.</div>
+                    <div class="figure-caption"><strong>Şekil 13:</strong> 15.9 saniyelik Flow dolum süresi simülasyon çıktısı.</div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="figure-card h-100">
                     <img src="../images/bitirme-projesi/image47.png" class="img-fluid" alt="Fiber Yönelimi">
-                    <div class="figure-caption">Şekil 8: Fiber oryantasyon sensörü ve kaynak çizgisi hatları.</div>
+                    <div class="figure-caption"><strong>Şekil 14:</strong> Fiber oryantasyon sensörü ve kaynak çizgisi hatları.</div>
                   </div>
                 </div>
               </div>
 
-              <h5 class="fw-bold text-dark mt-5">5.2 Cool (Termal Dağılım) Karşılaştırması</h5>
+              <h5 class="fw-bold text-slate-900 mt-5">5.2 Cool (Termal Dağılım) Karşılaştırması</h5>
               <p>
                 Geleneksel düz baffle kanallarında su kısa mesafede tahliye olduğu için az ısınırken, parça iç duvarlarında ciddi sıcaklık adacıkları oluşmaktadır. Helisel conformal kanallar ise ısıyı homojen bir şekilde tahliye etmiştir.
               </p>
 
               <div class="figure-card">
                 <img src="../images/bitirme-projesi/image58.png" class="img-fluid" alt="Sıcaklık Karşılaştırması">
-                <div class="figure-caption">Şekil 9: Geleneksel ve Helisel kalıp içi sıcaklık gradyanı kıyaslaması.</div>
+                <div class="figure-caption"><strong>Şekil 15:</strong> Geleneksel ve Helisel kalıp içi sıcaklık gradyanı kıyaslaması.</div>
               </div>
 
+              <div class="table-scroll-hint d-md-none">
+                <i class="fa-solid fa-arrows-left-right"></i> Tabloyu parmağınızla yana kaydırabilirsiniz
+              </div>
               <div class="table-responsive my-3">
                 <table class="table table-bordered academic-table">
                   <thead>
@@ -638,26 +1152,26 @@
                     <tr>
                       <td><strong>İç Duvar Sıcaklığı</strong></td>
                       <td>199.2°C</td>
-                      <td><strong>91.65°C</strong></td>
-                      <td><span class="badge bg-success">-%54 (-107.55°C)</span></td>
+                      <td><strong class="text-eng-emerald">91.65°C</strong></td>
+                      <td><span class="badge" style="background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; font-weight: 600;">-%54.0 (-107.55°C)</span></td>
                     </tr>
                     <tr>
                       <td><strong>Maksimum Kalıp Sıcaklığı</strong></td>
                       <td>269.1°C</td>
-                      <td><strong>159.6°C</strong></td>
-                      <td><span class="badge bg-success">-%40.7 (-109.50°C)</span></td>
+                      <td><strong class="text-eng-emerald">159.6°C</strong></td>
+                      <td><span class="badge" style="background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; font-weight: 600;">-%40.7 (-109.50°C)</span></td>
                     </tr>
                     <tr>
                       <td><strong>Minimum Parça Sıcaklığı</strong></td>
                       <td>127.4°C</td>
-                      <td><strong>37.26°C</strong></td>
-                      <td><span class="badge bg-success">Daha Hızlı Isı Transferi</span></td>
+                      <td><strong class="text-eng-emerald">37.26°C</strong></td>
+                      <td><span class="badge" style="background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; font-weight: 600;">-%70.8 (-90.14°C Hızlı Isı Transferi)</span></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
-              <h5 class="fw-bold text-dark mt-5">5.3 Warp (Çarpılma & Deformasyon) Karşılaştırması</h5>
+              <h5 class="fw-bold text-slate-900 mt-5">5.3 Warp (Çarpılma &amp; Deformasyon) Karşılaştırması</h5>
               <p>
                 Bir parçanın çarpılmasında et kalınlığı, gate yerleşimi ve moleküler oryantasyon gibi birçok etken rol oynar. Moldflow'un <em>Differential Cooling</em> analizi, <strong>yalnızca soğutmanın homojen olmamasından kaynaklı şekil değiştirmeyi</strong> yalıtarak iki kanal tasarımının asıl farkını ortaya koymuştur.
               </p>
@@ -666,17 +1180,20 @@
                 <div class="col-md-6">
                   <div class="figure-card h-100">
                     <img src="../images/bitirme-projesi/image54.png" class="img-fluid" alt="Warping Analizi">
-                    <div class="figure-caption">Şekil 10: Soğutma kaynaklı net çarpılma (Differential Cooling: 1.182 mm max).</div>
+                    <div class="figure-caption"><strong>Şekil 16:</strong> Soğutma kaynaklı net çarpılma (Differential Cooling: 1.182 mm max).</div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="figure-card h-100">
                     <img src="../images/bitirme-projesi/image65.png" class="img-fluid" alt="Node Examine">
-                    <div class="figure-caption">Şekil 11: Kritik Node 71077 ve Node 3072 düğümlerinde deformasyon incelemesi.</div>
+                    <div class="figure-caption"><strong>Şekil 17:</strong> Kritik Node 71077 ve Node 3072 düğümlerinde deformasyon incelemesi.</div>
                   </div>
                 </div>
               </div>
 
+              <div class="table-scroll-hint d-md-none">
+                <i class="fa-solid fa-arrows-left-right"></i> Tabloyu parmağınızla yana kaydırabilirsiniz
+              </div>
               <div class="table-responsive my-3">
                 <table class="table table-bordered academic-table">
                   <thead>
@@ -688,32 +1205,53 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="table-success">
+                    <tr style="background-color: #f0fdf4 !important;">
                       <td><strong>Soğutma Kaynaklı Çarpılma (Differential Cooling)</strong></td>
                       <td>2.246 mm</td>
-                      <td><strong>1.182 mm</strong></td>
-                      <td><strong>%47.4 İyileşme</strong></td>
+                      <td><strong class="text-eng-emerald">1.182 mm</strong></td>
+                      <td><strong class="text-eng-emerald">%47.4 İyileşme</strong></td>
                     </tr>
                     <tr>
                       <td><strong>Kritik Düğüm 71077 (Taban Çeperi)</strong></td>
                       <td>Yüksek Şekil Değiştirme</td>
-                      <td>Düşük Şekil Değiştirme</td>
-                      <td><strong>%53.0 İyileşme</strong></td>
+                      <td><strong class="text-eng-primary">Düşük Şekil Değiştirme</strong></td>
+                      <td><strong class="text-eng-primary">%53.0 İyileşme</strong></td>
                     </tr>
                     <tr>
                       <td><strong>Kritik Düğüm 3072 (Üst Kısım)</strong></td>
                       <td>Orta Şekil Değiştirme</td>
-                      <td>Düşük Şekil Değiştirme</td>
-                      <td><strong>%17.0 İyileşme</strong></td>
+                      <td><strong class="text-eng-amber">Düşük Şekil Değiştirme</strong></td>
+                      <td><strong class="text-eng-amber">%17.0 İyileşme</strong></td>
                     </tr>
                     <tr>
                       <td><strong>Toplam Çarpılma (Total Deflection)</strong></td>
                       <td>9.912 mm</td>
-                      <td><strong>8.289 mm</strong></td>
-                      <td><strong>%16.4 İyileşme</strong></td>
+                      <td><strong class="text-slate-900">8.289 mm</strong></td>
+                      <td><strong class="text-slate-900">%16.4 İyileşme</strong></td>
                     </tr>
                   </tbody>
                 </table>
+              </div>
+
+              <!-- 66 MOLDFLOW SİMÜLASYON VERİ SETİ & ARŞİV GEZGİNİ -->
+              <div class="p-4 rounded-4 my-4" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border: 1px solid rgba(56, 189, 248, 0.25); color: #f8fafc;">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                  <div>
+                    <div class="d-flex align-items-center gap-2 mb-1">
+                      <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); font-family: monospace;">
+                        <i class="fa-solid fa-database me-1"></i> 66 SİMÜLASYON VERİ SETİ
+                      </span>
+                      <span class="small text-slate-400 font-monospace">Autodesk Moldflow Insight 2022</span>
+                    </div>
+                    <h5 class="fw-bold text-white mb-1">Tüm Moldflow Simülasyon Çıktı Arşivi &amp; İnceleme</h5>
+                    <p class="small text-slate-300 mb-0" style="max-width: 680px;">
+                      Tez çalışmasında üretilen 66 simülasyon çıktısının tamamı (Akış dolum süresi, fiber oryantasyonu, kalıp sıcaklık gradyanı, diferansiyel çarpılma, solid mesh ve kritik düğüm noktaları) kategorize edilmiş arşiv modülü ile incelenebilir.
+                    </p>
+                  </div>
+                  <button type="button" class="btn btn-info font-monospace fw-semibold btn-touch" data-bs-toggle="modal" data-bs-target="#moldflowArchiveModal">
+                    <i class="fa-solid fa-images me-1"></i> Arşivi Aç (66 Simülasyon)
+                  </button>
+                </div>
               </div>
             </section>
 
@@ -730,16 +1268,19 @@
                 <li><strong>Endüstriyel Uygulama:</strong> PEEK 450CA30 gibi yüksek maliyetli ve yüksek sıcaklık dayanımlı polimerlerde, döngü süresinin kısalması ve fire oranının düşmesi sayesinde eklemeli imalatla kalıp çekirdeği üretimi yüksek bir ekonomik geri dönüş sağlamaktadır.</li>
               </ol>
 
-              <div class="p-4 bg-dark text-white rounded-3 mt-4">
-                <h5 class="fw-bold text-white mb-2"><i class="fa-solid fa-graduation-cap me-2 text-warning"></i> Mühendislik Raporu Sonu</h5>
-                <p class="small text-white-50 mb-3">
+              <div class="p-4 rounded-4 report-conclusion-card text-white mt-4">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); font-family: monospace;"><i class="fa-solid fa-graduation-cap me-1"></i> BİTİRME TEZİ</span>
+                  <h5 class="fw-bold text-white mb-0">Mühendislik Raporu Sonu</h5>
+                </div>
+                <p class="small text-slate-300 mb-3" style="line-height: 1.6;">
                   Bu araştırma ve simülasyon çalışması, Osman YILDIRIM tarafından Kahramanmaraş Sütçü İmam Üniversitesi Makine Mühendisliği Lisans Bitirme Projesi kapsamında gerçekleştirilmiştir.
                 </p>
                 <div class="d-flex flex-wrap gap-2">
-                  <a href="rapor.md" download class="btn btn-secondary btn-sm text-dark font-weight-bold">
+                  <a href="rapor.md" download class="btn btn-secondary btn-sm text-dark font-weight-bold btn-touch">
                     <i class="fa-solid fa-download me-1"></i> Raporu Markdown Olarak İndir (.md)
                   </a>
-                  <a href="../index.html" class="btn btn-white-outline btn-sm">
+                  <a href="../index.html" class="btn btn-outline-light btn-sm btn-touch">
                     ← Ana Portfolyoya Dön
                   </a>
                 </div>
@@ -755,15 +1296,30 @@
   </main>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="footer-section py-4 bg-dark text-white-50 text-center" style="font-size: 12px;">
+  <footer class="footer-section py-4 text-center" style="background-color: var(--slate-900); color: var(--slate-400); border-top: 1px solid var(--slate-700); font-size: 13px;">
     <div class="container">
-      <div>&copy; 2026 Osman YILDIRIM. Kahramanmaraş Sütçü İmam Üniversitesi Makine Mühendisliği Bitirme Projesi.</div>
-      <div class="mt-1">Autodesk Moldflow &bull; SolidWorks CAD &bull; Conformal Cooling &bull; Victrex PEEK</div>
+      <div class="text-slate-300">&copy; 2026 Osman YILDIRIM. Kahramanmaraş Sütçü İmam Üniversitesi Makine Mühendisliği Bitirme Projesi.</div>
+      <div class="mt-1 text-slate-400">Autodesk Moldflow &bull; SolidWorks CAD &bull; Conformal Cooling &bull; Victrex PEEK</div>
     </div>
   </footer>
 
   <!-- ==================== CHART.JS GRAFİK KODLARI ==================== -->
   <script>
+    // Chart.js Global Typography & Tooltip Theme
+    Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+    Chart.defaults.color = '#475569';
+    
+    const sharedTooltipConfig = {
+      backgroundColor: 'rgba(15, 23, 42, 0.95)',
+      titleColor: '#ffffff',
+      bodyColor: '#cbd5e1',
+      borderColor: 'rgba(56, 189, 248, 0.35)',
+      borderWidth: 1,
+      padding: 10,
+      cornerRadius: 8,
+      boxPadding: 4
+    };
+
     // 1. Warpage Chart
     const ctxWarpage = document.getElementById('warpageChart').getContext('2d');
     new Chart(ctxWarpage, {
@@ -774,24 +1330,47 @@
           {
             label: 'Geleneksel Soğutma (Baffle)',
             data: [2.246, 9.912],
-            backgroundColor: '#e63946',
+            backgroundColor: '#ef4444',
+            borderColor: '#dc2626',
+            borderWidth: 1,
             borderRadius: 6
           },
           {
             label: 'Helisel Conformal Cooling (Eklemeli İmalat)',
             data: [1.182, 8.289],
-            backgroundColor: '#2a9d8f',
+            backgroundColor: '#10b981',
+            borderColor: '#059669',
+            borderWidth: 1,
             borderRadius: 6
           }
         ]
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
-          legend: { position: 'bottom' }
+          legend: {
+            position: 'bottom',
+            labels: {
+              boxWidth: 12,
+              padding: 14,
+              font: { size: 12, weight: '600' },
+              color: '#334155'
+            }
+          },
+          tooltip: sharedTooltipConfig
         },
         scales: {
-          y: { beginAtZero: true, title: { display: true, text: 'Deformasyon (mm)' } }
+          x: {
+            grid: { display: false },
+            ticks: { font: { size: 11, weight: '500' }, color: '#475569' }
+          },
+          y: {
+            beginAtZero: true,
+            grid: { color: '#f1f5f9' },
+            title: { display: true, text: 'Deformasyon (mm)', font: { size: 11, weight: 'bold' }, color: '#334155' },
+            ticks: { font: { size: 11 }, color: '#475569' }
+          }
         }
       }
     });
@@ -806,24 +1385,47 @@
           {
             label: 'Geleneksel Soğutma',
             data: [199.2, 269.1, 127.4],
-            backgroundColor: '#f4a261',
+            backgroundColor: '#f59e0b',
+            borderColor: '#d97706',
+            borderWidth: 1,
             borderRadius: 6
           },
           {
             label: 'Helisel Conformal Cooling',
             data: [91.65, 159.6, 37.26],
-            backgroundColor: '#264653',
+            backgroundColor: '#0284c7',
+            borderColor: '#0369a1',
+            borderWidth: 1,
             borderRadius: 6
           }
         ]
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
-          legend: { position: 'bottom' }
+          legend: {
+            position: 'bottom',
+            labels: {
+              boxWidth: 12,
+              padding: 14,
+              font: { size: 12, weight: '600' },
+              color: '#334155'
+            }
+          },
+          tooltip: sharedTooltipConfig
         },
         scales: {
-          y: { beginAtZero: true, title: { display: true, text: 'Sıcaklık (°C)' } }
+          x: {
+            grid: { display: false },
+            ticks: { font: { size: 11, weight: '500' }, color: '#475569' }
+          },
+          y: {
+            beginAtZero: true,
+            grid: { color: '#f1f5f9' },
+            title: { display: true, text: 'Sıcaklık (°C)', font: { size: 11, weight: 'bold' }, color: '#334155' },
+            ticks: { font: { size: 11 }, color: '#475569' }
+          }
         }
       }
     });
@@ -838,27 +1440,360 @@
         datasets: [{
           label: 'İyileşme Oranı (%)',
           data: [47.4, 53.0, 17.0, 16.4],
-          backgroundColor: ['#2a9d8f', '#264653', '#e76f51', '#f4a261'],
+          backgroundColor: ['#10b981', '#00d2ff', '#f59e0b', '#3b5d50'],
+          borderColor: ['#059669', '#0284c7', '#d97706', '#2f4d42'],
+          borderWidth: 1,
           borderRadius: 6
         }]
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
-          legend: { display: false }
+          legend: { display: false },
+          tooltip: {
+            ...sharedTooltipConfig,
+            callbacks: {
+              label: function(context) {
+                return ' ' + context.dataset.label + ': %' + context.parsed.x;
+              }
+            }
+          }
         },
         scales: {
-          x: { beginAtZero: true, max: 60, title: { display: true, text: 'İyileşme Oranı (%)' } }
+          y: {
+            grid: { display: false },
+            ticks: { font: { size: 11, weight: '600' }, color: '#334155' }
+          },
+          x: {
+            beginAtZero: true,
+            max: 60,
+            grid: { color: '#f1f5f9' },
+            title: { display: true, text: 'İyileşme Oranı (%)', font: { size: 11, weight: 'bold' }, color: '#334155' },
+            ticks: {
+              font: { size: 11 },
+              color: '#475569',
+              callback: function(value) { return '%' + value; }
+            }
+          }
         }
       }
     });
   </script>
 
-  <!-- ==================== THREE.JS 3D WEBGL CAD GÖRÜNTÜLEYİCİ ==================== -->
+  <!-- ==================== PIXIJS & THREE.JS INTERACTIVE CAD ENGINES ==================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
   <script>
+    /* =========================================================================
+       1. ENGINE SWITCHER MANAGER (PixiJS 2D/WebGL vs Three.js 3D)
+       ========================================================================= */
+    (function() {
+      const btnPixi = document.getElementById('btn-engine-pixi');
+      const btnThree = document.getElementById('btn-engine-three');
+      const panelPixi = document.getElementById('pixi-viewer-container');
+      const panelThree = document.getElementById('three-viewer-container');
+
+      if (btnPixi && btnThree && panelPixi && panelThree) {
+        btnPixi.addEventListener('click', function() {
+          btnPixi.classList.add('active', 'btn-info');
+          btnPixi.classList.remove('btn-outline-light');
+          btnThree.classList.remove('active', 'btn-info');
+          btnThree.classList.add('btn-outline-light');
+          panelPixi.style.display = 'block';
+          panelThree.style.display = 'none';
+          if (typeof window.__pixiResize === 'function') {
+            window.__pixiResize();
+          }
+        });
+
+        btnThree.addEventListener('click', function() {
+          btnThree.classList.add('active', 'btn-info');
+          btnThree.classList.remove('btn-outline-light');
+          btnPixi.classList.remove('active', 'btn-info');
+          btnPixi.classList.add('btn-outline-light');
+          panelThree.style.display = 'block';
+          panelPixi.style.display = 'none';
+          if (typeof window.__threeResize === 'function') {
+            window.__threeResize();
+          }
+        });
+      }
+    })();
+
+    /* =========================================================================
+       2. PIXIJS 2D/WebGL MOBILE-FIRST CAD & FLUID FLOW ENGINE (60 FPS)
+       ========================================================================= */
+    (function() {
+      const stageElem = document.getElementById('pixi-canvas-stage');
+      if (!stageElem || typeof PIXI === 'undefined') return;
+
+      const app = new PIXI.Application({
+        width: stageElem.clientWidth || 600,
+        height: stageElem.clientHeight || 420,
+        backgroundColor: 0x0f172a,
+        resolution: Math.min(window.devicePixelRatio || 1, 2),
+        autoDensity: true,
+        antialias: true,
+        powerPreference: 'high-performance'
+      });
+      stageElem.appendChild(app.view);
+      window.__pixiApp = app;
+
+      // Master Containers for Panning & Layers
+      const mainContainer = new PIXI.Container();
+      app.stage.addChild(mainContainer);
+
+      const layers = {
+        part: new PIXI.Sprite(),
+        runner: new PIXI.Sprite(),
+        traditional: new PIXI.Sprite(),
+        helical: new PIXI.Sprite()
+      };
+
+      // Flow particle system container
+      const particleContainer = new PIXI.ParticleContainer(200, {
+        position: true,
+        scale: true,
+        alpha: true
+      });
+
+      mainContainer.addChild(layers.part);
+      mainContainer.addChild(layers.runner);
+      mainContainer.addChild(layers.traditional);
+      mainContainer.addChild(layers.helical);
+      mainContainer.addChild(particleContainer);
+
+      // Initial visibility states
+      layers.part.visible = true;
+      layers.runner.visible = true;
+      layers.helical.visible = true;
+      layers.traditional.visible = false;
+
+      let currentAngle = 'isometric';
+      let flowActive = false;
+
+      const renderAssets = {
+        isometric: {
+          part: '../images/bitirme-projesi/cad_renders/02_plastic_part_peek_isometric.png',
+          runner: '../images/bitirme-projesi/cad_renders/03_hot_runner_system_isometric.png',
+          helical: '../images/bitirme-projesi/cad_renders/04_helical_conformal_cooling_isometric.png',
+          traditional: '../images/bitirme-projesi/cad_renders/06_traditional_baffle_cooling_isometric.png'
+        },
+        front: {
+          part: '../images/bitirme-projesi/cad_renders/02_plastic_part_peek_side.png',
+          runner: '../images/bitirme-projesi/cad_renders/03_hot_runner_system_front.png',
+          helical: '../images/bitirme-projesi/cad_renders/04_helical_conformal_cooling_front.png',
+          traditional: '../images/bitirme-projesi/cad_renders/05_complete_conformal_assembly_front.png'
+        },
+        top: {
+          part: '../images/bitirme-projesi/cad_renders/01_part_and_runner_top.png',
+          runner: '../images/bitirme-projesi/cad_renders/01_part_and_runner_top.png',
+          helical: '../images/bitirme-projesi/cad_renders/04_helical_conformal_cooling_isometric.png',
+          traditional: '../images/bitirme-projesi/cad_renders/06_traditional_baffle_cooling_isometric.png'
+        }
+      };
+
+      function updatePixiTextures() {
+        const assets = renderAssets[currentAngle] || renderAssets.isometric;
+        const stageW = app.screen.width;
+        const stageH = app.screen.height;
+        const scale = Math.min((stageW * 0.95) / 1080, (stageH * 0.95) / 1920);
+
+        Object.keys(layers).forEach(k => {
+          if (assets[k]) {
+            const texture = PIXI.Texture.from(assets[k]);
+            layers[k].texture = texture;
+            layers[k].anchor.set(0.5);
+            layers[k].scale.set(scale);
+            layers[k].x = stageW / 2;
+            layers[k].y = stageH / 2;
+          }
+        });
+      }
+
+      // Initial Texture Load
+      updatePixiTextures();
+
+      // Fluid Coolant Particles
+      const particles = [];
+      const particleTexture = PIXI.Texture.from('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="%2300ffff"/><circle cx="8" cy="8" r="3" fill="%23ffffff"/></svg>');
+
+      for (let i = 0; i < 60; i++) {
+        const p = new PIXI.Sprite(particleTexture);
+        p.anchor.set(0.5);
+        p.t = i / 60;
+        p.speed = 0.005 + Math.random() * 0.003;
+        p.scale.set(0.5 + Math.random() * 0.4);
+        p.alpha = 0;
+        particleContainer.addChild(p);
+        particles.push(p);
+      }
+
+      // Animation Loop
+      app.ticker.add((delta) => {
+        if (flowActive) {
+          const centerX = app.screen.width / 2;
+          const centerY = app.screen.height / 2;
+          const radiusX = app.screen.width * 0.16;
+          const heightSpan = app.screen.height * 0.45;
+
+          particles.forEach(p => {
+            p.t += p.speed * delta;
+            if (p.t > 1) p.t = 0;
+
+            if (currentAngle === 'top') {
+              const angle = p.t * Math.PI * 8;
+              const curRadius = radiusX * (0.4 + p.t * 0.7);
+              p.x = centerX + Math.cos(angle) * curRadius;
+              p.y = centerY + Math.sin(angle) * curRadius;
+            } else {
+              const angle = p.t * Math.PI * 14;
+              const curY = centerY + (p.t - 0.5) * heightSpan;
+              const curRadius = radiusX * (1.15 - p.t * 0.35);
+              p.x = centerX + Math.cos(angle) * curRadius;
+              p.y = curY;
+            }
+            p.alpha = Math.sin(p.t * Math.PI) * 0.85;
+          });
+        } else {
+          particles.forEach(p => p.alpha = 0);
+        }
+      });
+
+      // Interactive Touch & Drag Panning on Canvas
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragStartY = 0;
+      let containerStartX = 0;
+      let containerStartY = 0;
+
+      stageElem.addEventListener('pointerdown', (e) => {
+        isDragging = true;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        containerStartX = mainContainer.x;
+        containerStartY = mainContainer.y;
+        stageElem.setPointerCapture(e.pointerId);
+      });
+
+      stageElem.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        const dx = e.clientX - dragStartX;
+        const dy = e.clientY - dragStartY;
+        mainContainer.x = containerStartX + dx;
+        mainContainer.y = containerStartY + dy;
+      });
+
+      const stopDrag = (e) => {
+        if (isDragging) {
+          isDragging = false;
+          try { stageElem.releasePointerCapture(e.pointerId); } catch (_) {}
+        }
+      };
+      stageElem.addEventListener('pointerup', stopDrag);
+      stageElem.addEventListener('pointercancel', stopDrag);
+      stageElem.addEventListener('pointerleave', stopDrag);
+
+      stageElem.addEventListener('dblclick', () => {
+        mainContainer.x = 0;
+        mainContainer.y = 0;
+        mainContainer.scale.set(1);
+      });
+
+      // Layer Toggles
+      document.querySelectorAll('.pixi-layer-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const layerKey = this.getAttribute('data-layer');
+          const sprite = layers[layerKey];
+          if (!sprite) return;
+
+          const isActive = this.classList.contains('active');
+          const icon = this.querySelector('i');
+
+          if (isActive) {
+            this.classList.remove('active');
+            if (layerKey === 'part') {
+              this.classList.replace('btn-warning', 'btn-outline-warning');
+            } else if (layerKey === 'runner') {
+              this.classList.replace('btn-danger', 'btn-outline-danger');
+            } else if (layerKey === 'helical') {
+              this.classList.replace('btn-info', 'btn-outline-info');
+            } else {
+              this.classList.replace('btn-secondary', 'btn-outline-light');
+            }
+            if (icon) icon.className = 'fa-regular fa-square me-1';
+            sprite.visible = false;
+          } else {
+            this.classList.add('active');
+            if (layerKey === 'part') {
+              this.classList.replace('btn-outline-warning', 'btn-warning');
+            } else if (layerKey === 'runner') {
+              this.classList.replace('btn-outline-danger', 'btn-danger');
+            } else if (layerKey === 'helical') {
+              this.classList.replace('btn-outline-info', 'btn-info');
+            } else {
+              this.classList.replace('btn-outline-light', 'btn-secondary');
+            }
+            if (icon) icon.className = 'fa-solid fa-check me-1';
+            sprite.visible = true;
+          }
+        });
+      });
+
+      // Angle Switchers
+      document.querySelectorAll('.pixi-angle-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.pixi-angle-btn').forEach(b => {
+            b.classList.remove('active', 'btn-info');
+            b.classList.add('btn-outline-light');
+          });
+          this.classList.add('active', 'btn-info');
+          this.classList.remove('btn-outline-light');
+          currentAngle = this.getAttribute('data-angle');
+          updatePixiTextures();
+        });
+      });
+
+      // Flow Simulation Toggle
+      const btnFlow = document.getElementById('btn-toggle-flow');
+      if (btnFlow) {
+        btnFlow.addEventListener('click', function() {
+          flowActive = !flowActive;
+          if (flowActive) {
+            this.classList.add('btn-info', 'text-dark');
+            this.classList.remove('btn-outline-info');
+            document.getElementById('pixi-status-text').innerText = 'Soğutma Akış Simülasyonu Aktif (Reynolds Eşitlenmiş Türbülans)';
+          } else {
+            this.classList.remove('btn-info', 'text-dark');
+            this.classList.add('btn-outline-info');
+            document.getElementById('pixi-status-text').innerText = 'PixiJS WebGL 2D Motoru Aktif (60 FPS)';
+          }
+        });
+      }
+
+      window.__pixiResize = function() {
+        if (!stageElem || !app) return;
+        const w = stageElem.clientWidth || 600;
+        const h = stageElem.clientHeight || 420;
+        if (w > 0 && h > 0) {
+          app.renderer.resize(w, h);
+          updatePixiTextures();
+        }
+      };
+
+      window.addEventListener('resize', window.__pixiResize);
+      window.addEventListener('orientationchange', () => {
+        setTimeout(window.__pixiResize, 150);
+      });
+    })();
+
+    /* =========================================================================
+       3. THREE.JS 3D INTERACTIVE SOLID CAD ENGINE
+       ========================================================================= */
     (function() {
       const container = document.getElementById('cad-3d-viewer');
       if (!container) return;
@@ -866,33 +1801,55 @@
       const scene = new THREE.Scene();
       scene.background = new THREE.Color(0x0f172a);
 
-      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      const width = container.clientWidth || 600;
+      const height = container.clientHeight || 420;
+      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
       camera.position.set(120, 100, 180);
 
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.1;
       container.appendChild(renderer.domElement);
 
       const controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.dampingFactor = 0.05;
       controls.autoRotate = true;
-      controls.autoRotateSpeed = 1.2;
+      controls.autoRotateSpeed = 1.0;
+      controls.minDistance = 20;
+      controls.maxDistance = 600;
 
-      // Işıklandırma
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+      let autoRotateTimeout = null;
+      controls.addEventListener('start', () => {
+        controls.autoRotate = false;
+        if (autoRotateTimeout) clearTimeout(autoRotateTimeout);
+      });
+      controls.addEventListener('end', () => {
+        autoRotateTimeout = setTimeout(() => {
+          controls.autoRotate = true;
+        }, 3000);
+      });
+
+      // Lighting Setup
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
       scene.add(ambientLight);
 
-      const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.4);
-      dirLight1.position.set(120, 180, 120);
+      const dirLight1 = new THREE.DirectionalLight(0xffffff, 1.3);
+      dirLight1.position.set(150, 200, 150);
       scene.add(dirLight1);
 
-      const dirLight2 = new THREE.DirectionalLight(0x38bdf8, 1.0);
-      dirLight2.position.set(-120, -60, -120);
+      const dirLight2 = new THREE.DirectionalLight(0x38bdf8, 0.9);
+      dirLight2.position.set(-150, -80, -150);
       scene.add(dirLight2);
 
+      const dirLight3 = new THREE.DirectionalLight(0xf59e0b, 0.6);
+      dirLight3.position.set(0, 150, -150);
+      scene.add(dirLight3);
+
       let currentModel = null;
+      let currentLoadId = 0;
       const loader = new THREE.GLTFLoader();
 
       const modelMeta = {
@@ -919,10 +1876,14 @@
       };
 
       function updateDownloadLinks(fileBase) {
-        document.getElementById('btn-dl-glb').href = `../files/3d/${fileBase}.glb`;
-        document.getElementById('btn-dl-obj').href = `../files/3d/${fileBase}.obj`;
-        document.getElementById('btn-dl-stl').href = `../files/3d/${fileBase}.stl`;
-        document.getElementById('btn-dl-ply').href = `../files/3d/${fileBase}.ply`;
+        const glb = document.getElementById('btn-dl-glb');
+        const obj = document.getElementById('btn-dl-obj');
+        const stl = document.getElementById('btn-dl-stl');
+        const ply = document.getElementById('btn-dl-ply');
+        if (glb) glb.href = `../files/3d/${fileBase}.glb`;
+        if (obj) obj.href = `../files/3d/${fileBase}.obj`;
+        if (stl) stl.href = `../files/3d/${fileBase}.stl`;
+        if (ply) ply.href = `../files/3d/${fileBase}.ply`;
       }
 
       function loadModel(modelKey) {
@@ -930,6 +1891,7 @@
         const loadingElem = document.getElementById('viewer-loading');
         const loadingText = document.getElementById('loading-text');
         const badgeText = document.getElementById('model-info-text');
+        const loadId = ++currentLoadId;
 
         if (loadingElem) loadingElem.style.display = 'flex';
         if (loadingText) loadingText.innerText = `${meta.title} Yükleniyor...`;
@@ -937,6 +1899,8 @@
         updateDownloadLinks(meta.file);
 
         loader.load(`../files/3d/${meta.file}.glb`, function(gltf) {
+          if (loadId !== currentLoadId) return;
+
           if (currentModel) {
             scene.remove(currentModel);
           }
@@ -947,7 +1911,6 @@
             if (child.isMesh) {
               const name = (child.name || '').toLowerCase();
               if (name.includes('runner') || name.includes('sprue') || modelKey === 'hot_runner_system') {
-                // Hot Runner Material (Vibrant Hot Crimson)
                 child.material = new THREE.MeshStandardMaterial({
                   color: 0xef4444,
                   metalness: 0.35,
@@ -956,25 +1919,22 @@
                   emissiveIntensity: 0.2
                 });
               } else if (name.includes('cooling') || name.includes('channel') || modelKey === 'helical_conformal_cooling_channels') {
-                // Cooling Channel Material (Glossy Cyan Fluid)
                 child.material = new THREE.MeshStandardMaterial({
                   color: 0x00d2ff,
                   metalness: 0.85,
-                  roughness: 0.25,
+                  roughness: 0.2,
                   emissive: 0x003344,
                   emissiveIntensity: 0.25
                 });
               } else if (name.includes('core') || name.includes('plate') || modelKey === 'conformal_mold_core_assembly') {
-                // Steel P20 Mold Plate
                 child.material = new THREE.MeshStandardMaterial({
                   color: 0x94a3b8,
                   metalness: 0.75,
                   roughness: 0.35,
                   transparent: true,
-                  opacity: 0.8
+                  opacity: 0.82
                 });
               } else {
-                // Victrex PEEK Polymer Material (Engineered Amber-Gold)
                 child.material = new THREE.MeshStandardMaterial({
                   color: 0xf59e0b,
                   metalness: 0.15,
@@ -986,7 +1946,6 @@
             }
           });
 
-          // Model Merkezleme ve Ölçekleme
           const box = new THREE.Box3().setFromObject(currentModel);
           const center = box.getCenter(new THREE.Vector3());
           const size = box.getSize(new THREE.Vector3());
@@ -995,25 +1954,25 @@
           currentModel.position.sub(center);
           scene.add(currentModel);
 
-          // Kamerayı model boyutuna göre ayarla
           const fov = camera.fov * (Math.PI / 180);
-          let cameraZ = Math.abs(maxDim / 2 / Math.tan(fov / 2)) * 1.6;
-          camera.position.set(cameraZ * 0.7, cameraZ * 0.5, cameraZ * 0.9);
+          let dist = Math.abs(maxDim / 2 / Math.tan(fov / 2)) * 1.55;
+          camera.position.set(dist * 0.7, dist * 0.55, dist * 0.9);
           controls.target.set(0, 0, 0);
           controls.update();
 
           if (loadingElem) loadingElem.style.display = 'none';
           if (badgeText) badgeText.innerText = meta.title;
         }, undefined, function(err) {
+          if (loadId !== currentLoadId) return;
           console.warn('GLB Load Error:', err);
-          if (loadingText) loadingText.innerText = 'Model yüklenemedi.';
+          if (loadingText) loadingText.innerText = 'Model yüklenemedi: ' + (err.message || 'Dosya okunamadı');
         });
       }
 
-      // Başlangıçta Plastik Parça + Yolluk modelini yükle
+      // Initial Model Load
       loadModel('plastic_part_and_runner');
 
-      // Model Switcher Buton Dinleyicileri
+      // Model Switch Buttons
       document.querySelectorAll('.model-switch-btn').forEach(btn => {
         btn.addEventListener('click', function() {
           document.querySelectorAll('.model-switch-btn').forEach(b => {
@@ -1034,13 +1993,1077 @@
       }
       animate();
 
-      window.addEventListener('resize', function() {
-        if (!container) return;
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
+      window.__threeResize = function() {
+        if (!container || !renderer || !camera) return;
+        const w = container.clientWidth || 600;
+        const h = container.clientHeight || 420;
+        if (w > 0 && h > 0) {
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+          renderer.setSize(w, h);
+        }
+      };
+
+      window.addEventListener('resize', window.__threeResize);
+      window.addEventListener('orientationchange', () => {
+        setTimeout(window.__threeResize, 150);
       });
     })();
+  </script>
+
+  <!-- ==================== MOLDFLOW 66-SIMULATION DATASET MODAL ==================== -->
+  <div class="modal fade" id="moldflowArchiveModal" tabindex="-1" aria-labelledby="moldflowArchiveModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content bg-slate-900 text-light border-secondary border-opacity-50">
+        <div class="modal-header border-secondary border-opacity-25 bg-slate-950">
+          <div>
+            <h5 class="modal-title font-monospace fw-bold text-info" id="moldflowArchiveModalLabel">
+              <i class="fa-solid fa-database me-2"></i> Autodesk Moldflow Insight 66-Simülasyon Veri Seti
+            </h5>
+            <div class="small text-slate-400 font-monospace">Tez Analiz Çıktıları &bull; 66 Görsel &bull; Doğrulanmış Veri Seti</div>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+        </div>
+        <div class="modal-body p-3 p-md-4" style="background-color: #0b1120;">
+          
+          <!-- Filtre Butonları -->
+          <div class="d-flex flex-wrap gap-1 mb-4 pb-3 border-bottom border-secondary border-opacity-25">
+            <button type="button" class="btn btn-sm btn-info moldflow-filter-btn active font-monospace" data-filter="all">Tümü (66)</button>
+            <button type="button" class="btn btn-sm btn-outline-light moldflow-filter-btn font-monospace" data-filter="flow">Flow &amp; Dolum (15.9s)</button>
+            <button type="button" class="btn btn-sm btn-outline-light moldflow-filter-btn font-monospace" data-filter="cool">Cool &amp; Termal (91.65°C)</button>
+            <button type="button" class="btn btn-sm btn-outline-light moldflow-filter-btn font-monospace" data-filter="warp">Warping &amp; Çarpılma (%47.4)</button>
+            <button type="button" class="btn btn-sm btn-outline-light moldflow-filter-btn font-monospace" data-filter="nodes">Kritik Düğümler (71077 &amp; 3072)</button>
+            <button type="button" class="btn btn-sm btn-outline-light moldflow-filter-btn font-monospace" data-filter="mesh">CAD, Mesh &amp; Yolluk</button>
+          </div>
+
+          <!-- Görsel Izgarası -->
+          <div class="row g-3" id="moldflow-archive-grid">
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image1.jpeg" class="img-fluid rounded" alt="CAD & Baffle Modeli #1" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #1</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #1</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image2.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #2" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #2</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #2</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image3.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #3" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #3</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #3</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image4.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #4" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #4</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #4</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image5.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #5" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #5</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #5</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image6.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #6" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #6</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #6</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image7.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #7" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #7</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #7</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image8.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #8" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #8</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #8</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image9.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #9" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #9</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #9</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image10.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #10" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #10</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #10</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image11.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #11" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #11</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #11</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image12.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #12" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #12</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #12</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image13.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #13" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #13</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #13</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image14.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #14" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #14</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #14</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image15.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #15" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #15</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #15</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image16.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #16" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #16</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #16</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image17.png" class="img-fluid rounded" alt="Solid Mesh & Kenar Yoğunluğu #17" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #17</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Solid Mesh & Kenar Yoğunluğu #17</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kavisli yüzey solid mesh parametreleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image18.png" class="img-fluid rounded" alt="Solid Mesh & Kenar Yoğunluğu #18" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #18</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Solid Mesh & Kenar Yoğunluğu #18</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kavisli yüzey solid mesh parametreleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image19.png" class="img-fluid rounded" alt="Solid Mesh & Kenar Yoğunluğu #19" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #19</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Solid Mesh & Kenar Yoğunluğu #19</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kavisli yüzey solid mesh parametreleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image20.png" class="img-fluid rounded" alt="Solid Mesh & Kenar Yoğunluğu #20" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #20</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Solid Mesh & Kenar Yoğunluğu #20</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kavisli yüzey solid mesh parametreleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image21.png" class="img-fluid rounded" alt="Solid Mesh & Kenar Yoğunluğu #21" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #21</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Solid Mesh & Kenar Yoğunluğu #21</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kavisli yüzey solid mesh parametreleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image22.png" class="img-fluid rounded" alt="Solid Mesh & Kenar Yoğunluğu #22" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #22</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Solid Mesh & Kenar Yoğunluğu #22</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kavisli yüzey solid mesh parametreleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image23.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #23" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #23</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #23</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image24.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #24" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #24</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #24</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image25.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #25" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #25</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #25</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image26.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #26" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #26</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #26</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image27.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #27" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #27</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #27</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image28.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #28" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #28</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #28</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image29.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #29" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #29</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #29</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image30.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #30" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #30</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #30</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image31.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #31" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #31</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #31</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image32.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #32" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #32</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #32</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image33.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #33" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #33</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #33</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image34.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #34" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #34</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #34</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image35.png" class="img-fluid rounded" alt="Yolluk & Soğutma Girişleri #35" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #35</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Yolluk & Soğutma Girişleri #35</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Sıcak yolluk (Beam eleman) ve soğutma devresi girişleri</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image36.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #36" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #36</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #36</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image37.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #37" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #37</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #37</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image38.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #38" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #38</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #38</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image39.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #39" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #39</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #39</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image40.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #40" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #40</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #40</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image41.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #41" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #41</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #41</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image42.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #42" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #42</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #42</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image43.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #43" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #43</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #43</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image44.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #44" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #44</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #44</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="mesh">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image45.png" class="img-fluid rounded" alt="CAD & Baffle Modeli #45" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #45</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">MESH</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">CAD & Baffle Modeli #45</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">2D teknik çizim ve kalıp montaj mimarisi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="flow">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image46.png" class="img-fluid rounded" alt="Flow / Akış & Dolum #46" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #46</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">FLOW</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Flow / Akış & Dolum #46</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">15.9s dolum süresi, kaynak çizgileri ve basınç dağılımı</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="flow">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image47.png" class="img-fluid rounded" alt="Flow / Akış & Dolum #47" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #47</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">FLOW</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Flow / Akış & Dolum #47</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">15.9s dolum süresi, kaynak çizgileri ve basınç dağılımı</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="flow">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image48.png" class="img-fluid rounded" alt="Flow / Akış & Dolum #48" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #48</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">FLOW</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Flow / Akış & Dolum #48</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">15.9s dolum süresi, kaynak çizgileri ve basınç dağılımı</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="flow">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image49.png" class="img-fluid rounded" alt="Flow / Akış & Dolum #49" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #49</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">FLOW</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Flow / Akış & Dolum #49</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">15.9s dolum süresi, kaynak çizgileri ve basınç dağılımı</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="flow">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image50.png" class="img-fluid rounded" alt="Flow / Akış & Dolum #50" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #50</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">FLOW</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Flow / Akış & Dolum #50</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">15.9s dolum süresi, kaynak çizgileri ve basınç dağılımı</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="flow">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image51.png" class="img-fluid rounded" alt="Flow / Akış & Dolum #51" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #51</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">FLOW</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Flow / Akış & Dolum #51</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">15.9s dolum süresi, kaynak çizgileri ve basınç dağılımı</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="flow">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image52.png" class="img-fluid rounded" alt="Flow / Akış & Dolum #52" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #52</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">FLOW</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Flow / Akış & Dolum #52</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">15.9s dolum süresi, kaynak çizgileri ve basınç dağılımı</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="flow">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image53.png" class="img-fluid rounded" alt="Flow / Akış & Dolum #53" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #53</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">FLOW</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Flow / Akış & Dolum #53</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">15.9s dolum süresi, kaynak çizgileri ve basınç dağılımı</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="warp">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image54.png" class="img-fluid rounded" alt="Warping / Çarpılma Çıktısı #54" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #54</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">WARP</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Warping / Çarpılma Çıktısı #54</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Diferansiyel soğuma ve çekme kaynaklı şekil değiştirme</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="warp">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image55.png" class="img-fluid rounded" alt="Warping / Çarpılma Çıktısı #55" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #55</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">WARP</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Warping / Çarpılma Çıktısı #55</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Diferansiyel soğuma ve çekme kaynaklı şekil değiştirme</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="warp">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image56.png" class="img-fluid rounded" alt="Warping / Çarpılma Çıktısı #56" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #56</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">WARP</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Warping / Çarpılma Çıktısı #56</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Diferansiyel soğuma ve çekme kaynaklı şekil değiştirme</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="warp">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image57.png" class="img-fluid rounded" alt="Warping / Çarpılma Çıktısı #57" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #57</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">WARP</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Warping / Çarpılma Çıktısı #57</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Diferansiyel soğuma ve çekme kaynaklı şekil değiştirme</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="cool">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image58.png" class="img-fluid rounded" alt="Cool / Sıcaklık Gradyanı #58" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #58</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">COOL</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Cool / Sıcaklık Gradyanı #58</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kalıp içi termal dağılım ve devre sıcaklıkları</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="cool">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image59.png" class="img-fluid rounded" alt="Cool / Sıcaklık Gradyanı #59" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #59</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">COOL</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Cool / Sıcaklık Gradyanı #59</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kalıp içi termal dağılım ve devre sıcaklıkları</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="cool">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image60.png" class="img-fluid rounded" alt="Cool / Sıcaklık Gradyanı #60" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #60</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">COOL</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Cool / Sıcaklık Gradyanı #60</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kalıp içi termal dağılım ve devre sıcaklıkları</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="cool">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image61.png" class="img-fluid rounded" alt="Cool / Sıcaklık Gradyanı #61" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #61</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">COOL</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Cool / Sıcaklık Gradyanı #61</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kalıp içi termal dağılım ve devre sıcaklıkları</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="cool">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image62.png" class="img-fluid rounded" alt="Cool / Sıcaklık Gradyanı #62" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #62</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">COOL</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Cool / Sıcaklık Gradyanı #62</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kalıp içi termal dağılım ve devre sıcaklıkları</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="cool">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image63.png" class="img-fluid rounded" alt="Cool / Sıcaklık Gradyanı #63" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #63</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">COOL</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Cool / Sıcaklık Gradyanı #63</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kalıp içi termal dağılım ve devre sıcaklıkları</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="cool">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image64.png" class="img-fluid rounded" alt="Cool / Sıcaklık Gradyanı #64" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #64</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">COOL</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Cool / Sıcaklık Gradyanı #64</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Kalıp içi termal dağılım ve devre sıcaklıkları</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="nodes">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image65.png" class="img-fluid rounded" alt="Kritik Düğüm Analizi #65" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #65</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">NODES</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Kritik Düğüm Analizi #65</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Düğüm 71077 ve 3072 sayısal deformasyon incelemesi</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-md-4 col-lg-3 moldflow-archive-item" data-category="nodes">
+                <div class="card h-100 bg-dark text-light border-secondary border-opacity-25 shadow-sm">
+                  <div class="p-2 text-center bg-black bg-opacity-25">
+                    <img src="../images/bitirme-projesi/image66.png" class="img-fluid rounded" alt="Kritik Düğüm Analizi #66" loading="lazy" style="max-height: 140px; object-fit: contain; cursor: pointer;" onclick="window.open(this.src, '_blank')">
+                  </div>
+                  <div class="card-body p-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="badge bg-info text-dark font-monospace" style="font-size: 10px;">Sim #66</span>
+                      <span class="text-slate-400 font-monospace" style="font-size: 10px;">NODES</span>
+                    </div>
+                    <h6 class="card-title mb-1 font-monospace text-white" style="font-size: 11px;">Kritik Düğüm Analizi #66</h6>
+                    <p class="card-text text-slate-400 mb-0" style="font-size: 10px; line-height: 1.3;">Düğüm 71077 ve 3072 sayısal deformasyon incelemesi</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer border-secondary border-opacity-25 bg-slate-950 d-flex justify-content-between">
+          <span class="small text-slate-400 font-monospace"><i class="fa-solid fa-circle-info me-1"></i> Büyütmek için görsele tıklayabilirsiniz.</span>
+          <button type="button" class="btn btn-secondary btn-sm font-monospace" data-bs-dismiss="modal">Kapat</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Moldflow Archive Modal Filter Logic
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.moldflow-filter-btn');
+      const items = document.querySelectorAll('.moldflow-archive-item');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          filterBtns.forEach(b => {
+            b.classList.remove('active', 'btn-info');
+            b.classList.add('btn-outline-light');
+          });
+          this.classList.add('active', 'btn-info');
+          this.classList.remove('btn-outline-light');
+
+          const filter = this.getAttribute('data-filter');
+          items.forEach(item => {
+            if (filter === 'all' || item.getAttribute('data-category') === filter) {
+              item.style.display = '';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
   </script>
 
   <script src="../js/bootstrap.bundle.min.js"></script>
