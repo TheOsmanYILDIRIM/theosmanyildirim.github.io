@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Osman Yıldırım">
+  <link rel="shortcut icon" href="../images/favicon.png">
+
+  <meta name="description" content="Plastik Enjeksiyon Kalıplarında Warping Azaltmak İçin Eklemeli İmalat Uygulamaları ile Geleneksel Çözümlerin Kıyaslanması — Osman Yıldırım Bitirme Projesi" />
+  <title>Plastik Enjeksiyon Kalıplarında Warping Azaltma | Osman Yıldırım Bitirme Projesi</title>
+
+  <!-- Bootstrap CSS & Furni Stilleri -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  
+  <!-- Chart.js (Grafik Motoru) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #2f4d42;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .project-header {
+      background-color: #3b5d50;
+      color: #ffffff;
+      padding: 60px 0 40px 0;
+    }
+    .metric-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e9ecef;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .metric-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    }
+    .metric-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #3b5d50;
+      font-family: monospace;
+    }
+    .chart-container {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid #e9ecef;
+      margin-bottom: 24px;
+    }
+    .comparison-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .badge-conformal {
+      background-color: #d1e7dd;
+      color: #0f5132;
+    }
+    .badge-traditional {
+      background-color: #f8d7da;
+      color: #842029;
+    }
+    .tech-pill {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: #e9ecef;
+      color: #495057;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==================== ÜST NAVİGASYON ==================== -->
+  <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Osman Yıldırım<span>.</span></a>
+
+      <div class="collapse navbar-collapse show" id="navbarsFurni">
+        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+          <li><a class="nav-link" href="../index.html">← Ana Sayfaya Dön</a></li>
+          <li class="active"><a class="nav-link" href="#">Bitirme Projesi</a></li>
+          <li><a class="nav-link" href="#grafikler">Sonuç Grafikleri</a></li>
+          <li><a class="nav-link" href="#galeri">Simülasyon Galerisi</a></li>
+        </ul>
+
+        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-4">
+          <li>
+            <a class="btn btn-secondary btn-sm text-dark font-weight-bold" href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download>
+              <i class="fa-solid fa-file-pdf me-1"></i> CV İndir
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== PROJE BAŞLIĞI & KÜNYE ==================== -->
+  <header class="project-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <div class="d-inline-block px-3 py-1 rounded-pill bg-white text-dark font-monospace fw-bold mb-3" style="font-size: 0.75rem;">
+            🎓 KAHRAMANMARAŞ SÜTÇÜ İMAM ÜNİVERSİTESİ &bull; LİSANS BİTİRME PROJESİ (2026)
+          </div>
+          <h1 class="fw-bold text-white mb-3" style="font-size: 2.2rem; line-height: 1.25;">
+            Plastik Enjeksiyon Kalıplarında Warping (Çarpılma) Azaltmak İçin Eklemeli İmalat ve Geleneksel Çözümlerin Kıyaslanması
+          </h1>
+          <p class="text-white-50 mb-4" style="font-size: 1rem;">
+            <strong>Yazar:</strong> Osman YILDIRIM (Öğrenci No: 22110081305) &bull; Makine Mühendisliği Bölümü
+          </p>
+
+          <div class="d-flex flex-wrap gap-2">
+            <span class="tech-pill bg-light text-dark"><i class="fa-solid fa-cube me-1"></i> Autodesk Moldflow</span>
+            <span class="tech-pill bg-light text-dark"><i class="fa-solid fa-compass-drafting me-1"></i> SolidWorks 2022 CAD</span>
+            <span class="tech-pill bg-light text-dark"><i class="fa-solid fa-layer-group me-1"></i> Victrex PEEK 450CA30</span>
+            <span class="tech-pill bg-light text-dark"><i class="fa-solid fa-shield-halved me-1"></i> P20 Kalıp Çeliği</span>
+            <span class="tech-pill bg-light text-dark"><i class="fa-solid fa-arrows-spin me-1"></i> Conformal Cooling</span>
+          </div>
+        </div>
+
+        <div class="col-lg-4 text-center mt-4 mt-lg-0">
+          <div class="p-3 bg-dark rounded-3 shadow border border-secondary">
+            <img src="../images/bitirme-projesi/image3.png" class="img-fluid rounded" alt="Helisel Soğutma Kanalı CAD Modeli">
+            <div class="mt-2 text-white-50 font-monospace" style="font-size: 11px;">
+              Helisel Conformal Cooling CAD Tasarımı
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== TEMEL SAYISAL KAZANIMLAR (METRIC CARDS) ==================== -->
+  <main class="container my-5">
+    
+    <div class="row g-4 mb-5">
+      <!-- Metrik 1 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="metric-card text-center">
+          <div class="text-muted text-uppercase font-monospace mb-1" style="font-size: 0.75rem;">Soğutma Kaynaklı Çarpılma</div>
+          <div class="metric-value text-success">-%47.4</div>
+          <div class="small text-muted mt-2">2.246 mm &rarr; <strong>1.182 mm</strong></div>
+          <span class="comparison-badge badge-conformal mt-2 d-inline-block">Conformal Üstünlüğü</span>
+        </div>
+      </div>
+
+      <!-- Metrik 2 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="metric-card text-center">
+          <div class="text-muted text-uppercase font-monospace mb-1" style="font-size: 0.75rem;">Kritik Düğüm 71077</div>
+          <div class="metric-value text-primary">-%53.0</div>
+          <div class="small text-muted mt-2">Taban çeperinde net deformasyon düşüşü</div>
+          <span class="comparison-badge badge-conformal mt-2 d-inline-block">Yüksek Hassasiyet</span>
+        </div>
+      </div>
+
+      <!-- Metrik 3 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="metric-card text-center">
+          <div class="text-muted text-uppercase font-monospace mb-1" style="font-size: 0.75rem;">İç Duvar Sıcaklığı</div>
+          <div class="metric-value text-danger">-107.5°C</div>
+          <div class="small text-muted mt-2">199.2°C &rarr; <strong>91.65°C</strong></div>
+          <span class="comparison-badge badge-conformal mt-2 d-inline-block">Homojen Soğuma</span>
+        </div>
+      </div>
+
+      <!-- Metrik 4 -->
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="metric-card text-center">
+          <div class="text-muted text-uppercase font-monospace mb-1" style="font-size: 0.75rem;">Maks. Kalıp Sıcaklığı</div>
+          <div class="metric-value text-warning">-109.5°C</div>
+          <div class="small text-muted mt-2">269.1°C &rarr; <strong>159.6°C</strong></div>
+          <span class="comparison-badge badge-conformal mt-2 d-inline-block">Termal Kararlılık</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== İNTERAKTİF BİLİMSEL GRAFİKLER ==================== -->
+    <section id="grafikler" class="mb-5">
+      <div class="d-flex align-items-center justify-between mb-4">
+        <div>
+          <h2 class="fw-bold mb-1" style="color: #3b5d50;">Mühendislik Simülasyon Verileri & Grafikler</h2>
+          <p class="text-muted mb-0">Autodesk Moldflow ile gerçekleştirilen sayısal kıyaslama bulguları.</p>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- Grafik 1: Çarpılma (Warping) Karşılaştırması -->
+        <div class="col-lg-6">
+          <div class="chart-container">
+            <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-chart-column text-success me-2"></i> Çarpılma Değerleri Karşılaştırması (mm)</h5>
+            <canvas id="warpageChart" height="220"></canvas>
+            <div class="small text-muted mt-3">
+              * Eklemeli imalatla üretilen helisel conformal kanallar, soğutmadan kaynaklı çarpılmayı %47.4 oranında düşürmüştür.
+            </div>
+          </div>
+        </div>
+
+        <!-- Grafik 2: Sıcaklık Dağılımı (°C) -->
+        <div class="col-lg-6">
+          <div class="chart-container">
+            <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-temperature-arrow-down text-danger me-2"></i> Sıcaklık Dağılımı (°C)</h5>
+            <canvas id="tempChart" height="220"></canvas>
+            <div class="small text-muted mt-3">
+              * Geleneksel düz delik/baffle sisteminde parça içinde ısı adacıkları oluşurken, helisel tasarım sıcaklığı 91.65°C seviyesine çekmiştir.
+            </div>
+          </div>
+        </div>
+
+        <!-- Grafik 3: Kritik Node Deformasyon Kıyaslaması -->
+        <div class="col-lg-12">
+          <div class="chart-container">
+            <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-bullseye text-primary me-2"></i> Kritik Mesh Düğüm Noktalarındaki İyileşme Oranları (%)</h5>
+            <canvas id="nodeChart" height="100"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== ÇALIŞMANIN DETAYLI METODOLOJİSİ ==================== -->
+    <section class="my-5 p-4 bg-white rounded-3 shadow-sm border border-light">
+      <h3 class="fw-bold mb-4" style="color: #3b5d50;">Metodoloji & Analiz Aşamaları</h3>
+
+      <div class="row g-4">
+        
+        <div class="col-md-4">
+          <div class="p-3 border rounded-3 h-100 bg-light">
+            <div class="fw-bold text-dark mb-2">1. Malzeme & Kalıp Seçimi</div>
+            <p class="small text-muted mb-0">
+              Yüksek sıcaklık dayanımı ve mühendislik polimeri olan <strong>Victrex PEEK 450CA30</strong> kullanıldı. Kalıp gövdesi için sanayide yaygın <strong>P20 çeliği</strong>, soğutucu akışkan olarak yüksek ısı kapasitesine sahip <strong>su</strong> tercih edildi.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-3 border rounded-3 h-100 bg-light">
+            <div class="fw-bold text-dark mb-2">2. CAD & Helis Modellemesi</div>
+            <p class="small text-muted mb-0">
+              SolidWorks 2022'de parçanın kavisli hatlarına tam uyum sağlayan iç ve dış çift helis kanallar tasarlandı. Geleneksel kıyas için Baffle tipi soğutma kanalları modellendi. IGES formatında Moldflow ortamına aktarıldı.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-3 border rounded-3 h-100 bg-light">
+            <div class="fw-bold text-dark mb-2">3. Moldflow Flow, Cool & Warp</div>
+            <p class="small text-muted mb-0">
+              Eşit şartlarda kıyaslama için Reynolds sayısı sabitlendi. 15.9 saniyelik dolum süresi (Flow), sıcak yolluk ve gate konumları, kaynak çizgileri (Weld Lines) ve soğutma kaynaklı çarpılma (Differential Cooling) ayrıştırılarak analiz edildi.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SİMÜLASYON GÖRSEL GALERİSİ ==================== -->
+    <section id="galeri" class="my-5">
+      <h3 class="fw-bold mb-4" style="color: #3b5d50;">Simülasyon & CAD Görsel Arşivi</h3>
+
+      <div class="row g-4">
+        
+        <!-- Görsel 1: Warping Analizi -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm overflow-hidden">
+            <img src="../images/bitirme-projesi/image54.png" class="card-img-top p-2 bg-light" alt="Warping Analizi">
+            <div class="card-body p-3">
+              <h6 class="fw-bold text-dark mb-1">Soğutma Kaynaklı Çarpılma (Helisel)</h6>
+              <p class="small text-muted mb-0">Moldflow Deflection: Differential Cooling analizi (1.182 mm max).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Görsel 2: Sıcaklık Analizi -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm overflow-hidden">
+            <img src="../images/bitirme-projesi/image47.png" class="card-img-top p-2 bg-light" alt="Sıcaklık Analizi">
+            <div class="card-body p-3">
+              <h6 class="fw-bold text-dark mb-1">Akış ve Weld Lines Dağılımı</h6>
+              <p class="small text-muted mb-0">Çift yolluk girişinden gelen akışın birleşme hatları ve fiber yönelimleri.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Görsel 3: Kıyaslama Grafiği -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm overflow-hidden">
+            <img src="../images/bitirme-projesi/image65.png" class="card-img-top p-2 bg-light" alt="Node Examine">
+            <div class="card-body p-3">
+              <h6 class="fw-bold text-dark mb-1">Node 71077 & 3072 Karşılaştırması</h6>
+              <p class="small text-muted mb-0">Geleneksel vs Helisel kanal noktalarında %53 ve %17 net deformasyon düşüşü.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Görsel 4: CAD Çizimi -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm overflow-hidden">
+            <img src="../images/bitirme-projesi/image2.png" class="card-img-top p-2 bg-light" alt="2D Teknik Çizim">
+            <div class="card-body p-3">
+              <h6 class="fw-bold text-dark mb-1">2D Parça Teknik Çizimi</h6>
+              <p class="small text-muted mb-0">SolidWorks 2022 ile hazırlanan imalat ölçüleri ve tolerans tablosu.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Görsel 5: Sıcaklık Karşılaştırması -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm overflow-hidden">
+            <img src="../images/bitirme-projesi/image58.png" class="card-img-top p-2 bg-light" alt="Sıcaklık Karşılaştırması">
+            <div class="card-body p-3">
+              <h6 class="fw-bold text-dark mb-1">Kalıp İçi Sıcaklık Farkı</h6>
+              <p class="small text-muted mb-0">Geleneksel kalıpta 199.2°C olan iç duvar, heliselde 91.65°C'ye düşürülmüştür.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Görsel 6: Toplam Çarpılma -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card h-100 border-0 shadow-sm overflow-hidden">
+            <img src="../images/bitirme-projesi/image51.png" class="card-img-top p-2 bg-light" alt="Toplam Çarpılma">
+            <div class="card-body p-3">
+              <h6 class="fw-bold text-dark mb-1">Toplam Warpage Sonuçları</h6>
+              <p class="small text-muted mb-0">Tüm yönlerdeki net şekil değiştirme dağılımı (Total Deflection).</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SONUÇ & MÜHENDİSLİK ÇIKARIMI ==================== -->
+    <section class="my-5 p-4 rounded-3 text-white" style="background-color: #3b5d50;">
+      <h4 class="fw-bold mb-3"><i class="fa-solid fa-award me-2"></i> Mühendislik Sonucu & Çıkarım</h4>
+      <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
+        Helisel Conformal Cooling kanalları, plastik enjeksiyon sürecinde soğutmadan kaynaklı çarpılmayı (warping) <strong>%47.4 oranında azaltmıştır</strong>. Autodesk Moldflow analizi sayesinde, et kalınlığı ve oryantasyondan bağımsız olarak yalnızca soğutmanın homojenleştirilmesinin parçanın boyutsal kararlılığı üzerindeki kritik etkisi teorik ve sayısal olarak kanıtlanmıştır.
+      </p>
+      <div class="d-flex align-items-center gap-3">
+        <a href="../index.html#projeler" class="btn btn-secondary text-dark fw-bold btn-sm">
+          ← Ana Sayfadaki Projelere Dön
+        </a>
+        <a href="/files/osman-yildirim-cv-tr.pdf" target="_blank" class="btn btn-white-outline btn-sm">
+          Özgeçmişi İncele
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer-section py-4 bg-dark text-white-50 text-center" style="font-size: 12px;">
+    <div class="container">
+      <div>&copy; 2026 Osman YILDIRIM. Kahramanmaraş Sütçü İmam Üniversitesi Makine Mühendisliği Bitirme Projesi.</div>
+      <div class="mt-1">Autodesk Moldflow &bull; SolidWorks CAD &bull; Conformal Cooling &bull; Victrex PEEK</div>
+    </div>
+  </footer>
+
+  <!-- ==================== CHART.JS GRAFİK KODLARI ==================== -->
+  <script>
+    // 1. Warpage Chart
+    const ctxWarpage = document.getElementById('warpageChart').getContext('2d');
+    new Chart(ctxWarpage, {
+      type: 'bar',
+      data: {
+        labels: ['Soğutma Kaynaklı Çarpılma (mm)', 'Toplam Çarpılma (mm)'],
+        datasets: [
+          {
+            label: 'Geleneksel Soğutma (Baffle)',
+            data: [2.246, 9.912],
+            backgroundColor: '#e63946',
+            borderRadius: 6
+          },
+          {
+            label: 'Helisel Conformal Cooling (Eklemeli İmalat)',
+            data: [1.182, 8.289],
+            backgroundColor: '#2a9d8f',
+            borderRadius: 6
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        },
+        scales: {
+          y: { beginAtZero: true, title: { display: true, text: 'Deformasyon (mm)' } }
+        }
+      }
+    });
+
+    // 2. Temperature Chart
+    const ctxTemp = document.getElementById('tempChart').getContext('2d');
+    new Chart(ctxTemp, {
+      type: 'bar',
+      data: {
+        labels: ['İç Duvar Sıcaklığı (°C)', 'Maks. Kalıp Sıcaklığı (°C)', 'Min. Parça Sıcaklığı (°C)'],
+        datasets: [
+          {
+            label: 'Geleneksel Soğutma',
+            data: [199.2, 269.1, 127.4],
+            backgroundColor: '#f4a261',
+            borderRadius: 6
+          },
+          {
+            label: 'Helisel Conformal Cooling',
+            data: [91.65, 159.6, 37.26],
+            backgroundColor: '#264653',
+            borderRadius: 6
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom' }
+        },
+        scales: {
+          y: { beginAtZero: true, title: { display: true, text: 'Sıcaklık (°C)' } }
+        }
+      }
+    });
+
+    // 3. Node Improvement Chart
+    const ctxNode = document.getElementById('nodeChart').getContext('2d');
+    new Chart(ctxNode, {
+      type: 'bar',
+      indexAxis: 'y',
+      data: {
+        labels: ['Genel Soğutma Çarpılma İyileşmesi', 'Kritik Düğüm 71077 (Taban Çeperi)', 'Kritik Düğüm 3072 (Üst Kısım)', 'Toplam Çarpılma İyileşmesi'],
+        datasets: [{
+          label: 'İyileşme Oranı (%)',
+          data: [47.4, 53.0, 17.0, 16.4],
+          backgroundColor: ['#2a9d8f', '#264653', '#e76f51', '#f4a261'],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          x: { beginAtZero: true, max: 60, title: { display: true, text: 'İyileşme Oranı (%)' } }
+        }
+      }
+    });
+  </script>
+
+  <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
