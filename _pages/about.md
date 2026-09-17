@@ -1,39 +1,50 @@
 ---
 permalink: /
-title: "Osman YILDIRIM - Makine Mühendisliği Öğrencisi"
+title: "Osman YILDIRIM - Makine Mühendisi"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
+{% include base_path %}
+
+<div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;">
+  <a href="{{ base_path }}/files/osman-yildirim-cv-tr.pdf" class="btn btn--primary" target="_blank" download>
+    <i class="fas fa-file-pdf"></i> 📥 Türkçe CV İndir (PDF)
+  </a>
+  <a href="{{ base_path }}/files/osman-yildirim-cv-en.pdf" class="btn btn--info" target="_blank" download>
+    <i class="fas fa-file-pdf"></i> 📥 Download English CV (PDF)
+  </a>
+</div>
+
 ## HAKKIMDA
 
-Makine mühendisliği alanında öğrenim görmekte olan son sınıf öğrencisiyim. Üniversite eğitimim süresince edindiğim teorik bilgileri pratik uygulamalara dönüştürme becerisi kazandım. Özellikle Akışkanlar Mekaniği ve Isı Transferi gibi temel mühendislik prensiplerine olan hâkimiyetim, mühendislik problemlerine analitik ve yaratıcı çözümler üretmemi sağlıyor.
+Makine mühendisliği bölümünden yeni mezun oldum. Eğitimim ve stajlarım boyunca edindiğim teorik bilgileri pratiğe dökmeye ve kendimi sürekli geliştirmeye odaklandım. Özellikle Akışkanlar Mekaniği ve Isı Transferi gibi temel mühendislik prensiplerine olan ilgim, mühendislik problemlerine analitik çözümler üretmemi sağlıyor.
 
-SolidWorks, AutoCAD ve Zetacad gibi mühendislik yazılımlarını ileri düzeyde kullanabilmekteyim ve bu alandaki yetkinliğimi sürekli olarak geliştirmeye devam ediyorum.
+Öğrencilik dönemimde Akkuyu Nükleer Güç Santrali gibi büyük ölçekli endüstriyel projelerin üretim ve kalite kontrol aşamalarında staj yaparak saha deneyimi edinme fırsatı buldum. Kariyerime üretim, kalite kontrol veya tasarım alanlarında kendimi geliştirebileceğim, değer katıp yeni şeyler öğrenebileceğim bir pozisyonda başlamak istiyorum.
 
-Her ne kadar profesyonel iş deneyimim sınırlı olsa da, öğrenci projeleri ve eğitim sürecimde edindiğim becerileri endüstriyel uygulamalarda kullanma konusunda istekliyim ve motiveyim.
-
-2025 yaz dönemi için üretim, tasarım veya Ar-Ge alanlarında kendimi geliştirebileceğim bir staj yeri arayışındayım.
-
-Ayrıca, İngilizce (B1–B2 düzeyinde) ve Japonca (temel seviye) dil bilgisine sahibim. Japon kültürüne olan ilgim, Japonca öğrenme sürecimde motivasyon kaynağı olmuş ve kültürel bakış açımı genişletmiştir.
+SolidWorks, AutoCAD ve Zetacad gibi mühendislik araçlarının yanı sıra, modern yazılım geliştirme, yapay zeka entegrasyonları (Vibe Coding / Agentic AI) ve Python ile otomasyon konularında aktif çalışmalar yürütmekteyim.
 
 ---
 
-## PROFESYONEL DENEYİM
+## PROFESYONEL DENEYİM & STAJLAR
 
-### İÇTAŞ Endüstriyel Boru Lojistik ve İnşaat | İmalat Stajı (ME 200)
+### İÇTAŞ Endüstriyel Boru Lojistik ve Çelik İmalatları A.Ş. | Organizasyon Stajı (ME 322)
+**Tarih:** Mart 2026 – Nisan 2026  
+**Konum:** Silifke, Mersin  
+- Akkuyu Nükleer Güç Santrali projesi kapsamında çelik konstrüksiyon üretim süreçlerinin iş akışları ve organizasyonel yapısı incelendi.
+- Rusya Nükleer standartlarına (**PNAE G-7**) uygun Kalite Kontrol ve Tahribatsız Muayene (**NDT**) süreçleri yerinde gözlemlendi.
+- Üretim verilerinin takibi, raporlanması ve İş Sağlığı ve Güvenliği (**İSG**) saha uygulamaları deneyimlendi.
+
+### İÇTAŞ Endüstriyel Boru Lojistik ve Çelik İmalatları A.Ş. | İmalat Stajı (ME 200)
 **Tarih:** Temmuz 2024 – Ağustos 2024  
-**Konum:** Silifke, Mersin
-
-- Akkuyu Nükleer Güç Santrali için çelik yapı elemanlarının üretildiği büyük ölçekli bir endüstriyel tesiste 30 iş günü süreyle üretim ve imalat süreçlerine aktif katılım sağlandı.
-- Talaşlı imalat, kaynak, metal şekillendirme, diş açma ve bükme işlemleri gibi çeşitli üretim teknikleri yerinde gözlemlendi ve bazı işlemler uygulamalı olarak deneyimlendi.
-- CNC makineleri, torna, freze, kaynak makineleri ve diş açma sistemleri gibi üretim ekipmanlarının teknik özellikleri ve kullanım alanları detaylı şekilde incelendi.
-- TS 283.24 ve 00053.24 numaralı siparişlerin üretim süreçleri, teknik resimleri ve kalite kontrol aşamaları takip edilerek sipariş yönetimi ve süreç takibi konularında deneyim kazanıldı.
-- İş Sağlığı ve Güvenliği (İSG) uygulamaları kapsamında üretim alanlarında alınan önlemler gözlemlendi ve güvenli çalışma ortamı kurallarına uygun hareket edildi.
-
-**Staj sürecine ilişkin detaylı içerik:** [me-200-yaz-staji-1/](/me-200-yaz-staji-1/)
+**Konum:** Silifke, Mersin  
+- Akkuyu Nükleer Güç Santrali için çelik yapı elemanlarının üretildiği tesiste 30 iş günü süreyle imalat süreçlerine katılım sağlandı.
+- Talaşlı imalat, TIG/Argon ve tozaltı kaynağı, metal şekillendirme, soğuk dövme, diş açma ve bükme operasyonları yerinde deneyimlendi.
+- Ajan CNC plazma kesici, SMARC torna/freze ve Dextra diş açma makinelerinin teknik özellikleri incelendi.
+- TS 283.24 ve 00053.24 siparişlerinin teknik resim okuma ve kalite kontrol aşamaları takip edildi.
+- **Staj Notları ve Detaylı Rapor:** [me-200-yaz-staji-1/](/me-200-yaz-staji-1/)
 
 ---
 
@@ -42,31 +53,29 @@ Ayrıca, İngilizce (B1–B2 düzeyinde) ve Japonca (temel seviye) dil bilgisine
 ### Sütçü İmam Üniversitesi
 **Bölüm:** Makine Mühendisliği  
 **Konum:** Kahramanmaraş, Türkiye  
-**Durum:** Devam Ediyor
+**Tarih:** 2022 – Haziran 2026  
+**Durum:** Mezun  
 
 ### Ahi Evran Üniversitesi
 **Bölüm:** Makine Mühendisliği  
 **Konum:** Kırşehir, Türkiye  
-**Tarih:** Mayıs 2022
+**Tarih:** Mayıs 2022  
 
 ---
 
-## BECERİLER & İLGİ ALANLARI
+## BECERİLER & YETKİNLİKLER
 
-### Teknik Beceriler
-- **CAD/CAM Yazılımları:** SolidWorks, AutoCAD, Zetacad
-- **Programlama:** Python, MATLAB
-- **Oyun Geliştirme:** Unity, Unreal Engine
-- **Elektronik:** Arduino
-- **Versiyon Kontrolü:** Git, GitHub
+- **Kodlama & AI:** Vibe Coding (Yapay Zeka ile İleri Seviye Geliştirme), Python, MATLAB
+- **CAD/CAM Yazılımları:** SolidWorks (Orta Seviye), AutoCAD, Zetacad, Onshape
+- **Versiyon Kontrolü & Araçlar:** Git, GitHub
+- **Mesleki Uzmanlık:** NDT (Tahribatsız Muayene) Farkındalığı, İSG Kuralları, Üretim & Sipariş Takibi
+- **Yabancı Diller:**
+  - İngilizce (A2 – B1)
+  - Japonca (Temel Seviye)
+  - Çince (Temel Seviye)
 
-### İlgi Alanları
-- Bilgisayar destekli tasarım
-- Mühendislik simülasyonları
-- Yapay zeka
-- Robotik sistemler
-- Japon kültürü
+---
 
-### Yabancı Diller
-- **İngilizce:** B1–B2 düzeyinde
-- **Japonca:** Temel seviye
+## İLGİ ALANLARI
+
+Bilgisayar destekli tasarım (CAD), Yapay zeka & Agentic yazılımlar, Veri analizi, Robotik sistemler, Tarih, Antropoloji, Uzak Doğu kültürleri.
