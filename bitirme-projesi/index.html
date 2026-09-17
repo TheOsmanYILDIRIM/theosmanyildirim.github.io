@@ -6,7 +6,7 @@
   <meta name="author" content="Osman Yıldırım">
   <link rel="shortcut icon" href="../images/favicon.png">
 
-  <meta name="description" content="Plastik Enjeksiyon Kalıplarında Warping Azaltmak İçin Eklemeli İmalat Uygulamaları ile Geleneksel Çözümlerin Kıyaslanması — Osman Yıldırım Bitirme Projesi" />
+  <meta name="description" content="Plastik Enjeksiyon Kalıplarında Warping Azaltmak İçin Eklemeli İmalat Uygulamaları ile Geleneksel Çözümlerin Kıyaslanması — Osman Yıldırım Bitirme Projesi Raporu ve Makalesi" />
   <title>Plastik Enjeksiyon Kalıplarında Warping Azaltma | Osman Yıldırım Bitirme Projesi</title>
 
   <!-- Bootstrap CSS & Furni Stilleri -->
@@ -22,6 +22,7 @@
       background-color: #f8f9fa;
       color: #2f4d42;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      scroll-behavior: smooth;
     }
     .project-header {
       background-color: #3b5d50;
@@ -79,6 +80,83 @@
       margin-right: 6px;
       margin-bottom: 6px;
     }
+
+    /* Akademik Makale / Rapor Stilleri */
+    .article-container {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e9ecef;
+    }
+    .sticky-toc {
+      position: sticky;
+      top: 24px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid #e9ecef;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+    .toc-link {
+      display: block;
+      padding: 6px 10px;
+      color: #495057;
+      text-decoration: none;
+      font-size: 0.88rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    .toc-link:hover, .toc-link.active {
+      color: #3b5d50;
+      background-color: #f0fdf4;
+      font-weight: 600;
+      padding-left: 14px;
+    }
+    .article-section-title {
+      color: #3b5d50;
+      font-weight: 700;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 8px;
+      margin-top: 36px;
+      margin-bottom: 20px;
+    }
+    .article-body p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #333333;
+      margin-bottom: 1.25rem;
+    }
+    .figure-card {
+      background: #fdfdfd;
+      border: 1px solid #eaeaea;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 24px 0;
+      text-align: center;
+    }
+    .figure-card img {
+      max-height: 480px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+    .figure-caption {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin-top: 10px;
+      font-style: italic;
+    }
+    .academic-table th {
+      background-color: #3b5d50;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .academic-table td {
+      font-size: 0.9rem;
+      vertical-align: middle;
+    }
   </style>
 </head>
 
@@ -94,12 +172,17 @@
           <li><a class="nav-link" href="../index.html">← Ana Sayfaya Dön</a></li>
           <li class="active"><a class="nav-link" href="#">Bitirme Projesi</a></li>
           <li><a class="nav-link" href="#grafikler">Sonuç Grafikleri</a></li>
-          <li><a class="nav-link" href="#galeri">Simülasyon Galerisi</a></li>
+          <li><a class="nav-link" href="#makale">Makale / Rapor Metni</a></li>
         </ul>
 
         <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-4">
+          <li class="me-2">
+            <a class="btn btn-secondary btn-sm text-dark font-weight-bold" href="rapor.md" download>
+              <i class="fa-solid fa-file-code me-1"></i> Markdown (.md)
+            </a>
+          </li>
           <li>
-            <a class="btn btn-secondary btn-sm text-dark font-weight-bold" href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download>
+            <a class="btn btn-white-outline btn-sm" href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download>
               <i class="fa-solid fa-file-pdf me-1"></i> CV İndir
             </a>
           </li>
@@ -191,7 +274,7 @@
 
     <!-- ==================== İNTERAKTİF BİLİMSEL GRAFİKLER ==================== -->
     <section id="grafikler" class="mb-5">
-      <div class="d-flex align-items-center justify-between mb-4">
+      <div class="d-flex align-items-center justify-content-between mb-4">
         <div>
           <h2 class="fw-bold mb-1" style="color: #3b5d50;">Mühendislik Simülasyon Verileri & Grafikler</h2>
           <p class="text-muted mb-0">Autodesk Moldflow ile gerçekleştirilen sayısal kıyaslama bulguları.</p>
@@ -233,130 +316,365 @@
       </div>
     </section>
 
-    <!-- ==================== ÇALIŞMANIN DETAYLI METODOLOJİSİ ==================== -->
-    <section class="my-5 p-4 bg-white rounded-3 shadow-sm border border-light">
-      <h3 class="fw-bold mb-4" style="color: #3b5d50;">Metodoloji & Analiz Aşamaları</h3>
-
-      <div class="row g-4">
+    <!-- ==================== MAKALE / TAM RAPOR METNİ (MARKDOWN ÇEVİRİSİ) ==================== -->
+    <section id="makale" class="my-5">
+      <div class="row">
         
-        <div class="col-md-4">
-          <div class="p-3 border rounded-3 h-100 bg-light">
-            <div class="fw-bold text-dark mb-2">1. Malzeme & Kalıp Seçimi</div>
-            <p class="small text-muted mb-0">
-              Yüksek sıcaklık dayanımı ve mühendislik polimeri olan <strong>Victrex PEEK 450CA30</strong> kullanıldı. Kalıp gövdesi için sanayide yaygın <strong>P20 çeliği</strong>, soğutucu akışkan olarak yüksek ısı kapasitesine sahip <strong>su</strong> tercih edildi.
-            </p>
-          </div>
-        </div>
+        <!-- Sol Sütun: Sticky İçindekiler (TOC) -->
+        <div class="col-lg-3 d-none d-lg-block">
+          <div class="sticky-toc">
+            <h6 class="fw-bold text-dark mb-3"><i class="fa-solid fa-list-ol me-2 text-success"></i> İçindekiler</h6>
+            <nav class="nav flex-column">
+              <a class="toc-link" href="#ozet">Özet ve Temel Bulgular</a>
+              <a class="toc-link" href="#giris">1. Giriş</a>
+              <a class="toc-link" href="#malzeme-ekipmanlar">2. Malzeme ve Ekipmanlar</a>
+              <a class="toc-link" href="#tasarim-sureci">3. Tasarım & Modelleme</a>
+              <a class="toc-link" href="#moldflow-sureci">4. Moldflow Analiz Aşamaları</a>
+              <a class="toc-link" href="#sonuclar">5. Simülasyon Sonuçları & Kıyas</a>
+              <a class="toc-link" href="#degerlendirme">6. Sonuç & Mühendislik Çıkarımı</a>
+            </nav>
 
-        <div class="col-md-4">
-          <div class="p-3 border rounded-3 h-100 bg-light">
-            <div class="fw-bold text-dark mb-2">2. CAD & Helis Modellemesi</div>
-            <p class="small text-muted mb-0">
-              SolidWorks 2022'de parçanın kavisli hatlarına tam uyum sağlayan iç ve dış çift helis kanallar tasarlandı. Geleneksel kıyas için Baffle tipi soğutma kanalları modellendi. IGES formatında Moldflow ortamına aktarıldı.
-            </p>
-          </div>
-        </div>
+            <hr class="my-3">
 
-        <div class="col-md-4">
-          <div class="p-3 border rounded-3 h-100 bg-light">
-            <div class="fw-bold text-dark mb-2">3. Moldflow Flow, Cool & Warp</div>
-            <p class="small text-muted mb-0">
-              Eşit şartlarda kıyaslama için Reynolds sayısı sabitlendi. 15.9 saniyelik dolum süresi (Flow), sıcak yolluk ve gate konumları, kaynak çizgileri (Weld Lines) ve soğutma kaynaklı çarpılma (Differential Cooling) ayrıştırılarak analiz edildi.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== SİMÜLASYON GÖRSEL GALERİSİ ==================== -->
-    <section id="galeri" class="my-5">
-      <h3 class="fw-bold mb-4" style="color: #3b5d50;">Simülasyon & CAD Görsel Arşivi</h3>
-
-      <div class="row g-4">
-        
-        <!-- Görsel 1: Warping Analizi -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm overflow-hidden">
-            <img src="../images/bitirme-projesi/image54.png" class="card-img-top p-2 bg-light" alt="Warping Analizi">
-            <div class="card-body p-3">
-              <h6 class="fw-bold text-dark mb-1">Soğutma Kaynaklı Çarpılma (Helisel)</h6>
-              <p class="small text-muted mb-0">Moldflow Deflection: Differential Cooling analizi (1.182 mm max).</p>
+            <div class="d-grid gap-2">
+              <a href="rapor.md" download class="btn btn-outline-success btn-sm font-monospace">
+                <i class="fa-solid fa-download me-1"></i> Raporu .md İndir
+              </a>
+              <a href="../files/osman-yildirim-cv-tr.pdf" target="_blank" download class="btn btn-outline-secondary btn-sm">
+                <i class="fa-solid fa-file-pdf me-1"></i> CV (PDF)
+              </a>
             </div>
           </div>
         </div>
 
-        <!-- Görsel 2: Sıcaklık Analizi -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm overflow-hidden">
-            <img src="../images/bitirme-projesi/image47.png" class="card-img-top p-2 bg-light" alt="Sıcaklık Analizi">
-            <div class="card-body p-3">
-              <h6 class="fw-bold text-dark mb-1">Akış ve Weld Lines Dağılımı</h6>
-              <p class="small text-muted mb-0">Çift yolluk girişinden gelen akışın birleşme hatları ve fiber yönelimleri.</p>
+        <!-- Sağ Sütun: Makale Gövdesi -->
+        <div class="col-lg-9">
+          <article class="article-container article-body">
+            
+            <!-- Başlık & Meta -->
+            <div class="border-bottom pb-4 mb-4">
+              <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
+                <span class="badge bg-success-subtle text-success font-monospace px-2 py-1">AKADEMİK RAPOR / MAKALE</span>
+                <span class="small text-muted font-monospace"><i class="fa-regular fa-clock me-1"></i> 8 dk Okuma Süresi &bull; 2026</span>
+              </div>
+              <h1 class="fw-bold text-dark" style="font-size: 1.85rem; line-height: 1.35;">
+                Plastik Enjeksiyon Kalıplarında Warping (Çarpılma) Azaltmak İçin Eklemeli İmalat Uygulamaları ile Geleneksel Çözümlerin Kıyaslanması
+              </h1>
+              <p class="text-muted mb-0">
+                <strong>Yazar:</strong> Osman YILDIRIM (Öğrenci No: 22110081305) &bull; KSÜ Makine Mühendisliği Bölümü
+              </p>
             </div>
-          </div>
+
+            <!-- ÖZET -->
+            <section id="ozet">
+              <h3 class="article-section-title">Özet ve Temel Bulgular</h3>
+              <p>
+                Bu çalışmada, plastik enjeksiyon kalıplarında eklemeli imalat (3D Printing) teknolojisinin sunduğu serbest form tasarım kabiliyetleri kullanılarak geliştirilen <strong>Helisel Conformal Cooling (Uyumlu Soğutma)</strong> kanalları ile sanayide yaygın olarak kullanılan <strong>Geleneksel (Baffle tipi)</strong> soğutma kanalları sayısal simülasyonlarla kıyaslanmıştır.
+              </p>
+              <div class="p-3 bg-light rounded-3 border mb-4">
+                <ul class="mb-0 ps-3">
+                  <li class="mb-2"><strong>Soğutma Kaynaklı Çarpılma (Differential Cooling):</strong> 2.246 mm'den <strong>1.182 mm</strong>'ye düşürülerek <strong>%47.4 iyileşme</strong> sağlanmıştır.</li>
+                  <li class="mb-2"><strong>Kritik Mesh Düğümü 71077 (Taban Çeperi):</strong> Deformasyon miktarı <strong>%53.0</strong> oranında azaltılmıştır.</li>
+                  <li class="mb-2"><strong>İç Duvar Sıcaklığı:</strong> Geleneksel kanallarda 199.2°C iken Helisel tasarımda <strong>91.65°C</strong>'ye inerek <strong>107.55°C</strong> daha homojen bir soğuma elde edilmiştir.</li>
+                  <li><strong>Kalıp Maksimum Sıcaklığı:</strong> 269.1°C'den <strong>159.6°C</strong>'ye düşürülmüştür.</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- 1. GİRİŞ -->
+            <section id="giris">
+              <h3 class="article-section-title">1. Giriş</h3>
+              
+              <h5 class="fw-bold text-dark mt-4">1.1 Eklemeli İmalat (Additive Manufacturing)</h5>
+              <p>
+                Eklemeli imalat, bir ürünün sanal 3 Boyutlu geometrik verilerinin yazıcı tarafından katman katman olacak şekilde eklenmesiyle yapılan bir imalat yöntemidir. İlk başta prototip üretimi için düşünülmüş ve kullanılmış daha sonraysa seri üretim için kullanılmaya başlanmıştır <em>(Özsoy ve Duman, 2017)</em>. Formula 1 ve havacılık gibi hızlı ve fazla prototiplemenin olduğu alanlarda sıklıkla kullanılmaktadır. Günümüzde maliyetlerinin azalmasıyla kalıpçılık sektöründe geleneksel CNC delme operasyonlarıyla imkansız olan kavisli ve parçayı homojen saran soğutma kanallarının imalatında devrim yaratmıştır.
+              </p>
+
+              <h5 class="fw-bold text-dark mt-4">1.2 Plastik Enjeksiyon ve Soğuma Süresi</h5>
+              <p>
+                Isıtılmış termoplastik veya termoset plastik malzemelerin, yüksek basınçla bir kalıp boşluğuna enjekte edilmesi ve soğumasıyla kalıbın şeklini alarak parçaların üretildiği imalat yöntemidir. Hızlı ve ekonomik bir yöntemdir. Burada çevrim hızını belirleyen en kritik faktörlerden birisi <strong>soğuma süresidir</strong>. Kalıp içindeki soğumanın homojen gerçekleşmemesi, parçanın farklı bölgelerinde gerilme birikmelerine ve montaj hassasiyetini bozan boyutsal çarpılmalara (<strong>warping</strong>) yol açmaktadır.
+              </p>
+
+              <h5 class="fw-bold text-dark mt-4">1.3 Yöntem ve Amaç</h5>
+              <p>
+                Bu çalışmada, plastik enjeksiyon yöntemiyle üretimde kullanılan kalıpların soğutma kanalları incelenmiştir. Geleneksel yöntemler yerine eklemeli imalat kullanılarak, bu teknolojinin sunduğu esnek tasarım imkanları ile geliştirilen soğutma kanalı tasarımlarının, hem imalat süresini ne kadar kısaltabileceği hem de nihai üründe meydana gelen çarpılmayı (warping) ne kadar azaltabileceği gösterilmiştir.
+              </p>
+            </section>
+
+            <!-- 2. MALZEME VE EKİPMANLAR -->
+            <section id="malzeme-ekipmanlar">
+              <h3 class="article-section-title">2. Malzeme ve Ekipmanlar</h3>
+              <p>
+                Çalışmada kullanılan dijital modelleme ve analiz süreçleri için belirli malzeme ve yazılım tercihleri yapılmıştır:
+              </p>
+
+              <div class="table-responsive my-4">
+                <table class="table table-bordered academic-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 25%;">Parametre / Bileşen</th>
+                      <th style="width: 30%;">Seçilen Malzeme / Yazılım</th>
+                      <th>Teknik Açıklama ve Gerekçe</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Plastik Malzeme</strong></td>
+                      <td>Victrex PEEK 450CA30</td>
+                      <td>%30 Karbon fiber takviyeli, yüksek sıcaklık ve mekanik dayanımlı polimer. Yüksek eriyik sıcaklığı (380-400°C) sebebiyle soğutma optimizasyonu çok kritiktir.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Kalıp Malzemesi</strong></td>
+                      <td>P20 Kalıp Çeliği (Steel P2)</td>
+                      <td>Sanayide kolay erişilen, dengeli ısıl iletkenliğe ve yüksek mekanik işlenebilirliğe sahip kalıp çeliği standardı.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Soğutucu Akışkan</strong></td>
+                      <td>Su (H₂O)</td>
+                      <td>Yüksek özgül ısı kapasitesi, mükemmel termal transfer kabiliyeti ve ekonomik uygulanabilirliği nedeniyle tercih edilmiştir.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Tasarım Yazılımı</strong></td>
+                      <td>SolidWorks 2022 CAD</td>
+                      <td>Parça gövdesi, yolluklar, yolluk burçları ve iç-dış helisel kavisli soğutma kanallarının 3D parametrik modellemesi.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Analiz Yazılımı</strong></td>
+                      <td>Autodesk Moldflow Insight</td>
+                      <td>Flow (akış ve dolum), Cool (termal gradyan) ve Warp (diferansiyel soğuma ve çarpılma) modülleriyle sayısal simülasyon.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- 3. TASARIM VE MODELLEME SÜRECİ -->
+            <section id="tasarim-sureci">
+              <h3 class="article-section-title">3. Tasarım ve Modelleme Süreci</h3>
+              <p>
+                Parçanın formundan dolayı hem dış çeperden hem de iç kısımdan çift taraflı soğutma gerekmektedir.
+              </p>
+
+              <div class="figure-card">
+                <img src="../images/bitirme-projesi/image2.png" class="img-fluid" alt="2D Teknik Çizim">
+                <div class="figure-caption">Şekil 1: Plastik parçanın SolidWorks ortamında hazırlanan 2D teknik çizimi ve imalat ölçüleri.</div>
+              </div>
+
+              <div class="row g-3 my-2">
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/image3.png" class="img-fluid" alt="Helisel Kanallar">
+                    <div class="figure-caption">Şekil 2: Parçanın 3D gövdesi ve etrafını saran iç-dış helisel conformal kanallar.</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/image4.png" class="img-fluid" alt="Helis Yoğunluğu">
+                    <div class="figure-caption">Şekil 3: Yapılan son revizyonlarla helis yoğunluğu artırılmış tasarım.</div>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                Geleneksel soğutma çözümünde iç çekirdek Baffle perdeleriyle, dış hatlar ise doğrusal CNC delikleriyle soğutulmuştur. Helisel tasarımda ise eklemeli imalatın sağladığı özgürlükle cidar mesafesi sabit tutulan 10 mm çapında dairesel kesitli çift helis kullanılmıştır.
+              </p>
+            </section>
+
+            <!-- 4. AUTODESK MOLDFLOW ANALİZ AŞAMALARI -->
+            <section id="moldflow-sureci">
+              <h3 class="article-section-title">4. Autodesk Moldflow Analiz Aşamaları</h3>
+              <p>
+                Analizin bilimsel doğruluğu için parça oryantasyonu, solid mesh parametreleri ve akış koşulları adım adım tanımlanmıştır:
+              </p>
+
+              <div class="row g-3 my-2">
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/image17.png" class="img-fluid" alt="Mesh Parametreleri">
+                    <div class="figure-caption">Şekil 4: Solid mesh oluşturma ayarları ve kavisli kenar yoğunlukları.</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/image23.png" class="img-fluid" alt="Runner ve Gates">
+                    <div class="figure-caption">Şekil 5: Sıcak yolluk (Runner) ve besleme kapısı (Gate) Beam elemanları.</div>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                <strong>Beam Elemanların Avantajı:</strong> Yolluk ve kanalların tanımlanmasında köşeli poligonlar yerine dairesel kesiti tam simüle eden Beam elemanlar kullanılmıştır. Bu durum hesaplamadaki geometrik yaklaşım hatalarını ortadan kaldırmıştır.
+              </p>
+
+              <div class="figure-card">
+                <img src="../images/bitirme-projesi/image35.png" class="img-fluid" alt="Soğutma Giriş Tanımları">
+                <div class="figure-caption">Şekil 6: Dış ve iç soğutma çevrimlerinin bağımsız akış ve sıcaklık giriş noktaları (Set Coolant Inlets).</div>
+              </div>
+
+              <p>
+                <strong>Reynolds Sayısının Eşitlenmesi:</strong> İki kanal tasarımını bilimsel olarak eşit şartlarda kıyaslamak için Reynolds sayısı (türbülans derecesi) her iki modelde de sabitlenmiştir. <em>Process Settings</em>'te kalıp açılma süresi 10 saniye, PEEK polimerinin ısıl dengelenmesi için toplam süre 100 saniye seçilmiş ve <em>Use Mesh Aggregation</em> çözücüsü aktif edilmiştir.
+              </p>
+            </section>
+
+            <!-- 5. SİMÜLASYON SONUÇLARI VE KIYASLAMA -->
+            <section id="sonuclar">
+              <h3 class="article-section-title">5. Simülasyon Sonuçları ve Kıyaslama</h3>
+              
+              <h5 class="fw-bold text-dark mt-4">5.1 Flow (Akış & Dolum) Sonuçları</h5>
+              <p>
+                Parça kalıp boşluğunu <strong>15.9 saniyede</strong> tamamen doldurmuştur. İki yönden besleme yapıldığı için akış cepheleri ortada karşılaşmış ve bu noktalarda kaynak çizgileri (Weld Lines) ile hava tuzakları (Air Traps) oluştuğu gözlemlenmiştir.
+              </p>
+
+              <div class="row g-3 my-2">
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/image46.png" class="img-fluid" alt="Dolum Süresi">
+                    <div class="figure-caption">Şekil 7: 15.9 saniyelik Flow dolum süresi simülasyon çıktısı.</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/image47.png" class="img-fluid" alt="Fiber Yönelimi">
+                    <div class="figure-caption">Şekil 8: Fiber oryantasyon sensörü ve kaynak çizgisi hatları.</div>
+                  </div>
+                </div>
+              </div>
+
+              <h5 class="fw-bold text-dark mt-5">5.2 Cool (Termal Dağılım) Karşılaştırması</h5>
+              <p>
+                Geleneksel düz baffle kanallarında su kısa mesafede tahliye olduğu için az ısınırken, parça iç duvarlarında ciddi sıcaklık adacıkları oluşmaktadır. Helisel conformal kanallar ise ısıyı homojen bir şekilde tahliye etmiştir.
+              </p>
+
+              <div class="figure-card">
+                <img src="../images/bitirme-projesi/image58.png" class="img-fluid" alt="Sıcaklık Karşılaştırması">
+                <div class="figure-caption">Şekil 9: Geleneksel ve Helisel kalıp içi sıcaklık gradyanı kıyaslaması.</div>
+              </div>
+
+              <div class="table-responsive my-3">
+                <table class="table table-bordered academic-table">
+                  <thead>
+                    <tr>
+                      <th>Termal Kriter</th>
+                      <th>Geleneksel Soğutma</th>
+                      <th>Helisel Conformal Cooling</th>
+                      <th>Net İyileşme / Değişim</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>İç Duvar Sıcaklığı</strong></td>
+                      <td>199.2°C</td>
+                      <td><strong>91.65°C</strong></td>
+                      <td><span class="badge bg-success">-%54 (-107.55°C)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Maksimum Kalıp Sıcaklığı</strong></td>
+                      <td>269.1°C</td>
+                      <td><strong>159.6°C</strong></td>
+                      <td><span class="badge bg-success">-%40.7 (-109.50°C)</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Minimum Parça Sıcaklığı</strong></td>
+                      <td>127.4°C</td>
+                      <td><strong>37.26°C</strong></td>
+                      <td><span class="badge bg-success">Daha Hızlı Isı Transferi</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h5 class="fw-bold text-dark mt-5">5.3 Warp (Çarpılma & Deformasyon) Karşılaştırması</h5>
+              <p>
+                Bir parçanın çarpılmasında et kalınlığı, gate yerleşimi ve moleküler oryantasyon gibi birçok etken rol oynar. Moldflow'un <em>Differential Cooling</em> analizi, <strong>yalnızca soğutmanın homojen olmamasından kaynaklı şekil değiştirmeyi</strong> yalıtarak iki kanal tasarımının asıl farkını ortaya koymuştur.
+              </p>
+
+              <div class="row g-3 my-2">
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/image54.png" class="img-fluid" alt="Warping Analizi">
+                    <div class="figure-caption">Şekil 10: Soğutma kaynaklı net çarpılma (Differential Cooling: 1.182 mm max).</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="figure-card h-100">
+                    <img src="../images/bitirme-projesi/image65.png" class="img-fluid" alt="Node Examine">
+                    <div class="figure-caption">Şekil 11: Kritik Node 71077 ve Node 3072 düğümlerinde deformasyon incelemesi.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="table-responsive my-3">
+                <table class="table table-bordered academic-table">
+                  <thead>
+                    <tr>
+                      <th>Çarpılma / Deformasyon Parametresi</th>
+                      <th>Geleneksel Soğutma</th>
+                      <th>Helisel Conformal Cooling</th>
+                      <th>İyileşme Oranı (%)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="table-success">
+                      <td><strong>Soğutma Kaynaklı Çarpılma (Differential Cooling)</strong></td>
+                      <td>2.246 mm</td>
+                      <td><strong>1.182 mm</strong></td>
+                      <td><strong>%47.4 İyileşme</strong></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Kritik Düğüm 71077 (Taban Çeperi)</strong></td>
+                      <td>Yüksek Şekil Değiştirme</td>
+                      <td>Düşük Şekil Değiştirme</td>
+                      <td><strong>%53.0 İyileşme</strong></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Kritik Düğüm 3072 (Üst Kısım)</strong></td>
+                      <td>Orta Şekil Değiştirme</td>
+                      <td>Düşük Şekil Değiştirme</td>
+                      <td><strong>%17.0 İyileşme</strong></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Toplam Çarpılma (Total Deflection)</strong></td>
+                      <td>9.912 mm</td>
+                      <td><strong>8.289 mm</strong></td>
+                      <td><strong>%16.4 İyileşme</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- 6. SONUÇ VE DEĞERLENDİRME -->
+            <section id="degerlendirme">
+              <h3 class="article-section-title">6. Sonuç ve Mühendislik Değerlendirmesi</h3>
+              <p>
+                Bu çalışmada elde edilen temel çıkarımlar şunlardır:
+              </p>
+              <ol class="ps-3">
+                <li class="mb-2"><strong>Çarpılmada %47.4 Net Düşüş:</strong> Eklemeli imalatla üretilen helisel conformal kanallar, soğutmadan kaynaklı çarpılmayı (warping) <strong>yarı yarıya (%47.4) azaltmıştır</strong>.</li>
+                <li class="mb-2"><strong>Kritik Noktalarda Boyutsal Kararlılık:</strong> Taban çeperindeki kritik Node 71077 noktasında deformasyon <strong>%53.0 düşürülerek</strong> parçanın geometrik toleransları güvenceye alınmıştır.</li>
+                <li class="mb-2"><strong>Yazılım Karşılaştırması:</strong> SolidWorks Plastics gibi temel seviye yazılımlar soğutma ve oryantasyon etkilerini ayrıştırmada yetersiz kalırken; Autodesk Moldflow Insight'ın <em>Use Mesh Aggregation</em> algoritması sayesinde diferansiyel soğuma etkileri net bir şekilde izole edilebilmiştir.</li>
+                <li><strong>Endüstriyel Uygulama:</strong> PEEK 450CA30 gibi yüksek maliyetli ve yüksek sıcaklık dayanımlı polimerlerde, döngü süresinin kısalması ve fire oranının düşmesi sayesinde eklemeli imalatla kalıp çekirdeği üretimi yüksek bir ekonomik geri dönüş sağlamaktadır.</li>
+              </ol>
+
+              <div class="p-4 bg-dark text-white rounded-3 mt-4">
+                <h5 class="fw-bold text-white mb-2"><i class="fa-solid fa-graduation-cap me-2 text-warning"></i> Mühendislik Raporu Sonu</h5>
+                <p class="small text-white-50 mb-3">
+                  Bu araştırma ve simülasyon çalışması, Osman YILDIRIM tarafından Kahramanmaraş Sütçü İmam Üniversitesi Makine Mühendisliği Lisans Bitirme Projesi kapsamında gerçekleştirilmiştir.
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                  <a href="rapor.md" download class="btn btn-secondary btn-sm text-dark font-weight-bold">
+                    <i class="fa-solid fa-download me-1"></i> Raporu Markdown Olarak İndir (.md)
+                  </a>
+                  <a href="../index.html" class="btn btn-white-outline btn-sm">
+                    ← Ana Portfolyoya Dön
+                  </a>
+                </div>
+              </div>
+            </section>
+
+          </article>
         </div>
 
-        <!-- Görsel 3: Kıyaslama Grafiği -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm overflow-hidden">
-            <img src="../images/bitirme-projesi/image65.png" class="card-img-top p-2 bg-light" alt="Node Examine">
-            <div class="card-body p-3">
-              <h6 class="fw-bold text-dark mb-1">Node 71077 & 3072 Karşılaştırması</h6>
-              <p class="small text-muted mb-0">Geleneksel vs Helisel kanal noktalarında %53 ve %17 net deformasyon düşüşü.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Görsel 4: CAD Çizimi -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm overflow-hidden">
-            <img src="../images/bitirme-projesi/image2.png" class="card-img-top p-2 bg-light" alt="2D Teknik Çizim">
-            <div class="card-body p-3">
-              <h6 class="fw-bold text-dark mb-1">2D Parça Teknik Çizimi</h6>
-              <p class="small text-muted mb-0">SolidWorks 2022 ile hazırlanan imalat ölçüleri ve tolerans tablosu.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Görsel 5: Sıcaklık Karşılaştırması -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm overflow-hidden">
-            <img src="../images/bitirme-projesi/image58.png" class="card-img-top p-2 bg-light" alt="Sıcaklık Karşılaştırması">
-            <div class="card-body p-3">
-              <h6 class="fw-bold text-dark mb-1">Kalıp İçi Sıcaklık Farkı</h6>
-              <p class="small text-muted mb-0">Geleneksel kalıpta 199.2°C olan iç duvar, heliselde 91.65°C'ye düşürülmüştür.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Görsel 6: Toplam Çarpılma -->
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 border-0 shadow-sm overflow-hidden">
-            <img src="../images/bitirme-projesi/image51.png" class="card-img-top p-2 bg-light" alt="Toplam Çarpılma">
-            <div class="card-body p-3">
-              <h6 class="fw-bold text-dark mb-1">Toplam Warpage Sonuçları</h6>
-              <p class="small text-muted mb-0">Tüm yönlerdeki net şekil değiştirme dağılımı (Total Deflection).</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==================== SONUÇ & MÜHENDİSLİK ÇIKARIMI ==================== -->
-    <section class="my-5 p-4 rounded-3 text-white" style="background-color: #3b5d50;">
-      <h4 class="fw-bold mb-3"><i class="fa-solid fa-award me-2"></i> Mühendislik Sonucu & Çıkarım</h4>
-      <p class="mb-3" style="font-size: 0.95rem; line-height: 1.6;">
-        Helisel Conformal Cooling kanalları, plastik enjeksiyon sürecinde soğutmadan kaynaklı çarpılmayı (warping) <strong>%47.4 oranında azaltmıştır</strong>. Autodesk Moldflow analizi sayesinde, et kalınlığı ve oryantasyondan bağımsız olarak yalnızca soğutmanın homojenleştirilmesinin parçanın boyutsal kararlılığı üzerindeki kritik etkisi teorik ve sayısal olarak kanıtlanmıştır.
-      </p>
-      <div class="d-flex align-items-center gap-3">
-        <a href="../index.html#projeler" class="btn btn-secondary text-dark fw-bold btn-sm">
-          ← Ana Sayfadaki Projelere Dön
-        </a>
-        <a href="/files/osman-yildirim-cv-tr.pdf" target="_blank" class="btn btn-white-outline btn-sm">
-          Özgeçmişi İncele
-        </a>
       </div>
     </section>
 
