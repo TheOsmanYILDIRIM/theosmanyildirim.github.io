@@ -19,6 +19,55 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="css/tiny-slider.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <style>
+    .reel-card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+    .reel-card:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 12px 30px -5px rgba(56, 189, 248, 0.25);
+      transform: translateY(-4px);
+    }
+    .reel-card video {
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #020617;
+      display: block;
+    }
+    .reel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      margin-bottom: 8px;
+    }
+    .reel-caption {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 10px;
+      line-height: 1.4;
+      text-align: left;
+    }
+    .reel-caption strong {
+      color: #f8fafc;
+      display: block;
+      margin-bottom: 2px;
+    }
+  </style>
   <title>Osman Yıldırım | Makine Mühendisi</title>
 </head>
 
@@ -37,9 +86,10 @@
         <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
           <li class="nav-item active"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
           <li><a class="nav-link" href="bitirme-projesi/">Bitirme Projesi</a></li>
+          <li><a class="nav-link" href="#sinematik-reeller">3D Reels</a></li>
           <li><a class="nav-link" href="#projeler">Projeler</a></li>
           <li><a class="nav-link" href="#yetkinlikler">Yetkinlikler</a></li>
-          <li><a class="nav-link" href="#simulasyon">Simülasyon & Analiz</a></li>
+          <li><a class="nav-link" href="#simulasyon">Simülasyon &amp; Analiz</a></li>
           <li><a class="nav-link" href="#stajlar">Akkuyu NGS Stajları</a></li>
           <li><a class="nav-link" href="#iletisim">İletişim</a></li>
         </ul>
@@ -78,14 +128,21 @@
           </div>
         </div>
         <div class="col-lg-7">
-          <div class="hero-img-wrap">
-            <!-- Furni'nin Hero Sağ Görsel Alanı: Simülasyon / CAD 3D Model Çerçevesi -->
-            <div class="p-3 bg-dark rounded shadow-lg border border-secondary" style="max-width: 580px; margin-left: auto;">
+          <div class="hero-img-wrap text-center">
+            <!-- Furni'nin Hero Sağ Görsel Alanı: Sinematik AI Karşılama Reel'i -->
+            <div class="p-3 bg-dark rounded shadow-lg border border-secondary" style="max-width: 440px; margin-left: auto;">
               <div class="d-flex justify-content-between align-items-center mb-2 px-2 text-white-50" style="font-size: 11px; font-family: monospace;">
-                <span>SOLIDWORKS_2022 // HELISEL_CONFORMAL_CAD</span>
-                <span class="text-warning">● CAD VIEW</span>
+                <span>AI_CINEMATIC // 3D_REEL</span>
+                <span class="text-warning">● 60 FPS REEL</span>
               </div>
-              <img src="images/bitirme-projesi/image3.png" class="img-fluid rounded" alt="SolidWorks Helisel Conformal Kalıp Tasarımı">
+              <div class="position-relative overflow-hidden rounded" style="aspect-ratio: 9/16; max-height: 480px; background: #020617;">
+                <video autoplay loop muted playsinline poster="images/bitirme-projesi/poster_polymer_melt_flow_simulation.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+                  <source src="videos/bitirme-projesi/polymer_melt_flow_simulation.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="mt-2 text-white-50 text-start small font-monospace">
+                Victrex PEEK 450CA30 &bull; Helisel Conformal Kalıp Tasarımı
+              </div>
             </div>
           </div>
         </div>
@@ -155,6 +212,88 @@
     </div>
   </div>
   <!-- End Product Section -->
+
+  <!-- ==================== SINEMATIK 3D & AI REEL VITRINI ==================== -->
+  <div class="product-section py-5" id="sinematik-reeller" style="background: #0b1120;">
+    <div class="container">
+      <div class="row mb-4 align-items-center">
+        <div class="col-md-8">
+          <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); font-family: monospace; font-size: 0.8rem;">
+            ● AI CINEMATIC SHOWCASE // 60 FPS
+          </span>
+          <h2 class="text-white fw-bold mt-2" style="font-size: clamp(1.5rem, 3.5vw, 2.2rem);">
+            Sinematik 3D &amp; Simülasyon Reel Vitrini
+          </h2>
+          <p class="mb-0" style="color: #94a3b8;">
+            Bitirme projesi kalıp geometrisi ve polimer dolum dinamiğinin yapay zeka destekli sinematik stüdyo animasyonları.
+          </p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+          <a href="bitirme-projesi/" class="btn btn-secondary text-dark fw-bold">
+            Mühendislik Analiz Raporunu İncele →
+          </a>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Reel 1: Polimer Eriyik Akış -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="reel-card h-100">
+            <span class="reel-badge bg-warning text-dark"><i class="fa-solid fa-fire-burner me-1"></i> Eriyik Akış Reel</span>
+            <video autoplay loop muted playsinline controls poster="images/bitirme-projesi/poster_polymer_melt_flow_simulation.jpg">
+              <source src="videos/bitirme-projesi/polymer_melt_flow_simulation.mp4" type="video/mp4">
+            </video>
+            <div class="reel-caption">
+              <strong>Polimer Eriyik Enjeksiyonu</strong>
+              Victrex PEEK 450CA30 yüksek viskoziteli polimer eriyik akış animasyonu.
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 2: Sıcak Yolluk Termal Gradyan -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="reel-card h-100">
+            <span class="reel-badge bg-danger text-white"><i class="fa-solid fa-temperature-full me-1"></i> Termal Kor Reel</span>
+            <video autoplay loop muted playsinline controls poster="images/bitirme-projesi/poster_hot_runner_thermal_simulation.jpg">
+              <source src="videos/bitirme-projesi/hot_runner_thermal_simulation.mp4" type="video/mp4">
+            </video>
+            <div class="reel-caption">
+              <strong>Sıcak Yolluk Termal Kor</strong>
+              380°C sıcak yolluk gövdesinin ısı dağılımı ve termal geçiş animasyonu.
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 3: 3D Kinematik Yörünge -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="reel-card h-100">
+            <span class="reel-badge bg-info text-dark"><i class="fa-solid fa-arrows-spin me-1"></i> 3D Kinematik</span>
+            <video autoplay loop muted playsinline controls poster="images/bitirme-projesi/poster_cad_kinematic_orbit_showcase.jpg">
+              <source src="videos/bitirme-projesi/cad_kinematic_orbit_showcase.mp4" type="video/mp4">
+            </video>
+            <div class="reel-caption">
+              <strong>3D Kinematik Yörünge</strong>
+              Sıcak yolluk kolları ve konik PEEK parçanın 360° kamera dönüşü.
+            </div>
+          </div>
+        </div>
+
+        <!-- Reel 4: Makro Kalıp Tanıtımı -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="reel-card h-100">
+            <span class="reel-badge bg-success text-white"><i class="fa-solid fa-camera-retro me-1"></i> Makro Stüdyo</span>
+            <video autoplay loop muted playsinline controls poster="images/bitirme-projesi/poster_conformal_mold_macro_cinematic.jpg">
+              <source src="videos/bitirme-projesi/conformal_mold_macro_cinematic.mp4" type="video/mp4">
+            </video>
+            <div class="reel-caption">
+              <strong>Makro Stüdyo Tanıtımı</strong>
+              2-noktalı sıcak yolluk besleme girişleri ve PEEK parça makro çekimi.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================== 4. START WHY CHOOSE US SECTION (YETKİNLİKLER) ==================== -->
   <div class="why-choose-section" id="yetkinlikler">
@@ -227,7 +366,7 @@
       <div class="row justify-content-between">
         <div class="col-lg-7 mb-5 mb-lg-0">
           <div class="imgs-grid">
-            <div class="grid grid-1"><img src="images/bitirme-projesi/image3.png" alt="Helisel Conformal Cooling CAD"></div>
+            <div class="grid grid-1"><img src="images/bitirme-projesi/conformal_helical_water_studio.webp" alt="Helisel Conformal Cooling CAD"></div>
             <div class="grid grid-2"><img src="images/bitirme-projesi/image54.png" alt="Warping Analizi"></div>
             <div class="grid grid-3"><img src="images/bitirme-projesi/image58.png" alt="Sıcaklık Analizi"></div>
           </div>
