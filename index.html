@@ -1,530 +1,793 @@
-<!-- /*
-* Bootstrap 5
-* Template Name: Furni (Adapted for Osman Yıldırım Engineering Portfolio)
-* Template Author: Untree.co
-*/ -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Osman Yıldırım">
+  <meta name="description" content="Osman Yıldırım — Makine Mühendisi Portfolyosu | Mekanik Tasarım, Autodesk Moldflow, SolidWorks, Akkuyu NGS İmalat ve NDT Kalite Kontrol">
+  <meta name="keywords" content="Osman Yıldırım, Makine Mühendisi, SolidWorks, Autodesk Moldflow, Helisel Conformal Soğutma, Akkuyu NGS, ASME B31.3, PNAE G-7, NDT, Python">
   <link rel="shortcut icon" href="images/favicon.png">
 
-  <meta name="description" content="Osman Yıldırım — Makine Mühendisi & AI Geliştirici Portfolyosu" />
-  <meta name="keywords" content="Makine Mühendisliği, SolidWorks, ASME B31.3, NDT, Akkuyu NGS, Python, AI" />
-
-  <!-- Bootstrap CSS & Furni Orijinal Stilleri -->
+  <!-- CSS Kütüphaneleri -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <link href="css/tiny-slider.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <title>Osman Yıldırım | Makine Mühendisi</title>
+
   <style>
-    .reel-card {
-      background: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 16px;
-      padding: 12px;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    :root {
+      --slate-900: #0f172a;
+      --slate-850: #131d33;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50:  #f8fafc;
+      --emerald-500: #10b981;
+      --emerald-600: #059669;
+      --emerald-700: #047857;
+      --cyan-500: #06b6d4;
+      --amber-500: #f59e0b;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--slate-50);
+      color: var(--slate-800);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    font-monospace, .font-mono {
+      font-family: 'JetBrains Mono', monospace !important;
+    }
+
+    /* Navbar */
+    .eng-navbar {
+      background-color: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1050;
+    }
+    .eng-brand {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #ffffff !important;
+      letter-spacing: -0.02em;
+    }
+    .eng-brand span {
+      color: var(--emerald-500);
+    }
+    .eng-nav-link {
+      color: var(--slate-300) !important;
+      font-weight: 500;
+      font-size: 0.92rem;
+      padding: 8px 14px !important;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .eng-nav-link:hover, .eng-nav-link.active {
+      color: #ffffff !important;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-850) 60%, #064e3b 100%);
+      color: #ffffff;
+      padding: clamp(50px, 8vw, 90px) 0;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--slate-800);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: clamp(2rem, 5.5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .hero-subtitle {
+      color: var(--slate-300);
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      line-height: 1.7;
+      max-width: 620px;
+      margin-bottom: 28px;
+    }
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+    .hero-pill {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--slate-200);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* Primary & Secondary Buttons */
+    .btn-eng-primary {
+      background-color: var(--emerald-500);
+      color: #ffffff !important;
+      font-weight: 600;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .btn-eng-primary:hover {
+      background-color: var(--emerald-600);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45);
+    }
+    .btn-eng-outline {
+      background: transparent;
+      color: #ffffff !important;
+      font-weight: 600;
+      border: 1px solid var(--slate-400);
+      padding: 12px 22px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .btn-eng-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Showcase Card */
+    .hero-card {
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--slate-700);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+      max-width: 420px;
+      margin-left: auto;
+    }
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--slate-400);
+    }
+    .hero-card-media {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 9 / 16;
+      max-height: 440px;
+      background: #020617;
       position: relative;
     }
-    .reel-card:hover {
-      border-color: #38bdf8;
-      box-shadow: 0 12px 30px -5px rgba(56, 189, 248, 0.25);
-      transform: translateY(-4px);
+    .hero-card-media video, .hero-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .reel-card video {
+
+    /* Section Styles */
+    .section-header {
+      margin-bottom: 40px;
+    }
+    .section-tag {
+      color: var(--emerald-600);
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .section-main-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      color: var(--slate-900);
+      letter-spacing: -0.02em;
+    }
+    .section-description {
+      color: var(--slate-600);
+      font-size: 1rem;
+      max-width: 640px;
+    }
+
+    /* Project Cards */
+    .project-card {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: all 0.25s ease;
+      text-decoration: none !important;
+      color: inherit;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 30px -8px rgba(15, 23, 42, 0.12);
+      border-color: var(--slate-300);
+    }
+    .project-card-img-wrap {
+      height: 220px;
+      background: var(--slate-900);
+      overflow: hidden;
+      position: relative;
+    }
+    .project-card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover .project-card-img-wrap img {
+      transform: scale(1.03);
+    }
+    .project-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+    .project-tag {
+      background: var(--slate-100);
+      color: var(--slate-700);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .project-card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .project-card-text {
+      color: var(--slate-600);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      flex-grow: 1;
+      margin-bottom: 20px;
+    }
+    .project-card-link {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--emerald-600);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Reel Showcase Cards */
+    .reel-showcase-card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 14px;
+      padding: 10px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      transition: all 0.25s ease;
+    }
+    .reel-showcase-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px -5px rgba(56, 189, 248, 0.2);
+    }
+    .reel-showcase-card video {
       width: 100%;
       aspect-ratio: 9 / 16;
-      max-height: 420px;
+      max-height: 380px;
       object-fit: cover;
-      border-radius: 12px;
+      border-radius: 10px;
       background: #020617;
       display: block;
     }
-    .reel-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 3px 8px;
-      border-radius: 9999px;
-      margin-bottom: 8px;
-    }
-    .reel-caption {
+    .reel-showcase-title {
       font-size: 0.85rem;
-      color: #94a3b8;
+      font-weight: 600;
+      color: #f1f5f9;
       margin-top: 10px;
-      line-height: 1.4;
-      text-align: left;
-    }
-    .reel-caption strong {
-      color: #f8fafc;
-      display: block;
       margin-bottom: 2px;
     }
+    .reel-showcase-desc {
+      font-size: 0.78rem;
+      color: #94a3b8;
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    /* Skills Card */
+    .skill-box {
+      background: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 14px;
+      padding: 24px;
+      height: 100%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+    .skill-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+    .skill-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 8px;
+    }
+    .skill-desc {
+      font-size: 0.88rem;
+      color: var(--slate-600);
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* Footer */
+    .eng-footer {
+      background-color: var(--slate-900);
+      color: var(--slate-400);
+      border-top: 1px solid var(--slate-800);
+      padding: 60px 0 30px 0;
+      font-size: 0.9rem;
+    }
+    .footer-heading {
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .footer-links {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    .footer-links a {
+      color: var(--slate-300);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+      color: var(--emerald-500);
+    }
   </style>
-  <title>Osman Yıldırım | Makine Mühendisi</title>
 </head>
 
 <body>
 
-  <!-- ==================== 1. START HEADER / NAVIGATION ==================== -->
-  <nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="eng-navbar navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Osman Yıldırım<span>.</span></a>
+      <a class="navbar-brand eng-brand" href="index.html">
+        Osman Yıldırım<span>.</span>
+      </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Menüyü Aç">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarsFurni">
-        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-          <li class="nav-item active"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
-          <li><a class="nav-link" href="bitirme-projesi/">Bitirme Projesi</a></li>
-          <li><a class="nav-link" href="#sinematik-reeller">3D Reels</a></li>
-          <li><a class="nav-link" href="#projeler">Projeler</a></li>
-          <li><a class="nav-link" href="#yetkinlikler">Yetkinlikler</a></li>
-          <li><a class="nav-link" href="#simulasyon">Simülasyon &amp; Analiz</a></li>
-          <li><a class="nav-link" href="#stajlar">Akkuyu NGS Stajları</a></li>
-          <li><a class="nav-link" href="#iletisim">İletişim</a></li>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link eng-nav-link active" href="index.html">Ana Sayfa</a></li>
+          <li class="nav-item"><a class="nav-link eng-nav-link" href="bitirme-projesi/">Bitirme Projesi (Moldflow)</a></li>
+          <li class="nav-item"><a class="nav-link eng-nav-link" href="me-200-yaz-staji-1/">Akkuyu NGS Stajları</a></li>
+          <li class="nav-item"><a class="nav-link eng-nav-link" href="#projeler">Projeler</a></li>
+          <li class="nav-item"><a class="nav-link eng-nav-link" href="#reeller">3D Reels</a></li>
+          <li class="nav-item"><a class="nav-link eng-nav-link" href="#yetkinlikler">Yetkinlikler</a></li>
+          <li class="nav-item"><a class="nav-link eng-nav-link" href="#iletisim">İletişim</a></li>
         </ul>
 
-        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-          <li class="me-2">
-            <a class="btn btn-secondary btn-sm text-dark font-weight-bold" href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download>
-              <i class="fa-solid fa-file-pdf me-1"></i> CV (TR)
-            </a>
-          </li>
-          <li>
-            <a class="btn btn-white-outline btn-sm" href="/files/osman-yildirim-cv-en.pdf" target="_blank" download>
-              <i class="fa-solid fa-download me-1"></i> CV (EN)
-            </a>
-          </li>
-        </ul>
+        <div class="d-flex ms-lg-3 gap-2 mt-3 mt-lg-0">
+          <a href="files/osman-yildirim-cv-tr.pdf" target="_blank" download class="btn btn-sm btn-outline-light d-inline-flex align-items-center gap-1 font-monospace">
+            <i class="fa-solid fa-file-pdf text-danger"></i> CV (TR)
+          </a>
+          <a href="files/osman-yildirim-cv-en.pdf" target="_blank" download class="btn btn-sm btn-outline-light d-inline-flex align-items-center gap-1 font-monospace">
+            <i class="fa-solid fa-file-pdf text-danger"></i> CV (EN)
+          </a>
+        </div>
       </div>
     </div>
   </nav>
-  <!-- End Header/Navigation -->
 
-  <!-- ==================== 2. START HERO SECTION ==================== -->
-  <div class="hero">
+  <!-- ==================== HERO SECTION ==================== -->
+  <header class="hero-section">
     <div class="container">
-      <div class="row justify-content-between align-items-center">
-        <div class="col-lg-5">
-          <div class="intro-excerpt">
-            <h1>Mekanik İmalat <span class="d-block">& Simülasyon Stüdyosu</span></h1>
-            <p class="mb-4">
-              Sütçü İmam Üniversitesi Makine Mühendisliği 2026 mezunuyum. Akkuyu Nükleer Güç Santrali çelik yapı imalatı, NDT muayeneleri, ASME B31.3 borulama analizleri ve modern mühendislik yazılımları geliştiriyorum.
-            </p>
-            <p>
-              <a href="#projeler" class="btn btn-secondary me-2">Bitirme Projeleri</a>
-              <a href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download class="btn btn-white-outline">Özgeçmiş İndir</a>
-            </p>
+      <div class="row align-items-center justify-content-between g-5">
+        <div class="col-lg-7">
+          <div class="hero-badge">
+            <i class="fa-solid fa-graduation-cap"></i> KSÜ MAKİNE MÜHENDİSLİĞİ (2026)
+          </div>
+          <h1 class="hero-title">
+            Mekanik Tasarım, İmalat &amp; Kalite Kontrol
+          </h1>
+          <p class="hero-subtitle">
+            Akkuyu Nükleer Güç Santrali çelik yapı imalatı ve NDT muayeneleri tecrübesi; plastik enjeksiyon kalıplarında eklemeli imalatla helisel conformal soğutma tasarımı, Autodesk Moldflow analizleri ve ASME B31.3 borulama hesaplamaları.
+          </p>
+
+          <div class="hero-pills">
+            <span class="hero-pill"><i class="fa-solid fa-cube text-info me-1"></i> SolidWorks 2022</span>
+            <span class="hero-pill"><i class="fa-solid fa-arrows-spin text-success me-1"></i> Autodesk Moldflow</span>
+            <span class="hero-pill"><i class="fa-solid fa-atom text-warning me-1"></i> Akkuyu NGS (İÇTAŞ)</span>
+            <span class="hero-pill"><i class="fa-solid fa-shield-halved text-primary me-1"></i> PNAE G-7 &amp; NDT</span>
+            <span class="hero-pill"><i class="fa-solid fa-code text-cyan me-1"></i> Python &amp; Linux</span>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3">
+            <a href="bitirme-projesi/" class="btn-eng-primary">
+              <i class="fa-solid fa-chart-line"></i> Bitirme Projesini İncele
+            </a>
+            <a href="me-200-yaz-staji-1/" class="btn-eng-outline">
+              <i class="fa-solid fa-building-shield"></i> Akkuyu NGS Stajları
+            </a>
+            <a href="https://github.com/TheOsmanYILDIRIM" target="_blank" class="btn-eng-outline">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
           </div>
         </div>
-        <div class="col-lg-7">
-          <div class="hero-img-wrap text-center">
-            <!-- Furni'nin Hero Sağ Görsel Alanı: Sinematik AI Karşılama Reel'i -->
-            <div class="p-3 bg-dark rounded shadow-lg border border-secondary" style="max-width: 440px; margin-left: auto;">
-              <div class="d-flex justify-content-between align-items-center mb-2 px-2 text-white-50" style="font-size: 11px; font-family: monospace;">
-                <span>AI_CINEMATIC // 3D_REEL</span>
-                <span class="text-warning">● 60 FPS REEL</span>
-              </div>
-              <div class="position-relative overflow-hidden rounded" style="aspect-ratio: 9/16; max-height: 480px; background: #020617;">
-                <video autoplay loop muted playsinline poster="images/bitirme-projesi/poster_polymer_melt_flow_simulation.jpg" style="width: 100%; height: 100%; object-fit: cover;">
-                  <source src="videos/bitirme-projesi/polymer_melt_flow_simulation.mp4" type="video/mp4">
-                </video>
-              </div>
-              <div class="mt-2 text-white-50 text-start small font-monospace">
-                Victrex PEEK 450CA30 &bull; Helisel Conformal Kalıp Tasarımı
-              </div>
+
+        <div class="col-lg-5">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <span><i class="fa-solid fa-film text-info me-1"></i> AI_REEL // 3D_SHOWCASE</span>
+              <span class="text-emerald-500 text-success fw-bold">● 60 FPS</span>
+            </div>
+            <div class="hero-card-media">
+              <video autoplay loop muted playsinline poster="images/bitirme-projesi/poster_polymer_melt_flow_simulation.jpg">
+                <source src="videos/bitirme-projesi/polymer_melt_flow_simulation.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mt-2 px-1">
+              <span class="font-monospace small text-slate-400" style="font-size: 0.75rem;">Victrex PEEK 450CA30 &bull; Helisel Kalıp</span>
+              <a href="bitirme-projesi/" class="text-decoration-none small text-success fw-bold font-monospace">Rapor →</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- End Hero Section -->
+  </header>
 
-  <!-- ==================== 3. START PRODUCT SECTION (ÖNE ÇIKAN PROJELER) ==================== -->
-  <div class="product-section" id="projeler">
+  <!-- ==================== ÖNE ÇIKAN ÇALIŞMALAR ==================== -->
+  <section class="py-5 my-3" id="projeler">
     <div class="container">
-      <div class="row">
-
-        <!-- Start Column 1 (Başlık ve Keşfet Butonu) -->
-        <div class="col-md-12 col-lg-3 mb-5 mb-lg-0">
-          <h2 class="mb-4 section-title">Hassas Mühendislik & Yazılım Projeleri.</h2>
-          <p class="mb-4">
-            Akkuyu Nükleer Santral saha standartlarına dayalı boru gerilme analizleri, ASME/DIN borulama hesaplama kütüphaneleri ve mobil CAD mimarileri.
-          </p>
-          <p><a href="https://github.com/TheOsmanYILDIRIM" target="_blank" class="btn">GitHub'da İncele</a></p>
-        </div> 
-        <!-- End Column 1 -->
-
-        <!-- Start Column 2: Bitirme Projesi -->
-        <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-          <a class="product-item" href="bitirme-projesi/">
-            <img src="images/bitirme-projesi/image54.png" class="img-fluid product-thumbnail" alt="Warping Analizi">
-            <h3 class="product-title">Kalıplarda Warping Azaltma (Bitirme Projesi)</h3>
-            <strong class="product-price">Moldflow &bull; -%47.4 Çarpılma</strong>
-
-            <span class="icon-cross">
-              <img src="images/cross.svg" class="img-fluid">
-            </span>
-          </a>
-        </div> 
-        <!-- End Column 2 -->
-
-        <!-- Start Column 3: PipeData -->
-        <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-          <a class="product-item" href="https://github.com/TheOsmanYILDIRIM/pipedata" target="_blank">
-            <img src="/files/me-200-yaz-staji-1/page_38_Picture_0.jpeg" onerror="this.src='images/product-2.png'" class="img-fluid product-thumbnail" alt="PipeData">
-            <h3 class="product-title">PipeData: Borulama Referansı</h3>
-            <strong class="product-price">ASME &bull; DIN &bull; API</strong>
-
-            <span class="icon-cross">
-              <img src="images/cross.svg" class="img-fluid">
-            </span>
-          </a>
-        </div>
-        <!-- End Column 3 -->
-
-        <!-- Start Column 4: Touch-CAD / Android -->
-        <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-          <a class="product-item" href="https://github.com/TheOsmanYILDIRIM" target="_blank">
-            <img src="/files/me-200-yaz-staji-1/page_14_Picture_3.jpeg" onerror="this.src='images/product-3.png'" class="img-fluid product-thumbnail" alt="Touch-CAD">
-            <h3 class="product-title">Touch-CAD & Antigravity Client</h3>
-            <strong class="product-price">Jetpack Compose &bull; AI</strong>
-
-            <span class="icon-cross">
-              <img src="images/cross.svg" class="img-fluid">
-            </span>
-          </a>
-        </div>
-        <!-- End Column 4 -->
-
-      </div>
-    </div>
-  </div>
-  <!-- End Product Section -->
-
-  <!-- ==================== SINEMATIK 3D & AI REEL VITRINI ==================== -->
-  <div class="product-section py-5" id="sinematik-reeller" style="background: #0b1120;">
-    <div class="container">
-      <div class="row mb-4 align-items-center">
-        <div class="col-md-8">
-          <span class="badge" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); font-family: monospace; font-size: 0.8rem;">
-            ● AI CINEMATIC SHOWCASE // 60 FPS
-          </span>
-          <h2 class="text-white fw-bold mt-2" style="font-size: clamp(1.5rem, 3.5vw, 2.2rem);">
-            Sinematik 3D &amp; Simülasyon Reel Vitrini
-          </h2>
-          <p class="mb-0" style="color: #94a3b8;">
-            Bitirme projesi kalıp geometrisi ve polimer dolum dinamiğinin yapay zeka destekli sinematik stüdyo animasyonları.
-          </p>
-        </div>
-        <div class="col-md-4 text-md-end mt-3 mt-md-0">
-          <a href="bitirme-projesi/" class="btn btn-secondary text-dark fw-bold">
-            Mühendislik Analiz Raporunu İncele →
-          </a>
-        </div>
+      <div class="section-header">
+        <span class="section-tag">Portfolyo</span>
+        <h2 class="section-main-title">Öne Çıkan Mühendislik Çalışmaları</h2>
+        <p class="section-description">
+          Bilimsel sonlu elemanlar simülasyonları, nükleer santral imalat stajları ve açık kaynaklı mühendislik yazılımları.
+        </p>
       </div>
 
       <div class="row g-4">
-        <!-- Reel 1: Polimer Eriyik Akış -->
-        <div class="col-12 col-sm-6 col-lg-3">
-          <div class="reel-card h-100">
-            <span class="reel-badge bg-warning text-dark"><i class="fa-solid fa-fire-burner me-1"></i> Eriyik Akış Reel</span>
-            <video autoplay loop muted playsinline controls poster="images/bitirme-projesi/poster_polymer_melt_flow_simulation.jpg">
+        <!-- Proje 1: Bitirme Projesi -->
+        <div class="col-12 col-md-6 col-lg-6">
+          <a href="bitirme-projesi/" class="project-card">
+            <div class="project-card-img-wrap">
+              <picture>
+                <source srcset="images/bitirme-projesi/conformal_helical_water_studio.webp" type="image/webp">
+                <img src="images/bitirme-projesi/conformal_helical_water_studio.jpg" alt="Helisel Conformal Soğutma Kalıp Tasarımı">
+              </picture>
+            </div>
+            <div class="project-card-body">
+              <div class="project-tags">
+                <span class="project-tag text-success bg-success-subtle">LİSANS BİTİRME TEZİ</span>
+                <span class="project-tag">Autodesk Moldflow</span>
+                <span class="project-tag">SolidWorks</span>
+                <span class="project-tag">Victrex PEEK</span>
+              </div>
+              <h3 class="project-card-title">Kalıplarda Warping Azaltmak İçin Helisel Conformal Soğutma</h3>
+              <p class="project-card-text">
+                Eklemeli imalatla üretilen çift helis soğutma kanalları ile geleneksel baffle sisteminin kıyaslanması. Soğutma kaynaklı çarpılmada %47.4 düşüş, iç duvarda 107.5°C sıcaklık homojenizasyonu ve interaktif PixiJS/Three.js CAD görüntüleyicisi.
+              </p>
+              <div class="project-card-link">
+                Detaylı Makale, Grafikler &amp; 3D Görüntüleyici <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Proje 2: Akkuyu NGS Stajları -->
+        <div class="col-12 col-md-6 col-lg-6">
+          <a href="me-200-yaz-staji-1/" class="project-card">
+            <div class="project-card-img-wrap">
+              <img src="files/me-200-yaz-staji-1/page_0_Picture_1.jpeg" alt="Akkuyu Nükleer Güç Santrali Stajı">
+            </div>
+            <div class="project-card-body">
+              <div class="project-tags">
+                <span class="project-tag text-primary bg-primary-subtle">SAHA DENEYİMİ</span>
+                <span class="project-tag">İÇTAŞ / Titan-2</span>
+                <span class="project-tag">PNAE G-7</span>
+                <span class="project-tag">NDT (RT/VT)</span>
+              </div>
+              <h3 class="project-card-title">Akkuyu Nükleer Güç Santrali ME 200 &amp; ME 322 Stajları</h3>
+              <p class="project-card-text">
+                Çelik yapı imalat atölyesinde talaşlı imalat, TIG/Argon kaynağı, CNC plazma kesim süreçleri ve PNAE G-7 nükleer standartlarına uygun Radyografik (RT) / Görsel (VT) kaynak muayeneleri kalite kontrol takibi.
+              </p>
+              <div class="project-card-link">
+                Staj Raporları &amp; Saha Dokümantasyonu <i class="fa-solid fa-arrow-right"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Proje 3: PipeData -->
+        <div class="col-12 col-md-6 col-lg-6">
+          <a href="https://github.com/TheOsmanYILDIRIM/pipedata" target="_blank" class="project-card">
+            <div class="project-card-img-wrap">
+              <img src="files/me-200-yaz-staji-1/page_38_Picture_0.jpeg" alt="PipeData Borulama Kütüphanesi">
+            </div>
+            <div class="project-card-body">
+              <div class="project-tags">
+                <span class="project-tag text-warning bg-warning-subtle">AÇIK KAYNAK</span>
+                <span class="project-tag">ASME B31.3</span>
+                <span class="project-tag">ASME B16.5</span>
+                <span class="project-tag">Python &amp; SQLite</span>
+              </div>
+              <h3 class="project-card-title">PipeData: Proses Borulama &amp; Flanş Standartları Kütüphanesi</h3>
+              <p class="project-card-text">
+                ASME B31.3 proses borulama formülleri, ASME B16.5 / DIN flanş basınç-sıcaklık tabloları ve boru et kalınlığı toleranslarını otomatik hesaplayan açık kaynaklı mühendislik referans CLI aracı.
+              </p>
+              <div class="project-card-link">
+                GitHub Reposunu İncele <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Proje 4: Touch-CAD & Android -->
+        <div class="col-12 col-md-6 col-lg-6">
+          <a href="https://github.com/TheOsmanYILDIRIM" target="_blank" class="project-card">
+            <div class="project-card-img-wrap">
+              <img src="files/me-200-yaz-staji-1/page_14_Picture_3.jpeg" alt="Touch CAD & Mühendislik Araçları">
+            </div>
+            <div class="project-card-body">
+              <div class="project-tags">
+                <span class="project-tag text-info bg-info-subtle">YAZILIM</span>
+                <span class="project-tag">Jetpack Compose</span>
+                <span class="project-tag">Termux / Linux</span>
+                <span class="project-tag">CAD Tools</span>
+              </div>
+              <h3 class="project-card-title">Touch-CAD &amp; Mühendislik Otomasyon Araçları</h3>
+              <p class="project-card-text">
+                Mobil ve Android Linux üzerinde çalışan mühendislik hesaplama araçları, 3D mesh (GLB/STL/OBJ) dönüştürücüleri ve mühendislik çalışma ortamı otomasyon scriptleri.
+              </p>
+              <div class="project-card-link">
+                GitHub Profilini İncele <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SİNEMATİK 3D AI REEL VİTRİNİ ==================== -->
+  <section class="py-5" id="reeller" style="background-color: #0b1120; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b;">
+    <div class="container">
+      <div class="row mb-4 align-items-center">
+        <div class="col-md-8">
+          <span class="badge font-monospace" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); font-size: 0.78rem;">
+            ● 3D AI VISUAL SHOWCASE // 60 FPS
+          </span>
+          <h2 class="text-white fw-bold mt-2 mb-1" style="font-size: clamp(1.4rem, 3vw, 2rem);">
+            Sinematik 3D &amp; Simülasyon Reel Vitrini
+          </h2>
+          <p class="mb-0 text-slate-400" style="color: #94a3b8; font-size: 0.92rem;">
+            Kalıp geometrisi ve polimer enjeksiyon akışının görselleştirildiği 3D stüdyo ve yapay zeka animasyonları.
+          </p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+          <a href="bitirme-projesi/" class="btn btn-sm btn-outline-success font-monospace">
+            Bilimsel Analiz Raporu →
+          </a>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <!-- Reel 1 -->
+        <div class="col-6 col-lg-3">
+          <div class="reel-showcase-card h-100">
+            <video autoplay loop muted playsinline poster="images/bitirme-projesi/poster_polymer_melt_flow_simulation.jpg">
               <source src="videos/bitirme-projesi/polymer_melt_flow_simulation.mp4" type="video/mp4">
             </video>
-            <div class="reel-caption">
-              <strong>Polimer Eriyik Enjeksiyonu</strong>
-              Victrex PEEK 450CA30 yüksek viskoziteli polimer eriyik akış animasyonu.
-            </div>
+            <div class="reel-showcase-title">Polimer Eriyik Akışı</div>
+            <div class="reel-showcase-desc">PEEK polimer eriyiğinin kalıp dolum dinamiği.</div>
           </div>
         </div>
 
-        <!-- Reel 2: Sıcak Yolluk Termal Gradyan -->
-        <div class="col-12 col-sm-6 col-lg-3">
-          <div class="reel-card h-100">
-            <span class="reel-badge bg-danger text-white"><i class="fa-solid fa-temperature-full me-1"></i> Termal Kor Reel</span>
-            <video autoplay loop muted playsinline controls poster="images/bitirme-projesi/poster_hot_runner_thermal_simulation.jpg">
+        <!-- Reel 2 -->
+        <div class="col-6 col-lg-3">
+          <div class="reel-showcase-card h-100">
+            <video autoplay loop muted playsinline poster="images/bitirme-projesi/poster_hot_runner_thermal_simulation.jpg">
               <source src="videos/bitirme-projesi/hot_runner_thermal_simulation.mp4" type="video/mp4">
             </video>
-            <div class="reel-caption">
-              <strong>Sıcak Yolluk Termal Kor</strong>
-              380°C sıcak yolluk gövdesinin ısı dağılımı ve termal geçiş animasyonu.
-            </div>
+            <div class="reel-showcase-title">Sıcak Yolluk Termal Kor</div>
+            <div class="reel-showcase-desc">380°C yolluk gövdesi ısı dağılımı.</div>
           </div>
         </div>
 
-        <!-- Reel 3: 3D Kinematik Yörünge -->
-        <div class="col-12 col-sm-6 col-lg-3">
-          <div class="reel-card h-100">
-            <span class="reel-badge bg-info text-dark"><i class="fa-solid fa-arrows-spin me-1"></i> 3D Kinematik</span>
-            <video autoplay loop muted playsinline controls poster="images/bitirme-projesi/poster_cad_kinematic_orbit_showcase.jpg">
+        <!-- Reel 3 -->
+        <div class="col-6 col-lg-3">
+          <div class="reel-showcase-card h-100">
+            <video autoplay loop muted playsinline poster="images/bitirme-projesi/poster_cad_kinematic_orbit_showcase.jpg">
               <source src="videos/bitirme-projesi/cad_kinematic_orbit_showcase.mp4" type="video/mp4">
             </video>
-            <div class="reel-caption">
-              <strong>3D Kinematik Yörünge</strong>
-              Sıcak yolluk kolları ve konik PEEK parçanın 360° kamera dönüşü.
-            </div>
+            <div class="reel-showcase-title">3D Kinematik Kamera</div>
+            <div class="reel-showcase-desc">Sıcak yolluk ve parçanın 360° dönüşü.</div>
           </div>
         </div>
 
-        <!-- Reel 4: Makro Kalıp Tanıtımı -->
-        <div class="col-12 col-sm-6 col-lg-3">
-          <div class="reel-card h-100">
-            <span class="reel-badge bg-success text-white"><i class="fa-solid fa-camera-retro me-1"></i> Makro Stüdyo</span>
-            <video autoplay loop muted playsinline controls poster="images/bitirme-projesi/poster_conformal_mold_macro_cinematic.jpg">
+        <!-- Reel 4 -->
+        <div class="col-6 col-lg-3">
+          <div class="reel-showcase-card h-100">
+            <video autoplay loop muted playsinline poster="images/bitirme-projesi/poster_conformal_mold_macro_cinematic.jpg">
               <source src="videos/bitirme-projesi/conformal_mold_macro_cinematic.mp4" type="video/mp4">
             </video>
-            <div class="reel-caption">
-              <strong>Makro Stüdyo Tanıtımı</strong>
-              2-noktalı sıcak yolluk besleme girişleri ve PEEK parça makro çekimi.
-            </div>
+            <div class="reel-showcase-title">Makro Stüdyo Çekimi</div>
+            <div class="reel-showcase-desc">Kalıp ve yolluk girişleri detayları.</div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ==================== 4. START WHY CHOOSE US SECTION (YETKİNLİKLER) ==================== -->
-  <div class="why-choose-section" id="yetkinlikler">
+  <!-- ==================== MÜHENDİSLİK YETKİNLİKLERİ ==================== -->
+  <section class="py-5 my-3" id="yetkinlikler">
     <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-lg-6">
-          <h2 class="section-title">Mühendislik & İmalat Yetkinlikleri</h2>
-          <p>
-            Teorik makine mühendisliği prensiplerini, nükleer santral şantiye imalatı ve modern yazılım otomasyonu ile birleştiriyorum.
-          </p>
+      <div class="section-header">
+        <span class="section-tag">Uzmanlık Alanları</span>
+        <h2 class="section-main-title">Mühendislik Yetkinlikleri</h2>
+        <p class="section-description">
+          Tasarım, sonlu elemanlar simülasyonu, nükleer santral şantiye imalatı ve yazılım otomasyonu.
+        </p>
+      </div>
 
-          <div class="row my-5">
-            <div class="col-6 col-md-6">
-              <div class="feature">
-                <div class="icon">
-                  <img src="images/truck.svg" alt="CAD" class="imf-fluid">
-                </div>
-                <h3>3D CAD & Modelleme</h3>
-                <p>SolidWorks (Orta Seviye), AutoCAD, Zetacad ve Onshape ile parametrik parça ve montaj modelleme.</p>
-              </div>
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="skill-box">
+            <div class="skill-icon-wrap bg-primary-subtle text-primary">
+              <i class="fa-solid fa-cube"></i>
             </div>
-
-            <div class="col-6 col-md-6">
-              <div class="feature">
-                <div class="icon">
-                  <img src="images/bag.svg" alt="ASME" class="imf-fluid">
-                </div>
-                <h3>ASME & Borulama</h3>
-                <p>ASME B31.3 proses borulama, izometrik spool çizimi ve hidrostatik test paketleri hazırlığı.</p>
-              </div>
-            </div>
-
-            <div class="col-6 col-md-6">
-              <div class="feature">
-                <div class="icon">
-                  <img src="images/support.svg" alt="NDT" class="imf-fluid">
-                </div>
-                <h3>NDT & Kalite Kontrol</h3>
-                <p>Rus Nükleer Standardı (PNAE G-7), Radyografik (RT) ve Görsel (VT) kaynak muayeneleri farkındalığı.</p>
-              </div>
-            </div>
-
-            <div class="col-6 col-md-6">
-              <div class="feature">
-                <div class="icon">
-                  <img src="images/return.svg" alt="Yazılım" class="imf-fluid">
-                </div>
-                <h3>Python & AI Geliştirme</h3>
-                <p>Mühendislik hesaplama algoritmaları, Vibe Coding, Jetpack Compose native Android ve Git/GitHub.</p>
-              </div>
-            </div>
-
+            <h3 class="skill-title">CAD &amp; Modelleme</h3>
+            <p class="skill-desc">SolidWorks (Orta Seviye), AutoCAD, Zetacad ve Onshape ile parametrik parça ve montaj modelleme.</p>
           </div>
         </div>
 
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="skill-box">
+            <div class="skill-icon-wrap bg-success-subtle text-success">
+              <i class="fa-solid fa-arrows-spin"></i>
+            </div>
+            <h3 class="skill-title">CAE &amp; Simülasyon</h3>
+            <p class="skill-desc">Autodesk Moldflow ile dolum, soğutma ve çarpılma (warping) analizleri; eklemeli imalat helisel kanal optimizasyonu.</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="skill-box">
+            <div class="skill-icon-wrap bg-warning-subtle text-warning">
+              <i class="fa-solid fa-industry"></i>
+            </div>
+            <h3 class="skill-title">İmalat &amp; NDT Muayeneleri</h3>
+            <p class="skill-desc">Talaşlı imalat, TIG/Argon kaynağı, PNAE G-7 nükleer standardı, Radyografik (RT) ve Görsel (VT) kaynak muayeneleri.</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-3">
+          <div class="skill-box">
+            <div class="skill-icon-wrap bg-info-subtle text-info">
+              <i class="fa-solid fa-code"></i>
+            </div>
+            <h3 class="skill-title">Yazılım &amp; Standartlar</h3>
+            <p class="skill-desc">ASME B31.3 / B16.5, DIN standartları, Python, SQLite, Linux/Termux ve Git/GitHub ile mühendislik araçları geliştirme.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="eng-footer" id="iletisim">
+    <div class="container">
+      <div class="row g-4 mb-5">
         <div class="col-lg-5">
-          <div class="img-wrap">
-            <img src="/files/me-200-yaz-staji-1/page_0_Picture_1.jpeg" onerror="this.src='images/why-choose-us-img.jpg'" alt="Akkuyu NGS İmalat" class="img-fluid rounded shadow">
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <!-- End Why Choose Us Section -->
-
-  <!-- ==================== 5. START WE HELP SECTION (SİMÜLASYON & VAKA İNCELEMESİ) ==================== -->
-  <div class="we-help-section" id="simulasyon">
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-lg-7 mb-5 mb-lg-0">
-          <div class="imgs-grid">
-            <div class="grid grid-1"><img src="images/bitirme-projesi/conformal_helical_water_studio.webp" alt="Helisel Conformal Cooling CAD"></div>
-            <div class="grid grid-2"><img src="images/bitirme-projesi/image54.png" alt="Warping Analizi"></div>
-            <div class="grid grid-3"><img src="images/bitirme-projesi/image58.png" alt="Sıcaklık Analizi"></div>
-          </div>
-        </div>
-        <div class="col-lg-5 ps-lg-5">
-          <h2 class="section-title mb-4">Bitirme Projesi: Helisel Conformal Cooling ile Warping Azaltma</h2>
-          <p>
-            Plastik enjeksiyon kalıplarında eklemeli imalatla üretilen helisel soğutma kanalları ile geleneksel baffle kanalların Autodesk Moldflow ve SolidWorks ortamında sayısal kıyaslaması.
+          <h3 class="footer-heading fs-5 mb-2">Osman Yıldırım<span>.</span></h3>
+          <p class="text-slate-400 mb-3" style="max-width: 380px;">
+            Kahramanmaraş Sütçü İmam Üniversitesi Makine Mühendisliği (2026). Mekanik tasarım, nükleer santral imalatı ve mühendislik yazılımları.
           </p>
-
-          <ul class="list-unstyled custom-list my-4">
-            <li><strong>-%47.4 Çarpılma İyileşmesi:</strong> Soğutma kaynaklı deformasyonda 2.246 mm &rarr; 1.182 mm düşüş</li>
-            <li><strong>Kritik Düğüm Noktası 71077:</strong> Taban çeperinde %53.0 boyutsal kararlılık artışı</li>
-            <li><strong>Homojen Sıcaklık Dağılımı:</strong> İç duvarda 199.2°C &rarr; 91.65°C (-107.5°C optimizasyon)</li>
-            <li><strong>Yüksek Mühendislik Polimeri:</strong> Victrex PEEK 450CA30 & P20 Kalıp Çeliği parametreleri</li>
-          </ul>
-          <p><a href="bitirme-projesi/" class="btn">Bitirme Projesi Raporu & Grafikleri İncele →</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End We Help Section -->
-
-  <!-- ==================== 6. START BLOG SECTION (AKKUYU NGS STAJLARI) ==================== -->
-  <div class="blog-section" id="stajlar">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-md-6">
-          <h2 class="section-title">Akkuyu Nükleer Güç Santrali Stajları</h2>
-        </div>
-        <div class="col-md-6 text-start text-md-end">
-          <a href="/me-200-yaz-staji-1/" class="more">Detaylı Raporları İncele</a>
-        </div>
-      </div>
-
-      <div class="row">
-
-        <!-- Staj 1 -->
-        <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-          <div class="post-entry">
-            <a href="/me-200-yaz-staji-1/" class="post-thumbnail"><img src="/files/me-200-yaz-staji-1/page_14_Picture_4.jpeg" onerror="this.src='images/post-1.jpg'" alt="ME 322" class="img-fluid"></a>
-            <div class="post-content-entry">
-              <h3><a href="#">ME 322 Organizasyon Stajı</a></h3>
-              <div class="meta">
-                <span>Mart 2026 – Nisan 2026</span> &bull; <span>İÇTAŞ Silifke, Mersin</span>
-              </div>
-              <p>Çelik konstrüksiyon iş akışları, PNAE G-7 Kalite Kontrol ve NDT süreçleri, üretim veri raporlama ve İSG saha kuralları.</p>
-            </div>
+          <div class="d-flex gap-3 fs-5">
+            <a href="mailto:osman1429@hotmail.com" class="text-slate-300"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/theosmanyildirim" target="_blank" class="text-slate-300"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/TheOsmanYILDIRIM" target="_blank" class="text-slate-300"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
 
-        <!-- Staj 2 -->
-        <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-          <div class="post-entry">
-            <a href="/me-200-yaz-staji-1/" class="post-thumbnail"><img src="/files/me-200-yaz-staji-1/page_21_Picture_4.jpeg" onerror="this.src='images/post-2.jpg'" alt="ME 200" class="img-fluid"></a>
-            <div class="post-content-entry">
-              <h3><a href="/me-200-yaz-staji-1/">ME 200 İmalat Stajı (30 Gün)</a></h3>
-              <div class="meta">
-                <span>Temmuz 2024 – Ağustos 2024</span> &bull; <span>İÇTAŞ Silifke, Mersin</span>
-              </div>
-              <p>Talaşlı imalat, TIG/Argon kaynağı, CNC plazma kesici, SMARC torna/freze ve Dextra diş açma operasyonları.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Yazı 3 -->
-        <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-          <div class="post-entry">
-            <a href="https://github.com/TheOsmanYILDIRIM/pipedata" target="_blank" class="post-thumbnail"><img src="/files/me-200-yaz-staji-1/page_21_Picture_6.jpeg" onerror="this.src='images/post-3.jpg'" alt="PipeData" class="img-fluid"></a>
-            <div class="post-content-entry">
-              <h3><a href="https://github.com/TheOsmanYILDIRIM/pipedata" target="_blank">PipeData: Borulama & Standartlar</a></h3>
-              <div class="meta">
-                <span>Açık Kaynak Proje</span> &bull; <span>Python & SQLite</span>
-              </div>
-              <p>ASME B16.5 ve DIN flanş/boru ölçülerini hesaplayan, mühendislik toleransları içeren referans aracı.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  <!-- End Blog Section -->
-
-  <!-- ==================== 7. START FOOTER SECTION ==================== -->
-  <footer class="footer-section" id="iletisim">
-    <div class="container relative">
-
-      <div class="row g-5 mb-5">
-        <div class="col-lg-4">
-          <div class="mb-4 footer-logo-wrap"><a href="#" class="footer-logo">Osman Yıldırım<span>.</span></a></div>
-          <p class="mb-4">
-            Makine Mühendisliği (Lisans Mezunu 2026). Akışkanlar mekaniği, borulama standartları, NDT kalite kontrol ve yazılım otomasyonu.
-          </p>
-
-          <ul class="list-unstyled custom-social">
-            <li><a href="mailto:osman1429@hotmail.com"><span class="fa-solid fa-envelope"></span></a></li>
-            <li><a href="https://www.linkedin.com/in/theosmanyildirim" target="_blank"><span class="fa-brands fa-linkedin"></span></a></li>
-            <li><a href="https://github.com/TheOsmanYILDIRIM" target="_blank"><span class="fa-brands fa-github"></span></a></li>
+        <div class="col-6 col-lg-3">
+          <h4 class="footer-heading">Hızlı Bağlantılar</h4>
+          <ul class="footer-links">
+            <li><a href="bitirme-projesi/">Bitirme Projesi (Moldflow)</a></li>
+            <li><a href="me-200-yaz-staji-1/">Akkuyu NGS Stajları</a></li>
+            <li><a href="cv/">Web Formatında CV</a></li>
+            <li><a href="https://github.com/TheOsmanYILDIRIM/pipedata" target="_blank">PipeData Projesi</a></li>
           </ul>
         </div>
 
-        <div class="col-lg-8">
-          <div class="row links-wrap">
-            <div class="col-6 col-sm-6 col-md-4">
-              <ul class="list-unstyled">
-                <li><strong>Hızlı Erişim</strong></li>
-                <li><a href="#projeler">Bitirme Projesi</a></li>
-                <li><a href="#yetkinlikler">Yetkinlikler</a></li>
-                <li><a href="#simulasyon">Simülasyon & Analiz</a></li>
-                <li><a href="#stajlar">Akkuyu NGS Stajları</a></li>
-              </ul>
-            </div>
-
-            <div class="col-6 col-sm-6 col-md-4">
-              <ul class="list-unstyled">
-                <li><strong>Özgeçmiş Dosyaları</strong></li>
-                <li><a href="/files/osman-yildirim-cv-tr.pdf" target="_blank" download>📄 Türkçe CV (PDF İndir)</a></li>
-                <li><a href="/files/osman-yildirim-cv-en.pdf" target="_blank" download>📄 English CV (PDF Download)</a></li>
-                <li><a href="/cv/">Web Formatında CV</a></li>
-              </ul>
-            </div>
-
-            <div class="col-6 col-sm-6 col-md-4">
-              <ul class="list-unstyled">
-                <li><strong>İletişim & Konum</strong></li>
-                <li><a href="mailto:osman1429@hotmail.com">osman1429@hotmail.com</a></li>
-                <li><a href="#">+90 546 841 3204</a></li>
-                <li><a href="#">Kahramanmaraş / Mersin, Türkiye</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="border-top copyright">
-        <div class="row pt-4">
-          <div class="col-lg-6">
-            <p class="mb-2 text-center text-lg-start">Copyright &copy; 2026 Osman Yıldırım. Tüm hakları saklıdır. &mdash; Template: <a href="https://untree.co">Furni by Untree.co</a></p>
-          </div>
-
-          <div class="col-lg-6 text-center text-lg-end">
-            <ul class="list-unstyled d-inline-flex ms-auto">
-              <li class="me-4"><a href="#">ASME B31.3</a></li>
-              <li><a href="#">PNAE G-7</a></li>
-            </ul>
-          </div>
-
+        <div class="col-6 col-lg-4">
+          <h4 class="footer-heading">Özgeçmiş &amp; İletişim</h4>
+          <ul class="footer-links">
+            <li><a href="files/osman-yildirim-cv-tr.pdf" target="_blank" download><i class="fa-solid fa-file-pdf text-danger me-1"></i> Türkçe CV İndir (PDF)</a></li>
+            <li><a href="files/osman-yildirim-cv-en.pdf" target="_blank" download><i class="fa-solid fa-file-pdf text-danger me-1"></i> English CV Download (PDF)</a></li>
+            <li class="text-slate-400 mt-2"><i class="fa-solid fa-location-dot me-1"></i> Kahramanmaraş / Mersin, Türkiye</li>
+            <li class="text-slate-400"><i class="fa-solid fa-envelope me-1"></i> osman1429@hotmail.com</li>
+          </ul>
         </div>
       </div>
 
+      <div class="border-top border-secondary pt-4 d-flex flex-wrap justify-content-between align-items-center small text-slate-500">
+        <p class="mb-0">&copy; 2026 Osman Yıldırım. Tüm hakları saklıdır.</p>
+        <p class="mb-0 font-monospace">ASME B31.3 &bull; PNAE G-7 &bull; SolidWorks &bull; Moldflow</p>
+      </div>
     </div>
   </footer>
-  <!-- End Footer Section -->
 
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/tiny-slider.js"></script>
-  <script src="js/custom.js"></script>
 </body>
 </html>
