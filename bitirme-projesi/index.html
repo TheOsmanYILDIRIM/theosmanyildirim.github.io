@@ -316,6 +316,54 @@
     .figure-caption strong {
       color: var(--slate-900);
     }
+    .video-figure-card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      margin: 16px 0;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+    }
+    .video-figure-card:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.25);
+      transform: translateY(-3px);
+    }
+    .video-figure-card video {
+      width: 100%;
+      max-height: 480px;
+      border-radius: var(--radius-md);
+      background: #020617;
+      aspect-ratio: 9 / 16;
+      object-fit: cover;
+      display: block;
+    }
+    .video-figure-caption {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 12px;
+      line-height: 1.5;
+      font-weight: 500;
+      text-align: left;
+    }
+    .video-figure-caption strong {
+      color: #f8fafc;
+    }
+    .video-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      margin-bottom: 8px;
+    }
 
     /* ==================== 3. TABLO VE MOBİL YATAY KAYDIRMA ==================== */
     .table-responsive {
@@ -588,13 +636,19 @@
         <div class="col-lg-4 text-center mt-4 mt-lg-0">
           <div class="p-3 cad-preview-card">
             <div class="d-flex justify-content-between align-items-center mb-2 px-1 text-slate-300 font-monospace small">
-              <span class="d-flex align-items-center gap-1"><i class="fa-solid fa-cube text-info"></i> SOLIDWORKS CAD &amp; 8K CGI</span>
-              <span class="badge" style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4);">Raytraced Studio Hero</span>
+              <span class="d-flex align-items-center gap-1"><i class="fa-solid fa-cube text-info"></i> SOLIDWORKS CAD &amp; CGI</span>
+              <span class="badge" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4);">2K Studio Hero</span>
             </div>
-            <img src="../images/bitirme-projesi/conformal_studio_raytrace.jpg" class="img-fluid rounded" alt="Helisel Conformal Soğutma Kalıp Çekirdeği 8K Studio CGI Render">
+            <picture>
+              <source srcset="../images/bitirme-projesi/conformal_helical_water_studio.webp" type="image/webp">
+              <img src="../images/bitirme-projesi/conformal_helical_water_studio.jpg" class="img-fluid rounded" alt="Helisel Conformal Soğutma Kalıp Çekirdeği 2K Studio Render">
+            </picture>
             <div class="mt-2 text-slate-300 font-monospace small">
-              Helisel Conformal Kalıp &amp; Sıcak Yolluk
+              Helisel Conformal Kalıp &amp; Kristal Akışkan
             </div>
+            <a href="#video-galeri" class="btn btn-sm btn-outline-info w-100 mt-2 font-monospace" style="font-size: 0.78rem;">
+              <i class="fa-solid fa-circle-play me-1"></i> Sinematik Videoları İzle (4 Video)
+            </a>
           </div>
         </div>
       </div>
@@ -708,10 +762,11 @@
               <a class="toc-link" href="#ozet"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> Özet ve Temel Bulgular</a>
               <a class="toc-link" href="#giris"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 1. Giriş</a>
               <a class="toc-link" href="#malzeme-ekipmanlar"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 2. Malzeme ve Ekipmanlar</a>
-              <a class="toc-link" href="#tasarim-sureci"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 3. Tasarım & Modelleme</a>
+              <a class="toc-link" href="#tasarim-sureci"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 3. Tasarım &amp; Modelleme (CAD)</a>
+              <a class="toc-link" href="#video-galeri"><i class="fa-solid fa-film me-2 text-info small"></i> 3.4 Simülasyon Videoları</a>
               <a class="toc-link" href="#moldflow-sureci"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 4. Moldflow Analiz Aşamaları</a>
-              <a class="toc-link" href="#sonuclar"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 5. Simülasyon Sonuçları & Kıyas</a>
-              <a class="toc-link" href="#degerlendirme"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 6. Sonuç & Mühendislik Çıkarımı</a>
+              <a class="toc-link" href="#sonuclar"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 5. Simülasyon Sonuçları &amp; Kıyas</a>
+              <a class="toc-link" href="#degerlendirme"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 6. Sonuç &amp; Mühendislik Çıkarımı</a>
             </nav>
 
             <hr class="my-3">
@@ -731,7 +786,7 @@
         <div class="col-12 d-lg-none mb-4">
           <div class="mobile-toc-container">
             <button class="btn btn-outline-success mobile-toc-btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileTocCollapse" aria-expanded="false" aria-controls="mobileTocCollapse">
-              <span><i class="fa-solid fa-list-ol me-2"></i> Rapor İçindekiler & Hızlı Bölüm Seç</span>
+              <span><i class="fa-solid fa-list-ol me-2"></i> Rapor İçindekiler &amp; Hızlı Bölüm Seç</span>
               <i class="fa-solid fa-chevron-down"></i>
             </button>
             <div class="collapse mt-2" id="mobileTocCollapse">
@@ -739,10 +794,11 @@
                 <a class="toc-link" href="#ozet"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> Özet ve Temel Bulgular</a>
                 <a class="toc-link" href="#giris"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 1. Giriş</a>
                 <a class="toc-link" href="#malzeme-ekipmanlar"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 2. Malzeme ve Ekipmanlar</a>
-                <a class="toc-link" href="#tasarim-sureci"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 3. Tasarım & Modelleme (CAD)</a>
+                <a class="toc-link" href="#tasarim-sureci"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 3. Tasarım &amp; Modelleme (CAD)</a>
+                <a class="toc-link" href="#video-galeri"><i class="fa-solid fa-film me-2 text-info small"></i> 3.4 Simülasyon Videoları</a>
                 <a class="toc-link" href="#moldflow-sureci"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 4. Moldflow Analiz Aşamaları</a>
-                <a class="toc-link" href="#sonuclar"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 5. Simülasyon Sonuçları & Kıyas</a>
-                <a class="toc-link" href="#degerlendirme"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 6. Sonuç & Mühendislik Çıkarımı</a>
+                <a class="toc-link" href="#sonuclar"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 5. Simülasyon Sonuçları &amp; Kıyas</a>
+                <a class="toc-link" href="#degerlendirme"><i class="fa-solid fa-chevron-right me-2 text-success small"></i> 6. Sonuç &amp; Mühendislik Çıkarımı</a>
               </nav>
               <div class="d-grid gap-2 mt-2">
                 <a href="rapor.md" download class="btn btn-outline-success btn-touch font-monospace">
@@ -1031,35 +1087,90 @@
 
               <h5 class="fw-bold text-slate-900 mt-4">3.3 Fotogerçekçi CGI Görselleştirme &amp; Kalıp Montaj Detayları</h5>
               <p>
-                SolidWorks 3D modelleme geometrisi ve helisel conformal soğutma mimarisi; eklemeli imalat öncesi montaj uyumunu ve soğutucu kanal yerleşimini doğrulamak adına yüksek çözünürlüklü fotogerçekçi CGI render motoru ile görselleştirilmiştir:
+                SolidWorks 3D modelleme geometrisi ve helisel conformal soğutma mimarisi; eklemeli imalat öncesi montaj uyumunu ve soğutucu kanal yerleşimini doğrulamak adına yüksek çözünürlüklü fotogerçekçi 2K stüdyo render motoru ile görselleştirilmiştir:
               </p>
 
               <div class="row g-3 my-2">
                 <div class="col-md-6">
                   <div class="figure-card h-100">
-                    <img src="../images/bitirme-projesi/conformal_exploded_assembly_cgi.jpg" class="img-fluid" alt="Patlatılmış Kalıp Montajı CGI">
-                    <div class="figure-caption"><strong>Şekil 6:</strong> Patlatılmış Kalıp Montajı: PEEK Parça, Sıcak Yolluk, Çift Helisel Soğutma Kanalları ve Çelik Kalıp Çekirdeği.</div>
+                    <picture>
+                      <source srcset="../images/bitirme-projesi/conformal_helical_water_studio.webp" type="image/webp">
+                      <img src="../images/bitirme-projesi/conformal_helical_water_studio.jpg" class="img-fluid" alt="Helisel Conformal Su Kanalları Stüdyo 3D Render">
+                    </picture>
+                    <div class="figure-caption"><strong>Şekil 6:</strong> Helisel Conformal Su Kanalları &amp; Kalıp Çekirdeği 3D Kristal-Akışkan Stüdyo Renderı (Eklemeli İmalat Çift Helis Geometrisi).</div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="figure-card h-100">
-                    <img src="../images/bitirme-projesi/conformal_core_macro_render.jpg" class="img-fluid" alt="Kalıp Çekirdeği Makro Detayı CGI">
-                    <div class="figure-caption"><strong>Şekil 7:</strong> Eklemeli imalatla üretilecek kalıp çekirdeğinin iç helis su giriş/çıkış kanalları makro detayı.</div>
+                    <picture>
+                      <source srcset="../images/bitirme-projesi/peek_part_hot_runner_studio.webp" type="image/webp">
+                      <img src="../images/bitirme-projesi/peek_part_hot_runner_studio.jpg" class="img-fluid" alt="PEEK Parça ve Sıcak Yolluk Stüdyo Render">
+                    </picture>
+                    <div class="figure-caption"><strong>Şekil 7:</strong> Victrex PEEK 450CA30 Parça ve 2-Noktalı Sıcak Yolluk (Side Gates) Besleme Sistemi Stüdyo Aydınlatma Detayı.</div>
                   </div>
                 </div>
               </div>
 
-              <div class="row g-3 my-2">
-                <div class="col-md-6">
-                  <div class="figure-card h-100">
-                    <img src="../images/bitirme-projesi/peek_runner_studio_macro.jpg" class="img-fluid" alt="PEEK Parça ve Sıcak Yolluk Studio CGI">
-                    <div class="figure-caption"><strong>Şekil 8:</strong> Victrex PEEK 450CA30 plastik parça ve 2-noktalı sıcak yolluk (Side Gates) besleme geometrisi (Studio Işık Efektli Render).</div>
+              <!-- 3.4 SİNEMATİK SİMÜLASYON VE TERMAL AKIŞ VİDEOLARI -->
+              <h5 class="fw-bold text-slate-900 mt-4" id="video-galeri"><i class="fa-solid fa-film text-info me-2"></i> 3.4 İnteraktif Sinematik Simülasyon &amp; Termal Akış Videoları</h5>
+              <p>
+                SolidWorks CAD geometrisi ve Autodesk Moldflow sonlu elemanlar analizlerinin dinamik termal, eriyik dolum ve kinematik montaj yörüngeleri yüksek çözünürlüklü sinematik animasyonlarla görselleştirilmiştir:
+              </p>
+
+              <div class="row g-3 my-3">
+                <!-- Video 1: Polimer Eriyik Akış -->
+                <div class="col-12 col-md-6">
+                  <div class="video-figure-card h-100">
+                    <span class="video-badge bg-warning text-dark"><i class="fa-solid fa-fire-burner me-1"></i> Eriyik Akış Analizi</span>
+                    <video autoplay loop muted playsinline controls poster="../images/bitirme-projesi/poster_polymer_melt_flow_simulation.jpg" preload="metadata">
+                      <source src="../videos/bitirme-projesi/polymer_melt_flow_simulation.mp4" type="video/mp4">
+                      Tarayıcınız HTML5 video etiketini desteklemiyor.
+                    </video>
+                    <div class="video-figure-caption">
+                      <strong>Video 1:</strong> Victrex PEEK 450CA30 yüksek viskoziteli polimer eriyiğinin sıcak yolluk nozullarından kalıp kavitasyonuna akışı ve konik cidar yüzeyini oluşturma simülasyonu.
+                    </div>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="figure-card h-100">
-                    <img src="../images/bitirme-projesi/conformal_studio_raytrace.jpg" class="img-fluid" alt="Helisel Conformal Kalıp ve Yolluk Bütünleşik Studio CGI">
-                    <div class="figure-caption"><strong>Şekil 9:</strong> Helisel conformal soğutma kanallarının kalıp çekirdeği ve sıcak yolluk sistemi ile bütünleşik 8K raytraced montajı.</div>
+
+                <!-- Video 2: Termal Gradyan -->
+                <div class="col-12 col-md-6">
+                  <div class="video-figure-card h-100">
+                    <span class="video-badge bg-danger text-white"><i class="fa-solid fa-temperature-full me-1"></i> Termal Gradyan &amp; Isı Dağılımı</span>
+                    <video autoplay loop muted playsinline controls poster="../images/bitirme-projesi/poster_hot_runner_thermal_simulation.jpg" preload="metadata">
+                      <source src="../videos/bitirme-projesi/hot_runner_thermal_simulation.mp4" type="video/mp4">
+                      Tarayıcınız HTML5 video etiketini desteklemiyor.
+                    </video>
+                    <div class="video-figure-caption">
+                      <strong>Video 2:</strong> 380°C sıcak yolluk gövdesinin termal kor ışıması, ısı transfer gradyanı ve helisel conformal su kanalları arasındaki soğutma dinamizmi.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Video 3: 3D Yörünge -->
+                <div class="col-12 col-md-6">
+                  <div class="video-figure-card h-100">
+                    <span class="video-badge bg-info text-dark"><i class="fa-solid fa-arrows-spin me-1"></i> 3D Kinematik Yörünge</span>
+                    <video autoplay loop muted playsinline controls poster="../images/bitirme-projesi/poster_cad_kinematic_orbit_showcase.jpg" preload="metadata">
+                      <source src="../videos/bitirme-projesi/cad_kinematic_orbit_showcase.mp4" type="video/mp4">
+                      Tarayıcınız HTML5 video etiketini desteklemiyor.
+                    </video>
+                    <div class="video-figure-caption">
+                      <strong>Video 3:</strong> Sıcak yolluk besleme kollarının, kalıp ayırma düzleminin ve konik PEEK parçanın 360° kinematik kamera yörüngesinde montaj incelemesi.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Video 4: Makro Çekim -->
+                <div class="col-12 col-md-6">
+                  <div class="video-figure-card h-100">
+                    <span class="video-badge bg-success text-white"><i class="fa-solid fa-camera-retro me-1"></i> Makro Stüdyo Çekimi</span>
+                    <video autoplay loop muted playsinline controls poster="../images/bitirme-projesi/poster_conformal_mold_macro_cinematic.jpg" preload="metadata">
+                      <source src="../videos/bitirme-projesi/conformal_mold_macro_cinematic.mp4" type="video/mp4">
+                      Tarayıcınız HTML5 video etiketini desteklemiyor.
+                    </video>
+                    <div class="video-figure-caption">
+                      <strong>Video 4:</strong> Stüdyo aydınlatması altında 2-noktalı sıcak yolluk besleme girişleri (Side Gates) ve PEEK parça iç yüzey toleranslarının yüksek çözünürlüklü makro çekimi.
+                    </div>
                   </div>
                 </div>
               </div>
