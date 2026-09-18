@@ -310,41 +310,76 @@
       gap: 6px;
     }
 
-    /* Reel Showcase Cards */
-    .reel-showcase-card {
-      background: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 14px;
-      padding: 10px;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
-      transition: all 0.25s ease;
+    /* Product Showroom Video Cards */
+    .product-showroom-stage {
+      background: radial-gradient(circle at 50% 0%, #111d33 0%, #060b14 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 50px 0;
+      position: relative;
     }
-    .reel-showcase-card:hover {
-      border-color: #38bdf8;
-      transform: translateY(-3px);
-      box-shadow: 0 14px 30px -5px rgba(56, 189, 248, 0.2);
-    }
-    .reel-showcase-card video {
-      width: 100%;
-      aspect-ratio: 9 / 16;
-      max-height: 380px;
-      object-fit: cover;
-      border-radius: 10px;
+    .product-video-card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
       background: #020617;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.65);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+      aspect-ratio: 9 / 16;
+      width: 100%;
+      display: flex;
+    }
+    .product-video-card:hover {
+      transform: translateY(-4px) scale(1.015);
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: 0 24px 50px -10px rgba(56, 189, 248, 0.25);
+    }
+    .product-video-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
+      border-radius: inherit;
     }
-    .reel-showcase-title {
-      font-size: 0.85rem;
+    .video-glass-badge {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    .video-glass-badge .badge-label {
+      font-size: 0.74rem;
       font-weight: 600;
-      color: #f1f5f9;
-      margin-top: 10px;
-      margin-bottom: 2px;
+      color: #f8fafc;
+      font-family: var(--bs-font-monospace);
+      letter-spacing: 0.2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .reel-showcase-desc {
-      font-size: 0.78rem;
+    .video-glass-badge .badge-sub {
+      font-size: 0.68rem;
       color: #94a3b8;
-      line-height: 1.4;
-      margin-bottom: 0;
+      font-family: var(--bs-font-monospace);
+    }
+    .video-glass-badge .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      display: inline-block;
     }
 
     /* Skills Card */
@@ -431,7 +466,7 @@
           <li class="nav-item"><a class="nav-link eng-nav-link" href="bitirme-projesi/">Bitirme Projesi (Moldflow)</a></li>
           <li class="nav-item"><a class="nav-link eng-nav-link" href="me-200-yaz-staji-1/">Akkuyu NGS Stajları</a></li>
           <li class="nav-item"><a class="nav-link eng-nav-link" href="#projeler">Projeler</a></li>
-          <li class="nav-item"><a class="nav-link eng-nav-link" href="#reeller">3D Reels</a></li>
+          <li class="nav-item"><a class="nav-link eng-nav-link" href="#vitrin">3D Vitrin</a></li>
           <li class="nav-item"><a class="nav-link eng-nav-link" href="#yetkinlikler">Yetkinlikler</a></li>
           <li class="nav-item"><a class="nav-link eng-nav-link" href="#iletisim">İletişim</a></li>
         </ul>
@@ -619,70 +654,71 @@
     </div>
   </section>
 
-  <!-- ==================== SİNEMATİK 3D AI REEL VİTRİNİ ==================== -->
-  <section class="py-5" id="reeller" style="background-color: #0b1120; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b;">
+  <!-- ==================== 3D ÜRÜN VİTRİNİ (SİNEMATİK SÜSLER) ==================== -->
+  <section class="product-showroom-stage" id="vitrin">
     <div class="container">
-      <div class="row mb-4 align-items-center">
-        <div class="col-md-8">
-          <span class="badge font-monospace" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); font-size: 0.78rem;">
-            ● 3D AI VISUAL SHOWCASE // 60 FPS
+      <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 gap-2">
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge font-monospace text-cyan" style="background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); font-size: 0.75rem; padding: 6px 12px; border-radius: 20px;">
+            <i class="fa-solid fa-cube me-1"></i> 3D VİTRİN // 60 FPS
           </span>
-          <h2 class="text-white fw-bold mt-2 mb-1" style="font-size: clamp(1.4rem, 3vw, 2rem);">
-            Sinematik 3D &amp; Simülasyon Reel Vitrini
-          </h2>
-          <p class="mb-0 text-slate-400" style="color: #94a3b8; font-size: 0.92rem;">
-            Kalıp geometrisi ve polimer enjeksiyon akışının görselleştirildiği 3D stüdyo ve yapay zeka animasyonları.
-          </p>
+          <span class="text-slate-400 font-monospace small" style="font-size: 0.8rem;">Helisel Kalıp &amp; Termal Dinamik</span>
         </div>
-        <div class="col-md-4 text-md-end mt-3 mt-md-0">
-          <a href="bitirme-projesi/" class="btn btn-sm btn-outline-success font-monospace">
-            Bilimsel Analiz Raporu →
-          </a>
-        </div>
+        <a href="bitirme-projesi/" class="btn btn-sm btn-outline-success font-monospace" style="border-radius: 20px; font-size: 0.8rem; padding: 5px 14px;">
+          Bitirme Projesi Raporu →
+        </a>
       </div>
 
-      <div class="row g-3">
-        <!-- Reel 1 -->
+      <div class="row g-3 g-md-4">
+        <!-- Video 1: Polimer Eriyik Akışı -->
         <div class="col-6 col-lg-3">
-          <div class="reel-showcase-card h-100">
+          <div class="product-video-card">
             <video autoplay loop muted playsinline poster="images/bitirme-projesi/poster_polymer_melt_flow_simulation.jpg">
               <source src="videos/bitirme-projesi/polymer_melt_flow_simulation.mp4" type="video/mp4">
             </video>
-            <div class="reel-showcase-title">Polimer Eriyik Akışı</div>
-            <div class="reel-showcase-desc">PEEK polimer eriyiğinin kalıp dolum dinamiği.</div>
+            <div class="video-glass-badge">
+              <span class="badge-label"><span class="badge-dot"></span>Eriyik Akışı</span>
+              <span class="badge-sub">60 FPS</span>
+            </div>
           </div>
         </div>
 
-        <!-- Reel 2 -->
+        <!-- Video 2: Sıcak Yolluk Termal Kor -->
         <div class="col-6 col-lg-3">
-          <div class="reel-showcase-card h-100">
+          <div class="product-video-card">
             <video autoplay loop muted playsinline poster="images/bitirme-projesi/poster_hot_runner_thermal_simulation.jpg">
               <source src="videos/bitirme-projesi/hot_runner_thermal_simulation.mp4" type="video/mp4">
             </video>
-            <div class="reel-showcase-title">Sıcak Yolluk Termal Kor</div>
-            <div class="reel-showcase-desc">380°C yolluk gövdesi ısı dağılımı.</div>
+            <div class="video-glass-badge">
+              <span class="badge-label"><span class="badge-dot" style="background: #f59e0b; box-shadow: 0 0 8px #f59e0b;"></span>380°C Yolluk</span>
+              <span class="badge-sub">Termal</span>
+            </div>
           </div>
         </div>
 
-        <!-- Reel 3 -->
+        <!-- Video 3: 3D Kinematik Kamera -->
         <div class="col-6 col-lg-3">
-          <div class="reel-showcase-card h-100">
+          <div class="product-video-card">
             <video autoplay loop muted playsinline poster="images/bitirme-projesi/poster_cad_kinematic_orbit_showcase.jpg">
               <source src="videos/bitirme-projesi/cad_kinematic_orbit_showcase.mp4" type="video/mp4">
             </video>
-            <div class="reel-showcase-title">3D Kinematik Kamera</div>
-            <div class="reel-showcase-desc">Sıcak yolluk ve parçanın 360° dönüşü.</div>
+            <div class="video-glass-badge">
+              <span class="badge-label"><span class="badge-dot" style="background: #38bdf8; box-shadow: 0 0 8px #38bdf8;"></span>360° Kamera</span>
+              <span class="badge-sub">CAD</span>
+            </div>
           </div>
         </div>
 
-        <!-- Reel 4 -->
+        <!-- Video 4: Makro Stüdyo Çekimi -->
         <div class="col-6 col-lg-3">
-          <div class="reel-showcase-card h-100">
+          <div class="product-video-card">
             <video autoplay loop muted playsinline poster="images/bitirme-projesi/poster_conformal_mold_macro_cinematic.jpg">
               <source src="videos/bitirme-projesi/conformal_mold_macro_cinematic.mp4" type="video/mp4">
             </video>
-            <div class="reel-showcase-title">Makro Stüdyo Çekimi</div>
-            <div class="reel-showcase-desc">Kalıp ve yolluk girişleri detayları.</div>
+            <div class="video-glass-badge">
+              <span class="badge-label"><span class="badge-dot"></span>Helisel Kalıp</span>
+              <span class="badge-sub">Stüdyo</span>
+            </div>
           </div>
         </div>
       </div>
@@ -789,5 +825,27 @@
   </footer>
 
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Mobil ve masaüstü tarayıcılarda videoların kesintisiz oto-aktif loop oynatılması
+    document.addEventListener('DOMContentLoaded', function() {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(function(video) {
+        video.muted = true;
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+        video.setAttribute('autoplay', '');
+        video.setAttribute('loop', '');
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function() {
+            // Tarayıcı kısıtlamasında kullanıcı dokunduğunda veya görünür olduğunda oynat
+            window.addEventListener('touchstart', function() {
+              video.play().catch(function() {});
+            }, { once: true });
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
