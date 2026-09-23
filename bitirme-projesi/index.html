@@ -14,9 +14,6 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="../css/style.css" rel="stylesheet">
   
-  <!-- Chart.js (Grafik Motoru) -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   <style>
     :root {
       /* Furni & Emerald Palette */
@@ -149,6 +146,14 @@
     .chart-container:hover {
       box-shadow: var(--shadow-lg);
     }
+    .report-chart { display: grid; gap: 12px; font-size: 13px; color: #334155; }
+    .report-chart .chart-legend { display: flex; flex-wrap: wrap; gap: 14px; font-weight: 600; }
+    .report-chart .chart-legend span::before { content: ''; display: inline-block; width: 11px; height: 11px; margin-right: 5px; border-radius: 2px; background: var(--key); }
+    .report-chart .chart-row { display: grid; grid-template-columns: minmax(110px, 32%) 1fr; align-items: center; gap: 10px; }
+    .report-chart .chart-bars { display: grid; gap: 3px; }
+    .report-chart .chart-bar { width: var(--width); max-width: 100%; min-width: 48px; padding: 3px 6px; border-radius: 3px; background: var(--bar); color: #fff; font-weight: 700; line-height: 1.35; white-space: nowrap; }
+    @media (max-width: 390px) { .report-chart .chart-row { grid-template-columns: minmax(90px, 35%) 1fr; font-size: 11px; } }
+    #viewer-loading { display: flex; }
     .comparison-badge {
       font-size: 0.75rem;
       font-weight: 700;
@@ -712,8 +717,10 @@
         <div class="col-lg-6">
           <div class="chart-container">
             <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-chart-column text-success me-2"></i> Çarpılma Değerleri Karşılaştırması (mm)</h5>
-            <div style="position: relative; height: 260px; width: 100%;">
-              <canvas id="warpageChart"></canvas>
+            <div class="report-chart" role="img" aria-label="Soğutma kaynaklı çarpılma: geleneksel 2.246, helisel 1.182 milimetre. Toplam çarpılma: geleneksel 9.912, helisel 8.289 milimetre.">
+              <div class="chart-legend"><span style="--key:#dc2626">Geleneksel</span><span style="--key:#059669">Helisel</span></div>
+              <div class="chart-row"><strong>Soğutma kaynaklı</strong><div class="chart-bars"><div class="chart-bar" style="--width:22.7%;--bar:#dc2626">2.246 mm</div><div class="chart-bar" style="--width:11.9%;--bar:#059669">1.182 mm</div></div></div>
+              <div class="chart-row"><strong>Toplam çarpılma</strong><div class="chart-bars"><div class="chart-bar" style="--width:100%;--bar:#dc2626">9.912 mm</div><div class="chart-bar" style="--width:83.6%;--bar:#059669">8.289 mm</div></div></div>
             </div>
             <div class="small text-muted mt-3">
               * Eklemeli imalatla üretilen helisel conformal kanallar, soğutmadan kaynaklı çarpılmayı %47.4 oranında düşürmüştür.
@@ -725,8 +732,11 @@
         <div class="col-lg-6">
           <div class="chart-container">
             <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-temperature-arrow-down text-danger me-2"></i> Sıcaklık Dağılımı (°C)</h5>
-            <div style="position: relative; height: 260px; width: 100%;">
-              <canvas id="tempChart"></canvas>
+            <div class="report-chart" role="img" aria-label="İç duvar: geleneksel 199.2, helisel 91.65 derece. Maksimum kalıp: 269.1 ve 159.6 derece. Minimum parça: 127.4 ve 37.26 derece.">
+              <div class="chart-legend"><span style="--key:#b45309">Geleneksel</span><span style="--key:#0369a1">Helisel</span></div>
+              <div class="chart-row"><strong>İç duvar</strong><div class="chart-bars"><div class="chart-bar" style="--width:74%;--bar:#b45309">199.2 °C</div><div class="chart-bar" style="--width:34.1%;--bar:#0369a1">91.65 °C</div></div></div>
+              <div class="chart-row"><strong>Maks. kalıp</strong><div class="chart-bars"><div class="chart-bar" style="--width:100%;--bar:#b45309">269.1 °C</div><div class="chart-bar" style="--width:59.3%;--bar:#0369a1">159.6 °C</div></div></div>
+              <div class="chart-row"><strong>Min. parça</strong><div class="chart-bars"><div class="chart-bar" style="--width:47.3%;--bar:#b45309">127.4 °C</div><div class="chart-bar" style="--width:13.8%;--bar:#0369a1">37.26 °C</div></div></div>
             </div>
             <div class="small text-muted mt-3">
               * Geleneksel düz delik/baffle sisteminde parça içinde ısı adacıkları oluşurken, helisel tasarım sıcaklığı 91.65°C seviyesine çekmiştir.
@@ -738,8 +748,11 @@
         <div class="col-lg-12">
           <div class="chart-container">
             <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-bullseye text-primary me-2"></i> Kritik Mesh Düğüm Noktalarındaki İyileşme Oranları (%)</h5>
-            <div style="position: relative; height: 200px; width: 100%;">
-              <canvas id="nodeChart"></canvas>
+            <div class="report-chart" role="img" aria-label="İyileşme oranları: genel soğutma kaynaklı çarpılma yüzde 47.4, düğüm 71077 yüzde 53, düğüm 3072 yüzde 17, toplam çarpılma yüzde 16.4.">
+              <div class="chart-row"><strong>Soğutma kaynaklı</strong><div class="chart-bar" style="--width:79%;--bar:#059669">%47.4</div></div>
+              <div class="chart-row"><strong>Düğüm 71077</strong><div class="chart-bar" style="--width:88.3%;--bar:#0284c7">%53</div></div>
+              <div class="chart-row"><strong>Düğüm 3072</strong><div class="chart-bar" style="--width:28.3%;--bar:#b45309">%17</div></div>
+              <div class="chart-row"><strong>Toplam çarpılma</strong><div class="chart-bar" style="--width:27.3%;--bar:#3b5d50">%16.4</div></div>
             </div>
           </div>
         </div>
@@ -966,7 +979,7 @@
                           <i class="fa-regular fa-square me-1"></i> Baffle Soğutma
                         </button>
                         <button type="button" class="btn btn-xs btn-outline-info pixi-flow-btn ms-auto" id="btn-toggle-flow">
-                          <i class="fa-solid fa-water me-1"></i> Akış Simülasyonu
+                          <i class="fa-solid fa-water me-1"></i> Görsel akış izi
                         </button>
                       </div>
                     </div>
@@ -989,8 +1002,8 @@
                 <div id="three-viewer-container" class="viewer-panel" style="display: none;">
                   <!-- Model Seçici Buton Grubu -->
                   <div class="d-flex flex-wrap gap-2 mb-3">
-                    <button type="button" class="btn btn-sm btn-info font-monospace model-switch-btn active btn-touch" data-model="plastic_part_and_runner">
-                      <i class="fa-solid fa-layer-group me-1"></i> Parça + Yolluk (Part + Runner)
+                    <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn btn-touch" data-model="plastic_part_and_runner">
+                      <i class="fa-solid fa-layer-group me-1"></i> Parça + Yolluk
                     </button>
                     <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn btn-touch" data-model="helical_conformal_cooling_channels">
                       <i class="fa-solid fa-water me-1"></i> Helisel Soğutma Kanalları
@@ -1001,15 +1014,17 @@
                     <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn btn-touch" data-model="hot_runner_system">
                       <i class="fa-solid fa-diagram-project me-1"></i> Sadece Yolluk (Runner)
                     </button>
-                    <button type="button" class="btn btn-sm btn-outline-light font-monospace model-switch-btn btn-touch" data-model="conformal_mold_core_assembly">
-                      <i class="fa-solid fa-industry me-1"></i> Kalıp Çekirdek Montajı
+                    <button type="button" class="btn btn-sm btn-info font-monospace model-switch-btn active btn-touch" data-model="conformal_mold_core_assembly">
+                      <i class="fa-solid fa-industry me-1"></i> Parça + Yolluk + Soğutma
                     </button>
+                    <button type="button" id="flow-toggle" class="btn btn-sm btn-outline-info font-monospace btn-touch" aria-pressed="true" title="CAD kanalları boyunca görsel akış izi; CFD sonucu değildir">Akış: açık</button>
+                    <small class="d-block w-100 text-slate-300 font-monospace mt-1">Akış, CAD kanallarını izleyen temsili bir animasyondur; fiziksel CFD veya Moldflow sonucu değildir.</small>
                   </div>
 
                   <div id="cad-3d-viewer" class="cad-canvas-box">
-                    <div id="viewer-loading" class="d-flex flex-column align-items-center justify-content-center h-100 text-slate-300 font-monospace">
+                    <div id="viewer-loading" class="flex-column align-items-center justify-content-center h-100 text-slate-300 font-monospace">
                       <div class="spinner-border text-info mb-2" role="status"></div>
-                      <span id="loading-text">3D CAD Geometrisi Yükleniyor...</span>
+                      <span id="loading-text">3D görünüm seçildiğinde CAD geometrisi yüklenecek.</span>
                     </div>
                     
                     <!-- Model Bilgi Rozeti -->
@@ -1023,16 +1038,16 @@
                 <div class="mt-3 pt-3 border-top border-secondary border-opacity-25 d-flex flex-wrap gap-2 align-items-center justify-content-between">
                   <div class="d-flex flex-wrap gap-2 align-items-center">
                     <span class="small text-slate-300 me-2"><strong>Orijinal CAD Modellerini İndir:</strong></span>
-                    <a id="btn-dl-glb" href="../files/3d/plastic_part_and_runner.glb" download class="btn btn-sm btn-outline-info font-monospace btn-touch">
+                    <a id="btn-dl-glb" href="../files/3d/conformal_mold_core_assembly.glb" download class="btn btn-sm btn-outline-info font-monospace btn-touch">
                       <i class="fa-solid fa-download me-1"></i> GLB (Web3D)
                     </a>
-                    <a id="btn-dl-obj" href="../files/3d/plastic_part_and_runner.obj" download class="btn btn-sm btn-outline-light font-monospace btn-touch">
+                    <a id="btn-dl-obj" href="../files/3d/conformal_mold_core_assembly.obj" download class="btn btn-sm btn-outline-light font-monospace btn-touch">
                       <i class="fa-solid fa-download me-1"></i> OBJ (Blender)
                     </a>
-                    <a id="btn-dl-stl" href="../files/3d/plastic_part_and_runner.stl" download class="btn btn-sm btn-outline-light font-monospace btn-touch">
+                    <a id="btn-dl-stl" href="../files/3d/conformal_mold_core_assembly.stl" download class="btn btn-sm btn-outline-light font-monospace btn-touch">
                       <i class="fa-solid fa-download me-1"></i> STL (CAM/3D)
                     </a>
-                    <a id="btn-dl-ply" href="../files/3d/plastic_part_and_runner.ply" download class="btn btn-sm btn-outline-secondary font-monospace btn-touch">
+                    <a id="btn-dl-ply" href="../files/3d/conformal_mold_core_assembly.ply" download class="btn btn-sm btn-outline-secondary font-monospace btn-touch">
                       <i class="fa-solid fa-download me-1"></i> PLY
                     </a>
                   </div>
@@ -1345,189 +1360,9 @@
     </div>
   </footer>
 
-  <!-- ==================== CHART.JS GRAFİK KODLARI ==================== -->
-  <script>
-    // Chart.js Global Typography & Tooltip Theme
-    Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
-    Chart.defaults.color = '#475569';
-    
-    const sharedTooltipConfig = {
-      backgroundColor: 'rgba(15, 23, 42, 0.95)',
-      titleColor: '#ffffff',
-      bodyColor: '#cbd5e1',
-      borderColor: 'rgba(56, 189, 248, 0.35)',
-      borderWidth: 1,
-      padding: 10,
-      cornerRadius: 8,
-      boxPadding: 4
-    };
-
-    // 1. Warpage Chart
-    const ctxWarpage = document.getElementById('warpageChart').getContext('2d');
-    new Chart(ctxWarpage, {
-      type: 'bar',
-      data: {
-        labels: ['Soğutma Kaynaklı Çarpılma (mm)', 'Toplam Çarpılma (mm)'],
-        datasets: [
-          {
-            label: 'Geleneksel Soğutma (Baffle)',
-            data: [2.246, 9.912],
-            backgroundColor: '#ef4444',
-            borderColor: '#dc2626',
-            borderWidth: 1,
-            borderRadius: 6
-          },
-          {
-            label: 'Helisel Conformal Cooling (Eklemeli İmalat)',
-            data: [1.182, 8.289],
-            backgroundColor: '#10b981',
-            borderColor: '#059669',
-            borderWidth: 1,
-            borderRadius: 6
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              boxWidth: 12,
-              padding: 14,
-              font: { size: 12, weight: '600' },
-              color: '#334155'
-            }
-          },
-          tooltip: sharedTooltipConfig
-        },
-        scales: {
-          x: {
-            grid: { display: false },
-            ticks: { font: { size: 11, weight: '500' }, color: '#475569' }
-          },
-          y: {
-            beginAtZero: true,
-            grid: { color: '#f1f5f9' },
-            title: { display: true, text: 'Deformasyon (mm)', font: { size: 11, weight: 'bold' }, color: '#334155' },
-            ticks: { font: { size: 11 }, color: '#475569' }
-          }
-        }
-      }
-    });
-
-    // 2. Temperature Chart
-    const ctxTemp = document.getElementById('tempChart').getContext('2d');
-    new Chart(ctxTemp, {
-      type: 'bar',
-      data: {
-        labels: ['İç Duvar Sıcaklığı (°C)', 'Maks. Kalıp Sıcaklığı (°C)', 'Min. Parça Sıcaklığı (°C)'],
-        datasets: [
-          {
-            label: 'Geleneksel Soğutma',
-            data: [199.2, 269.1, 127.4],
-            backgroundColor: '#f59e0b',
-            borderColor: '#d97706',
-            borderWidth: 1,
-            borderRadius: 6
-          },
-          {
-            label: 'Helisel Conformal Cooling',
-            data: [91.65, 159.6, 37.26],
-            backgroundColor: '#0284c7',
-            borderColor: '#0369a1',
-            borderWidth: 1,
-            borderRadius: 6
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              boxWidth: 12,
-              padding: 14,
-              font: { size: 12, weight: '600' },
-              color: '#334155'
-            }
-          },
-          tooltip: sharedTooltipConfig
-        },
-        scales: {
-          x: {
-            grid: { display: false },
-            ticks: { font: { size: 11, weight: '500' }, color: '#475569' }
-          },
-          y: {
-            beginAtZero: true,
-            grid: { color: '#f1f5f9' },
-            title: { display: true, text: 'Sıcaklık (°C)', font: { size: 11, weight: 'bold' }, color: '#334155' },
-            ticks: { font: { size: 11 }, color: '#475569' }
-          }
-        }
-      }
-    });
-
-    // 3. Node Improvement Chart
-    const ctxNode = document.getElementById('nodeChart').getContext('2d');
-    new Chart(ctxNode, {
-      type: 'bar',
-      indexAxis: 'y',
-      data: {
-        labels: ['Genel Soğutma Çarpılma İyileşmesi', 'Kritik Düğüm 71077 (Taban Çeperi)', 'Kritik Düğüm 3072 (Üst Kısım)', 'Toplam Çarpılma İyileşmesi'],
-        datasets: [{
-          label: 'İyileşme Oranı (%)',
-          data: [47.4, 53.0, 17.0, 16.4],
-          backgroundColor: ['#10b981', '#00d2ff', '#f59e0b', '#3b5d50'],
-          borderColor: ['#059669', '#0284c7', '#d97706', '#2f4d42'],
-          borderWidth: 1,
-          borderRadius: 6
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            ...sharedTooltipConfig,
-            callbacks: {
-              label: function(context) {
-                return ' ' + context.dataset.label + ': %' + context.parsed.x;
-              }
-            }
-          }
-        },
-        scales: {
-          y: {
-            grid: { display: false },
-            ticks: { font: { size: 11, weight: '600' }, color: '#334155' }
-          },
-          x: {
-            beginAtZero: true,
-            max: 60,
-            grid: { color: '#f1f5f9' },
-            title: { display: true, text: 'İyileşme Oranı (%)', font: { size: 11, weight: 'bold' }, color: '#334155' },
-            ticks: {
-              font: { size: 11 },
-              color: '#475569',
-              callback: function(value) { return '%' + value; }
-            }
-          }
-        }
-      }
-    });
-  </script>
 
   <!-- ==================== PIXIJS & THREE.JS INTERACTIVE CAD ENGINES ==================== -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="vendor/pixi-7.3.2.min.js"></script>
 
   <script>
     /* =========================================================================
@@ -1547,6 +1382,7 @@
           btnThree.classList.add('btn-outline-light');
           panelPixi.style.display = 'block';
           panelThree.style.display = 'none';
+          if (typeof window.__threePause === 'function') window.__threePause();
           if (typeof window.__pixiResize === 'function') {
             window.__pixiResize();
           }
@@ -1559,6 +1395,7 @@
           btnPixi.classList.add('btn-outline-light');
           panelThree.style.display = 'block';
           panelPixi.style.display = 'none';
+          if (typeof window.__initThree === 'function') window.__initThree();
           if (typeof window.__threeResize === 'function') {
             window.__threeResize();
           }
@@ -1569,7 +1406,7 @@
     /* =========================================================================
        2. PIXIJS 2D/WebGL MOBILE-FIRST CAD & FLUID FLOW ENGINE (60 FPS)
        ========================================================================= */
-    (function() {
+    try { (function() {
       const stageElem = document.getElementById('pixi-canvas-stage');
       if (!stageElem || typeof PIXI === 'undefined') return;
 
@@ -1809,7 +1646,7 @@
           if (flowActive) {
             this.classList.add('btn-info', 'text-dark');
             this.classList.remove('btn-outline-info');
-            document.getElementById('pixi-status-text').innerText = 'Soğutma Akış Simülasyonu Aktif (Reynolds Eşitlenmiş Türbülans)';
+            document.getElementById('pixi-status-text').innerText = 'Soğutma kanallarında görsel akış izi aktif';
           } else {
             this.classList.remove('btn-info', 'text-dark');
             this.classList.add('btn-outline-info');
@@ -1832,286 +1669,251 @@
       window.addEventListener('orientationchange', () => {
         setTimeout(window.__pixiResize, 150);
       });
-    })();
-
+    })(); } catch (error) {
+      console.warn('2D CAD görünümü başlatılamadı:', error);
+    }
     /* =========================================================================
-       3. THREE.JS 3D INTERACTIVE SOLID CAD ENGINE (Studio Lighting & PBR)
+       3. THREE.JS 3D INTERACTIVE SOLID CAD ENGINE
        ========================================================================= */
     (function() {
       const container = document.getElementById('cad-3d-viewer');
-      if (!container) return;
+      const panel = document.getElementById('three-viewer-container');
+      const loading = document.getElementById('viewer-loading');
+      const loadingText = document.getElementById('loading-text');
+      const flowToggle = document.getElementById('flow-toggle');
+      if (!container || !panel || !loading || !flowToggle) return;
 
-      const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x0a0f1d);
-
-      const width = container.clientWidth || 600;
-      const height = container.clientHeight || 420;
-      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-      camera.position.set(120, 100, 180);
-
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
-      renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-      renderer.toneMapping = THREE.ACESFilmicToneMapping;
-      renderer.toneMappingExposure = 1.15;
-      container.appendChild(renderer.domElement);
-
-      const controls = new THREE.OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.05;
-      controls.autoRotate = true;
-      controls.autoRotateSpeed = 1.0;
-      controls.minDistance = 20;
-      controls.maxDistance = 600;
-
-      let autoRotateTimeout = null;
-      controls.addEventListener('start', () => {
-        controls.autoRotate = false;
-        if (autoRotateTimeout) clearTimeout(autoRotateTimeout);
-      });
-      controls.addEventListener('end', () => {
-        autoRotateTimeout = setTimeout(() => {
-          controls.autoRotate = true;
-        }, 3000);
-      });
-
-      // Studio Lighting Setup (4-Point Studio Lighting Rig)
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
-      scene.add(ambientLight);
-
-      const hemiLight = new THREE.HemisphereLight(0x7dd3fc, 0x0f172a, 0.85);
-      scene.add(hemiLight);
-
-      // Key Light (Warm Sunlight / Main Softbox)
-      const keyLight = new THREE.DirectionalLight(0xfffaed, 2.6);
-      keyLight.position.set(150, 220, 160);
-      scene.add(keyLight);
-
-      // Fill Light (Cool Sky Cyan Fill)
-      const fillLight = new THREE.DirectionalLight(0x38bdf8, 1.4);
-      fillLight.position.set(-160, 60, 120);
-      scene.add(fillLight);
-
-      // Rim / Kicker Light (High-Contrast Backlight for Edge Glint)
-      const rimLight = new THREE.DirectionalLight(0xffffff, 3.0);
-      rimLight.position.set(-80, 180, -180);
-      scene.add(rimLight);
-
-      // Bounce Light (Floor Warm Reflection)
-      const bounceLight = new THREE.DirectionalLight(0xf59e0b, 0.8);
-      bounceLight.position.set(0, -120, 80);
-      scene.add(bounceLight);
-
-      // Studio Radial Contact Shadow Disk
-      const shadowCanvas = document.createElement('canvas');
-      shadowCanvas.width = 256;
-      shadowCanvas.height = 256;
-      const sctx = shadowCanvas.getContext('2d');
-      const grad = sctx.createRadialGradient(128, 128, 10, 128, 128, 120);
-      grad.addColorStop(0, 'rgba(0, 0, 0, 0.75)');
-      grad.addColorStop(0.5, 'rgba(0, 0, 0, 0.35)');
-      grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      sctx.fillStyle = grad;
-      sctx.fillRect(0, 0, 256, 256);
-
-      const shadowTexture = new THREE.CanvasTexture(shadowCanvas);
-      const shadowPlane = new THREE.Mesh(
-        new THREE.PlaneGeometry(160, 160),
-        new THREE.MeshBasicMaterial({ map: shadowTexture, transparent: true, opacity: 0.85, depthWrite: false })
-      );
-      shadowPlane.rotation.x = -Math.PI / 2;
-      scene.add(shadowPlane);
-
-      let currentModel = null;
-      let currentLoadId = 0;
-      const loader = new THREE.GLTFLoader();
-
-      const modelMeta = {
-        'plastic_part_and_runner': {
-          title: 'Plastik Parça (PEEK) + Sıcak Yolluk (Hot Runner)',
-          file: 'plastic_part_and_runner'
-        },
-        'helical_conformal_cooling_channels': {
-          title: 'Helisel Conformal Soğutma Kanalları (Ø10mm Su)',
-          file: 'helical_conformal_cooling_channels'
-        },
-        'plastic_part': {
-          title: 'Ana Plastik Parça (Victrex PEEK 450CA30)',
-          file: 'plastic_part'
-        },
-        'hot_runner_system': {
-          title: 'Sıcak Yolluk Sistemi (Sprue, Runner & Side Gates)',
-          file: 'hot_runner_system'
-        },
-        'conformal_mold_core_assembly': {
-          title: 'Kalıp Çekirdeği ve Uyumlu Soğutma Montajı',
-          file: 'conformal_mold_core_assembly'
-        }
-      };
-
-      function updateDownloadLinks(fileBase) {
-        const glb = document.getElementById('btn-dl-glb');
-        const obj = document.getElementById('btn-dl-obj');
-        const stl = document.getElementById('btn-dl-stl');
-        const ply = document.getElementById('btn-dl-ply');
-        if (glb) glb.href = `../files/3d/${fileBase}.glb`;
-        if (obj) obj.href = `../files/3d/${fileBase}.obj`;
-        if (stl) stl.href = `../files/3d/${fileBase}.stl`;
-        if (ply) ply.href = `../files/3d/${fileBase}.ply`;
+      let startup = null;
+      let viewer = null;
+      function showError(message) {
+        loading.style.display = 'flex';
+        const spinner = loading.querySelector('.spinner-border');
+        if (spinner) spinner.style.display = 'none';
+        loadingText.textContent = message;
       }
+      function loadScript(src) {
+        return new Promise(function(resolve, reject) {
+          const script = document.createElement('script');
+          script.src = src;
+          script.onload = resolve;
+          script.onerror = function() { reject(new Error('Yerel 3D motor dosyası okunamadı: ' + src)); };
+          document.head.appendChild(script);
+        });
+      }
+      window.__initThree = function() {
+        if (viewer) { viewer.setActive(true); viewer.resize(); return; }
+        if (startup) return;
+        loading.style.display = 'flex';
+        loadingText.textContent = '3D motoru ve CAD montajı yükleniyor...';
+        startup = (async function() {
+          if (!window.THREE) await loadScript('vendor/three-r128/three.min.js');
+          if (!THREE.OrbitControls) await loadScript('vendor/three-r128/OrbitControls.js');
+          if (!THREE.GLTFLoader) await loadScript('vendor/three-r128/GLTFLoader.js');
+          viewer = createViewer();
+          viewer.setActive(true);
+        })().catch(function(error) {
+          console.error('3D görüntüleyici:', error);
+          showError(error.message || '3D görüntüleyici başlatılamadı. WebGL desteğini kontrol edin.');
+          startup = null;
+        });
+      };
+      window.__threePause = function() { if (viewer) viewer.setActive(false); };
 
-      function loadModel(modelKey) {
-        const meta = modelMeta[modelKey] || modelMeta['plastic_part_and_runner'];
-        const loadingElem = document.getElementById('viewer-loading');
-        const loadingText = document.getElementById('loading-text');
-        const badgeText = document.getElementById('model-info-text');
-        const loadId = ++currentLoadId;
+      function createViewer() {
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x0a0f1d);
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+        let renderer;
+        try {
+          renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+        } catch (error) {
+          throw new Error('WebGL başlatılamadı; tarayıcı veya cihazda 3D desteğini kontrol edin.');
+        }
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.15;
+        container.appendChild(renderer.domElement);
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        controls.autoRotate = !reducedMotion;
+        controls.autoRotateSpeed = 0.7;
+        controls.minDistance = 20;
+        controls.maxDistance = 600;
+        scene.add(new THREE.AmbientLight(0xffffff, 0.75));
+        const keyLight = new THREE.DirectionalLight(0xffffff, 2.1);
+        keyLight.position.set(130, 180, 160);
+        scene.add(keyLight);
+        const fillLight = new THREE.DirectionalLight(0x38bdf8, 0.8);
+        fillLight.position.set(-120, 50, -100);
+        scene.add(fillLight);
 
-        if (loadingElem) loadingElem.style.display = 'flex';
-        if (loadingText) loadingText.innerText = `${meta.title} Yükleniyor...`;
-
-        updateDownloadLinks(meta.file);
-
-        loader.load(`../files/3d/${meta.file}.glb`, function(gltf) {
-          if (loadId !== currentLoadId) return;
-
-          if (currentModel) {
-            scene.remove(currentModel);
+        const flowGroup = new THREE.Group();
+        scene.add(flowGroup);
+        const beadGeometry = new THREE.SphereGeometry(1.6, 8, 8);
+        const beadMaterial = new THREE.MeshBasicMaterial({ color: 0x0088ff });
+        const beads = [];
+        const paths = [];
+        let flowEnabled = true;
+        let hasCooling = false;
+        let currentModel = null;
+        let loadId = 0;
+        let active = false;
+        let frameId = 0;
+        const loader = new THREE.GLTFLoader();
+        const models = {
+          plastic_part_and_runner: 'Plastik Parça (PEEK) + Sıcak Yolluk',
+          helical_conformal_cooling_channels: 'Helisel Conformal Soğutma Kanalları',
+          plastic_part: 'Ana Plastik Parça (Victrex PEEK 450CA30)',
+          hot_runner_system: 'Sıcak Yolluk Sistemi',
+          conformal_mold_core_assembly: 'Parça + Yolluk + Soğutma Montajı'
+        };
+        function resize() {
+          if (!active) return;
+          const width = container.clientWidth;
+          const height = container.clientHeight;
+          if (!width || !height) return;
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+          renderer.setSize(width, height);
+          render();
+        }
+        function render() { if (active && !document.hidden) renderer.render(scene, camera); }
+        function pointAt(path, fraction) {
+          const index = fraction * (path.length - 1);
+          const a = Math.floor(index);
+          return path[a].clone().lerp(path[Math.min(a + 1, path.length - 1)], index - a);
+        }
+        function placeBeads(time) {
+          beads.forEach(function(bead, index) {
+            const path = paths[Math.floor(index / 12)];
+            const phase = (index % 12) / 12;
+            const fraction = reducedMotion ? phase : (time * 0.00012 + phase) % 1;
+            bead.position.copy(pointAt(path, fraction));
+          });
+        }
+        function animate(time) {
+          frameId = 0;
+          if (!active || document.hidden) return;
+          if (flowGroup.visible && beads.length) placeBeads(time);
+          controls.update();
+          render();
+          if (!reducedMotion) frameId = requestAnimationFrame(animate);
+        }
+        function setActive(value) {
+          active = value;
+          if (frameId) cancelAnimationFrame(frameId);
+          frameId = 0;
+          if (active && !document.hidden) {
+            resize();
+            if (!reducedMotion) frameId = requestAnimationFrame(animate);
+            else render();
           }
-
-          currentModel = gltf.scene;
-
-          currentModel.traverse(function(child) {
-            if (child.isMesh) {
-              // Smooth Normals for CAD Meshes
-              if (child.geometry) {
-                child.geometry.computeVertexNormals();
-              }
-
-              const name = (child.name || child.parent?.name || '').toLowerCase();
-              const isRunner = name.includes('runner') || name.includes('sprue') || name.includes('gate') || modelKey === 'hot_runner_system';
-              const isCooling = name.includes('cooling') || name.includes('channel') || name.includes('helix') || modelKey === 'helical_conformal_cooling_channels';
-              const isCore = name.includes('core') || name.includes('plate') || modelKey === 'conformal_mold_core_assembly';
-
-              if (isRunner) {
-                // Hot Runner: High-Gloss Metallic Tool Steel with Emissive Thermal Core
-                child.material = new THREE.MeshPhysicalMaterial({
-                  color: 0xef4444,
-                  metalness: 0.65,
-                  roughness: 0.18,
-                  clearcoat: 0.90,
-                  clearcoatRoughness: 0.10,
-                  emissive: 0x881111,
-                  emissiveIntensity: 0.38
-                });
-              } else if (isCooling) {
-                // Helical Cooling: Luminous Electric Cyan Translucent Coolant Fluid
-                child.material = new THREE.MeshPhysicalMaterial({
-                  color: 0x00d2ff,
-                  metalness: 0.25,
-                  roughness: 0.12,
-                  clearcoat: 1.0,
-                  clearcoatRoughness: 0.08,
-                  transmission: 0.45,
-                  ior: 1.33,
-                  transparent: true,
-                  opacity: 0.92,
-                  emissive: 0x004466,
-                  emissiveIntensity: 0.45
-                });
-              } else if (isCore) {
-                // Mold Core Steel Plate
-                child.material = new THREE.MeshPhysicalMaterial({
-                  color: 0x94a3b8,
-                  metalness: 0.85,
-                  roughness: 0.25,
-                  clearcoat: 0.70,
-                  transparent: true,
-                  opacity: 0.85
-                });
-              } else {
-                // PEEK Polymer: Amber Gold Polymer with Clearcoat Gloss & Micro-Sheen
-                child.material = new THREE.MeshPhysicalMaterial({
-                  color: 0xf59e0b,
-                  metalness: 0.10,
-                  roughness: 0.22,
-                  clearcoat: 0.95,
-                  clearcoatRoughness: 0.12,
-                  sheen: 0.60,
-                  sheenColor: new THREE.Color(0xffedd5),
-                  emissive: 0x2b1500,
-                  emissiveIntensity: 0.15
-                });
-              }
+        }
+        function updateLinks(key) {
+          ['glb', 'obj', 'stl', 'ply'].forEach(function(ext) {
+            document.getElementById('btn-dl-' + ext).href = '../files/3d/' + key + '.' + ext;
+          });
+        }
+        function updateFlow(center) {
+          beads.forEach(function(bead) { flowGroup.remove(bead); });
+          beads.length = 0;
+          paths.length = 0;
+          flowToggle.disabled = !hasCooling;
+          flowGroup.visible = hasCooling && flowEnabled;
+          if (!hasCooling) { render(); return; }
+          // CAD modelindeki iç ve dış helislerin merkezi, adımı ve yarıçapları.
+          [0, 1].forEach(function(which) {
+            const path = [];
+            for (let i = 0; i <= 240; i++) {
+              const t = i / 240;
+              const y = -15 + 172 * t;
+              const radius = which === 0 ? 30 + 5 * t : 70 - 12 * t;
+              const angle = -Math.PI / 2 - 2 * Math.PI * y / 40;
+              path.push(new THREE.Vector3(radius * Math.cos(angle), y, radius * Math.sin(angle)).sub(center));
+            }
+            paths.push(path);
+            for (let i = 0; i < 12; i++) {
+              const bead = new THREE.Mesh(beadGeometry, beadMaterial);
+              flowGroup.add(bead);
+              beads.push(bead);
             }
           });
-
-          const box = new THREE.Box3().setFromObject(currentModel);
-          const center = box.getCenter(new THREE.Vector3());
-          const size = box.getSize(new THREE.Vector3());
-          const maxDim = Math.max(size.x, size.y, size.z);
-
-          currentModel.position.sub(center);
-          scene.add(currentModel);
-
-          // Position floor shadow under model
-          shadowPlane.position.y = -(size.y / 2) - 1.5;
-          shadowPlane.scale.setScalar(maxDim / 80);
-
-          const fov = camera.fov * (Math.PI / 180);
-          let dist = Math.abs(maxDim / 2 / Math.tan(fov / 2)) * 1.55;
-          camera.position.set(dist * 0.7, dist * 0.55, dist * 0.9);
-          controls.target.set(0, 0, 0);
-          controls.update();
-
-          if (loadingElem) loadingElem.style.display = 'none';
-          if (badgeText) badgeText.innerText = meta.title;
-        }, undefined, function(err) {
-          if (loadId !== currentLoadId) return;
-          console.warn('GLB Load Error:', err);
-          if (loadingText) loadingText.innerText = 'Model yüklenemedi: ' + (err.message || 'Dosya okunamadı');
-        });
-      }
-
-      // Initial Model Load
-      loadModel('plastic_part_and_runner');
-
-      // Model Switch Buttons
-      document.querySelectorAll('.model-switch-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-          document.querySelectorAll('.model-switch-btn').forEach(b => {
-            b.classList.remove('active', 'btn-info');
-            b.classList.add('btn-outline-light');
-          });
-          this.classList.add('active', 'btn-info');
-          this.classList.remove('btn-outline-light');
-          const modelKey = this.getAttribute('data-model');
-          loadModel(modelKey);
-        });
-      });
-
-      function animate() {
-        requestAnimationFrame(animate);
-        controls.update();
-        renderer.render(scene, camera);
-      }
-      animate();
-
-      window.__threeResize = function() {
-        if (!container || !renderer || !camera) return;
-        const w = container.clientWidth || 600;
-        const h = container.clientHeight || 420;
-        if (w > 0 && h > 0) {
-          camera.aspect = w / h;
-          camera.updateProjectionMatrix();
-          renderer.setSize(w, h);
+          placeBeads(performance.now());
+          render();
         }
-      };
-
-      window.addEventListener('resize', window.__threeResize);
-      window.addEventListener('orientationchange', () => {
-        setTimeout(window.__threeResize, 150);
-      });
+        function loadModel(key) {
+          if (!Object.prototype.hasOwnProperty.call(models, key)) return;
+          const thisLoad = ++loadId;
+          loading.style.display = 'flex';
+          loadingText.textContent = models[key] + ' yükleniyor...';
+          const spinner = loading.querySelector('.spinner-border');
+          if (spinner) spinner.style.display = '';
+          updateLinks(key);
+          loader.load('../files/3d/' + key + '.glb', function(gltf) {
+            if (thisLoad !== loadId) return;
+            if (currentModel) scene.remove(currentModel);
+            currentModel = gltf.scene;
+            hasCooling = false;
+            currentModel.traverse(function(child) {
+              if (!child.isMesh) return;
+              const name = (child.name || child.parent.name || '').toLowerCase();
+              const cooling = name.includes('cooling') || name.includes('channel') || name.includes('helix');
+              const runner = name.includes('runner') || name.includes('sprue') || name.includes('gate');
+              if (cooling) hasCooling = true;
+              child.material = new THREE.MeshStandardMaterial({
+                color: cooling ? 0x00b9e8 : runner ? 0xdc4444 : 0xe4aa54,
+                metalness: cooling || runner ? 0.45 : 0.12,
+                roughness: 0.3,
+                transparent: cooling,
+                opacity: cooling ? 0.78 : 1,
+                side: THREE.DoubleSide
+              });
+            });
+            const box = new THREE.Box3().setFromObject(currentModel);
+            const center = box.getCenter(new THREE.Vector3());
+            const size = box.getSize(new THREE.Vector3());
+            currentModel.position.sub(center);
+            scene.add(currentModel);
+            updateFlow(center);
+            const maxDimension = Math.max(size.x, size.y, size.z);
+            const distance = maxDimension / (2 * Math.tan(camera.fov * Math.PI / 360)) * 1.6;
+            camera.position.set(distance * 0.7, distance * 0.5, distance * 0.9);
+            controls.target.set(0, 0, 0);
+            controls.update();
+            loading.style.display = 'none';
+            document.getElementById('model-info-text').textContent = models[key];
+            render();
+          }, undefined, function(error) {
+            if (thisLoad !== loadId) return;
+            console.error('CAD dosyası:', error);
+            showError('CAD dosyası yüklenemedi: ' + (error.message || key + '.glb okunamadı.'));
+          });
+        }
+        flowToggle.addEventListener('click', function() {
+          flowEnabled = !flowEnabled;
+          flowToggle.setAttribute('aria-pressed', String(flowEnabled));
+          flowToggle.textContent = flowEnabled ? 'Akış: açık' : 'Akış: kapalı';
+          flowGroup.visible = hasCooling && flowEnabled;
+          render();
+        });
+        document.querySelectorAll('.model-switch-btn').forEach(function(button) {
+          button.addEventListener('click', function() {
+            document.querySelectorAll('.model-switch-btn').forEach(function(other) {
+              other.classList.remove('active', 'btn-info');
+              other.classList.add('btn-outline-light');
+            });
+            button.classList.add('active', 'btn-info');
+            button.classList.remove('btn-outline-light');
+            loadModel(button.getAttribute('data-model'));
+          });
+        });
+        window.__threeResize = resize;
+        window.addEventListener('resize', resize);
+        document.addEventListener('visibilitychange', function() { setActive(panel.style.display !== 'none' && !document.hidden); });
+        loadModel('conformal_mold_core_assembly');
+        return { setActive: setActive, resize: resize };
+      }
     })();
   </script>
 
