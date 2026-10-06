@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Voxel Architect Studio</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0d10;--p:#12161b;--p2:#171c22;--t:#eef2f7;--m:#98a2ad;--l:#28303a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:16px 18px;border-bottom:1px solid var(--l);display:flex;justify-content:space-between;gap:12px;align-items:center}
+h1{margin:0 0 4px;font-size:20px}p{margin:0;color:var(--m);font-size:12px}
+main{display:grid;grid-template-columns:minmax(330px,430px) 1fr;gap:12px;padding:12px}
+.panel{background:var(--p);border:1px solid var(--l);border-radius:14px;overflow:hidden}.head{height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid var(--l)}
+button{border:1px solid var(--l);background:var(--p2);color:var(--t);padding:8px 10px;border-radius:9px;font-weight:700}.primary{background:#e8f7ff;color:#071017}
+textarea{display:block;width:100%;height:520px;resize:vertical;border:0;outline:0;background:#0e1115;color:#dbeafe;padding:12px;font:11px/1.5 ui-monospace,monospace}
+canvas{width:100%;height:520px;display:block;background:#090c10;touch-action:none}
+.hint{padding:9px 12px;color:var(--m);font-size:11px;border-top:1px solid var(--l)}
+.badge{padding:7px 10px;background:var(--p2);border:1px solid var(--l);border-radius:999px;font-size:11px}
+.full{grid-column:1/-1}.materials{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px;padding:12px}
+.mat{display:flex;gap:9px;align-items:center;padding:8px;border:1px solid var(--l);border-radius:10px;background:var(--p2)}
+.mat img{width:36px;height:36px;image-rendering:pixelated}.mat b{font-size:11px}.mat code{font-size:9px;color:var(--m)}
+.actions{display:flex;gap:7px;flex-wrap:wrap;padding:12px}
+#error{display:none;padding:9px 12px;background:#2a1212;color:#fca5a5;font:11px ui-monospace,monospace}
+@media(max-width:850px){main{grid-template-columns:1fr}textarea{height:430px}canvas{height:430px}}
+</style>
+</head>
+<body>
+<header><div><h1>Voxel Architect Studio</h1><p>AI planı → parametrik voxel → WorldEdit/Luanti çıktısı</p></div><span class="badge" id="status">Hazır</span></header>
+<main>
+<section class="panel">
+  <div class="head"><b>VoxelBuild kodu</b><div><button id="sample">Örnek kale</button> <button id="build" class="primary">İnşa et</button></div></div>
+  <textarea id="code" spellcheck="false"></textarea><div id="error"></div>
+  <div class="hint">Komutlar: wall · box · round_tower · gate · battlement · stairs · clear</div>
+</section>
+<section class="panel">
+  <div class="head"><b>3D-ish voxel önizleme</b><span class="badge" id="count">0 voxel</span></div>
+  <canvas id="view"></canvas>
+  <div class="hint">Sürükle: döndür · Shift+sürükle: taşı · tekerlek: zoom</div>
+</section>
+<section class="panel full">
+  <div class="head"><b>Gömülü Luanti / Minetest Game blokları</b><span class="badge">offline</span></div>
+  <div class="materials" id="materials"></div>
+</section>
+<section class="panel full">
+  <div class="head"><b>Dışa aktar</b></div>
+  <div class="actions"><button id="we">WorldEdit .we</button><button id="lua">Luanti Lua</button><button id="json">Voxel JSON</button></div>
+</section>
+</main>
+<script>
+"use strict";
+const TEX={
+"default:stonebrick":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAbFBMVEU2NDQ4NjU7ODg8OjlAPj1BPz5IRUVJR0ZKSEdOS0pQTUxTUVBUUVFVUlFWVFNgXFthXl1iX15oZGNsaGdua2pvbGt1cHB8eHd+enp/e3mAfXuFgYGHgoCIhIKJhYOSjo2Tj42cl5afnJmuqaeheq/hAAAAl0lEQVQYGQXBQU7DMBAAwPF6TfqCijP//fxwqQiWx12GmfU2FdKOcOX/sDjm19JuG8KavVqpnWug5pbTuGVVUnSNjkaMyj5XJtP3JiFynCuxw3FrLfeZs9r4J0a78eIbWXI9SWshXsYz358uNno7ZHmF3QiOtZjLXmBvySoSqM0KrmUlI0cNmyoNrMBi7r0M73Njr+S1w/wPqkUtDWZXlYQAAAABJRU5ErkJggg==",
+"default:cobble":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAALVBMVEVIREJTUE5lYl9LSEVRTkxFQkBcWVeEgH1jX11fXFpoZmRybmxZVVNrZ2VVUlDpe7aDAAAAmklEQVQI12NYwdiQncu5w4rhEIeo4mwbIR4GY2YFJ01mYwaG66WijiJMa8sZklIZGAKU0nYyTNustbZk4iQxBglhQQVWl5Y8BhnhBI4Cg4AAhtBQQSUhLt1ShtXlPIKCbI0iDBKTDAJYDdUmMKSIMO1aXuojwMBgwOLZoRpszMB1nYGtU3l1MYNARzWPI6faZoaDji4GDCliwgAQOSNGL5af3gAAAABJRU5ErkJggg==",
+"default:wood":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEWFaTymgUpXQyV+YDBSPyOhfkiBYzOdeUWJaz1jSyqHaz311sK1AAAAdElEQVQI10XKMQoCMRQG4YGAxM6/WGwl7AEiDz1AyAWCKGIliHgCCw/gGWw96r5Ns187A6sm3YCSUqplrNgOCNkIvB7MDgZfScuj7mRkzGV/9LkDgVpThxGbnCddYxsCG4jn9XtPH8biz7FtfxczNPwJT2kC+PQS5paxgW4AAAAASUVORK5CYII=",
+"default:desert_stonebrick":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAkFBMVEVILCJJLCNKLCNQMCVRMiZUMydXNSlgOy1hOy1iOy5kPS9oQDFqQDFrQTJtQzNuQzRvRDRwRTVzRjZ0Rzd2SDd8TTp/TjyBTzyCTz2FUT6HU0CMVUGRWUSSWUWTWUWUWkWVWkWVW0aWXEeYXUecX0mfYUuhYkygY0ujY0ykZE2talKualGwbFO6cVe6cljCdlqczcgpAAAArUlEQVQYGQXBQU7DQAxA0e/UHiPSLhDrShyA+x8KFqhpCvV4JuY9/ewMgRMAk037RhqABzi7ivPGN2gwGOpaQaAeOE4QOoeS5JnXH8eZapc/dwh2dpotmvdKA9JQENF8tEDmMRdOLBL6clVkkd91kGCiW4eO3z9uDATTWjuX9ZgGBpRKChE8R+uJgD4aYHXE3gzyqU4ZhpjVEEJ0hWcrHPzQeEe/qoAjzzcRofgHT4NUNODppmEAAAAASUVORK5CYII="
+};
+const LABEL={"default:stonebrick":"Stone Brick","default:cobble":"Cobble","default:wood":"Wood","default:desert_stonebrick":"Desert Stone Brick"};
+const IMG={};for(const [n,s] of Object.entries(TEX)){const i=new Image;i.src=s;i.onload=()=>render();IMG[n]=i}
+const SAMPLE={format:"voxelbuild/1",name:"demo_castle",palette:{stone:"default:stonebrick",dark:"default:cobble",wood:"default:wood"},ops:[
+{op:"wall",from:[-28,0,-20],to:[28,0,-20],height:11,thickness:3,mat:"stone"},
+{op:"wall",from:[28,0,-20],to:[32,0,18],height:11,thickness:3,mat:"stone"},
+{op:"wall",from:[32,0,18],to:[0,0,27],height:11,thickness:3,mat:"stone"},
+{op:"wall",from:[0,0,27],to:[-32,0,18],height:11,thickness:3,mat:"stone"},
+{op:"wall",from:[-32,0,18],to:[-28,0,-20],height:11,thickness:3,mat:"stone"},
+{op:"round_tower",center:[-28,0,-20],radius:6,height:18,thickness:2,mat:"stone"},
+{op:"round_tower",center:[28,0,-20],radius:6,height:18,thickness:2,mat:"stone"},
+{op:"round_tower",center:[32,0,18],radius:6,height:18,thickness:2,mat:"stone"},
+{op:"round_tower",center:[-32,0,18],radius:6,height:18,thickness:2,mat:"stone"},
+{op:"gate",center:[0,0,-20],axis:"x",width:8,height:7,depth:5},
+{op:"box",from:[-10,0,1],to:[10,16,16],mat:"stone",hollow:true},
+{op:"gate",center:[0,0,1],axis:"x",width:5,height:5,depth:3},
+{op:"battlement",from:[-28,11,-20],to:[28,11,-20],step:3,height:2,mat:"stone"}
+]};
+const $=s=>document.querySelector(s),code=$("#code"),cv=$("#view"),ctx=cv.getContext("2d"),err=$("#error"),status=$("#status"),count=$("#count");
+let vox=new Map,plan=SAMPLE,cam={yaw:-.75,pitch:.58,zoom:7,px:0,py:28},drag=false,lx=0,ly=0;
+const K=(x,y,z)=>x+"|"+y+"|"+z;const set=(x,y,z,m)=>vox.set(K(Math.round(x),Math.round(y),Math.round(z)),{x:Math.round(x),y:Math.round(y),z:Math.round(z),m});const del=(x,y,z)=>vox.delete(K(Math.round(x),Math.round(y),Math.round(z)));
+const mat=(p,m)=>p.palette?.[m]||m||"default:stonebrick";
+function line(a,b){const n=Math.max(Math.abs(b[0]-a[0]),Math.abs(b[1]-a[1]),Math.abs(b[2]-a[2])),o=[];for(let i=0;i<=n;i++){const t=n?i/n:0;o.push([Math.round(a[0]+(b[0]-a[0])*t),Math.round(a[1]+(b[1]-a[1])*t),Math.round(a[2]+(b[2]-a[2])*t)])}return [...new Map(o.map(p=>[p.join(","),p])).values()]}
+function box(a,b,m,h){const lo=a.map((n,i)=>Math.min(n,b[i])),hi=a.map((n,i)=>Math.max(n,b[i]));for(let x=lo[0];x<=hi[0];x++)for(let y=lo[1];y<=hi[1];y++)for(let z=lo[2];z<=hi[2];z++)if(!h||x==lo[0]||x==hi[0]||y==lo[1]||y==hi[1]||z==lo[2]||z==hi[2])set(x,y,z,m)}
+function compile(p){vox.clear();for(const o of p.ops){if(o.op=="box")box(o.from,o.to,mat(p,o.mat),!!o.hollow);else if(o.op=="wall"){const pts=line(o.from,o.to),xm=Math.abs(o.to[0]-o.from[0])>=Math.abs(o.to[2]-o.from[2]),t=o.thickness||1;for(const q of pts)for(let y=0;y<(o.height||5);y++)for(let w=-Math.floor((t-1)/2);w<=Math.ceil((t-1)/2);w++)xm?set(q[0],q[1]+y,q[2]+w,mat(p,o.mat)):set(q[0]+w,q[1]+y,q[2],mat(p,o.mat))}
+else if(o.op=="round_tower"){const [cx,cy,cz]=o.center,r=o.radius||5,t=o.thickness||2;for(let x=-r;x<=r;x++)for(let z=-r;z<=r;z++){const d=Math.hypot(x,z);if(d<=r&&d>=r-t)for(let y=0;y<(o.height||10);y++)set(cx+x,cy+y,cz+z,mat(p,o.mat))}}
+else if(o.op=="gate"){const [cx,cy,cz]=o.center,w=o.width||4,h=o.height||5,d=o.depth||3,ax=o.axis=="z"?"z":"x";for(let y=0;y<h;y++)for(let a=-Math.floor(w/2);a<=Math.floor((w-1)/2);a++)for(let b=-Math.floor(d/2);b<=Math.floor((d-1)/2);b++)ax=="x"?del(cx+a,cy+y,cz+b):del(cx+b,cy+y,cz+a)}
+else if(o.op=="battlement"){line(o.from,o.to).forEach((q,i)=>{if(i%(o.step||3)==0)for(let y=0;y<(o.height||2);y++)set(q[0],q[1]+y,q[2],mat(p,o.mat))})}
+else if(o.op=="clear"){const lo=o.from.map((n,i)=>Math.min(n,o.to[i])),hi=o.from.map((n,i)=>Math.max(n,o.to[i]));for(let x=lo[0];x<=hi[0];x++)for(let y=lo[1];y<=hi[1];y++)for(let z=lo[2];z<=hi[2];z++)del(x,y,z)}
+}}
+function bounds(){if(!vox.size)return{min:[0,0,0],max:[0,0,0],size:[1,1,1]};const mn=[1e9,1e9,1e9],mx=[-1e9,-1e9,-1e9];for(const v of vox.values())for(let i=0;i<3;i++){const n=[v.x,v.y,v.z][i];mn[i]=Math.min(mn[i],n);mx[i]=Math.max(mx[i],n)}return{min:mn,max:mx,size:mx.map((n,i)=>n-mn[i]+1)}}
+function surface(){const d=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];return[...vox.values()].filter(v=>d.some(q=>!vox.has(K(v.x+q[0],v.y+q[1],v.z+q[2]))))}
+function resize(){const r=cv.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);cv.width=r.width*d;cv.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);render()}
+function proj(v){const cy=Math.cos(cam.yaw),sy=Math.sin(cam.yaw),cp=Math.cos(cam.pitch),sp=Math.sin(cam.pitch),xr=v.x*cy-v.z*sy,zr=v.x*sy+v.z*cy,yr=v.y*cp-zr*sp,dep=v.y*sp+zr*cp;return{x:xr*cam.zoom+cv.clientWidth/2+cam.px,y:-yr*cam.zoom+cv.clientHeight/2+cam.py,d:dep}}
+function render(){ctx.clearRect(0,0,cv.clientWidth,cv.clientHeight);const s=Math.max(1.3,cam.zoom*.75),a=surface().map(v=>({v,p:proj(v)})).sort((a,b)=>a.p.d-b.p.d);for(const q of a){const i=IMG[q.v.m];if(i?.complete){ctx.imageSmoothingEnabled=false;ctx.drawImage(i,q.p.x-s/2,q.p.y-s/2,s,s)}else{ctx.fillStyle="#888";ctx.fillRect(q.p.x-s/2,q.p.y-s/2,s,s)}}count.textContent=vox.size.toLocaleString()+" voxel"}
+function fit(){const b=bounds(),m=Math.max(...b.size);cam.zoom=Math.max(2,Math.min(11,Math.min(cv.clientWidth,cv.clientHeight)*.7/m));cam.px=0;cam.py=30;render()}
+function build(){err.style.display="none";try{plan=JSON.parse(code.value);compile(plan);fit();status.textContent="Derlendi"}catch(e){err.textContent=e.message;err.style.display="block";status.textContent="Hata"}}
+function dl(n,t){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"text/plain"}));a.download=n;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function safe(s){return JSON.stringify(String(s))}
+function exportWE(){const b=bounds(),a=[...vox.values()];let t="5:return {\n";for(const v of a)t+=`  {x=${v.x-b.min[0]}, y=${v.y-b.min[1]}, z=${v.z-b.min[2]}, name=${safe(v.m)}, param1=0, param2=0},\n`;dl((plan.name||"structure")+".we",t+"}\n")}
+function exportLua(){const b=bounds(),n=[...vox.values()].map(v=>`{${v.x-b.min[0]},${v.y-b.min[1]},${v.z-b.min[2]},${safe(v.m)}}`).join(",\n");dl((plan.name||"structure")+".lua",`local D={\n${n}\n}\nfunction voxelbuild_place(o) for _,n in ipairs(D) do core.set_node({x=o.x+n[1],y=o.y+n[2],z=o.z+n[3]},{name=n[4]}) end end\n`)}
+function exportJSON(){const b=bounds();dl((plan.name||"structure")+".json",JSON.stringify({format:"compiled-1",nodes:[...vox.values()].map(v=>({x:v.x-b.min[0],y:v.y-b.min[1],z:v.z-b.min[2],name:v.m}))},null,2))}
+code.value=JSON.stringify(SAMPLE,null,2);$("#sample").onclick=()=>{code.value=JSON.stringify(SAMPLE,null,2);build()};$("#build").onclick=build;$("#we").onclick=exportWE;$("#lua").onclick=exportLua;$("#json").onclick=exportJSON;
+cv.onpointerdown=e=>{drag=true;lx=e.clientX;ly=e.clientY;cv.setPointerCapture(e.pointerId)};cv.onpointerup=()=>drag=false;cv.onpointermove=e=>{if(!drag)return;const dx=e.clientX-lx,dy=e.clientY-ly;lx=e.clientX;ly=e.clientY;if(e.shiftKey){cam.px+=dx;cam.py+=dy}else{cam.yaw+=dx*.01;cam.pitch=Math.max(.12,Math.min(1.25,cam.pitch+dy*.006))}render()};cv.onwheel=e=>{e.preventDefault();cam.zoom=Math.max(2,Math.min(18,cam.zoom*(e.deltaY>0?.9:1.1)));render()};
+for(const [n,l] of Object.entries(LABEL)){$("#materials").insertAdjacentHTML("beforeend",`<div class="mat"><img src="${TEX[n]}"><div><b>${l}</b><br><code>${n}</code></div></div>`)}
+new ResizeObserver(resize).observe(cv);build();resize();
+</script>
+</body>
+</html>
+<!-- pages-rebuild-trigger: 2026-10-07 -->
