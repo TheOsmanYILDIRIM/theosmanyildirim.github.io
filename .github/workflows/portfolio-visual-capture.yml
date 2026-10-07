@@ -40,22 +40,37 @@ jobs:
             { name: 'desktop', width: 1440, height: 1000 },
             { name: 'mobile', width: 390, height: 844 }
           ];
-          for (const t of targets) {
-            const page = await browser.newPage({ viewport: { width: t.width, height: t.height }, deviceScaleFactor: 1 });
-            await page.goto('https://theosmanyildirim.github.io/', { waitUntil: 'networkidle' });
-            await page.waitForFunction(() => document.documentElement.dataset.portfolioReady === 'true', null, { timeout: 15000 });
-            const includeError = await page.evaluate(() => document.documentElement.dataset.includeError);
-            if (includeError) throw new Error('Portfolio component include failed');
-            await page.evaluate(async () => {
-              for (let y = 0; y < document.body.scrollHeight; y += 700) {
-                window.scrollTo(0, y);
-                await new Promise(r => setTimeout(r, 60));
+          const routes = [
+            { slug: 'home', path: '/', modular: true },
+            { slug: 'cv', path: '/cv/' },
+            { slug: 'bitirme', path: '/bitirme-projesi/' },
+            { slug: 'pipedata', path: '/pipedata/' },
+            { slug: 'staj', path: '/me-200-yaz-staji-1/' }
+          ];
+
+          for (const route of routes) {
+            for (const t of targets) {
+              const page = await browser.newPage({ viewport: { width: t.width, height: t.height }, deviceScaleFactor: 1 });
+              await page.goto('https://theosmanyildirim.github.io' + route.path, { waitUntil: 'networkidle' });
+
+              if (route.modular) {
+                await page.waitForFunction(() => document.documentElement.dataset.portfolioReady === 'true', null, { timeout: 15000 });
+                const includeError = await page.evaluate(() => document.documentElement.dataset.includeError);
+                if (includeError) throw new Error('Portfolio component include failed');
               }
-              window.scrollTo(0, 0);
-            });
-            await page.waitForTimeout(300);
-            await page.screenshot({ path: `visual-review/${t.name}-full.png`, fullPage: true });
-            await page.screenshot({ path: `visual-review/${t.name}-fold.png`, fullPage: false });
+
+              await page.evaluate(async () => {
+                for (let y = 0; y < document.body.scrollHeight; y += 700) {
+                  window.scrollTo(0, y);
+                  await new Promise(r => setTimeout(r, 60));
+                }
+                window.scrollTo(0, 0);
+              });
+              await page.waitForTimeout(300);
+              await page.screenshot({ path: `visual-review/${route.slug}-${t.name}-full.png`, fullPage: true });
+              await page.screenshot({ path: `visual-review/${route.slug}-${t.name}-fold.png`, fullPage: false });
+              await page.close();
+            }
           }
           await browser.close();
           EOF
