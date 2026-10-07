@@ -13,6 +13,7 @@
   <link href="../css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/site-shell.css" rel="stylesheet">
   
   <style>
     :root {
@@ -576,43 +577,25 @@
         flex: 1 1 calc(50% - 6px);
       }
     }
+    .project-formal-title {
+      max-width: 880px;
+      color: rgba(255,255,255,.72);
+      font-size: clamp(.82rem, 1.8vw, .95rem);
+      line-height: 1.55;
+    }
+    .project-jump-links .btn {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- ==================== ÜST NAVİGASYON ==================== -->
-  <nav class="custom-navbar navbar navbar-expand-md navbar-dark bg-dark" aria-label="Furni navigation bar">
-    <div class="container">
-      <a class="navbar-brand" href="../index.html">Osman Yıldırım<span>.</span></a>
-
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Menüyü Göster/Gizle">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarsFurni">
-        <ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
-          <li><a class="nav-link" href="../index.html">← Ana Sayfaya Dön</a></li>
-          <li class="active"><a class="nav-link" href="#">Bitirme Projesi</a></li>
-          <li><a class="nav-link" href="#grafikler">Sonuç Grafikleri</a></li>
-          <li><a class="nav-link" href="#makale">Makale / Rapor Metni</a></li>
-        </ul>
-
-        <ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-md-4">
-          <li class="me-md-2 mb-2 mb-md-0">
-            <a class="btn btn-secondary btn-sm text-dark font-weight-bold btn-touch" href="rapor.md" download>
-              <i class="fa-solid fa-file-code me-1"></i> Markdown (.md)
-            </a>
-          </li>
-          <li>
-            <a class="btn btn-white-outline btn-sm btn-touch" href="../files/osman-yildirim-cv-tr.pdf" target="_blank" download>
-              <i class="fa-solid fa-file-pdf me-1"></i> CV İndir
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <div data-site-shell="header"></div>
 
   <!-- ==================== PROJE BAŞLIĞI & KÜNYE ==================== -->
   <header class="project-header">
@@ -622,19 +605,24 @@
           <div class="univ-badge px-3 py-2 rounded-pill font-monospace fw-bold mb-3">
             🎓 KAHRAMANMARAŞ SÜTÇÜ İMAM ÜNİVERSİTESİ &bull; LİSANS BİTİRME PROJESİ (2026)
           </div>
-          <h1 class="project-title text-white mb-3">
-            Plastik Enjeksiyon Kalıplarında Warping (Çarpılma) Azaltmak İçin Eklemeli İmalat ve Geleneksel Çözümlerin Kıyaslanması
+          <h1 class="project-title text-white mb-2">
+            Helisel konformal soğutma ile çarpılmanın azaltılması
           </h1>
+          <p class="project-formal-title mb-3">
+            Resmi proje adı: Plastik Enjeksiyon Kalıplarında Warping (Çarpılma) Azaltmak İçin Eklemeli İmalat ve Geleneksel Çözümlerin Kıyaslanması
+          </p>
           <p class="text-white-50 mb-4" style="font-size: clamp(0.92rem, 2.5vw, 1.05rem); line-height: 1.5;">
-            <strong>Yazar:</strong> Osman YILDIRIM (Öğrenci No: 22110081305) &bull; Makine Mühendisliği Bölümü
+            Osman Yıldırım &bull; Makine Mühendisliği &bull; 2026
           </p>
 
           <div class="d-flex flex-wrap gap-2">
             <span class="tech-pill tech-pill-header"><i class="fa-solid fa-cube me-1" style="color: #34d399;"></i> Autodesk Moldflow</span>
-            <span class="tech-pill tech-pill-header"><i class="fa-solid fa-compass-drafting me-1" style="color: #38bdf8;"></i> SolidWorks 2022 CAD</span>
-            <span class="tech-pill tech-pill-header"><i class="fa-solid fa-layer-group me-1" style="color: #fbbf24;"></i> Victrex PEEK 450CA30</span>
-            <span class="tech-pill tech-pill-header"><i class="fa-solid fa-shield-halved me-1" style="color: #cbd5e1;"></i> P20 Kalıp Çeliği</span>
-            <span class="tech-pill tech-pill-header"><i class="fa-solid fa-arrows-spin me-1" style="color: #00d2ff;"></i> Conformal Cooling</span>
+            <span class="tech-pill tech-pill-header"><i class="fa-solid fa-compass-drafting me-1" style="color: #38bdf8;"></i> SolidWorks</span>
+            <span class="tech-pill tech-pill-header"><i class="fa-solid fa-arrows-spin me-1" style="color: #00d2ff;"></i> Konformal soğutma</span>
+          </div>
+          <div class="project-jump-links mt-4">
+            <a href="#grafikler" class="btn btn-light btn-sm me-2 mb-2">Sonuçlar ↓</a>
+            <a href="#makale" class="btn btn-outline-light btn-sm mb-2">Teknik rapor ↓</a>
           </div>
         </div>
 
@@ -784,8 +772,8 @@
               <a href="rapor.md" download class="btn btn-outline-success btn-touch font-monospace">
                 <i class="fa-solid fa-download me-1"></i> Raporu .md İndir
               </a>
-              <a href="../files/osman-yildirim-cv-tr.pdf" target="_blank" download class="btn btn-outline-secondary btn-touch">
-                <i class="fa-solid fa-file-pdf me-1"></i> CV (PDF)
+              <a href="../" class="btn btn-outline-secondary btn-touch">
+                <i class="fa-solid fa-arrow-left me-1"></i> Ana portfolyo
               </a>
             </div>
           </div>
@@ -1352,14 +1340,7 @@
 
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="footer-section py-4 text-center" style="background-color: var(--slate-900); color: var(--slate-400); border-top: 1px solid var(--slate-700); font-size: 13px;">
-    <div class="container">
-      <div class="text-slate-300">&copy; 2026 Osman YILDIRIM. Kahramanmaraş Sütçü İmam Üniversitesi Makine Mühendisliği Bitirme Projesi.</div>
-      <div class="mt-1 text-slate-400">Autodesk Moldflow &bull; SolidWorks CAD &bull; Conformal Cooling &bull; Victrex PEEK</div>
-    </div>
-  </footer>
-
+  <div data-site-shell="footer"></div>
 
   <!-- ==================== PIXIJS & THREE.JS INTERACTIVE CAD ENGINES ==================== -->
   <script src="vendor/pixi-7.3.2.min.js"></script>
@@ -2972,6 +2953,7 @@
     });
   </script>
 
+  <script type="module" src="../js/site-shell.js"></script>
   <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
