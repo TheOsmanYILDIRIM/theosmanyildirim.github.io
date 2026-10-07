@@ -3,98 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Osman Yıldırım'ın makine mühendisliği, mekanik tasarım, üretim ve kalite kontrol portfolyosu.">
+  <meta name="description" content="Osman Yıldırım'ın mekanik tasarım, Autodesk Moldflow, üretim ve kalite kontrol çalışmalarından oluşan makine mühendisliği portfolyosu.">
   <title>Osman Yıldırım — Makine Mühendisi</title>
   <link rel="stylesheet" href="css/portfolio.css">
 </head>
 <body>
   <a class="skip-link" href="#main">İçeriğe geç</a>
-  <header class="topbar wrap">
-    <a class="brand" href="./" aria-label="Osman Yıldırım, ana sayfa">OY<span>.</span></a>
-    <nav aria-label="Ana menü">
-      <a href="#work">Projeler</a>
-      <a href="#experience">Stajlar</a>
-      <a href="cv/">CV</a>
-      <a class="nav-cta" href="mailto:osman1429@hotmail.com">İletişim ↗</a>
-    </nav>
-  </header>
+
+  <div data-include="components/header.html"></div>
 
   <main id="main">
-    <section class="hero hero-stage" aria-labelledby="hero-title">
-      <div class="wrap hero-stage-inner">
-      <div class="hero-copy">
-        <p class="eyebrow">MAKİNE MÜHENDİSİ · KAHRAMANMARAŞ</p>
-        <h1 id="hero-title">Tasarımın<br><em>üretimle</em><br>buluştuğu yer.</h1>
-        <p class="lede">Mekanik tasarım, sayısal analiz ve üretim sahası arasında çalışan bir mühendislik portfolyosu. Modelleri ölçülebilir sonuçlara, gözlemleri uygulanabilir kararlara dönüştürüyorum.</p>
-        <div class="actions">
-          <a class="button primary" href="#work">Çalışmaları keşfet <span aria-hidden="true">↓</span></a>
-          <a class="text-link" href="cv/">Özgeçmişi gör <span aria-hidden="true">↗</span></a>
-        </div>
-      </div>
-      <figure class="hero-visual">
-        <img src="images/bitirme-projesi/conformal_helical_water_studio.webp" alt="Bitirme projesindeki helisel uyumlu soğutma kanallarının üç boyutlu görseli" fetchpriority="high">
-        <figcaption>01 / MEKANİK TASARIM &amp; SİMÜLASYON</figcaption>
-      </figure>
-      <p class="hero-note"><strong>01</strong> / CAD · ANALİZ · SAHA<br>Gerçek modeller, ölçülebilir kararlar.</p>
-      </div>
-    </section>
-
-    <section class="metric-band" aria-label="Bitirme projesi sonucu"><div class="wrap metric-inner"><p class="eyebrow">KANIT / AUTODESK MOLDFLOW SİMÜLASYONU</p><strong>%47,4</strong><span>soğutma kaynaklı çarpılmada azalma</span><b>2,246 mm → 1,182 mm</b></div></section>
-    <section class="signal-band" aria-label="Çalışma alanları">
-      <div class="wrap signal-inner"><span>CAD TASARIMI</span><span>TERMAL ANALİZ</span><span>ÜRETİM</span><span>KALİTE KONTROL</span></div>
-    </section>
-
-    <section id="work" class="wrap section" aria-labelledby="work-title">
-      <div class="section-intro"><p class="eyebrow">01 / SEÇİLMİŞ ÇALIŞMALAR</p><h2 id="work-title">Sorudan sonuca.</h2><p>Bir kalıbın soğuma davranışından teknik çizimle desteklenen borulama verisine uzanan çalışmalar.</p></div>
-      <div class="projects project-ledger">
-        <article class="project featured">
-          <div class="project-media"><img src="images/bitirme-projesi/cad_renders/04_helical_conformal_cooling_isometric.png" alt="Bitirme projesinin çift helisel uyumlu soğutma kanalı CAD modeli" loading="lazy"></div>
-          <div class="project-body">
-            <p class="project-index">01 / BİTİRME PROJESİ · 2026</p>
-            <h3>Helisel conformal soğutma</h3>
-            <p>Plastik enjeksiyon kalıbında geleneksel baffle kanallar ile çift helisel uyumlu kanalları SolidWorks ve Autodesk Moldflow üzerinden karşılaştırdım.</p>
-            <div class="result"><strong>%47,4</strong><span>soğutma kaynaklı çarpılmada simülasyonla hesaplanan azalma<br>2,246 mm → 1,182 mm</span></div>
-            <a class="project-link" href="bitirme-projesi/">Çalışmayı ve raporu incele <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-        <article class="project secondary-project pipedata-project">
-          <div class="project-media dark-media"><img src="images/projects/pipedata-showcase.png" alt="PipeData prototipinde kullanılan gerçek boru, dirsek ve bağlantı teknik çizimleri" loading="lazy"></div>
-          <div class="project-body">
-            <p class="project-index">02 / MÜHENDİSLİK ARACI</p>
-            <h3>PipeData</h3>
-            <p>Boru, flanş ve bağlantı elemanı verilerini SQLite ve vektörel teknik çizimlerle bir araya getiren mühendislik referans projesi.</p>
-            <a class="project-link" href="pipedata/">Proje özeti <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-        <article class="project secondary-project field-project">
-          <div class="project-media"><img src="files/me-200-yaz-staji-1/page_21_Picture_4.jpeg" alt="ME 200 staj raporunda belgelenen freze tezgâhı" loading="lazy"></div>
-          <div class="project-body">
-            <p class="project-index">03 / SAHA DENEYİMİ · 2024 &amp; 2026</p>
-            <h3>Üretim sahasından notlar</h3>
-            <p>İÇTAŞ'taki iki stajda imalat operasyonlarını, üretim takibini, kalite kontrolü ve iş güvenliği uygulamalarını gözlemledim.</p>
-            <a class="project-link" href="me-200-yaz-staji-1/">İki stajı incele <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="experience" class="experience-section" aria-labelledby="experience-title">
-      <div class="wrap experience-grid">
-        <div><p class="eyebrow">02 / SAHA DENEYİMİ</p><h2 id="experience-title">Atölyeden kalite masasına.</h2><p class="lede">Aynı tesise iki farklı açıdan bakma fırsatı: önce imalat adımları, ardından üretim organizasyonu ve kalite akışı.</p><a class="text-link" href="me-200-yaz-staji-1/">Staj günlüğünü oku <span aria-hidden="true">↗</span></a></div>
-        <div class="experience-list timeline-list">
-          <article><span class="eyebrow">2024 · ME 200 · 30 İŞ GÜNÜ</span><h3>İmalat stajı</h3><p>Talaşlı imalat, kaynak, diş açma, bükme ve sipariş takibi.</p></article>
-          <article><span class="eyebrow">2026 · ME 322</span><h3>Organizasyon stajı</h3><p>Çelik konstrüksiyon üretim akışı, kalite kontrol / NDT ve İSG gözlemleri.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="about wrap" aria-labelledby="about-title">
-      <div><p class="eyebrow">03 / HAKKIMDA</p><h2 id="about-title">Merakı sahaya taşıyorum.</h2><img class="about-portrait" src="images/profile.jpg" alt="Osman Yıldırım'ın portresi" loading="lazy" width="2048" height="2048"></div>
-      <div class="about-copy"><p>Kahramanmaraş Sütçü İmam Üniversitesi makine mühendisliği mezunuyum. Isı transferi, akışkanlar mekaniği ve üretim süreçlerine ilgimi CAD çalışmaları, simülasyon ve saha deneyimiyle geliştiriyorum.</p><div class="skill-list"><span>SolidWorks</span><span>Autodesk Moldflow</span><span>AutoCAD</span><span>Python</span><span>Üretim &amp; kalite</span></div><a class="text-link" href="cv/">Eğitim, beceriler ve PDF CV <span aria-hidden="true">↗</span></a></div>
-    </section>
-
-    <section class="contact-band"><div class="wrap"><p class="eyebrow">BİRLİKTE ÇALIŞALIM</p><h2>Bir fikri konuşalım.</h2><a href="mailto:osman1429@hotmail.com">osman1429@hotmail.com <span aria-hidden="true">↗</span></a></div></section>
+    <div data-include="components/hero.html"></div>
+    <div data-include="components/metrics.html"></div>
+    <div data-include="components/projects.html"></div>
+    <div data-include="components/experience.html"></div>
+    <div data-include="components/about.html"></div>
+    <div data-include="components/contact.html"></div>
   </main>
-  <footer class="footer wrap"><span>© 2026 Osman Yıldırım</span><span>Makine mühendisliği · Kahramanmaraş</span><a href="cv/">CV ↗</a></footer>
+
+  <div data-include="components/footer.html"></div>
+
+  <noscript>Bu sayfanın içeriğini görüntülemek için JavaScript gerekir.</noscript>
+  <script type="module" src="js/includes.js"></script>
 </body>
 </html>
