@@ -1,9 +1,12 @@
 # AGENTS.md
 
 ## Portfolio architecture
-- Keep `index.html` as a thin shell. Do not move section copy back into it.
-- Homepage sections live in `components/*.html` and are loaded by `js/includes.js`.
-- Preserve IDs such as `#work`, `#experience`, and `#about`; deep-link scrolling depends on them.
-- Keep homepage copy concise, factual, and engineering-focused. Avoid slogan-like or generic AI/marketing language.
-- After homepage CSS, component, JS, or index changes, use the `Portfolio visual capture` workflow and inspect desktop/mobile screenshots.
-- The screenshot workflow must fail if modular includes do not finish loading.
+- Keep `index.html` as a thin shell. Homepage section copy lives in `components/*.html` and is loaded by `js/includes.js`.
+- Homepage IDs such as `#work`, `#experience`, and `#about` must remain stable.
+- Inner pages use the shared shell: `components/inner-header.html`, `components/inner-footer.html`, `css/site-shell.css`, and `js/site-shell.js`.
+- Do not duplicate inner-page header/footer markup in individual pages.
+- Copy must be concise, factual, and engineering-focused. Avoid slogans, generic marketing language, and unsupported claims.
+- Preserve technical detail in thesis/stage content; simplify framing, not evidence.
+- The thesis page opens as a short case study. Full report content remains inside the `#makale` disclosure.
+- After any homepage or inner-page visual/content change, run `Portfolio visual capture` and inspect desktop/mobile fold + full-page screenshots.
+- Visual capture must wait for modular includes/shared shell and retry while GitHub Pages is deploying.
