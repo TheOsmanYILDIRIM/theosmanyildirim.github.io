@@ -218,3 +218,66 @@ body { background: #f3f2ec; }
 
 /* Keep the hero accent above the base .hero h1 em rule in the cascade. */
 .hero-stage.hero h1 em { color: #c9f04a; }
+
+
+/* Visual QA pass — 2026-10-07. Keeps the editorial identity while fixing
+   the desktop hero composition and mobile/full-page balance found in screenshots. */
+@media (min-width: 721px) {
+  .hero-stage-inner {
+    grid-template-columns: minmax(440px, .95fr) minmax(0, 1.05fr);
+    gap: clamp(52px, 6vw, 92px);
+    width: 100%;
+    max-width: 1320px;
+    min-height: 690px;
+    padding: 72px clamp(36px, 5vw, 72px) 92px;
+  }
+  .hero-stage .hero-copy { max-width: 560px; }
+  .hero-stage h1 {
+    font-size: clamp(4.6rem, 6.25vw, 6.45rem);
+    line-height: .92;
+    margin: 18px 0 28px;
+  }
+  .hero-stage .lede { max-width: 540px; font-size: 1.04rem; line-height: 1.65; }
+  .hero-stage .hero-visual {
+    min-width: 0;
+    min-height: 0;
+    height: clamp(500px, 58vw, 620px);
+    aspect-ratio: auto;
+  }
+  .hero-stage .hero-visual img { object-fit: cover; }
+  .hero-note { left: max(36px, calc((100vw - 1320px) / 2 + 72px)); bottom: 30px; }
+  .hero::before { right: max(36px, calc((100vw - 1320px) / 2 + 72px)); }
+  .secondary-project .project-media { aspect-ratio: 16 / 8.5; }
+  .about { grid-template-columns: .9fr 1.1fr; gap: 7%; }
+  .about-portrait { width: min(100%, 330px); }
+}
+
+@media (max-width: 720px) {
+  .hero-stage-inner {
+    gap: 28px;
+    padding-block: 32px 42px;
+  }
+  .hero::before { margin-bottom: 8px; }
+  .hero-stage h1 {
+    margin: 12px 0 20px;
+    line-height: .94;
+  }
+  .hero-stage .lede { font-size: 1rem; line-height: 1.55; }
+  .hero-stage .actions { margin-top: 24px; gap: 16px; }
+  .hero-stage .hero-visual { aspect-ratio: 1.22 / 1; }
+  .hero-note { margin-top: -10px; }
+  .about-portrait {
+    display: block;
+    width: min(68vw, 260px);
+    min-height: 180px;
+    margin: 24px 0 28px;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-stage-inner { padding-inline: 16px; padding-block: 26px 36px; }
+  .hero-stage h1 { font-size: clamp(2.75rem, 13.2vw, 3.45rem); }
+  .hero-stage .hero-visual { aspect-ratio: 1.28 / 1; }
+  .hero-stage .button { padding: 12px 16px; }
+}
