@@ -330,3 +330,101 @@ body { background: #f3f2ec; }
     left: max(36px, calc((100vw - 1320px) / 2 + 72px));
   }
 }
+
+
+/* Final visual polish: navigation, hero framing and compact mobile header. */
+.topbar {
+  position: relative;
+  height: 82px;
+  border-bottom: 1px solid #c5cbc3;
+}
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  font-size: 1.48rem;
+  letter-spacing: -.065em;
+}
+nav { gap: 26px; }
+nav a {
+  position: relative;
+  font-size: .78rem;
+  font-weight: 650;
+  letter-spacing: .025em;
+  transition: color .18s ease;
+}
+nav a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -7px;
+  height: 1px;
+  background: #6f8d1c;
+  transition: right .18s ease;
+}
+nav a:not(.nav-cta):hover { color: var(--ink); }
+nav a:not(.nav-cta):hover::after { right: 0; }
+.nav-cta {
+  padding: 9px 16px;
+  border-color: #9da79f;
+  background: rgba(255,255,255,.25);
+}
+
+@media (min-width: 721px) {
+  .hero-stage .hero-stage-inner { padding-top: 66px; padding-bottom: 88px; }
+  .hero-stage .actions { margin-top: 32px; }
+  .hero-stage .hero-visual {
+    position: relative;
+    border: 1px solid rgba(224,235,225,.18);
+    box-shadow: 18px 18px 0 rgba(201,240,74,.18);
+  }
+  .hero-stage .hero-visual::after {
+    content: "CAD / THERMAL DESIGN";
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 7px 9px;
+    background: rgba(17,25,20,.82);
+    color: #dce7dd;
+    font: 600 .61rem/1 monospace;
+    letter-spacing: .11em;
+  }
+  .hero-stage .hero-visual figcaption {
+    left: 18px;
+    bottom: 18px;
+    border: 1px solid rgba(17,25,20,.12);
+  }
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    min-height: 64px;
+    height: 64px;
+    align-items: center;
+    padding: 0 20px;
+  }
+  .brand { font-size: 1.28rem; }
+  nav {
+    flex-wrap: nowrap;
+    gap: 13px;
+    align-items: center;
+  }
+  nav a {
+    font-size: .67rem;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+  nav a:not(.nav-cta)::after { display: none; }
+  .nav-cta {
+    padding: 6px 9px;
+    border-color: #aab2ab;
+  }
+  .hero-stage-inner { padding-top: 24px; }
+}
+
+@media (max-width: 420px) {
+  .topbar { padding-inline: 16px; }
+  nav { gap: 10px; }
+  nav a { font-size: .64rem; }
+  .nav-cta { padding: 5px 7px; }
+}
