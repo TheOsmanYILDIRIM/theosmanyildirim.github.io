@@ -583,6 +583,48 @@
       font-size: clamp(.82rem, 1.8vw, .95rem);
       line-height: 1.55;
     }
+    .report-disclosure {
+      border-top: 1px solid var(--slate-300);
+      border-bottom: 1px solid var(--slate-300);
+      padding: 0;
+    }
+    .report-disclosure > summary {
+      list-style: none;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 18px;
+      padding: 22px 4px;
+      color: var(--slate-800);
+    }
+    .report-disclosure > summary::-webkit-details-marker { display: none; }
+    .report-disclosure-kicker {
+      color: var(--emerald-conformal-dark);
+      font: 700 .72rem/1.2 monospace;
+      letter-spacing: .08em;
+    }
+    .report-disclosure > summary strong {
+      font-size: clamp(.95rem, 2vw, 1.08rem);
+    }
+    .report-disclosure > summary > span:last-child {
+      color: var(--slate-600);
+      font-size: .82rem;
+      white-space: nowrap;
+    }
+    .report-disclosure[open] > summary > span:last-child { font-size: 0; }
+    .report-disclosure[open] > summary > span:last-child::after {
+      content: "Raporu kapat ↑";
+      font-size: .82rem;
+    }
+    @media (max-width: 720px) {
+      .report-disclosure > summary {
+        grid-template-columns: 1fr;
+        gap: 7px;
+        align-items: start;
+      }
+    }
+
     .project-jump-links .btn {
       min-height: 38px;
       display: inline-flex;
@@ -748,8 +790,14 @@
       </div>
     </section>
 
-    <!-- ==================== MAKALE / TAM RAPOR METNİ (MARKDOWN ÇEVİRİSİ) ==================== -->
-    <section id="makale" class="my-5">
+    <!-- ==================== TAM TEKNİK RAPOR ==================== -->
+    <details id="makale" class="report-disclosure my-5">
+      <summary>
+        <span class="report-disclosure-kicker">TAM TEKNİK RAPOR</span>
+        <strong>Yöntem, CAD, Moldflow analizi ve ayrıntılı sonuçlar</strong>
+        <span>Raporu aç ↓</span>
+      </summary>
+      <section id="rapor-icerik" class="mt-4">
       <div class="row">
         
         <!-- Sol Sütun: Masaüstü Sticky İçindekiler (TOC) -->
@@ -1337,6 +1385,7 @@
 
       </div>
     </section>
+    </details>
 
   </main>
 
