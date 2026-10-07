@@ -34,8 +34,6 @@ jobs:
           npm init -y
           npm install playwright
           npx playwright install --with-deps chromium
-      - name: Wait for GitHub Pages deployment
-        run: sleep 45
       - name: Capture live portfolio
         run: |
           cat > capture.mjs <<'EOF'
@@ -58,16 +56,33 @@ jobs:
           for (const route of routes) {
             for (const t of targets) {
               const page = await browser.newPage({ viewport: { width: t.width, height: t.height }, deviceScaleFactor: 1 });
-              await page.goto('https://theosmanyildirim.github.io' + route.path, { waitUntil: 'networkidle' });
+              const liveUrl = 'https://theosmanyildirim.github.io' + route.path;
+              let ready = false;
+              let lastError;
 
-              if (route.modular) {
-                await page.waitForFunction(() => document.documentElement.dataset.portfolioReady === 'true', null, { timeout: 15000 });
-                const includeError = await page.evaluate(() => document.documentElement.dataset.includeError);
-                if (includeError) throw new Error('Portfolio component include failed');
-              } else {
-                await page.waitForFunction(() => document.documentElement.dataset.siteShellReady === 'true', null, { timeout: 15000 });
-                const shellError = await page.evaluate(() => document.documentElement.dataset.siteShellError);
-                if (shellError) throw new Error('Shared site shell failed');
+              for (let attempt = 1; attempt <= 6 && !ready; attempt++) {
+                try {
+                  await page.goto(liveUrl, { waitUntil: 'networkidle', timeout: 30000 });
+
+                  if (route.modular) {
+                    await page.waitForFunction(() => document.documentElement.dataset.portfolioReady === 'true', null, { timeout: 12000 });
+                    const includeError = await page.evaluate(() => document.documentElement.dataset.includeError);
+                    if (includeError) throw new Error('Portfolio component include failed');
+                  } else {
+                    await page.waitForFunction(() => document.documentElement.dataset.siteShellReady === 'true', null, { timeout: 12000 });
+                    const shellError = await page.evaluate(() => document.documentElement.dataset.siteShellError);
+                    if (shellError) throw new Error('Shared site shell failed');
+                  }
+
+                  ready = true;
+                } catch (error) {
+                  lastError = error;
+                  if (attempt < 6) await page.waitForTimeout(15000);
+                }
+              }
+
+              if (!ready) {
+                throw new Error(`Live route not ready after retries: ${route.slug} — ${lastError}`);
               }
 
               await page.evaluate(async () => {
