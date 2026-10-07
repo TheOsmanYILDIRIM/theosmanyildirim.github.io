@@ -9,6 +9,13 @@ on:
       - "index.html"
       - "components/**"
       - "js/includes.js"
+      - "bitirme-projesi/**"
+      - "me-200-yaz-staji-1/**"
+      - "pipedata/**"
+      - "cv/**"
+      - "js/site-shell.js"
+      - "css/site-shell.css"
+      - "components/inner-*.html"
   workflow_dispatch:
 
 permissions:
@@ -57,6 +64,10 @@ jobs:
                 await page.waitForFunction(() => document.documentElement.dataset.portfolioReady === 'true', null, { timeout: 15000 });
                 const includeError = await page.evaluate(() => document.documentElement.dataset.includeError);
                 if (includeError) throw new Error('Portfolio component include failed');
+              } else {
+                await page.waitForFunction(() => document.documentElement.dataset.siteShellReady === 'true', null, { timeout: 15000 });
+                const shellError = await page.evaluate(() => document.documentElement.dataset.siteShellError);
+                if (shellError) throw new Error('Shared site shell failed');
               }
 
               await page.evaluate(async () => {
