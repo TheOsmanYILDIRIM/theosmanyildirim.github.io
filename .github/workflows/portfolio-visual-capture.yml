@@ -5,6 +5,8 @@ on:
     branches: [master]
     paths:
       - ".github/workflows/portfolio-visual-capture.yml"
+      - "css/portfolio.css"
+      - "index.html"
   workflow_dispatch:
 
 permissions:
@@ -23,6 +25,8 @@ jobs:
           npm init -y
           npm install playwright
           npx playwright install --with-deps chromium
+      - name: Wait for GitHub Pages deployment
+        run: sleep 45
       - name: Capture live portfolio
         run: |
           cat > capture.mjs <<'EOF'
