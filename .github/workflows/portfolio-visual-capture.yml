@@ -1,0 +1,50 @@
+name: Portfolio visual capture
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - ".github/workflows/portfolio-visual-capture.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright
+        run: |
+          npm init -y
+          npm install playwright
+          npx playwright install --with-deps chromium
+      - name: Capture live portfolio
+        run: |
+          cat > capture.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import fs from 'node:fs';
+          fs.mkdirSync('visual-review', { recursive: true });
+          const browser = await chromium.launch({ headless: true });
+          const targets = [
+            { name: 'desktop', width: 1440, height: 1000 },
+            { name: 'mobile', width: 390, height: 844 }
+          ];
+          for (const t of targets) {
+            const page = await browser.newPage({ viewport: { width: t.width, height: t.height }, deviceScaleFactor: 1 });
+            await page.goto('https://theosmanyildirim.github.io/', { waitUntil: 'networkidle' });
+            await page.screenshot({ path: `visual-review/${t.name}-full.png`, fullPage: true });
+            await page.screenshot({ path: `visual-review/${t.name}-fold.png`, fullPage: false });
+          }
+          await browser.close();
+          EOF
+          node capture.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-visual-review
+          path: visual-review/*.png
+          retention-days: 7
