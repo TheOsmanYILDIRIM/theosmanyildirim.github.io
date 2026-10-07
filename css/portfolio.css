@@ -428,3 +428,15 @@ nav a:not(.nav-cta):hover::after { right: 0; }
   nav a { font-size: .64rem; }
   .nav-cta { padding: 5px 7px; }
 }
+
+
+/* Modular-render visual QA fixes */
+.hero-stage .hero-visual figcaption {
+  color: #111914;
+}
+
+@media (max-width: 720px) {
+  .hero-stage.hero::before {
+    display: none;
+  }
+}
