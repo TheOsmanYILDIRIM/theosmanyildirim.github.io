@@ -1,0 +1,86 @@
+:root {
+  --shell-ink: #18231e;
+  --shell-muted: #68756d;
+  --shell-line: #c9cec6;
+  --shell-paper: #f3f2ec;
+  --shell-accent: #c9f04a;
+}
+.site-shell-header,
+.site-shell-footer {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.site-shell-header {
+  background: var(--shell-paper);
+  color: var(--shell-ink);
+  border-bottom: 1px solid var(--shell-line);
+}
+.site-shell-wrap {
+  width: min(1160px, calc(100% - 56px));
+  margin-inline: auto;
+}
+.site-shell-header .site-shell-wrap {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.site-shell-brand {
+  color: var(--shell-ink);
+  font-weight: 800;
+  font-size: 1.48rem;
+  line-height: 1;
+  letter-spacing: -.065em;
+  text-decoration: none;
+}
+.site-shell-brand span { color: #89ad00; }
+.site-shell-nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.site-shell-nav a {
+  color: var(--shell-muted);
+  font-size: .78rem;
+  font-weight: 650;
+  letter-spacing: .025em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-shell-nav a:hover { color: var(--shell-ink); }
+.site-shell-nav .site-shell-cta {
+  color: var(--shell-ink);
+  border: 1px solid #9da79f;
+  border-radius: 999px;
+  padding: 9px 16px;
+}
+.site-shell-footer {
+  background: var(--shell-paper);
+  color: var(--shell-muted);
+  border-top: 1px solid var(--shell-line);
+}
+.site-shell-footer .site-shell-wrap {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font-size: .72rem;
+}
+.site-shell-footer a {
+  color: var(--shell-ink);
+  text-decoration: none;
+}
+@media (max-width: 720px) {
+  .site-shell-wrap { width: min(100% - 32px, 1160px); }
+  .site-shell-header .site-shell-wrap { min-height: 64px; gap: 12px; }
+  .site-shell-brand { font-size: 1.28rem; }
+  .site-shell-nav { gap: 10px; }
+  .site-shell-nav a { font-size: .64rem; letter-spacing: 0; }
+  .site-shell-nav .site-shell-cta { padding: 5px 7px; }
+  .site-shell-footer .site-shell-wrap {
+    min-height: 0;
+    padding-block: 22px;
+    flex-wrap: wrap;
+  }
+}
