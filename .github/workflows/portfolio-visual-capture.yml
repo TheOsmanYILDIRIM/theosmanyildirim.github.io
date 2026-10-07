@@ -7,6 +7,8 @@ on:
       - ".github/workflows/portfolio-visual-capture.yml"
       - "css/portfolio.css"
       - "index.html"
+      - "components/**"
+      - "js/includes.js"
   workflow_dispatch:
 
 permissions:
@@ -41,6 +43,17 @@ jobs:
           for (const t of targets) {
             const page = await browser.newPage({ viewport: { width: t.width, height: t.height }, deviceScaleFactor: 1 });
             await page.goto('https://theosmanyildirim.github.io/', { waitUntil: 'networkidle' });
+            await page.waitForFunction(() => document.documentElement.dataset.portfolioReady === 'true', null, { timeout: 15000 });
+            const includeError = await page.evaluate(() => document.documentElement.dataset.includeError);
+            if (includeError) throw new Error('Portfolio component include failed');
+            await page.evaluate(async () => {
+              for (let y = 0; y < document.body.scrollHeight; y += 700) {
+                window.scrollTo(0, y);
+                await new Promise(r => setTimeout(r, 60));
+              }
+              window.scrollTo(0, 0);
+            });
+            await page.waitForTimeout(300);
             await page.screenshot({ path: `visual-review/${t.name}-full.png`, fullPage: true });
             await page.screenshot({ path: `visual-review/${t.name}-fold.png`, fullPage: false });
           }
