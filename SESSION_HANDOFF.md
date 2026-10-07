@@ -1,28 +1,30 @@
 # SESSION_HANDOFF.md
 
 ## Current state
-Homepage is modularized and deployed.
+Portfolio homepage and linked pages are deployed, modularized, and visually validated.
 
-### Structure
-- `index.html`: shell only
-- `components/header.html`
-- `components/hero.html`
-- `components/metrics.html`
-- `components/projects.html`
-- `components/experience.html`
-- `components/about.html`
-- `components/contact.html`
-- `components/footer.html`
-- `js/includes.js`: async component loader + ready/error state
+### Shared structure
+- Homepage: `index.html` shell + `components/*.html` + `js/includes.js`.
+- Inner pages: shared `inner-header.html` / `inner-footer.html` via `js/site-shell.js` and `css/site-shell.css`.
+- Inner pages covered: `cv/`, `pipedata/`, `me-200-yaz-staji-1/`, `bitirme-projesi/`.
 
 ### Copy
-Homepage copy was rewritten to be short, factual, and engineering-focused.
+- Removed slogan-like/AI-marketing phrasing.
+- CV profile is concise and factual.
+- PipeData describes SQLite/SVG/data functions directly.
+- Staj page uses direct manufacturing/quality terminology.
+- Thesis hero uses a short engineering title with the formal project name beneath it.
+
+### Thesis information architecture
+- Hero → metrics → result charts are visible by default.
+- Detailed methodology/report content is preserved inside the closed `#makale` “Tam teknik rapor” disclosure.
 
 ### Validation
-- GitHub Pages deploy succeeded.
-- `Portfolio visual capture` run #7 succeeded.
-- Desktop 1440x1000 and mobile 390x844 fold/full-page screenshots were visually inspected.
-- All sections render; CAD figcaption is readable; mobile hero no longer has the extra identity-row gap.
+- Portfolio visual capture run #13 succeeded.
+- Desktop 1440×1000 and mobile 390×844 fold/full-page renders were inspected.
+- Shared shell loads on all inner routes.
+- CV, PipeData, staj and thesis layouts render without visible regressions.
+- Screenshot workflow now retries until GitHub Pages is ready instead of relying on a fixed delay.
 
 ### Next step
-Only make further visual/copy changes if requested; re-run visual capture after any homepage-facing change.
+Only make targeted content/visual changes requested by the user; re-run visual capture after every public-facing change.
