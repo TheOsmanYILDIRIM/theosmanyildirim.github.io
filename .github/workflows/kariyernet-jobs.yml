@@ -1,0 +1,32 @@
+name: Kariyer.net public listings experiment
+on:
+  push:
+    branches:
+      - experiment/kariyernet-job-harvester-20261017
+    paths:
+      - '.github/workflows/kariyernet-jobs.yml'
+      - 'tools/kariyernet/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r tools/kariyernet/requirements.txt
+      - name: Collect public listings
+        run: python tools/kariyernet/collect.py --output output/kariyernet --max-details 80 --delay 3
+      - name: Validate exports
+        run: python -m unittest discover -s tools/kariyernet/tests -v
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kariyernet-public-listings
+          path: output/kariyernet/
+          if-no-files-found: warn
+          retention-days: 7
