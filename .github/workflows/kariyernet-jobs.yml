@@ -1,4 +1,4 @@
-name: Kariyer.net public listings experiment
+name: Kariyer.net keyword and pagination experiment
 on:
   push:
     branches:
@@ -7,26 +7,40 @@ on:
       - '.github/workflows/kariyernet-jobs.yml'
       - 'tools/kariyernet/**'
   workflow_dispatch:
+    inputs:
+      keywords:
+        description: 'Search terms separated by semicolons'
+        required: true
+        default: 'makine mühendisi;üretim mühendisi;kalite mühendisi;CNC;teknik ressam'
+        type: string
+      pages:
+        description: 'Pages per keyword (5-10)'
+        default: '5'
+        type: choice
+        options: ['5', '6', '7', '8', '9', '10']
 permissions:
   contents: read
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 18
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: pip install -r tools/kariyernet/requirements.txt
-      - name: Collect public listings
-        run: python tools/kariyernet/collect.py --output output/kariyernet --max-details 80 --delay 3
-      - name: Validate exports
+      - name: Validate extractors
         run: python -m unittest discover -s tools/kariyernet/tests -v
+      - name: Direct keyword search and five-page crawl
+        env:
+          SEARCH_TERMS: ${{ inputs.keywords || 'makine mühendisi;üretim mühendisi;kalite mühendisi;CNC;teknik ressam' }}
+          PAGES: ${{ inputs.pages || '5' }}
+        run: python tools/kariyernet/search.py --keywords "$SEARCH_TERMS" --pages "$PAGES" --max-details 150 --delay 3 --output output/kariyernet
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: kariyernet-public-listings
+          name: kariyernet-keyword-results
           path: output/kariyernet/
           if-no-files-found: warn
           retention-days: 7
