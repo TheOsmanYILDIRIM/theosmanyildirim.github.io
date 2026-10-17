@@ -33,7 +33,7 @@ def extract_urls(html, base_url):
         p = urlparse(href)
         if p.netloc.lower() not in ("kariyer.net", "www.kariyer.net"):
             continue
-        if re.search(r"^/is-ilani/[^/?]+-\\d+(?:/)?$", p.path):
+        if re.search(r"^/is-ilani/[^/?]+-\d+(?:/)?$", p.path):
             urls.add("https://www.kariyer.net" + p.path.rstrip("/"))
     return sorted(urls)
 
