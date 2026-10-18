@@ -39,6 +39,8 @@ jobs:
         run: python tools/kariyernet/search.py --keywords "$SEARCH_TERMS" --pages "$PAGES" --max-details 150 --delay 3 --output output/kariyernet
       - name: Official public board feeds
         run: python tools/kariyernet/official_sources.py --output output/kariyernet
+      - name: Score jobs against CV and geography
+        run: python tools/kariyernet/cv_rank.py --output output/kariyernet
       - uses: actions/upload-artifact@v4
         if: always()
         with:
