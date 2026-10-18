@@ -37,7 +37,7 @@ jobs:
           DATE="$(TZ=Europe/Istanbul date +%Y-%m-%d)"
           TARGET="data/kariyernet/daily/$DATE"
           mkdir -p "$TARGET"
-          cp output/kariyernet/jobs.json output/kariyernet/jobs.csv output/kariyernet/report.json "$TARGET/"
+          cp output/kariyernet/jobs.json output/kariyernet/jobs.csv output/kariyernet/report.json output/kariyernet/discovered_urls.json "$TARGET/"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$TARGET"
