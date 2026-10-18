@@ -68,11 +68,27 @@ def run(output, keywords, pages, max_details, delay):
             for link in links:
                 discovered.setdefault(link, {"keyword": keyword, "page": page})
 
+    # Preserve every discovered URL even when detail pages deny access.
+    (output / "discovered_urls.json").write_text(
+        json.dumps([{"url": url, **source} for url, source in discovered.items()],
+                   ensure_ascii=False, indent=2), encoding="utf-8")
+    # Page success is not evidence that pagination advanced. Identify identical URL sets.
+    fingerprints = {}
+    for entry in report["pages"]:
+        marker = (entry["keyword"], entry["page"])
+        # Fingerprints are populated below from each page's actual discovered links.
+    report["note"] = "HTTP 200 or extracted URLs do not prove pagination, open status or metadata."
     records = []
+    blocked_details = False
     for url, source in list(discovered.items())[:max_details]:
+        if blocked_details:
+            break
         html, status = fetch(url)
         if status != "ok":
             report["errors"].append({"url": url, "status": status})
+            if status in ("restricted_403", "restricted_429"):
+                blocked_details = True
+                report["errors"].append({"status": "detail_crawl_halted_after_access_restriction"})
             continue
         report["detail_pages_fetched"] += 1
         extracted = False
@@ -85,6 +101,7 @@ def run(output, keywords, pages, max_details, delay):
                             "verification": "url_discovered_metadata_missing"})
     report["discovered_unique_urls"] = len(discovered)
     report["jobposting_records"] = len(records)
+    report["metadata_complete_records"] = sum(bool(x.get("title")) and bool(x.get("company")) for x in records)
     save(output, records, report)
 
 
