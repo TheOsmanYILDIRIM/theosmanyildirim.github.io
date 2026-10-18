@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b111b">
+  <meta name="description" content="Türkçe mobil klavye ergonomisi, harf dizilimi ve başparmak kalibrasyon laboratuvarı">
+  <title>Başparmak Atlası · Mobil Klavye Laboratuvarı</title>
+  <style>:root{--bg:#0b111b;--panel:#141e2a;--panel2:#192534;--border:#2b3848;--sub:#9cacc0;--text:#f3f6fa;--teal:#89e4c7;--gold:#f5ca84;--blue:#88a9ff;--danger:#ff858a;--r:17px;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);font-synthesis:none}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:radial-gradient(ellipse at 90% -10%,#15283b 0%,transparent 42%),var(--bg);-webkit-tap-highlight-color:transparent}button,select{font:inherit}button{cursor:pointer;touch-action:manipulation}button:focus-visible,select:focus-visible{outline:2px solid var(--teal);outline-offset:3px}button:disabled{opacity:.42;cursor:not-allowed}.app-shell{max-width:1120px;padding:0 24px;margin:auto}.topbar{display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid #273342;gap:12px}.brand{display:flex;align-items:center;gap:13px}.brand strong{letter-spacing:.16em;font-size:13px;display:block}.brand small{font-size:11px;color:var(--sub);display:block;margin-top:5px}.logo{width:39px;height:39px;border:1px solid #608f91;border-radius:12px;background:#1e403e;display:grid;place-items:center;color:var(--teal);font-size:25px}.pill{font-size:11px;white-space:nowrap;padding:8px 12px;border:1px solid #31584e;background:#15322f;color:#b8e9d8;border-radius:100px}.dot{width:6px;height:6px;background:var(--teal);border-radius:50%;display:inline-block;margin-right:5px}.hero{margin:24px 0 19px;display:grid;grid-template-columns:minmax(0,1fr) 250px;align-items:stretch;gap:18px}.hero-content{border:1px solid #28465a;border-radius:21px;padding:30px 33px;background:linear-gradient(130deg,#192b3a,#101b27 70%);min-width:0}.overline,.eyebrow{color:var(--teal);letter-spacing:.16em;font-size:10px;font-weight:750}.hero h1{font-weight:720;line-height:1.17;font-size:clamp(29px,3vw,42px);letter-spacing:-.035em;max-width:660px;margin:13px 0}.hero h1 em{font-style:normal;color:var(--teal)}.hero p{color:#bdd0df;max-width:565px;font-size:14px;line-height:1.62;margin:0 0 13px}.micro{font-size:11px;color:#9caabb}.hero-stat{background:#192735;border:1px solid #28475a;border-radius:21px;padding:29px 20px;display:flex;flex-direction:column;justify-content:center;text-align:center}.hero-stat strong{font-size:53px;color:var(--teal);letter-spacing:-.05em;font-variant-numeric:tabular-nums}.hero-stat span{font-size:13px;font-weight:650}.substat{font-size:11px;color:var(--sub);margin-top:14px;line-height:1.4}.tabs{display:flex;gap:7px;margin:18px 0 27px;padding:5px;background:#141f2b;border:1px solid #283849;border-radius:14px;overflow-x:auto}.tab{border:0;border-radius:10px;color:#aab8ca;background:transparent;padding:12px 19px;font-size:12px;font-weight:700;flex:1;white-space:nowrap}.tab.active{color:#0b2226;background:var(--teal);box-shadow:0 2px 12px #69e4bd2b}.hidden{display:none!important}.panel{padding-bottom:30px}.panel-title{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:16px}.panel-title h2{font-size:22px;letter-spacing:-.025em;margin:6px 0 0}.panel-title h3{font-size:16px;margin:6px 0 0}.panel-title.compact{align-items:center}.eyebrow{display:block;margin:0}.soft-tag,.mini-note{font-size:11px;color:#a7b8cc}.soft-tag{background:#172833;border:1px solid #26424d;border-radius:100px;padding:8px 11px;white-space:nowrap}.layout-picks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:15px}.pick{background:#131e2a;border:1px solid #2b3c4b;border-radius:13px;padding:13px;text-align:left;color:var(--text)}.pick .code{display:block;color:var(--teal);font-size:11px;letter-spacing:.11em;font-weight:800;margin-bottom:8px}.pick strong{display:block;font-size:12px;line-height:1.3;min-height:33px}.pick small{font-size:10px;color:var(--sub)}.pick.selected{border-color:var(--teal);background:#19332f;box-shadow:inset 0 0 0 1px #78dbbd33}.card{border:1px solid #283849;background:#141f2c;border-radius:var(--r);padding:19px 21px;margin-bottom:15px}.preview-head,.between{display:flex;align-items:center;justify-content:space-between;gap:12px}.preview-head h3,h3{margin:5px 0}.preview-card{padding-bottom:24px}.keyboard{display:flex;flex-direction:column;gap:6px;user-select:none;-webkit-user-select:none;touch-action:manipulation}.board-demo{max-width:680px;margin:21px auto 0}.keyrow{display:flex;justify-content:center;gap:5px;min-height:52px}.key{min-width:0;flex:1;display:flex;align-items:center;justify-content:center;border-radius:9px;background:#293748;color:#e4f1f5;border:1px solid #415162;font-weight:700;font-size:16px;text-transform:uppercase;position:relative;padding:0;touch-action:manipulation}.key.vowel{color:#eec98e;background:#354054}.key.other{opacity:.62}.key.midline:after{content:"";position:absolute;top:20%;bottom:20%;left:-3px;border-left:1px dashed #608c99;pointer-events:none}.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:15px 0}.metric{padding:16px 17px;border:1px solid #2b3c4e;background:#172432;border-radius:14px}.metric strong{display:block;font-size:27px;color:var(--teal);font-variant-numeric:tabular-nums;letter-spacing:-.03em;line-height:1.3}.metric span{font-size:11px;color:var(--sub);display:block;margin-top:5px}.metric .metric-note{font-size:10px;color:#7f99a9;margin-top:5px}.bar-chart{margin-top:16px}.bar-item{display:grid;grid-template-columns:165px 1fr 56px;gap:12px;align-items:center;margin:13px 0;font-size:12px}.bar-item label{color:#cfdee8}.bar-track{height:11px;background:#28374a;border-radius:30px;overflow:hidden}.bar-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,#4d9ba2,#98e5c4)}.bar-item:nth-child(2) .bar-fill{background:#a8b0ee}.bar-item strong{text-align:right;font-size:12px;font-variant-numeric:tabular-nums}.fineprint{margin:20px 0;line-height:1.55;font-size:11px;color:#9badc0}.guidance{display:flex;align-items:center;gap:16px;color:#c9d4df;line-height:1.55;font-size:13px}.step{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#214e45;color:var(--teal);font-size:17px;font-weight:800;flex-shrink:0}.cal-controls{display:flex;gap:12px;margin:18px 0}.action{font-size:12px;font-weight:750;border-radius:11px;padding:13px 19px;border:1px solid #365168;min-height:43px}.primary{color:#102929;background:var(--teal);border-color:var(--teal)}.secondary{color:#e5f0f8;background:#203247}.plain{color:var(--teal);background:transparent;border:1px solid #355954}.progress{font-size:12px;color:var(--teal);font-variant-numeric:tabular-nums}.calibration-card h3{font-size:15px}.cal-board{margin:20px auto;max-width:650px;touch-action:none}.cal-board .keyrow{min-height:59px}.cal-board .key{background:#223042;color:#688398}.cal-board .key.target{background:#1e7c68;border:2px solid var(--teal);box-shadow:0 0 15px #7ee0bb66;color:#fff;transform:scale(1.025)}.cal-board .key.pressed-miss{background:#873e51}.cal-tip{font-size:11px;color:#a7b6c5;text-align:center}.small-toggle{display:flex;gap:2px;border:1px solid #385064;border-radius:9px;padding:3px}.small-toggle button{padding:7px 12px;font-size:11px;color:#a5b8cc;background:none;border:0;border-radius:6px}.small-toggle button.active{background:#254a4c;color:var(--teal)}.heat-board{margin:17px 0 13px;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));grid-auto-rows:43px;gap:5px}.heat-cell{display:grid;place-items:center;border-radius:7px;border:1px solid #3d5063;background:#243143;font-size:10px;font-weight:700;color:#eaf3f8;font-variant-numeric:tabular-nums}.heat-stats{font-size:11px;color:#adbdcd;margin:15px 0}.legend{display:flex;align-items:center;gap:10px;color:#acc2d0;font-size:10px}.legend-gradient{width:160px;height:8px;border-radius:20px;background:linear-gradient(90deg,#2c8e79,#d5ac68,#b85e66)}.control-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}.control-row label{font-size:11px;color:var(--sub);font-weight:600}.control-row select{display:block;width:100%;margin-top:7px;background:#203044;border:1px solid #3b5065;border-radius:9px;color:#eaf5fa;padding:11px 12px;font-size:12px}.muted-text{font-size:11px;color:#a6b8c9;line-height:1.4}.small-button{background:transparent;color:var(--teal);border:0;font-size:11px;font-weight:750;text-decoration:underline;text-underline-offset:3px}.prompt{line-height:1.65;font-size:17px;letter-spacing:.006em;color:#f9dfa0;margin:18px 0 9px;padding:15px;background:#1f2a34;border:1px solid #2c4053;border-radius:11px;min-height:68px}.entry{background:#0f1824;border:1px solid #395367;border-radius:10px;padding:13px;font-size:15px;color:var(--teal);min-height:50px;overflow-wrap:anywhere}.entry.error{border-color:var(--danger)}.progress-row{font-size:11px;color:var(--sub);margin:11px 0 15px}.progress-row strong{color:var(--gold);font-variant-numeric:tabular-nums}.typing-board{max-width:650px;margin:auto}.typing-board .keyrow{min-height:54px}.typing-board button.key{border-bottom:3px solid #496279}.typing-board button.key:active{transform:translateY(2px);border-bottom-width:1px;background:#35625f}.utility-row{display:flex;gap:8px;max-width:650px;margin:7px auto}.space-key,.back-key{background:#29394c;border:1px solid #45576d;color:#e5eff6;border-radius:9px;padding:12px;font-size:12px;font-weight:700}.space-key{flex:3}.back-key{flex:1}.after-test{font-size:11px;color:#9cafc0;margin-top:13px;line-height:1.4}.trials-table{overflow-x:auto;font-size:12px;color:#b6c8d9}.trials-table table{border-collapse:collapse;width:100%;min-width:400px}.trials-table th,.trials-table td{padding:10px 8px;text-align:left;border-bottom:1px solid #2a3a4e}.trials-table th{color:var(--teal);font-size:11px}.session-card{padding-bottom:22px}footer{padding:25px 0 38px;margin-top:15px;display:flex;justify-content:space-between;gap:16px;border-top:1px solid #253348;font-size:10px;color:#7a92a5}
+@media(max-width:700px){.app-shell{padding:0 12px}.topbar{padding:14px 2px}.brand strong{font-size:11px}.brand small{font-size:10px}.logo{width:34px;height:34px}.offline{padding:7px 8px;font-size:9px}.hero{grid-template-columns:1fr;gap:9px;margin-top:13px}.hero-content{padding:21px}.hero h1{font-size:30px;max-width:390px}.hero p{font-size:12px}.hero-stat{flex-direction:row;gap:16px;align-items:center;justify-content:flex-start;padding:14px 20px;text-align:left}.hero-stat strong{font-size:29px}.hero-stat span{font-size:12px}.substat{margin-top:0;margin-left:auto;font-size:9px;max-width:115px}.tabs{margin:13px 0 20px}.tab{font-size:10px;padding:11px 7px}.panel-title{align-items:start}.panel-title h2{font-size:19px}.soft-tag{font-size:9px;max-width:137px;text-align:center;white-space:normal}.layout-picks{display:flex;overflow-x:auto;padding-bottom:6px;gap:8px;scroll-snap-type:x mandatory}.pick{flex:0 0 126px;scroll-snap-align:start;padding:10px}.pick strong{min-height:30px}.card{padding:15px 13px}.preview-card{padding-bottom:20px}.keyrow{gap:3px;min-height:49px}.key{font-size:12px;border-radius:6px}.metric-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.metric{padding:13px 12px}.metric strong{font-size:23px}.bar-item{grid-template-columns:105px 1fr 50px;gap:8px;font-size:10px}.cal-controls{gap:7px}.cal-controls .action{flex:1;padding:10px 7px;font-size:10px}.cal-board .keyrow{min-height:62px}.heat-board{gap:3px;grid-auto-rows:34px}.heat-cell{font-size:9px}.control-row{gap:7px}.control-row select{padding:9px 5px;font-size:11px}.prompt{font-size:16px}.typing-board .keyrow{min-height:51px}.after-test{align-items:flex-start}footer{flex-direction:column;gap:5px}.guidance{font-size:12px}}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+.cal-controls.person{margin:-4px 0 9px}.cal-personal-note{color:#9ab2c2;font-size:11px;line-height:1.55;margin:0 0 15px}.cal-controls.person button{width:100%;border-color:#417b70}.cal-controls.person button:not(:disabled){background:#214840;color:#adebd7}
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true">⌘</span><div><strong>BAŞPARMAK ATLASI</strong><small>Türkçe mobil klavye araştırması</small></div></div>
+    <span class="pill offline"><span class="dot"></span> Yerel · Veriler cihazında</span>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-content"><div class="overline">DENEY / V1.0</div><h1>En iyi klavye, <em>parmağına</em> göre değişebilir.</h1><p>Türkçe F ve Q'yu karşılaştır; kendi başparmak erişimini ölç, beş farklı dizilimi aynı görevlerde dene.</p>
+      <div class="micro">Başarı iddiası değil, ölçülebilir bir deney.</div></div>
+      <div class="hero-stat"><strong id="corpus-size">14.811</strong><span>Türkçe sözcük biçimi</span><div class="substat">%20 bağımsız değerlendirme örneklemi</div></div>
+    </section>
+    <nav class="tabs" aria-label="Deney bölümleri"><button class="tab active" data-tab="analyze" aria-selected="true">01 · Karşılaştır</button><button class="tab" data-tab="calibrate" aria-selected="false">02 · Erişim haritası</button><button class="tab" data-tab="typing" aria-selected="false">03 · Yazma testi</button></nav>
+    <section id="panel-analyze" class="panel">
+      <div class="panel-title"><div><p class="eyebrow">MATEMATİKSEL SİMÜLASYON</p><h2>Beş dizilim, aynı Türkçe</h2></div><span class="soft-tag">Model, insan testi değildir</span></div>
+      <div class="layout-picks" id="layout-picks" aria-label="Dizilim seç"></div>
+      <div class="card preview-card"><div class="preview-head"><div><p class="eyebrow">SEÇİLEN DİZİLİM</p><h3 id="current-name"></h3></div><span class="mini-note" id="current-keys"></span></div><div class="keyboard board-demo" id="demo-board" aria-label="Klavye görseli"></div></div>
+      <div class="metric-grid" id="metric-grid"></div>
+      <div class="card chart-card"><div class="panel-title compact"><div><p class="eyebrow">BAĞIMSIZ TEST / MODEL</p><h3>Q klavyeye göre hareket indeksi</h3></div><span class="mini-note">Düşük = modelde daha iyi</span></div><div id="bar-compare" class="bar-chart"></div></div>
+      <div class="fineprint">Hareket / erişim / kaydırma: boyutsuz geometrik vekil değerlerdir; milisaniye, WPM veya gerçek kas yorgunluğu değildir. 29 ve 32 tuşlu düzenlerde tuş genişliği farklıdır. Korpus kaynaklı dil kullanımı ile gerçek dokunuş performansı birbirinden ayrıdır.</div>
+    </section>
+    <section id="panel-calibrate" class="panel hidden">
+      <div class="panel-title"><div><p class="eyebrow">GERÇEK DOKUNUŞ VERİSİ</p><h2>Hangi bölgelere rahat erişiyorsun?</h2></div><span class="soft-tag">Telefonu normal tutuşunla kullan</span></div>
+      <div class="card guidance"><div class="step">1</div><div>Bir başparmak seç ve ekranda parlayan tuşlara <b>mümkün olduğunca hızlı ve isabetli</b> bas. Her el için 30 hedef; işaretli hücrelerin tamamı sırayla test edilir. Görsel tepki süresi sonuçları etkiler.</div></div>
+      <div class="cal-controls"><button id="left-hand" class="action primary">◀ Sol başparmağı ölç</button><button id="right-hand" class="action secondary">Sağ başparmağı ölç ▶</button></div>
+      <div class="cal-controls person"><button id="make-personal" class="action secondary" disabled>✦ Ölçümden kişisel P29 düzeni üret</button></div><p id="personal-info" class="cal-personal-note">Önce sol ve sağ el için en az 30 dokunuş kaydet. Tekrar ölçüm yapılması önerilir.</p>
+      <div class="card calibration-card"><div class="between"><div><span class="eyebrow">ERİŞİM KALİBRASYONU</span><h3 id="cal-state">Başlamak için elini seç</h3></div><span class="progress" id="cal-progress">0 / 30</span></div><div id="cal-board" class="keyboard cal-board" aria-label="Dokunma hedefleri"></div><div class="cal-tip" id="cal-tip">Her hücre ayrı hedef; yeşil ışığı takip et.</div></div>
+      <div class="card"><div class="between"><div><span class="eyebrow">KİŞİSEL HARİTA</span><h3>Ölçülen ortalama tepki ve isabet</h3></div><div class="small-toggle"><button id="heat-left" class="active" aria-pressed="true">Sol</button><button id="heat-right" aria-pressed="false">Sağ</button></div></div><div id="heat-board" class="heat-board" aria-label="Başparmak konfor haritası"></div><div id="heat-stats" class="heat-stats">Ölçüm yapılmadı.</div><div class="legend"><span>Kolay</span><div class="legend-gradient"></div><span>Zor</span></div></div>
+      <button id="export-cal" class="action plain">↓ Kalibrasyon JSON dosyasını dışa aktar</button>
+      <div class="fineprint">Bu test anatomik erişimi doğrudan ölçmez; görsel hedefi görme, algılama, karar ve hareket süreleri birleşik ölçülür. Tek deneme/hücre kişisel optimizasyon için güvenilir değildir. Veriler sunucuya gönderilmez.</div>
+    </section>
+    <section id="panel-typing" class="panel hidden">
+      <div class="panel-title"><div><p class="eyebrow">GERÇEK YAZMA DENEMESİ</p><h2>Yazım süresi ve hata miktarını ölç</h2></div><span class="soft-tag">Otomatik düzeltme yok</span></div>
+      <div class="card session-card"><div class="control-row"><label>Dizilim<select id="test-layout"></select></label><label>Mod<select id="test-mode"><option value="two">İki başparmak dokunma</option><option value="one">Tek parmak dokunma</option></select></label></div><div class="between muted-text"><span>Bir bloğu tüm dizilimlerde aynı sırayla dene.</span><button class="small-button" id="new-prompt">Yeni kelime bloğu ↻</button></div><div class="prompt" id="prompt" aria-label="Yazılacak ifade"></div><div class="entry" id="entry" aria-live="polite">Yazmaya dokunarak başla…</div><div class="between progress-row"><span id="test-progress">0 / 0 karakter</span><strong id="elapsed">00:00.0</strong></div><div id="typing-board" class="keyboard typing-board" aria-label="Dokunmatik klavye"></div><div class="utility-row"><button id="key-space" class="space-key">boşluk</button><button id="key-back" class="back-key" aria-label="Son karakteri sil">⌫ Sil</button></div><div class="between after-test"><div id="test-status" role="status">İlk harfe dokunduğunda ölçüm başlar.</div><button class="action secondary" id="reset-trial">Sıfırla</button></div></div>
+      <div class="metric-grid" id="typing-metrics"></div>
+      <div class="card"><div class="between"><h3>Gerçek test oturumların</h3><div class="export-actions"><button id="export-trials" class="small-button">↓ Özet CSV</button><button id="export-trials-raw" class="small-button">↓ Ham JSON</button></div></div><div id="trial-history" class="trials-table">Henüz tamamlanan deneme yok.</div></div>
+      <div class="fineprint">Harf geçişi, tuşun <b>sol/sağ ekran yarısı</b> üzerinden sınıflanır; tarayıcı hangi başparmakla basıldığını bilemez. Kaydırarak yazma henüz uygulanmıyor; S29 yalnız tek parmak dokunma ile sınanabilir. Hız hesabı ilk ve son dokunma arasındadır.</div>
+    </section>
+  </main>
+  <footer><span>Başparmak Atlası · Araştırma prototipi</span><span>14.811 sözcük biçimi · Kaynak: OpenSubtitles 2016 frekans derlemesi</span></footer>
+</div>
+<script id="experiment-data" type="application/json">{"metadata":{"corpus":"HermitDave FrequencyWords/OpenSubtitles2016 Turkish 2016; first 15000 ranked entries filtered to 29 Turkish letters","source_blob_sha":"f7c73d59b5654be9b10c38a17ce65fbc82ad3a35","alphabet":"abcçdefgğhıijklmnoöprsştuüvyz","train_words":11912,"test_words":2899,"weighting":"round(sqrt(count)); FNV1a(word UTF-16) modulo 5 = 0 held out","limitations":"Model-only scores: not observed typing times, fatigue, or WPM. Word-internal transitions; no space, punctuation, swipes, learning, autocorrect."},"layout":{"Q32":{"title":"Türkçe Q (32 tuş)","rows":["qwertyuıopğü","asdfghjklşi","zxcvbnmöç"],"optimized_for":"baseline","train":{"motion_index":1.672345,"reach_index":0.579582,"width_index":1.179663,"glide_distance":0.505102,"alternation_pct":49.287,"left_pct":47.528,"right_pct":52.472,"keys":32,"vowel_left_pct":25.0},"holdout":{"motion_index":1.664399,"reach_index":0.581907,"width_index":1.180295,"glide_distance":0.505382,"alternation_pct":49.861,"left_pct":47.691,"right_pct":52.309,"keys":32,"vowel_left_pct":25.0},"sensitivity":{"0.25":1.531242,"0.34":1.664399,"0.65":2.123052,"1.0":2.640886}},"F32":{"title":"Türkçe F (32 tuş)","rows":["fgğıodrnhpqw","uieaütkmlyş","xjövcçzsb"],"optimized_for":"baseline","train":{"motion_index":1.207397,"reach_index":0.544751,"width_index":1.194895,"glide_distance":0.476245,"alternation_pct":77.685,"left_pct":50.824,"right_pct":49.176,"keys":32,"vowel_left_pct":100.0},"holdout":{"motion_index":1.205192,"reach_index":0.545255,"width_index":1.19387,"glide_distance":0.480665,"alternation_pct":78.147,"left_pct":50.215,"right_pct":49.785,"keys":32,"vowel_left_pct":100.0},"sensitivity":{"0.25":1.013666,"0.34":1.205192,"0.65":1.864895,"1.0":2.60972}},"V29":{"title":"Dengeli Çift Başparmak","rows":["jfövücgzğş","puhaedrkst","çoıinlmyb"],"optimized_for":"balance","train_objective":0.847503,"train":{"motion_index":0.998706,"reach_index":0.460753,"width_index":0.932533,"glide_distance":0.439624,"alternation_pct":82.382,"left_pct":47.081,"right_pct":52.919,"keys":29,"vowel_left_pct":100.0},"holdout":{"motion_index":1.000775,"reach_index":0.45823,"width_index":0.932698,"glide_distance":0.442483,"alternation_pct":82.205,"left_pct":46.85,"right_pct":53.15,"keys":29,"vowel_left_pct":100.0},"sensitivity":{"0.25":0.822729,"0.34":1.000775,"0.65":1.614045,"1.0":2.306446}},"K29":{"title":"Erişim Öncelikli","rows":["jüövfczğpç","goetubrnds","hiaıylmkş"],"optimized_for":"comfort","train_objective":0.687226,"train":{"motion_index":1.074737,"reach_index":0.400408,"width_index":0.92355,"glide_distance":0.498017,"alternation_pct":80.258,"left_pct":50.02,"right_pct":49.98,"keys":29,"vowel_left_pct":100.0},"holdout":{"motion_index":1.064227,"reach_index":0.403364,"width_index":0.923612,"glide_distance":0.49386,"alternation_pct":80.56,"left_pct":49.467,"right_pct":50.533,"keys":29,"vowel_left_pct":100.0},"sensitivity":{"0.25":0.876888,"0.34":1.064227,"0.65":1.709505,"1.0":2.438045}},"S29":{"title":"Kaydırma Öncelikli","rows":["fçjgözşücğ","vtumelinıd","hboyraksp"],"optimized_for":"swipe","train_objective":0.400931,"train":{"motion_index":1.377054,"reach_index":0.464494,"width_index":0.939302,"glide_distance":0.371866,"alternation_pct":45.095,"left_pct":35.743,"right_pct":64.257,"keys":29,"vowel_left_pct":50.0},"holdout":{"motion_index":1.38112,"reach_index":0.461358,"width_index":0.937207,"glide_distance":0.373122,"alternation_pct":45.115,"left_pct":35.29,"right_pct":64.71,"keys":29,"vowel_left_pct":50.0},"sensitivity":{"0.25":1.284263,"0.34":1.38112,"0.65":1.714738,"1.0":2.091404}}},"assumptions":{"switch_scale":0.34,"thumb_priors":"left (.22,.72), right (.78,.72) normalized; hypothetical","geometry":"rows of 12/11/9 for original Q/F, 10/10/9 for alternatives"},"corpus_aggregates":{"alphabet":"abcçdefgğhıijklmnoöprsştuüvyz","source":"HermitDave FrequencyWords/OpenSubtitles2016 Turkish 2016; first 15000 ranked entries filtered to 29 Turkish letters","source_blob_sha":"f7c73d59b5654be9b10c38a17ce65fbc82ad3a35","weighting":"round(sqrt(count)); FNV1a(word UTF-16) modulo 5 = 0 held out","source_url":"https://github.com/hermitdave/FrequencyWords/blob/master/content/2016/tr/tr_50k.txt","train":{"words":11912,"uni":"da65.2km7.1d0q.14fd.4yps.ahm2.kby.1pyp.1b2x.1dwt.5o1n.9xbm.5v3.51y9.6no7.5ujm.84iy.3hjo.13ff.1421.7knr.448e.1zdr.3y3i.3sdm.1ze5.wzw.4n24.1xep","bi":"1ca.c4o.auh.5wa.ksg.ai.4t9.7e.9y2.8sd.0.2ee.10c.x0p.10dc.q9d.1smy.2m.0.dpq.1syp.hal.dub.i2c.lx.10.5ig.tf0.9nh.o0d.eo.0.0.22.dp3.0.0.0.0.35t.t1f.0.0.lh.0.2n.43v.1p0.0.12y.33.0.0.bpr.259.0.cb.2a.eu3.2s.49.0.2n.h4i.0.1m.0.1ue.34k.3tp.0.17f.e0.1a.0.uf.1i.0.d8.0.0.6q.36o.118.0.ao.0.7uw.jt.0.0.0.633.0.0.0.0.757.5ew.0.a3.1pc.21m.0.2n8.bl.0.1c.3a.0.1at.fw.jv.0.13.0.y1f.x.0.0.1a7.17iz.0.21.0.0.lbu.10ek.0.0.6i.0.84.56z.33l.0.no.3k.0.18.ggr.cy7.3e.116.0.o4.4ma.bfx.3za.lhp.ow.3fk.q6.b3s.1ls.0.ej.3t.qlx.pwq.kp4.18zp.ie.0.2ja.1mxz.e8n.523.kxx.47.0.9jf.kj9.3wn.49u.3j.0.12.0.3v7.en.1f.0.0.1le.388.0.3a.it.0.0.1d7.2k.0.10r.4v.0.15b.3n.3l.0.1c.0.2lh.x.0.0.0.khe.14.4v.0.57.xi.dmd.0.0.79.0.22.qu.cgx.1d.16f.0.0.0.1c0.6vp.0.1c.2c.1yl.0.0.0.7x.26c.0.0.0.0.cit.gq7.0.0.2pb.co.0.23.0.0.30b.z.0.0.4p5.20t.0.0.a5.mbr.bq.0.52.4m.6um.0.0.0.3y.11m.59a.0.c7.yw.hs.is.2fs.0.0.yl.yf.63.1y4.qw.c5.g3.88.17.0.3i.18a.ja.1ci.0.aj.0.6fp.z.0.1g.0.cpm.919.ngj.15q1.0.0.1r6.f26.3sj.au2.ul.0.0.2o.f23.b3i.1ky.2d6.2xp.5iw.61i.2f5.224.hw.8mu.25e.0.di.5l.f1v.w8o.wkb.1lte.df.0.2wd.sdg.j4t.df1.8mx.1x.1e.wt.qly.iyi.18p.0.0.0.3v.11h.0.0.0.0.7b.v3.z.0.11.0.0.10j.0.0.15.0.0.0.qt.30.0.10.0.13am.6e.10.ks.1q.dsg.0.x.0.15.a1g.h74.0.2dq.cnm.3uz.gn.b0x.1t3.0.1zn.3ws.h7.86q.99s.22y.13.h0.0.1ke0.13a.by.6f.fs7.1bwr.3r.2tp.0.1w.kze.wkz.0.1k7.718.g0j.g6.2mc.2x.6t.0.2gq.0.1sr.9e0.4rr.be.1ew.3k.192t.oz.ji.0.4ji.y21.x.x.0.2k.ehn.ndh.0.nm.3l8.13w.9z.1t6.1v.o5.df.1gz.53.0.87q.47x.0.mb.3s.i1u.7x.67e.18c.qzh.mwm.5k.2cu.0.1k.o0r.ruh.2d.1fo.dq3.5n4.398.1jq.3j.0.1v6.4uc.4b.3wb.eni.5cd.12.1uq.s2.5z.10i.210.5n.207.ky.ti.ck.2z8.sh.0.75.at.6p9.ojb.20o.fsv.os.0.24t.1b0o.1vr.2ag.2ow.n5.0.bf.3qi.pv.0.5w.57.2b.md.0.5j.0.1kz.11.0.0.0.9d.5bc.7m.61n.0.0.s5.8iy.1b3.6j.22f.0.0.76.8cs.3da.a0o.1a.0.0.0.40c.0.0.0.wb.2mc.284.0.6k.2d0.2lw.0.21z.0.3u.1p4.1bo.19.2z4.dw.36.0.6o.0.vrm.1i6.1gw.220.jgq.lii.97.1k4.0.ss.jyl.uav.6v.9fe.a12.9ym.zv.43r.4v.cr.wc.ewg.1tp.5yn.iyi.5x1.dr.19x.gj.mtp.27.8r.19.0.k33.x.0.0.w2.j8w.p1o.0.1gv.2kt.u8.4c.7pg.70l.k3.7i.23i.0.erk.bj5.2ns.2j.11l.0.7om.3d.28.hy.0.7ib.y.af.0.3t.87y.6m5.0.2i0.4zb.4t1.12.7p.8h.0.11.fc.1y.7vl.2xv.42z.7k.a6.0.nqq.5j.79.8v.0.o1k.kh.4a.0.1fg.g4a.k2m.0.ml.50j.8dc.2j.4dh.5l.0.2po.12m.0.7e9.6rn.4or.2r.hw.10.fu.ef.17a.1vb.1ga.ad.a9.re.4fa.196.0.7f.11.46z.aj0.j4g.q0t.0.0.x0.dpr.3io.6eg.4lu.0.0.ph.9ed.7tf.0.9m.180.15x.iv.0.94.0.1z3.46.0.0.0.2ya.26l.5k7.ex3.0.0.yv.90x.29i.60w.18l.0.0.18i.5uv.6gx.84h.0.7u.0.t3.c5t.0.kp.0.1e.64.4dd.0.9y.135.e3.0.bw.0.0.18t.4c.2v.0.1n8.f2.52.23.12.15l5.132.48.0.6d7.i9t.5z.tw.0.14.bls.aso.0.h3.c6a.156.1wl.12rx.il.0.17h.10y.0.am.3y1.4kb.ak.0.3d.71a.53.hn.0.2rp.6m6.0.1a3.0.0.4ju.58i.0.0.58u.oe.4f.11i.0.0.23.19g.0.0.10w.26v.0.a6.9q"},"test":{"words":2899,"uni":"3ag5.m97.cuv.a2u.15fj.2bb9.5fi.ct9.bci.c8t.1blf.2an4.11v.17tl.1lag.1avt.1zir.v5k.8j3.9ef.1ufw.11z6.g9k.x0a.11j0.gxd.78s.17ot.hee","bi":"iy.3bq.2um.13x.4qn.0.1d2.6h.35u.2m9.0.qe.56.75x.8zj.6f0.fv3.0.0.41g.fo2.3kw.3v7.4e5.4d.0.16x.85t.2dg.5q5.1b.0.0.0.4jt.0.0.0.0.qk.67p.0.0.8h.0.0.lo.9v.0.bv.0.0.0.3bv.68.0.1r.0.3ft.0.0.0.0.3wb.0.0.0.gl.10y.120.0.cj.9i.0.0.99.0.0.7t.w.0.0.1dv.ca.0.2u.0.1s7.2k.0.0.0.1df.0.x.0.0.1jw.13k.0.2h.jg.66.0.12w.9d.0.0.2m.0.83.4a.kx.0.0.0.8m8.0.0.0.af.a5x.0.18.0.0.4hf.7qi.18.0.15.0.0.1ef.ct.0.67.2h.0.0.4bj.342.0.47.0.54.193.2b9.13x.5hk.6z.fx.a2.2cc.fm.0.z.0.6bp.5lo.45o.a8p.8x.0.a8.crz.2xh.vy.5ko.24.0.2kg.3si.168.16g.0.0.y.0.g0.b1.0.0.0.5i.yp.0.0.68.0.0.dn.0.0.fn.1x.18.hw.1b.16.0.2h.0.pv.0.0.0.0.3sy.0.12.0.20.9k.33k.0.0.23.0.0.8u.2lx.0.9y.3e.0.0.7y.17t.0.0.0.9q.0.0.0.1z.7y.0.0.0.0.31l.3vq.0.0.ys.5i.1n.46.0.0.w0.0.0.0.ti.lk.0.0.4e.49h.1q.0.2g.0.25x.0.0.0.0.8j.1z1.0.21.ax.15.40.af.0.0.aa.ii.2f.ds.ng.1n.2y.19.0.0.0.c8.85.b2.0.4h.0.18l.0.0.2v.0.2vh.29q.53i.94n.0.0.mi.2wc.zg.2lo.8i.0.0.0.3pl.2xk.9p.9t.qh.181.1be.h2.pk.3k.1un.ij.0.w.0.2xv.778.758.e48.1h.0.mz.6nn.548.2y6.1rw.0.0.4d.7mt.4ma.ew.0.0.0.0.6d.0.0.0.0.0.1x.0.0.0.0.0.a6.0.0.0.0.0.0.0.x.0.0.0.98s.0.0.5j.3x.355.0.0.0.0.2od.4g2.0.ju.2y2.8y.0.37v.6q.0.a4.yo.0.2aj.1yl.ut.0.7d.0.f91.ag.a5.15.3hn.a28.1a.m5.0.y.5cv.7n6.0.wc.25v.38v.1d.fw.0.1a.0.8p.0.ek.234.xx.0.ib.1d.ad1.7u.af.0.1et.6tb.0.0.0.y.3a6.4th.0.19.zs.2c.1k.4f.16.1e.6p.ag.14.0.1q4.17h.0.58.y.40l.0.1ax.4g.6q6.5oq.0.qn.0.0.5w8.4q1.1h.sy.4ar.15p.1df.fw.0.0.3q.1mu.2n.va.439.1gd.0.on.1x.1d.76.17w.0.6h.3d.2j.6f.qk.12.0.38.0.182.5lp.o3.4l8.68.0.bj.bzc.ph.7y.tj.2k.0.5i.xb.4f.0.2b.0.0.bx.0.0.0.kn.0.0.0.0.3d.1cg.2b.1bv.0.0.a4.1sq.9y.0.5z.0.0.20.14p.10t.28g.0.0.0.w.kp.0.0.0.9m.rn.j1.0.4i.cr.v4.0.gb.0.x.f3.1z.0.ls.1v.42.0.0.0.7ag.f3.71.b1.4kp.4oy.4c.9i.0.8x.3y7.6nr.2t.2dk.20n.2oa.cq.un.1v.3d.8d.4ix.dy.1k7.6mk.1fu.2v.3v.x.6q1.10.1o.0.0.4in.1n.0.0.ao.4n8.6qz.0.hi.ib.f1.10.1wh.17w.6m.1f.hf.0.3xo.3e7.cg.y.93.0.22f.0.0.1b.0.1m7.z.18.0.0.222.1qk.0.i2.1cc.xj.0.1c.0.0.0.25.0.1rs.d7.179.35.0.0.57y.0.0.6z.0.4xu.1t.0.0.jm.35n.5b3.0.ar.11n.1nt.0.pc.46.0.m5.ab.0.1jd.2b7.17h.0.5b.0.69.49.ew.c5.fr.0.3i.4e.ud.80.0.0.0.1ez.27z.5ji.77a.0.0.ck.5a0.sl.1ae.y4.0.0.5s.2hp.234.0.y.gn.dv.15.0.13.0.lk.1a.0.0.0.sw.mv.131.3vl.0.0.83.258.et.1om.10.0.0.47.13i.168.1dk.2k.3e.0.7t.21g.0.3d.0.0.0.19s.0.0.it.4u.0.16.0.0.ek.12.0.w.n3.4x.3e.16.0.cnw.aq.w.0.15m.402.1u.5q.0.y.325.33k.0.2l.2b8.g6.w2.9zh.7p.w.jl.5v.0.12.17p.iz.84.10.1o.1jx.1o.3t.0.o3.1ed.0.27.0.0.147.1np.0.0.p8.fb.38.ro.0.0.0.cr.0.0.ct.kt.0.2a.2c"},"prompts":["bir","için","ben","çok","ama","evet","var","değil","şey","hayır","daha","sen","kadar","bana","gibi","bunu","yok","onu","iyi","tamam","beni","seni","benim","her","sana","neden","sadece","zaman","senin","burada","olduğunu","nasıl","hiç","sonra","şimdi","öyle","misin","önce","biraz","hadi","güzel","musun","oldu","yani","ona","böyle","onun","bile","lütfen","bak","eğer","peki","çünkü","artık","gerçekten","geri","biliyorum","istiyorum","kim","başka","olarak","belki","tek","doğru","büyük","olan","biri","bay","buraya","olur","adam","ile","olacak","hey","hiçbir","biz","demek","sanırım","yardım","bilmiyorum","bunun","teşekkürler","tüm","gün","yeni","fazla","ederim","nerede","tanrım","merhaba","efendim","şeyi","orada","gece","son","kötü","şeyler","biliyor","harika","iki","sorun","işte","bütün","tam","gerek","siz","diye","hemen","üzgünüm","küçük","olabilir","olsun","size","bayan","aynı","hakkında","teşekkür","gel","tabii","yüzden"]}}</script>
+<script type="module">const $ = (id) => document.getElementById(id);
+const DATA = JSON.parse($('experiment-data').textContent);
+const LAYOUTS = DATA.layout;
+const VOWELS = new Set('aeıioöuü');
+const LETTERS = new Set('abcçdefgğhıijklmnoöprsştuüvyz');
+const corpusSize = DATA.metadata.train_words + DATA.metadata.test_words;
+$('corpus-size').textContent = new Intl.NumberFormat('tr-TR').format(corpusSize);
+let activeLayout = 'V29';
+let heatHand = 'left';
+let calibration = null;
+const calEntries = {left:[],right:[]};
+const trials = [];
+let promptBlock = 0;
+let target = '';
+let typed = '';
+let startedAt = null;
+let finishedAt = null;
+let sessionClock = null;
+let currentEvents = [];
+let errors = 0;
+
+function node(tag, cls, text) {
+  const result = document.createElement(tag);
+  if(cls) result.className = cls;
+  if(text !== undefined) result.textContent = text;
+  return result;
+}
+function formatNum(n, places=2) {return Number(n).toLocaleString('tr-TR',{maximumFractionDigits:places,minimumFractionDigits:places});}
+function keyHand(el) {
+  const parent=el.closest('.keyrow');const rect=el.getBoundingClientRect();
+  const outer=parent.getBoundingClientRect();return ((rect.left+rect.width/2-outer.left)/outer.width)<.5?'L':'R';
+}
+function buildRows(parent, rows, interactive=false, onKey=null) {
+  parent.replaceChildren();
+  rows.forEach((letters,r)=>{
+    const line=node('div','keyrow'); line.dataset.row=r;
+    Array.from(letters).forEach((letter,c)=>{
+      const key=node(interactive?'button':'div','key'+(VOWELS.has(letter)?' vowel':'')+(!LETTERS.has(letter)?' other':''),letter.toLocaleUpperCase('tr-TR'));
+      key.dataset.letter=letter; key.dataset.column=c;
+      if(interactive){key.type='button';key.setAttribute('aria-label',`${letter} harfi`);key.addEventListener('pointerdown', e=>{
+        if(e.pointerType==='mouse'&&e.button!==0)return;
+        e.preventDefault();onKey(letter,key,e);
+      });}
+      if(c>0 && (c/(letters.length)<.5) && ((c+1)/(letters.length)>=.5))key.classList.add('midline');
+      line.appendChild(key);
+    }); parent.appendChild(line);
+  });
+}
+function showTab(name) {
+  for(const button of document.querySelectorAll('.tab')) {
+    const picked=button.dataset.tab===name;
+    button.classList.toggle('active',picked);button.setAttribute('aria-selected',String(picked));
+    $('panel-'+button.dataset.tab).classList.toggle('hidden',!picked);
+  }
+  if(name==='calibrate') renderHeat();
+  if(name==='typing') setupTypingLayout();
+}
+for(const b of document.querySelectorAll('.tab')) b.addEventListener('click',()=>showTab(b.dataset.tab));
+
+function renderLayoutPicks() {
+  const box=$('layout-picks');box.replaceChildren();
+  Object.entries(LAYOUTS).forEach(([id,v])=>{
+    const b=node('button','pick'+(id===activeLayout?' selected':''));b.type='button';
+    b.append(node('span','code',id),node('strong','',v.title),node('small','',v.rows.map(x=>x.length).join(' · ')+' tuş'));
+    b.addEventListener('click',()=>{activeLayout=id;renderLayoutPicks();renderAnalysis();});box.append(b);
+  });
+}
+function metricItem(label,value,note) {
+  const box=node('div','metric');box.append(node('strong','',value),node('span','',label),node('div','metric-note',note));return box;
+}
+function renderAnalysis() {
+  const selected=LAYOUTS[activeLayout];const m=selected.holdout;
+  $('current-name').textContent=selected.title;$('current-keys').textContent=`${m.keys} harf tuşu`;
+  buildRows($('demo-board'),selected.rows);
+  const grid=$('metric-grid');grid.replaceChildren(
+    metricItem('Model hareket indeksi',formatNum(m.motion_index),'Düşük değer avantajlı'),
+    metricItem('Erişim indeksi',formatNum(m.reach_index),'Varsayımsal başparmak bölgesi'),
+    metricItem('Bölge değişimi',formatNum(m.alternation_pct,1)+'%','Gerçek başparmak kimliği değil'),
+    metricItem('Tek parmak yol uzunluğu',formatNum(m.glide_distance,3),'Ekran genişliğine oranlı')
+  );
+  const all=Object.entries(LAYOUTS).map(([id,l])=>({id,l,score:l.holdout.motion_index}));
+  const max=Math.max(...all.map(x=>x.score))*1.10;
+  const bar=$('bar-compare');bar.replaceChildren();
+  for(const item of all) {
+    const row=node('div','bar-item');
+    const track=node('div','bar-track'),fill=node('div','bar-fill');
+    fill.style.width=(100*item.score/max)+'%';track.append(fill);
+    row.append(node('label','',item.id+' · '+item.l.title),track,node('strong','',formatNum(item.score)));
+    bar.append(row);
+  }
+}
+renderLayoutPicks();renderAnalysis();
+
+// Calibration: always 10x3, measured per requested hand, NOT actual finger identity detection.
+function seededShuffle(arr, seed) {
+  let state=seed>>>0; const next=()=>{state=(Math.imul(1664525,state)+1013904223)>>>0;return state/4294967296;};
+  for(let i=arr.length-1;i>0;i--){const j=Math.floor(next()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
+  return arr;
+}
+function renderCalibrationBoard() {
+  const board=$('cal-board');board.replaceChildren();
+  for(let r=0;r<3;r++) {
+    const line=node('div','keyrow');
+    for(let c=0;c<10;c++) {
+      const id=r*10+c;
+      const btn=node('button','key',String(id+1));btn.type='button';btn.dataset.index=String(id);
+      btn.addEventListener('pointerdown',e=>tapCalibration(id,e));
+      line.appendChild(btn);
+    }
+    board.append(line);
+  }
+  showCalibrationTarget();
+}
+function showCalibrationTarget() {
+  for(const b of $('cal-board').querySelectorAll('.key'))b.classList.remove('target');
+  if(!calibration) return;
+  const idx=calibration.order[calibration.cursor];
+  const el=$('cal-board').querySelector(`[data-index="${idx}"]`);if(el)el.classList.add('target');
+  $('cal-progress').textContent=`${calibration.cursor} / 30`;
+  $('cal-state').textContent=(calibration.hand==='left'?'Sol':'Sağ')+' başparmak ile dokun';
+  calibration.started=performance.now();
+}
+function startCalibration(hand) {
+  if(LAYOUTS.P29){delete LAYOUTS.P29;if(activeLayout==='P29')activeLayout='V29';$('test-layout').querySelector('option[value="P29"]')?.remove();$('make-personal').disabled=true;renderLayoutPicks();renderAnalysis();}
+  const order=seededShuffle(Array.from({length:30},(_,i)=>i),hand==='left'?31832:29311);
+  calibration={hand,order,cursor:0,started:0};
+  $('cal-tip').textContent='Yalnız seçtiğin başparmakla yeşil hedefe bas.';
+  showCalibrationTarget();renderHeat();
+}
+function tapCalibration(actual,e) {
+  if(!calibration)return;
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  e.preventDefault();
+  const now=performance.now();const intended=calibration.order[calibration.cursor];
+  const rect=$('cal-board').getBoundingClientRect();
+  const hit=actual===intended;
+  calEntries[calibration.hand].push({hand:calibration.hand,target:intended,actual,hit,
+    latency_ms:Math.round(now-calibration.started),x:Math.round(e.clientX-rect.left),y:Math.round(e.clientY-rect.top),
+    width:Math.round(rect.width),height:Math.round(rect.height),pointer:e.pointerType});
+  calibration.cursor++;
+  if(calibration.cursor>=30){
+    $('cal-state').textContent=(calibration.hand==='left'?'Sol':'Sağ')+' ölçümü tamamlandı';
+    $('cal-progress').textContent='30 / 30';$('cal-tip').textContent='Diğer başparmağını ölçebilir veya verilerini dışa aktarabilirsin.';
+    calibration=null;
+  }else showCalibrationTarget();
+  renderHeat();
+  $('make-personal').disabled=calEntries.left.length<30||calEntries.right.length<30;
+}
+$('left-hand').addEventListener('click',()=>startCalibration('left'));
+$('right-hand').addEventListener('click',()=>startCalibration('right'));
+$('heat-left').addEventListener('click',()=>{heatHand='left';renderHeat();});
+$('heat-right').addEventListener('click',()=>{heatHand='right';renderHeat();});
+function renderHeat(){
+  for(const h of ['left','right']){
+    $('heat-'+h).classList.toggle('active',heatHand===h);
+    $('heat-'+h).setAttribute('aria-pressed',String(heatHand===h));
+  }
+  const board=$('heat-board');board.replaceChildren();
+  const data=calEntries[heatHand];const times=data.map(x=>Math.min(5000,x.latency_ms)).sort((a,b)=>a-b);
+  const min=times.length?times[Math.floor(times.length*.1)]:0;
+  const max=times.length?times[Math.floor(times.length*.9)]:1;
+  for(let idx=0;idx<30;idx++){
+    const records=data.filter(x=>x.target===idx);
+    const c=node('div','heat-cell');
+    if(records.length){
+      const mean=records.reduce((s,x)=>s+x.latency_ms,0)/records.length;
+      const miss=records.filter(x=>!x.hit).length;
+      const t=Math.max(0,Math.min(1,(mean-min)/(Math.max(1,max-min))))*.75+miss/records.length*.25;
+      const hue=Math.round(160*(1-t));c.style.background=`hsl(${hue} 38% 37%)`;
+      c.textContent=String(Math.round(mean));c.title=`Hücre ${idx+1}: ${Math.round(mean)} ms, ${records.length-miss}/${records.length} isabet`;
+    }else{c.textContent='–';c.title='Veri yok';}board.append(c);
+  }
+  const hits=data.filter(x=>x.hit).length;
+  const avg=data.length?Math.round(data.reduce((s,x)=>s+x.latency_ms,0)/data.length):0;
+  $('heat-stats').textContent=data.length?`${data.length}/30 hedef · İsabet ${formatNum(100*hits/data.length,1)}% · Ortalama yanıt ${avg} ms · Her hücrede yalnız ${Math.round(data.length/30)} ölçüm (keşifsel)`:'Ölçüm yapılmadı. Her el için 30 hedef var.';
+}
+renderCalibrationBoard();renderHeat();
+
+
+// Personalized candidate, shrinkage-regularized against the explicit geometric prior.
+function personalPlan(){
+  const aggregate=DATA.corpus_aggregates.train;
+  const u=aggregate.uni.split('.').map(s=>parseInt(s,36));
+  const b=aggregate.bi.split('.').map(s=>parseInt(s,36));
+  const alphabet=DATA.corpus_aggregates.alphabet;
+  const size=29;const slots=[];
+  for(let r=0;r<3;r++){
+    const n=r===2?9:10;
+    for(let c=0;c<n;c++){
+      const x=(c+.5)/n,y=(r+.5)/3,left=x<.5;
+      const hand=left?'left':'right';const ideal=left?.22:.78;
+      let prior=Math.hypot((x-ideal)/.48,(y-.72)/.68)+((y>.8&&(x<.15||x>.85))?.16:0);
+      const records=calEntries[hand];const lengths=records.map(o=>o.latency_ms).sort((a,b)=>a-b);
+      const median=lengths[Math.floor(lengths.length/2)]||550;
+      const sample=records.filter(t=>t.target===r*10+Math.min(9,Math.floor(x*10)));
+      const relative=sample.length?sample.reduce((acc,t)=>acc+
+          Math.max(-.5,Math.min(1.5,(t.latency_ms-median)/Math.max(250,median)))+(!t.hit?.5:0),0)/sample.length:0;
+      // An individual calibration tap only receives 25% trust.
+      prior=Math.max(0,prior+Math.max(-.4,Math.min(.7,relative))*sample.length/(sample.length+3));
+      slots.push({x,y,n,hand,cost:prior,width:(n/10)**1.7});
+    }
+  }
+  const pair=slots.map(a=>slots.map(z=>{
+    const d=Math.hypot(a.x-z.x,a.y-z.y),w=1/Math.max(a.n,z.n);
+    return Math.log2(1+d/w)*(a.hand===z.hand?1:.34);
+  }));
+  const ut=u.reduce((a,z)=>a+z,0),bt=b.reduce((a,z)=>a+z,0);
+  const base=[...'jfövücgzğşpuhaedrkstçoıinlmyb'];
+  if(base.length!==size||new Set(base).size!==size)throw new Error('Bad candidate');
+  const lookup=new Map([...alphabet].map((x,i)=>[x,i]));
+  const index=()=>{const arr=new Array(size);base.forEach((c,s)=>arr[lookup.get(c)]=s);return arr;};
+  function objective(){
+    const p=index();let reach=0,width=0,motion=0;
+    for(let i=0;i<size;i++){reach+=u[i]*slots[p[i]].cost;width+=u[i]*slots[p[i]].width;
+      for(let j=0;j<size;j++)motion+=b[i*size+j]*pair[p[i]][p[j]];
+    }
+    return .64*(motion/bt)+.27*(reach/ut)+.09*(width/ut);
+  }
+  let rng=20261018>>>0;
+  function next(){rng=(Math.imul(rng,1664525)+1013904223)>>>0;return rng/4294967296;}
+  let cur=objective(),best=cur,bestChars=base.slice();
+  for(let step=0;step<2800;step++){
+    const x=Math.floor(next()*29),y=Math.floor(next()*29);
+    if(x===y)continue;[base[x],base[y]]=[base[y],base[x]];
+    const proposed=objective();const t=.09*Math.pow(.0005/.09,step/2799);
+    if(proposed<cur||next()<Math.exp((cur-proposed)/t)){
+      cur=proposed;if(cur<best){best=cur;bestChars=base.slice();}
+    }else [base[x],base[y]]=[base[y],base[x]];
+  }
+  const rows=[bestChars.slice(0,10).join(''),bestChars.slice(10,20).join(''),bestChars.slice(20).join('')];
+  // Use the exact same geometry-only reporting convention as the other variants,
+  // separately from the personal calibration used in searching the layout.
+  function evaluateSplit(split){
+    const ue=split.uni.split('.').map(s=>parseInt(s,36)),be=split.bi.split('.').map(s=>parseInt(s,36));
+    const positions=Object.fromEntries([...rows.join('')].map((c,i)=>[c,slots[i]]));
+    let motion=0,reach=0,width=0,glide=0,alternation=0,left=0,ut=0,bt=0;
+    for(let i=0;i<29;i++){
+      const z=positions[alphabet[i]],ideal=z.hand==='left'?.22:.78;
+      const prior=Math.hypot((z.x-ideal)/.48,(z.y-.72)/.68)+((z.y>.8&&(z.x<.15||z.x>.85))?.16:0);
+      reach+=ue[i]*prior;width+=ue[i]*z.width;ut+=ue[i];if(z.hand==='left')left+=ue[i];
+      for(let j=0;j<29;j++){
+        const a=positions[alphabet[j]],num=be[i*29+j];
+        const d=Math.hypot(z.x-a.x,z.y-a.y),switches=z.hand!==a.hand;
+        motion+=num*Math.log2(1+d*Math.max(z.n,a.n))*(switches?.34:1);
+        glide+=num*d;alternation+=num*(switches?1:0);bt+=num;
+      }
+    }
+    const round=n=>Math.round(n*1e6)/1e6;
+    return {motion_index:round(motion/bt),reach_index:round(reach/ut),width_index:round(width/ut),glide_distance:round(glide/bt),alternation_pct:round(alternation/bt*1e5)/1000,left_pct:round(left/ut*1e5)/1000,right_pct:round((1-left/ut)*1e5)/1000,keys:29};
+  }
+  return {rows,train:evaluateSplit(DATA.corpus_aggregates.train),holdout:evaluateSplit(DATA.corpus_aggregates.test),
+    title:'Kişisel Başparmak Düzeni',optimized_for:'personal_calibration',calibrated_samples:{left:calEntries.left.length,right:calEntries.right.length}};
+}
+$('make-personal').addEventListener('click',()=>{
+  if(calEntries.left.length<30||calEntries.right.length<30)return;
+  const personalized=personalPlan();
+  LAYOUTS.P29=personalized;activeLayout='P29';
+  const option=node('option','', 'P29 · '+personalized.title);option.value='P29';
+  $('test-layout').append(option);$('test-layout').value='P29';
+  renderLayoutPicks();renderAnalysis();buildTypingBoard();resetTrial();
+  $('personal-info').textContent='P29 oluşturuldu. Ölçümler az olduğu için sonuç keşifseldir; diğer dizilimlerle aynı cümleleri karşılaştır.';
+  showTab('analyze');
+});
+
+// Typing trials: no autocorrect or OS keyboard; raw taps only. No hidden collection.
+function promptText(index) {
+  const words=['bir','için','ben','çok','ama','evet','var','değil','şey','hayır','daha','sen','kadar','bana','gibi','bunu','yok','onu','iyi','tamam','beni','seni','benim','her','sana','neden','sadece','zaman','senin','burada','olduğunu','nasıl','hiç','sonra','şimdi','öyle','misin','önce','biraz','hadi','güzel','musun','oldu','yani','ona','böyle','onun','bile','lütfen','bak','eğer','peki','çünkü','artık','gerçekten','geri','biliyorum','istiyorum','kim','başka','olarak','belki','tek','doğru','büyük','olan','biri','bay','buraya','olur','adam','ile','olacak','hey','hiçbir','biz','demek','sanırım','yardım','bilmiyorum','bunun','teşekkürler','tüm','gün','yeni','fazla','ederim','nerede','tanrım','merhaba','efendim','şeyi','orada','gece','son','kötü','şeyler','biliyor','harika','iki','sorun','işte','bütün','tam','gerek','siz','diye','hemen','üzgünüm','küçük','olabilir','olsun','size','bayan','aynı','hakkında','teşekkür','gel','tabii','yüzden'];
+  return seededShuffle(words.slice(),19862+index*733).slice(0,10).join(' ');
+}
+function buildTypingBoard(){
+  const id=$('test-layout').value;
+  buildRows($('typing-board'),LAYOUTS[id].rows,true,(letter,key,e)=>addTap(letter,keyHand(key),e));
+}
+function setupTypingLayout(){
+  const select=$('test-layout');
+  if(!select.options.length){
+    Object.entries(LAYOUTS).forEach(([id,x])=>{const option=document.createElement('option');option.value=id;option.textContent=id+' · '+x.title;select.append(option);});
+    select.value=activeLayout;
+  }
+  buildTypingBoard();if(!target)resetTrial();
+}
+function refreshTyped(){
+  $('entry').textContent=typed||'Yazmaya dokunarak başla…';
+  $('entry').classList.toggle('error',!target.startsWith(typed));
+  $('test-progress').textContent=`${typed.length} / ${target.length} karakter`;
+}
+function elapsedMs(){return startedAt===null?0:Math.max(0,(finishedAt??performance.now())-startedAt);}
+function renderElapsed(){
+  const ms=elapsedMs();$('elapsed').textContent=String(Math.floor(ms/60000)).padStart(2,'0')+':'+String(Math.floor((ms%60000)/1000)).padStart(2,'0')+'.'+Math.floor(ms%1000/100);
+}
+function resetTrial(){
+  if(sessionClock){clearInterval(sessionClock);sessionClock=null;}
+  typed='';startedAt=null;finishedAt=null;currentEvents=[];errors=0;
+  target=promptText(promptBlock);
+  $('prompt').textContent=target;
+  $('test-status').textContent='İlk harfe dokunduğunda ölçüm başlar.';
+  $('typing-metrics').replaceChildren();refreshTyped();renderElapsed();
+}
+function addTap(key,hand,e){
+  if(finishedAt!==null)return;
+  const now=performance.now();if(startedAt===null){startedAt=now;sessionClock=setInterval(renderElapsed,100);}
+  const expected=target[typed.length]??'';
+  if(key==='BACK')typed=typed.slice(0,-1);
+  else typed+=key;
+  const correct=key==='BACK'||expected===key;
+  if(!correct&&key!=='BACK')errors++;
+  currentEvents.push({ms:Math.round(now-startedAt),key,region:hand||null,correct,typed_length:typed.length,
+    pointer:e?.pointerType??'virtual',x:e&&Number.isFinite(e.clientX)?Math.round(e.clientX):null,y:e&&Number.isFinite(e.clientY)?Math.round(e.clientY):null});
+  refreshTyped();
+  if(typed===target){finishedAt=performance.now();clearInterval(sessionClock);sessionClock=null;renderElapsed();finishTrial();}
+}
+function finishTrial(){
+  const duration=Math.max(1,elapsedMs())/60000;
+  const dig=[];let prev=null;
+  for(const ev of currentEvents){
+    if(LETTERS.has(ev.key)&&ev.correct){if(prev && prev.region && ev.region){const dt=ev.ms-prev.ms;if(dt>0 && dt<5000)dig.push({dt,change:ev.region!==prev.region});}prev=ev;}
+    else prev=null;
+  }
+  const avg=items=>items.length?Math.round(items.reduce((s,x)=>s+x.dt,0)/items.length):null;
+  const same=dig.filter(x=>!x.change),other=dig.filter(x=>x.change);
+  const result={layout:$('test-layout').value,mode:$('test-mode').value,block:promptBlock,
+    duration_ms:Math.round(elapsedMs()),characters:target.length,presses:currentEvents.length,errors,
+    net_wpm:Math.round(target.length/5/duration*100)/100,
+    raw_wpm:Math.round(currentEvents.length/5/duration*100)/100,
+    kspc:Math.round(currentEvents.length/target.length*1000)/1000,
+    same_region_ms:avg(same),different_region_ms:avg(other),
+    region_pairs:dig.length,timestamp:new Date().toISOString(),events:currentEvents.map(x=>({...x}))};
+  trials.push(result);
+  $('test-status').textContent='✓ Deneme tamamlandı. Aynı kelime bloğuyla diğer dizilimi dene.';
+  $('typing-metrics').replaceChildren(
+    metricItem('Net WPM',formatNum(result.net_wpm),'5 karakter = 1 sözcük'),
+    metricItem('KSPC',formatNum(result.kspc,3),'Düzeltmeler dahil / hedef uzunluğu'),
+    metricItem('İlk deneme hatası',String(result.errors),'Düzeltmeden önce yanlış dokunuş'),
+    metricItem('Bölge değişim ms',result.different_region_ms===null?'—':String(result.different_region_ms),'Bölge içi: '+(result.same_region_ms??'—')+' ms'));
+  renderTrialHistory();
+}
+function renderTrialHistory(){
+  const box=$('trial-history');if(!trials.length){box.textContent='Henüz tamamlanan deneme yok.';return;}
+  const table=node('table');const headers=['Düzen','Mod','Süre (sn)','Net WPM','KSPC','Hata'];
+  const tr=node('tr');headers.forEach(h=>tr.append(node('th','',h)));const thead=node('thead');thead.append(tr);table.append(thead);
+  const body=node('tbody');for(const x of trials){const row=node('tr');
+    [x.layout,x.mode==='two'?'Çift':'Tek',formatNum(x.duration_ms/1000,1),formatNum(x.net_wpm,1),formatNum(x.kspc,2),String(x.errors)].forEach(v=>row.append(node('td','',v)));
+    body.append(row);
+  }table.append(body);box.replaceChildren(table);
+}
+$('test-layout').addEventListener('change',()=>{buildTypingBoard();resetTrial();});
+$('test-mode').addEventListener('change',resetTrial);
+$('new-prompt').addEventListener('click',()=>{promptBlock++;resetTrial();});
+$('reset-trial').addEventListener('click',resetTrial);
+$('key-space').addEventListener('pointerdown',e=>{e.preventDefault();addTap(' ',null,e);});
+$('key-back').addEventListener('pointerdown',e=>{e.preventDefault();addTap('BACK',null,e);});
+
+function download(name,content,mime){
+  const url=URL.createObjectURL(new Blob([content],{type:mime}));
+  const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),3000);
+}
+$('export-cal').addEventListener('click',()=>download('thumb_calibration_v1.json',JSON.stringify({version:1,schema:'left/right target-grid reaction and tap error; no finger identity detection',viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},samples:calEntries},null,2),'application/json'));
+$('export-trials-raw').addEventListener('click',()=>{
+  download('thumb_typing_trials_raw_v1.json',JSON.stringify({
+    version:1,description:'Local tests only; finger identity inferred from screen half, NOT sensed',
+    viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},
+    calibration_sample_count:{left:calEntries.left.length,right:calEntries.right.length},
+    layout_rows:Object.fromEntries(Object.entries(LAYOUTS).map(([name,l])=>[name,l.rows])),
+    trials
+  },null,2),'application/json');
+});
+$('export-trials').addEventListener('click',()=>{
+  const fields=['layout','mode','block','duration_ms','characters','presses','errors','net_wpm','raw_wpm','kspc','same_region_ms','different_region_ms','region_pairs','timestamp'];
+  const csv=[fields.join(','),...trials.map(x=>fields.map(f=>x[f]??'').join(','))].join('\r\n');
+  download('thumb_typing_trials_v1.csv','\ufeff'+csv,'text/csv;charset=utf-8');
+});
+setupTypingLayout();
+</script>
+</body>
+</html>
