@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Collect relevant public YouTube captions; keep every failure visible."""
 import argparse
+import os
 import html
 import json
 import re
@@ -27,7 +28,13 @@ TAG = re.compile(r"<[^>]+>")
 
 
 def run_ytdlp(args, timeout):
-    cmd = [sys.executable, "-m", "yt_dlp", "--no-warnings", *args]
+    cmd = [sys.executable, "-m", "yt_dlp", "--no-warnings"]
+    cookie_path = os.environ.get("YTDLP_COOKIE_FILE")
+    if cookie_path:
+        if not Path(cookie_path).is_file():
+            return None, "configured cookie file unavailable"
+        cmd.extend(["--cookies", cookie_path])
+    cmd.extend(args)
     try:
         done = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout, check=False)
     except subprocess.TimeoutExpired:
