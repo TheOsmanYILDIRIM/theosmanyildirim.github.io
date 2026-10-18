@@ -33,8 +33,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install yt-dlp from PyPI
-        run: python -m pip install 'yt-dlp>=2025.1,<2028'
+      - name: Install Deno for YouTube JavaScript challenges
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: 'v2.x'
+      - name: Install yt-dlp and bundled EJS scripts
+        run: python -m pip install 'yt-dlp[default]>=2025.1,<2028'
+      - name: Probe verified Forn AI video with actual subtitle extractor
+        shell: bash
+        run: |
+          set -o pipefail
+          python -m yt_dlp --verbose --no-playlist --list-subs 'https://www.youtube.com/watch?v=3RcSsjTgnhI' 2>&1 | tail -65
       - name: Execute collector unit tests
         run: python -m unittest discover -s tools/youtube_agents/tests -v
       - name: Find Forn AI and Avenox agent videos and fetch captions
