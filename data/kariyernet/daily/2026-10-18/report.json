@@ -1,236 +1,374 @@
 {
-  "checked_at": "2026-10-18T17:42:14.225734+00:00",
+  "checked_at": "2026-10-18T19:31:13.359856+00:00",
   "source": "kariyer.net",
   "keywords": [
-    "makine mühendisi",
-    "üretim mühendisi",
-    "kalite mühendisi",
-    "CNC",
-    "teknik ressam"
+    "makine mühendisi Kahramanmaraş",
+    "üretim mühendisi Gaziantep",
+    "kalite mühendisi Osmaniye",
+    "makine mühendisi Adana",
+    "imalat mühendisi Kayseri",
+    "üretim mühendisi Malatya",
+    "makine mühendisi Mersin",
+    "mekanik tasarım mühendisi Ankara"
   ],
   "pages_requested_per_keyword": 5,
   "pages": [
     {
-      "keyword": "makine mühendisi",
+      "keyword": "makine mühendisi Kahramanmaraş",
       "page": 1,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi&cp=1",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Kahramanmara%C5%9F&cp=1",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "117a8c75d07e0eed6c308679cfea9878d4f4b00d8e668107fe711f7779dae345",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "makine mühendisi",
+      "keyword": "makine mühendisi Kahramanmaraş",
       "page": 2,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi&cp=2",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Kahramanmara%C5%9F&cp=2",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "d6e2f331b42d65a8d946cfe441d6e74e14ce69a074f1ca58d1376bd940bbc7eb",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "makine mühendisi",
+      "keyword": "makine mühendisi Kahramanmaraş",
       "page": 3,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi&cp=3",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Kahramanmara%C5%9F&cp=3",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "7aa12331818ab43d2f341f2cb7ec062aabbc871c1c0a87a72e0a09531abc1efb",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "makine mühendisi",
+      "keyword": "makine mühendisi Kahramanmaraş",
       "page": 4,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi&cp=4",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Kahramanmara%C5%9F&cp=4",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "c5efe6cc78599fccd5dc9db7332f12c677650725d1af91e092683d563d286527",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "makine mühendisi",
+      "keyword": "makine mühendisi Kahramanmaraş",
       "page": 5,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi&cp=5",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Kahramanmara%C5%9F&cp=5",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "db7869a4aeda840bb76851423f7a112c1645576ba6fb67b813ca73f4861d4f87",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "üretim mühendisi",
+      "keyword": "üretim mühendisi Gaziantep",
       "page": 1,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi&cp=1",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi+Gaziantep&cp=1",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "cc43d0a8beecc9a6f147f33e7c7c2ce3e21f8a73ce6e6e8e364c93ec5832f53e",
+      "found_links": 20,
+      "links_fingerprint": "58598f415222564e07521ba477b2dc6e9425888d944aa7a4427103012d1d62f7",
       "repeated_page_links": false
     },
     {
-      "keyword": "üretim mühendisi",
+      "keyword": "üretim mühendisi Gaziantep",
       "page": 2,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi&cp=2",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi+Gaziantep&cp=2",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "d348377fdda8464d9b9ed5124bb45e1ecfed116f48c0dce74bc619e6ef8d1d53",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "üretim mühendisi",
+      "keyword": "üretim mühendisi Gaziantep",
       "page": 3,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi&cp=3",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi+Gaziantep&cp=3",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "788ea4ee3be4d18b49b2fa7451b24aaad29137f9bcbd2834ed1d7a52398e2ceb",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "üretim mühendisi",
+      "keyword": "üretim mühendisi Gaziantep",
       "page": 4,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi&cp=4",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi+Gaziantep&cp=4",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "e9810d0973da3976791f910e7c4eab931e2865c5123ddbd70a92c024cf9e350d",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "üretim mühendisi",
+      "keyword": "üretim mühendisi Gaziantep",
       "page": 5,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi&cp=5",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi+Gaziantep&cp=5",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "b2bd7b122e3416d1c1082aa69bc7c2850c0e8dae80d380365d14e91e0b1a9207",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "kalite mühendisi",
+      "keyword": "kalite mühendisi Osmaniye",
       "page": 1,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=kalite+m%C3%BChendisi&cp=1",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=kalite+m%C3%BChendisi+Osmaniye&cp=1",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "ea4ff0238c2ad667ac3c4111f7cc7102b1a625dd422b56e1593fedd708bc6f82",
+      "found_links": 3,
+      "links_fingerprint": "64638b38c49fd8206d5d9f86e4448ab0a108d2e58b62e245e86338189249041d",
       "repeated_page_links": false
     },
     {
-      "keyword": "kalite mühendisi",
+      "keyword": "kalite mühendisi Osmaniye",
       "page": 2,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=kalite+m%C3%BChendisi&cp=2",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=kalite+m%C3%BChendisi+Osmaniye&cp=2",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "d862347cd5b5d35d5785bf124dbe6f2c95202db12326f78fde846294f31e1b7c",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "kalite mühendisi",
+      "keyword": "kalite mühendisi Osmaniye",
       "page": 3,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=kalite+m%C3%BChendisi&cp=3",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=kalite+m%C3%BChendisi+Osmaniye&cp=3",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "c807fee520d5e96743ac15baa4460399194ad35b337e3064f7408fb9136888a0",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "kalite mühendisi",
+      "keyword": "kalite mühendisi Osmaniye",
       "page": 4,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=kalite+m%C3%BChendisi&cp=4",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=kalite+m%C3%BChendisi+Osmaniye&cp=4",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "5f39920c0caf149f711876e7cc6476cbf7db56f6b8421fa22012a5d238ea3974",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "kalite mühendisi",
+      "keyword": "kalite mühendisi Osmaniye",
       "page": 5,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=kalite+m%C3%BChendisi&cp=5",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=kalite+m%C3%BChendisi+Osmaniye&cp=5",
       "status": "ok",
-      "found_links": 53,
-      "links_fingerprint": "e7fb636c93d3a406a8c3e3e8a8ba20ebdc00948db8c895f2ceb2649fa8edaa99",
+      "found_links": 0,
+      "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "CNC",
+      "keyword": "makine mühendisi Adana",
       "page": 1,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=CNC&cp=1",
-      "status": "restricted_403",
-      "found_links": 0,
-      "links_fingerprint": null,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Adana&cp=1",
+      "status": "ok",
+      "found_links": 12,
+      "links_fingerprint": "93823e0cd1a82c326b059caee34e11ef7192521b1bb955bd07710bc47f3a44c0",
       "repeated_page_links": false
     },
     {
-      "keyword": "CNC",
+      "keyword": "makine mühendisi Adana",
       "page": 2,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=CNC&cp=2",
-      "status": "restricted_403",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Adana&cp=2",
+      "status": "ok",
       "found_links": 0,
       "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "CNC",
+      "keyword": "makine mühendisi Adana",
       "page": 3,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=CNC&cp=3",
-      "status": "restricted_403",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Adana&cp=3",
+      "status": "ok",
       "found_links": 0,
       "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "CNC",
+      "keyword": "makine mühendisi Adana",
       "page": 4,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=CNC&cp=4",
-      "status": "restricted_403",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Adana&cp=4",
+      "status": "ok",
       "found_links": 0,
       "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "CNC",
+      "keyword": "makine mühendisi Adana",
       "page": 5,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=CNC&cp=5",
-      "status": "restricted_403",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Adana&cp=5",
+      "status": "ok",
       "found_links": 0,
       "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "teknik ressam",
+      "keyword": "imalat mühendisi Kayseri",
       "page": 1,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=teknik+ressam&cp=1",
-      "status": "restricted_403",
-      "found_links": 0,
-      "links_fingerprint": null,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=imalat+m%C3%BChendisi+Kayseri&cp=1",
+      "status": "ok",
+      "found_links": 10,
+      "links_fingerprint": "4c6ad37434b08c073c5edcabadf88416f9dd72199abdc2f641837debdadfd2b8",
       "repeated_page_links": false
     },
     {
-      "keyword": "teknik ressam",
+      "keyword": "imalat mühendisi Kayseri",
       "page": 2,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=teknik+ressam&cp=2",
-      "status": "restricted_403",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=imalat+m%C3%BChendisi+Kayseri&cp=2",
+      "status": "ok",
       "found_links": 0,
       "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "teknik ressam",
+      "keyword": "imalat mühendisi Kayseri",
       "page": 3,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=teknik+ressam&cp=3",
-      "status": "restricted_403",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=imalat+m%C3%BChendisi+Kayseri&cp=3",
+      "status": "ok",
       "found_links": 0,
       "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "teknik ressam",
+      "keyword": "imalat mühendisi Kayseri",
       "page": 4,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=teknik+ressam&cp=4",
-      "status": "restricted_403",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=imalat+m%C3%BChendisi+Kayseri&cp=4",
+      "status": "ok",
       "found_links": 0,
       "links_fingerprint": null,
       "repeated_page_links": false
     },
     {
-      "keyword": "teknik ressam",
+      "keyword": "imalat mühendisi Kayseri",
       "page": 5,
-      "url": "https://www.kariyer.net/is-ilanlari?kw=teknik+ressam&cp=5",
-      "status": "restricted_403",
+      "url": "https://www.kariyer.net/is-ilanlari?kw=imalat+m%C3%BChendisi+Kayseri&cp=5",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "üretim mühendisi Malatya",
+      "page": 1,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi+Malatya&cp=1",
+      "status": "ok",
+      "found_links": 2,
+      "links_fingerprint": "1d86dc60728c2a3bf1b9e6fc113d468dbb4bcdfb3ac863ddc9a9c5b708bf7ebb",
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "üretim mühendisi Malatya",
+      "page": 2,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi+Malatya&cp=2",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "üretim mühendisi Malatya",
+      "page": 3,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi+Malatya&cp=3",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "üretim mühendisi Malatya",
+      "page": 4,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi+Malatya&cp=4",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "üretim mühendisi Malatya",
+      "page": 5,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=%C3%BCretim+m%C3%BChendisi+Malatya&cp=5",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "makine mühendisi Mersin",
+      "page": 1,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Mersin&cp=1",
+      "status": "ok",
+      "found_links": 11,
+      "links_fingerprint": "5c4009f66f77d8fa7aaedcf46632a90cf2e1e4bfc6c52bae693752601f760650",
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "makine mühendisi Mersin",
+      "page": 2,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Mersin&cp=2",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "makine mühendisi Mersin",
+      "page": 3,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Mersin&cp=3",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "makine mühendisi Mersin",
+      "page": 4,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Mersin&cp=4",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "makine mühendisi Mersin",
+      "page": 5,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Mersin&cp=5",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "mekanik tasarım mühendisi Ankara",
+      "page": 1,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=mekanik+tasar%C4%B1m+m%C3%BChendisi+Ankara&cp=1",
+      "status": "ok",
+      "found_links": 23,
+      "links_fingerprint": "68568640ca401c9adf514aa0c45c19e55447b77e0dfb0ea41054449bf256b207",
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "mekanik tasarım mühendisi Ankara",
+      "page": 2,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=mekanik+tasar%C4%B1m+m%C3%BChendisi+Ankara&cp=2",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "mekanik tasarım mühendisi Ankara",
+      "page": 3,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=mekanik+tasar%C4%B1m+m%C3%BChendisi+Ankara&cp=3",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "mekanik tasarım mühendisi Ankara",
+      "page": 4,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=mekanik+tasar%C4%B1m+m%C3%BChendisi+Ankara&cp=4",
+      "status": "ok",
+      "found_links": 0,
+      "links_fingerprint": null,
+      "repeated_page_links": false
+    },
+    {
+      "keyword": "mekanik tasarım mühendisi Ankara",
+      "page": 5,
+      "url": "https://www.kariyer.net/is-ilanlari?kw=mekanik+tasar%C4%B1m+m%C3%BChendisi+Ankara&cp=5",
+      "status": "ok",
       "found_links": 0,
       "links_fingerprint": null,
       "repeated_page_links": false
@@ -238,54 +376,14 @@
   ],
   "errors": [
     {
-      "url": "https://www.kariyer.net/is-ilanlari?kw=CNC&cp=1",
-      "status": "restricted_403"
-    },
-    {
-      "url": "https://www.kariyer.net/is-ilanlari?kw=CNC&cp=2",
-      "status": "restricted_403"
-    },
-    {
-      "url": "https://www.kariyer.net/is-ilanlari?kw=CNC&cp=3",
-      "status": "restricted_403"
-    },
-    {
-      "url": "https://www.kariyer.net/is-ilanlari?kw=CNC&cp=4",
-      "status": "restricted_403"
-    },
-    {
-      "url": "https://www.kariyer.net/is-ilanlari?kw=CNC&cp=5",
-      "status": "restricted_403"
-    },
-    {
-      "url": "https://www.kariyer.net/is-ilanlari?kw=teknik+ressam&cp=1",
-      "status": "restricted_403"
-    },
-    {
-      "url": "https://www.kariyer.net/is-ilanlari?kw=teknik+ressam&cp=2",
-      "status": "restricted_403"
-    },
-    {
-      "url": "https://www.kariyer.net/is-ilanlari?kw=teknik+ressam&cp=3",
-      "status": "restricted_403"
-    },
-    {
-      "url": "https://www.kariyer.net/is-ilanlari?kw=teknik+ressam&cp=4",
-      "status": "restricted_403"
-    },
-    {
-      "url": "https://www.kariyer.net/is-ilanlari?kw=teknik+ressam&cp=5",
-      "status": "restricted_403"
-    },
-    {
-      "url": "https://www.kariyer.net/is-ilani/a-d-elektrik-proje-taahhut-makine-muhendisi-4575102",
+      "url": "https://www.kariyer.net/is-ilani/altunkaya-grup-gida-kalite-kontrol-muhendisi-4572252",
       "status": "restricted_403"
     },
     {
       "status": "detail_crawl_halted_after_access_restriction"
     }
   ],
-  "discovered_unique_urls": 587,
+  "discovered_unique_urls": 78,
   "detail_pages_fetched": 0,
   "jobposting_records": 0,
   "note": "HTTP 200 or extracted URLs do not prove pagination, open status or metadata.",
