@@ -2,6 +2,7 @@
 import argparse
 import csv
 import json
+import hashlib
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -57,12 +58,21 @@ def run(output, keywords, pages, max_details, delay):
 
     discovered = {}
     for keyword in keywords:
+        seen_page_fingerprints = set()
         for page in range(1, pages + 1):
             url = build_search_url(keyword, page)
             html, status = fetch(url)
             links = extract_urls(html, url) if html else []
+            fingerprint = hashlib.sha256("\\n".join(sorted(links)).encode()).hexdigest() if links else None
+            repeated = bool(fingerprint and fingerprint in seen_page_fingerprints)
             report["pages"].append({"keyword": keyword, "page": page, "url": url,
-                                    "status": status, "found_links": len(links)})
+                                    "status": status, "found_links": len(links),
+                                    "links_fingerprint": fingerprint, "repeated_page_links": repeated})
+            if fingerprint:
+                seen_page_fingerprints.add(fingerprint)
+            if repeated:
+                report["errors"].append({"url": url, "status": "pagination_not_advancing"})
+                break
             if status != "ok":
                 report["errors"].append({"url": url, "status": status})
             for link in links:
@@ -96,6 +106,8 @@ def run(output, keywords, pages, max_details, delay):
                             "source_category": source["keyword"],
                             "verification": "url_discovered_metadata_missing"})
     report["discovered_unique_urls"] = len(discovered)
+    report["pagination_verified"] = not any(isinstance(e, dict) and e.get("status") == "pagination_not_advancing" for e in report["errors"])
+    report["usable_for_job_recommendations"] = False
     report["jobposting_records"] = len(records)
     report["metadata_complete_records"] = sum(bool(x.get("title")) and bool(x.get("company")) for x in records)
     save(output, records, report)
