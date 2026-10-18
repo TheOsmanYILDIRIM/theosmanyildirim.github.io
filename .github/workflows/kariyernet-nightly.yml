@@ -32,6 +32,8 @@ jobs:
             --pages 5 --max-details 150 --delay 3 --output output/kariyernet
       - name: Collect configured official job board feeds
         run: python tools/kariyernet/official_sources.py --output output/kariyernet
+      - name: Score verified jobs against mechanical engineering CV
+        run: python tools/kariyernet/cv_rank.py --output output/kariyernet
       - name: Archive results to experiment branch
         if: success()
         run: |
@@ -39,7 +41,7 @@ jobs:
           DATE="$(TZ=Europe/Istanbul date +%Y-%m-%d)"
           TARGET="data/kariyernet/daily/$DATE"
           mkdir -p "$TARGET"
-          cp output/kariyernet/jobs.json output/kariyernet/jobs.csv output/kariyernet/report.json output/kariyernet/discovered_urls.json output/kariyernet/official_jobs.json output/kariyernet/official_jobs.csv output/kariyernet/official_report.json "$TARGET/"
+          cp output/kariyernet/jobs.json output/kariyernet/jobs.csv output/kariyernet/report.json output/kariyernet/discovered_urls.json output/kariyernet/official_jobs.json output/kariyernet/official_jobs.csv output/kariyernet/official_report.json output/kariyernet/cv_ranked.json output/kariyernet/cv_ranked.csv output/kariyernet/cv_ranked_report.json "$TARGET/"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$TARGET"
