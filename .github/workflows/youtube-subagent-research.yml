@@ -9,11 +9,6 @@ on:
       - '.github/workflows/youtube-subagent-research.yml'
       - 'tools/youtube_agents/**'
       - 'skills/efficient-subagent-orchestration/**'
-  pull_request:
-    paths:
-      - '.github/workflows/youtube-subagent-research.yml'
-      - 'tools/youtube_agents/**'
-      - 'skills/efficient-subagent-orchestration/**'
 
 permissions:
   contents: read
@@ -39,13 +34,39 @@ jobs:
           deno-version: 'v2.x'
       - name: Install yt-dlp and bundled EJS scripts
         run: python -m pip install 'yt-dlp[default]>=2025.1,<2028'
+      - name: Prepare optional YouTube cookies securely
+        id: cookies
+        env:
+          YOUTUBE_COOKIES: ${{ secrets.YOUTUBE_COOKIES }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$YOUTUBE_COOKIES" ]]; then
+            echo 'configured=false' >> "$GITHUB_OUTPUT"
+            echo 'YOUTUBE_COOKIES secret unavailable; running unauthenticated.'
+            exit 0
+          fi
+          umask 077
+          COOKIE_FILE="$RUNNER_TEMP/youtube-session-cookies.txt"
+          printf '%s\n' "$YOUTUBE_COOKIES" > "$COOKIE_FILE"
+          unset YOUTUBE_COOKIES
+          if ! head -n 1 "$COOKIE_FILE" | grep -Eq '^# (Netscape HTTP Cookie File|HTTP Cookie File)'; then
+            echo 'Invalid Netscape cookies header; stopping without exposing contents.' >&2
+            exit 1
+          fi
+          echo "YTDLP_COOKIE_FILE=$COOKIE_FILE" >> "$GITHUB_ENV"
+          echo 'configured=true' >> "$GITHUB_OUTPUT"
       - name: Probe Forn AI video with real extractor (diagnostic)
         id: youtube_probe
         continue-on-error: true
         shell: bash
         run: |
-          set -o pipefail
-          python -m yt_dlp --verbose --no-playlist --list-subs 'https://www.youtube.com/watch?v=3RcSsjTgnhI' 2>&1 | tail -65
+          set -euo pipefail
+          args=(--no-playlist --list-subs)
+          if [[ -n "${YTDLP_COOKIE_FILE:-}" ]]; then
+            args+=(--cookies "$YTDLP_COOKIE_FILE")
+          fi
+          python -m yt_dlp "${args[@]}" 'https://www.youtube.com/watch?v=3RcSsjTgnhI' >/dev/null 2>&1
       - name: Execute collector unit tests
         run: python -m unittest discover -s tools/youtube_agents/tests -v
       - name: Find Forn AI and Avenox agent videos and fetch captions
@@ -60,8 +81,15 @@ jobs:
       - name: Require YouTube video access for research acceptance
         if: steps.youtube_probe.outcome == 'failure'
         run: |
-          echo 'BLOCKED: YouTube rejected GitHub runner access; video transcripts have NOT been collected.' >&2
+          echo 'BLOCKED: YouTube video extraction unavailable; no transcript success is claimed.' >&2
           exit 4
+      - name: Remove temporary authentication cookies
+        if: always()
+        shell: bash
+        run: |
+          if [[ -n "${YTDLP_COOKIE_FILE:-}" ]]; then
+            rm -f -- "$YTDLP_COOKIE_FILE"
+          fi
       - name: Preserve real inventory, captions and blockers as artifact
         if: always()
         uses: actions/upload-artifact@v4
