@@ -57,6 +57,11 @@ jobs:
             --max-captions 0 \
             --timeout 120 \
             --metadata-timeout 50
+      - name: Require YouTube video access for research acceptance
+        if: steps.youtube_probe.outcome == 'failure'
+        run: |
+          echo 'BLOCKED: YouTube rejected GitHub runner access; video transcripts have NOT been collected.' >&2
+          exit 4
       - name: Preserve real inventory, captions and blockers as artifact
         if: always()
         uses: actions/upload-artifact@v4
