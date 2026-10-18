@@ -73,10 +73,6 @@ def run(output, keywords, pages, max_details, delay):
         json.dumps([{"url": url, **source} for url, source in discovered.items()],
                    ensure_ascii=False, indent=2), encoding="utf-8")
     # Page success is not evidence that pagination advanced. Identify identical URL sets.
-    fingerprints = {}
-    for entry in report["pages"]:
-        marker = (entry["keyword"], entry["page"])
-        # Fingerprints are populated below from each page's actual discovered links.
     report["note"] = "HTTP 200 or extracted URLs do not prove pagination, open status or metadata."
     records = []
     blocked_details = False
