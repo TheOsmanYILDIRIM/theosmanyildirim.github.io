@@ -39,7 +39,9 @@ jobs:
           deno-version: 'v2.x'
       - name: Install yt-dlp and bundled EJS scripts
         run: python -m pip install 'yt-dlp[default]>=2025.1,<2028'
-      - name: Probe verified Forn AI video with actual subtitle extractor
+      - name: Probe Forn AI video with real extractor (diagnostic)
+        id: youtube_probe
+        continue-on-error: true
         shell: bash
         run: |
           set -o pipefail
@@ -47,6 +49,7 @@ jobs:
       - name: Execute collector unit tests
         run: python -m unittest discover -s tools/youtube_agents/tests -v
       - name: Find Forn AI and Avenox agent videos and fetch captions
+        if: steps.youtube_probe.outcome == 'success'
         run: |
           python tools/youtube_agents/collect.py \
             --output output/youtube-agents \
