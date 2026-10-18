@@ -1,0 +1,57 @@
+name: Kariyer.net nightly job archive
+on:
+  schedule:
+    - cron: '30 17 * * *' # 20:30 Europe/Istanbul (UTC+3)
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: kariyernet-nightly-archive
+  cancel-in-progress: false
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - name: Checkout isolated experiment branch
+        uses: actions/checkout@v4
+        with:
+          ref: experiment/kariyernet-job-harvester-20261017
+          persist-credentials: true
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r tools/kariyernet/requirements.txt
+      - name: Run extractor tests
+        run: python -m unittest discover -s tools/kariyernet/tests -v
+      - name: Five keywords x five pages (public pages only)
+        run: |
+          python tools/kariyernet/search.py \
+            --keywords 'makine mühendisi;üretim mühendisi;kalite mühendisi;CNC;teknik ressam' \
+            --pages 5 --max-details 150 --delay 3 --output output/kariyernet
+      - name: Archive results to experiment branch
+        if: success()
+        run: |
+          set -euo pipefail
+          DATE="$(TZ=Europe/Istanbul date +%Y-%m-%d)"
+          TARGET="data/kariyernet/daily/$DATE"
+          mkdir -p "$TARGET"
+          cp output/kariyernet/jobs.json output/kariyernet/jobs.csv output/kariyernet/report.json "$TARGET/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$TARGET"
+          if git diff --cached --quiet; then
+            echo "Archive for $DATE unchanged"
+          else
+            git commit -m "data: nightly Kariyer.net public listing snapshot $DATE"
+            git push origin HEAD:experiment/kariyernet-job-harvester-20261017
+          fi
+      - name: Upload inspection artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kariyernet-nightly
+          path: output/kariyernet/
+          if-no-files-found: warn
+          retention-days: 14
