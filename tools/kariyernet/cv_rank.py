@@ -76,7 +76,9 @@ def evaluate(job):
     if lang == "advanced_english":
         score -= 12
         reasons.append("İleri İngilizce şartı")
-    if excluded:\n        score = 0\n    return {"score": max(0, min(100, score)), "eligible_location": region_ok, "company": job.get("company", ""),
+    if excluded:
+        score = 0
+    return {"score": max(0, min(100, score)), "eligible_location": region_ok, "company": job.get("company", ""),
             "title": job.get("title", ""), "location": job.get("location", ""), "url": job.get("url", ""),
             "source": job.get("source", ""), "verification": job.get("verification", ""),
             "reason": "; ".join(reasons), "experience_signal": exp_signal, "language_signal": lang}
