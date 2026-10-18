@@ -1,4 +1,5 @@
 import json
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -7,6 +8,26 @@ from tools.youtube_agents import collect
 
 
 class TestYouTubeAgentCollector(unittest.TestCase):
+    @patch("tools.youtube_agents.collect.subprocess.run")
+    def test_cookie_file_passed_as_argument_without_value(self, mock):
+        mock.return_value.returncode = 0
+        mock.return_value.stdout = "ok"
+        with tempfile.TemporaryDirectory() as tmp:
+            cookie = Path(tmp) / "cookies.txt"
+            cookie.write_text("# Netscape HTTP Cookie File\\n")
+            with patch.dict(os.environ, {"YTDLP_COOKIE_FILE": str(cookie)}):
+                output, error = collect.run_ytdlp(["--list-subs", "https://example.com"], 10)
+            self.assertEqual((output, error), ("ok", None))
+            args = mock.call_args.args[0]
+            self.assertEqual(args[args.index("--cookies") + 1], str(cookie))
+            self.assertNotIn("YOUTUBE_COOKIES", " ".join(args))
+
+    def test_missing_cookie_file_fails_closed(self):
+        with patch.dict(os.environ, {"YTDLP_COOKIE_FILE": "/not/a/real/cookie.txt"}):
+            output, error = collect.run_ytdlp(["--list-subs"], 10)
+        self.assertIsNone(output)
+        self.assertEqual(error, "configured cookie file unavailable")
+
     def test_channel_sources(self):
         self.assertEqual(collect.CHANNELS["forn-ai"], "https://www.youtube.com/@fornyapayzeka")
         self.assertEqual(collect.CHANNELS["avenox"], "https://www.youtube.com/@avenoxai")
