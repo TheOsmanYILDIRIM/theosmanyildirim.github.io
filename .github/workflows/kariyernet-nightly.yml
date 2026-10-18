@@ -28,8 +28,8 @@ jobs:
       - name: Five keywords x five pages (public pages only)
         run: |
           python tools/kariyernet/search.py \
-            --keywords 'makine mühendisi;üretim mühendisi;kalite mühendisi;CNC;teknik ressam' \
-            --pages 5 --max-details 150 --delay 3 --output output/kariyernet
+            --keywords 'makine mühendisi Kahramanmaraş;üretim mühendisi Gaziantep;kalite mühendisi Osmaniye;makine mühendisi Adana;imalat mühendisi Kayseri;üretim mühendisi Malatya;makine mühendisi Mersin;mekanik tasarım mühendisi Ankara' \
+            --pages 5 --max-details 120 --delay 3 --output output/kariyernet
       - name: Collect configured official job board feeds
         run: python tools/kariyernet/official_sources.py --output output/kariyernet
       - name: Score verified jobs against mechanical engineering CV
