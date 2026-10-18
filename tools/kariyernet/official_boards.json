@@ -1,4 +1,22 @@
 {
-  "boards": [],
-  "note": "Add verified employer-owned Greenhouse / Lever board tokens only. Empty by default to prevent misattribution."
+  "boards": [
+    {
+      "company": "Ajax Systems",
+      "provider": "lever",
+      "board": "ajax",
+      "proof": "https://jobs.lever.co/ajax"
+    },
+    {
+      "company": "Insider One",
+      "provider": "lever",
+      "board": "insiderone",
+      "proof": "https://jobs.lever.co/insiderone"
+    },
+    {
+      "company": "Midas",
+      "provider": "lever",
+      "board": "getmidas",
+      "proof": "https://jobs.lever.co/getmidas"
+    }
+  ]
 }
