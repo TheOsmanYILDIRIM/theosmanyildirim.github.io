@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b111b">
+  <meta name="description" content="Türkçe mobil klavye ergonomisi, harf dizilimi ve başparmak kalibrasyon laboratuvarı">
+  <title>Başparmak Atlası · Mobil Klavye Laboratuvarı</title>
+  <style>/*__APP_CSS__*/</style>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true">⌘</span><div><strong>BAŞPARMAK ATLASI</strong><small>Türkçe mobil klavye araştırması</small></div></div>
+    <span class="pill offline"><span class="dot"></span> Yerel · Veriler cihazında</span>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-content"><div class="overline">DENEY / V1.0</div><h1>En iyi klavye, <em>parmağına</em> göre değişebilir.</h1><p>Türkçe F ve Q'yu karşılaştır; kendi başparmak erişimini ölç, beş farklı dizilimi aynı görevlerde dene.</p>
+      <div class="micro">Başarı iddiası değil, ölçülebilir bir deney.</div></div>
+      <div class="hero-stat"><strong id="corpus-size">14.811</strong><span>Türkçe sözcük biçimi</span><div class="substat">%20 bağımsız değerlendirme örneklemi</div></div>
+    </section>
+    <nav class="tabs" aria-label="Deney bölümleri"><button class="tab active" data-tab="analyze" aria-selected="true">01 · Karşılaştır</button><button class="tab" data-tab="calibrate" aria-selected="false">02 · Erişim haritası</button><button class="tab" data-tab="typing" aria-selected="false">03 · Yazma testi</button></nav>
+    <section id="panel-analyze" class="panel">
+      <div class="panel-title"><div><p class="eyebrow">MATEMATİKSEL SİMÜLASYON</p><h2>Beş dizilim, aynı Türkçe</h2></div><span class="soft-tag">Model, insan testi değildir</span></div>
+      <div class="layout-picks" id="layout-picks" aria-label="Dizilim seç"></div>
+      <div class="card preview-card"><div class="preview-head"><div><p class="eyebrow">SEÇİLEN DİZİLİM</p><h3 id="current-name"></h3></div><span class="mini-note" id="current-keys"></span></div><div class="keyboard board-demo" id="demo-board" aria-label="Klavye görseli"></div></div>
+      <div class="metric-grid" id="metric-grid"></div>
+      <div class="card chart-card"><div class="panel-title compact"><div><p class="eyebrow">BAĞIMSIZ TEST / MODEL</p><h3>Q klavyeye göre hareket indeksi</h3></div><span class="mini-note">Düşük = modelde daha iyi</span></div><div id="bar-compare" class="bar-chart"></div></div>
+      <div class="fineprint">Hareket / erişim / kaydırma: boyutsuz geometrik vekil değerlerdir; milisaniye, WPM veya gerçek kas yorgunluğu değildir. 29 ve 32 tuşlu düzenlerde tuş genişliği farklıdır. Korpus kaynaklı dil kullanımı ile gerçek dokunuş performansı birbirinden ayrıdır.</div>
+    </section>
+    <section id="panel-calibrate" class="panel hidden">
+      <div class="panel-title"><div><p class="eyebrow">GERÇEK DOKUNUŞ VERİSİ</p><h2>Hangi bölgelere rahat erişiyorsun?</h2></div><span class="soft-tag">Telefonu normal tutuşunla kullan</span></div>
+      <div class="card guidance"><div class="step">1</div><div>Bir başparmak seç ve ekranda parlayan tuşlara <b>mümkün olduğunca hızlı ve isabetli</b> bas. Her el için 30 hedef; işaretli hücrelerin tamamı sırayla test edilir. Görsel tepki süresi sonuçları etkiler.</div></div>
+      <div class="cal-controls"><button id="left-hand" class="action primary">◀ Sol başparmağı ölç</button><button id="right-hand" class="action secondary">Sağ başparmağı ölç ▶</button></div>
+      <div class="cal-controls person"><button id="make-personal" class="action secondary" disabled>✦ Ölçümden kişisel P29 düzeni üret</button></div><p id="personal-info" class="cal-personal-note">Önce sol ve sağ el için en az 30 dokunuş kaydet. Tekrar ölçüm yapılması önerilir.</p>
+      <div class="card calibration-card"><div class="between"><div><span class="eyebrow">ERİŞİM KALİBRASYONU</span><h3 id="cal-state">Başlamak için elini seç</h3></div><span class="progress" id="cal-progress">0 / 30</span></div><div id="cal-board" class="keyboard cal-board" aria-label="Dokunma hedefleri"></div><div class="cal-tip" id="cal-tip">Her hücre ayrı hedef; yeşil ışığı takip et.</div></div>
+      <div class="card"><div class="between"><div><span class="eyebrow">KİŞİSEL HARİTA</span><h3>Ölçülen ortalama tepki ve isabet</h3></div><div class="small-toggle"><button id="heat-left" class="active" aria-pressed="true">Sol</button><button id="heat-right" aria-pressed="false">Sağ</button></div></div><div id="heat-board" class="heat-board" aria-label="Başparmak konfor haritası"></div><div id="heat-stats" class="heat-stats">Ölçüm yapılmadı.</div><div class="legend"><span>Kolay</span><div class="legend-gradient"></div><span>Zor</span></div></div>
+      <button id="export-cal" class="action plain">↓ Kalibrasyon JSON dosyasını dışa aktar</button>
+      <div class="fineprint">Bu test anatomik erişimi doğrudan ölçmez; görsel hedefi görme, algılama, karar ve hareket süreleri birleşik ölçülür. Tek deneme/hücre kişisel optimizasyon için güvenilir değildir. Veriler sunucuya gönderilmez.</div>
+    </section>
+    <section id="panel-typing" class="panel hidden">
+      <div class="panel-title"><div><p class="eyebrow">GERÇEK YAZMA DENEMESİ</p><h2>Yazım süresi ve hata miktarını ölç</h2></div><span class="soft-tag">Otomatik düzeltme yok</span></div>
+      <div class="card session-card"><div class="control-row"><label>Dizilim<select id="test-layout"></select></label><label>Mod<select id="test-mode"><option value="two">İki başparmak dokunma</option><option value="one">Tek parmak dokunma</option></select></label></div><div class="between muted-text"><span>Bir bloğu tüm dizilimlerde aynı sırayla dene.</span><button class="small-button" id="new-prompt">Yeni kelime bloğu ↻</button></div><div class="prompt" id="prompt" aria-label="Yazılacak ifade"></div><div class="entry" id="entry" aria-live="polite">Yazmaya dokunarak başla…</div><div class="between progress-row"><span id="test-progress">0 / 0 karakter</span><strong id="elapsed">00:00.0</strong></div><div id="typing-board" class="keyboard typing-board" aria-label="Dokunmatik klavye"></div><div class="utility-row"><button id="key-space" class="space-key">boşluk</button><button id="key-back" class="back-key" aria-label="Son karakteri sil">⌫ Sil</button></div><div class="between after-test"><div id="test-status" role="status">İlk harfe dokunduğunda ölçüm başlar.</div><button class="action secondary" id="reset-trial">Sıfırla</button></div></div>
+      <div class="metric-grid" id="typing-metrics"></div>
+      <div class="card"><div class="between"><h3>Gerçek test oturumların</h3><div class="export-actions"><button id="export-trials" class="small-button">↓ Özet CSV</button><button id="export-trials-raw" class="small-button">↓ Ham JSON</button></div></div><div id="trial-history" class="trials-table">Henüz tamamlanan deneme yok.</div></div>
+      <div class="fineprint">Harf geçişi, tuşun <b>sol/sağ ekran yarısı</b> üzerinden sınıflanır; tarayıcı hangi başparmakla basıldığını bilemez. Kaydırarak yazma henüz uygulanmıyor; S29 yalnız tek parmak dokunma ile sınanabilir. Hız hesabı ilk ve son dokunma arasındadır.</div>
+    </section>
+  </main>
+  <footer><span>Başparmak Atlası · Araştırma prototipi</span><span>14.811 sözcük biçimi · Kaynak: OpenSubtitles 2016 frekans derlemesi</span></footer>
+</div>
+<script id="experiment-data" type="application/json">/*__EXPERIMENT_DATA__*/</script>
+<script type="module">/*__APP_JS__*/</script>
+</body>
+</html>
