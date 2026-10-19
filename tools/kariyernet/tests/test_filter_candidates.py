@@ -23,7 +23,7 @@ class CandidateFilterTests(unittest.TestCase):
             review=root/"review.json"
             review.write_text(json.dumps({"listings":[{"provider":"kariyer.net","listing_id":"102"}]}))
             profile=root/"profile.md"
-            profile.write_text("- company_key: kariyer.net/isisan-isi-sanayi-a-s\\n")
+            profile.write_text("- company_key: kariyer.net/isisan-isi-sanayi-a-s\n")
             build(root,review,profile)
             excluded=json.loads((root/"excluded_candidates.json").read_text())
             self.assertEqual(excluded[0]["reason"],"banned_employer")
