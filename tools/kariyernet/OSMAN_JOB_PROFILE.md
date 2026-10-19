@@ -49,3 +49,9 @@ Kullanıcının doğruladığı yeni eğitim, beceri, hareketlilik, dil veya ter
 ## Kullanıcının hariç tuttuğu işverenler (öneri engeli)
 - **Isısan Isı Sanayi A.Ş. — Kayseri**. Kullanıcı 2026-10-19 tarihinde bu şirketten yeniden öneri istemedi. Aynı şirketin tüm iş ilanlarını, ad ve unvan yazım varyasyonlarını da kapsayacak biçimde öneri panelinden çıkart. Şirketi ancak kullanıcı açıkça yasağı kaldırırsa yeniden öner.
 - Bu listeyi her ilan analizi öncesinde oku; yeni kullanıcı ban/kaldırma kararlarında güncelle. Geçmiş arşiv verisini silme. Şirketleri toplama sırasında görmek, kullanıcıya önerme izni vermez.
+
+## Makine tarafından okunabilir şirket engeli
+- company_key: kariyer.net/isisan-isi-sanayi-a-s
+- company_name: Isısan Isı Sanayi A.Ş.
+- match_policy: exact_source_employer_slug_only; başka şirketlerde veya yalnız kelime benzerliğinde eşleştirme yapma. Gerçek işveren kimliği kaynağında farklıysa manuel teyit iste.
+- review_tracking: `tools/kariyernet/reviewed_listings.json` yalnız ilan kimliklerini saklar; şirketin diğer ilanlarını engellemez.
