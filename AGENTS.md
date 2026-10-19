@@ -25,3 +25,8 @@ Bu dalda Kariyer.net iş arşivi/ilan analizi görevi geldiğinde **önce** `too
 - İşverenin kendi sayfası şirketin kendi beyanıdır; **bağımsız ikinci kaynaktan doğrula**. İşçi yorumları tekil/anekdotsal olabilir; suçlama ve şikâyetleri kanıtlanmış gerçek gibi sunma. Kaynak tarihi, güvenilirliği ve bulguyu açıkça ilişkilendir.
 - Her şirket ayrıntısında kullanıcı açısından karar: **neden başvurulur, hangi risk/eksik teyit edilir, mülakatta ne sorulur?** Bu derin araştırmayı yalnız önerilen aday şirketlerde yap; ham arşivdeki her şirkette değil.
 - Tam inceleme imkânı yoksa "araştırıldı" iddiasında bulunma; hangi şirketin hangi boyutunun doğrulanmadığını göster. Ayrıntılı araştırmayı gereksiz uzun liste metni olarak değil, panelin açılır şirket bölümünde tut.
+
+## Şirket dosyasında zorunlu sektör/faaliyet açıklaması
+- Kompakt ilan panelinde **Sektör** ayrı görünür sütun olsun; bilinmiyorsa açıkça "doğrulanamadı" yaz.
+- Açılır şirket dosyasının **ilk iki bölümü**: (1) şirketin somut iş kolu, ürün/hizmetleri, müşterileri ve hizmet verdiği endüstriler; (2) üretim süreci/teknolojileri, makine parkı, tesisler ve makine mühendisinin işte fiilen ne yapacağı. Şirket adından veya ilan başlığından faaliyet uydurma.
+- Ardından ölçek, mali/operasyonel durum, bağımsız itibar ve çalışan deneyimi, riskler, CV uyumu ve mülakat soruları gelsin. İşveren açıklamalarını bağımsız kaynaklarla karşılaştır; teyit edilemeyenleri ayrıca işaretle.
