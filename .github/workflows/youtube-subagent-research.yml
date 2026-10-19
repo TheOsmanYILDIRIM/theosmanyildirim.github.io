@@ -122,6 +122,15 @@ jobs:
           deno-version: 'v2.x'
       - name: Install working yt-dlp and contact-sheet dependencies
         run: python -m pip install 'yt-dlp[default]>=2025.1,<2028' pillow
+      - name: Ensure ffmpeg and ffprobe are available
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq ffmpeg
+          fi
+          ffmpeg -version | head -n 1
       - name: Prepare optional cookies without exposing them
         env:
           YOUTUBE_COOKIES: ${{ secrets.YOUTUBE_COOKIES }}
