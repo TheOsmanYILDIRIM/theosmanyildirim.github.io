@@ -39,4 +39,9 @@ Kullanıcının doğruladığı yeni eğitim, beceri, hareketlilik, dil veya ter
 - Bütün uygun ilanları tek kompakt, filtrelenebilir/sıralanabilir panelde sun. Her satırda şirket, rol, şehir, deneyim, 0–100 CV uyum puanı, ilan durumu, doğrudan bağlantı ve **açılır kapsamlı şirket araştırması** olsun. Sayıyı keyfî azaltma. Görsel kontrol desteklenmiyorsa aynı alanları tek tabloda, araştırmaları şirket bazlı açılabilir bölümlerde sun.
 - Şirket araştırması sırf "büyük firma", "kurumsal", "üretim tesisi var" gibi kısa notlar değil; bağımsız kaynaklı sektör/ürün, lokasyon ve operasyon, ortaklık/ölçek, finansal veya sipariş sürekliliği (varsa), işveren/çalışan deneyimi, İSG, ücret/mesai risk göstergeleri, itibar, son gelişmeler, belirsizlikler, kaynak tarihi ve **başvuru kararı** içermeli.
 - Öneri olarak seçilen her işveren ayrı ayrı incelenir. Şirketin tanıtımını tek dayanak kabul etme; en az bir bağımsız ikinci kaynak ara. Bağımsız kaynak bulunamadığında "bağımsız doğrulama yetersiz" de. Olumsuz iddiaları otomatik doğru sayma; olumlu tanıtımı da sorgula.
-- Panelde bir satıra sığdırmak için araştırmayı kısaltma; derin raporu açılır bölüme yerleştir. İlanın kendisini ve şirketi iki ayrı doğrulama konusu olarak ele al. 
+- Panelde bir satıra sığdırmak için araştırmayı kısaltma; derin raporu açılır bölüme yerleştir. İlanın kendisini ve şirketi iki ayrı doğrulama konusu olarak ele al.
+
+## Şirket dosyasında zorunlu sektör/faaliyet açıklaması
+- Kompakt ilan panelinde **Sektör** ayrı görünür sütun olsun; bilinmiyorsa açıkça "doğrulanamadı" yaz.
+- Açılır şirket dosyasının **ilk iki bölümü**: (1) şirketin somut iş kolu, ürün/hizmetleri, müşterileri ve hizmet verdiği endüstriler; (2) üretim süreci/teknolojileri, makine parkı, tesisler ve makine mühendisinin işte fiilen ne yapacağı. Şirket adından veya ilan başlığından faaliyet uydurma.
+- Ardından ölçek, mali/operasyonel durum, bağımsız itibar ve çalışan deneyimi, riskler, CV uyumu ve mülakat soruları gelsin. İşveren açıklamalarını bağımsız kaynaklarla karşılaştır; teyit edilemeyenleri ayrıca işaretle.
