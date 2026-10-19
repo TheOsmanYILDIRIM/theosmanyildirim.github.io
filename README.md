@@ -94,3 +94,7 @@ Unfortunately, one logistical issue with a template theme like Academic Pages th
 [![GitHub stars](https://img.shields.io/github/stars/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io)
 [![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
 </div>
+
+## Kariyer.net daily career research — experimental branch
+
+This branch includes a CV-focused GitHub Actions job archive. For every job-search request, **read [tools/kariyernet/OSMAN_JOB_PROFILE.md](tools/kariyernet/OSMAN_JOB_PROFILE.md), [tools/kariyernet/README.md](tools/kariyernet/README.md), and [AGENTS.md](AGENTS.md) first**. Collect accessible results across the first 4–5 pages for CV-targeted keywords; when asked to analyze, review **all** available archived entries, rank every suitable vacancy, and independently research each shortlisted employer. Discovered URLs are not proof of an open vacancy. Keep the portfolio unchanged.
