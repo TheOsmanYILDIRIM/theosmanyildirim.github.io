@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "note": "Official / institution-hosted regional candidate sources. Do not mark applications open without validation.",
+  "sources": [
+    {
+      "name": "MKE Kariyer - Kalite Mühendisi",
+      "url": "https://kariyer.mke.gov.tr/ilanlar/kalite-muhendisi-91",
+      "type": "employer_official",
+      "city": "Ankara",
+      "verification": "listing_page_found_open_status_unverified"
+    },
+    {
+      "name": "Milat Halı - Yalın Üretim Mühendisi",
+      "url": "https://rc.hku.edu.tr/kariyer/milat-hali-yalin-uretim-muhendisi-ise-alim-ilani/",
+      "type": "university_employer_announcement",
+      "city": "Gaziantep",
+      "verification": "historical_2026_06_not_verified_open"
+    },
+    {
+      "name": "Kayseri Kariyer - employer listings",
+      "url": "https://www.kayserikariyer.com/",
+      "type": "licensed_intermediary",
+      "city": "Kayseri",
+      "verification": "listing_directory_not_employer_official"
+    }
+  ]
+}
