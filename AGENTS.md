@@ -30,3 +30,9 @@ Bu dalda Kariyer.net iş arşivi/ilan analizi görevi geldiğinde **önce** `too
 - Kompakt ilan panelinde **Sektör** ayrı görünür sütun olsun; bilinmiyorsa açıkça "doğrulanamadı" yaz.
 - Açılır şirket dosyasının **ilk iki bölümü**: (1) şirketin somut iş kolu, ürün/hizmetleri, müşterileri ve hizmet verdiği endüstriler; (2) üretim süreci/teknolojileri, makine parkı, tesisler ve makine mühendisinin işte fiilen ne yapacağı. Şirket adından veya ilan başlığından faaliyet uydurma.
 - Ardından ölçek, mali/operasyonel durum, bağımsız itibar ve çalışan deneyimi, riskler, CV uyumu ve mülakat soruları gelsin. İşveren açıklamalarını bağımsız kaynaklarla karşılaştır; teyit edilemeyenleri ayrıca işaretle.
+
+## Değerlendirilen ilanlar ve engellenen şirketler
+- `tools/kariyernet/reviewed_listings.json`: yalnız ilan başına `provider + listing_id` kimliğiyle değerlendirilmiş kayıt. Kullanıcı 2026-10-19'da 18 Ekim 2026 arşivindeki 78 Kariyer.net ilanını incelendi saydı. Başka ilanları veya aynı şirketin yeni ilanlarını engelleme.
+- Şirket yasağı küçük olduğu için mevcut `tools/kariyernet/OSMAN_JOB_PROFILE.md` içindeki `company_key` kayıtlarından okunur. Kesin işveren kaynak anahtarı kullan; genel ad parçası, benzer firma ismi veya serbest metin eşleştirmesiyle şirket engelleme. Belirsiz kimlik eşleşmelerini manuel teyide bırak.
+- `tools/kariyernet/filter_candidates.py` günlük toplama **sonrasında** ayrı yeni-aday ve elenenler dosyası üretir. Ham keşif ve resmî kaynak arşivini değiştirme. Kullanıcıya önerirken `new_kariyernet_candidates.json` ile `new_official_candidates.json` kullan; adayları ayrıca gerçek başvuru koşulları açısından doğrula. `excluded_candidates.json` inceleme izi olarak kalır.
+- Bundan sonra incelendi kararı alınan ilanların ID'si aynı JSON kaydına eklenmeli; dosya güncellemesinde mevcut SHA ve kapsam doğrulanmalı. Eski inceleme kayıtları silinmemeli.
