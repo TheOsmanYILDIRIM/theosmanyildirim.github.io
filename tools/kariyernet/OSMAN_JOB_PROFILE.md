@@ -34,3 +34,9 @@
 
 ## Bakım
 Kullanıcının doğruladığı yeni eğitim, beceri, hareketlilik, dil veya tercih kararlarını bu belgede güncelle. Önceki kayıtları silip deneyimi şişirme. Yalnız ilgili bilgileri yaz; kişisel kimlik/telefon/e-posta veya hassas veri saklama.
+
+## Tercih edilen çıktı: tek panel + kapsamlı işveren dosyası
+- Bütün uygun ilanları tek kompakt, filtrelenebilir/sıralanabilir panelde sun. Her satırda şirket, rol, şehir, deneyim, 0–100 CV uyum puanı, ilan durumu, doğrudan bağlantı ve **açılır kapsamlı şirket araştırması** olsun. Sayıyı keyfî azaltma. Görsel kontrol desteklenmiyorsa aynı alanları tek tabloda, araştırmaları şirket bazlı açılabilir bölümlerde sun.
+- Şirket araştırması sırf "büyük firma", "kurumsal", "üretim tesisi var" gibi kısa notlar değil; bağımsız kaynaklı sektör/ürün, lokasyon ve operasyon, ortaklık/ölçek, finansal veya sipariş sürekliliği (varsa), işveren/çalışan deneyimi, İSG, ücret/mesai risk göstergeleri, itibar, son gelişmeler, belirsizlikler, kaynak tarihi ve **başvuru kararı** içermeli.
+- Öneri olarak seçilen her işveren ayrı ayrı incelenir. Şirketin tanıtımını tek dayanak kabul etme; en az bir bağımsız ikinci kaynak ara. Bağımsız kaynak bulunamadığında "bağımsız doğrulama yetersiz" de. Olumsuz iddiaları otomatik doğru sayma; olumlu tanıtımı da sorgula.
+- Panelde bir satıra sığdırmak için araştırmayı kısaltma; derin raporu açılır bölüme yerleştir. İlanın kendisini ve şirketi iki ayrı doğrulama konusu olarak ele al. 
