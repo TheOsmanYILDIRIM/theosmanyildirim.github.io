@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "description": "User marked all 2026-10-18 Kariyer.net discovered listing IDs as reviewed. Does not ban the employer.",
+  "reviewed_at": "2026-10-19",
+  "source_archive": "data/kariyernet/daily/2026-10-18/discovered_urls.json",
+  "source_count": 78,
+  "listings": [
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4572252",
+      "original_url": "https://www.kariyer.net/is-ilani/altunkaya-grup-gida-kalite-kontrol-muhendisi-4572252",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4520432",
+      "original_url": "https://www.kariyer.net/is-ilani/aselsan-gaziantep-elektromekanik-teknolojileri-san-kaplama-ve-boya-muhendisi-4520432",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4572758",
+      "original_url": "https://www.kariyer.net/is-ilani/aselsan-gaziantep-elektromekanik-teknolojileri-san-satinalma-lider-muhendisi-uzmani-4572758",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4570747",
+      "original_url": "https://www.kariyer.net/is-ilani/ciltug-isi-san-tic-a-s-cad-cam-programcisi-4570747",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4581176",
+      "original_url": "https://www.kariyer.net/is-ilani/general-tekstil-sanayi-ve-ticaret-a-s-vardiya-muhendisi-4581176",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4579929",
+      "original_url": "https://www.kariyer.net/is-ilani/iss-hazir-yemek-uretim-ve-hizmet-a-s-catering-hizmet-yoneticisi-istanbul-avrupa-4579929",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4580596",
+      "original_url": "https://www.kariyer.net/is-ilani/iss-hazir-yemek-uretim-ve-hizmet-a-s-catering-hizmet-yoneticisi-istanbul-tuzla-4580596",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4580029",
+      "original_url": "https://www.kariyer.net/is-ilani/iss-hazir-yemek-uretim-ve-hizmet-a-s-depo-yoneticisi-yonetmeni-manisa-4580029",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4401995",
+      "original_url": "https://www.kariyer.net/is-ilani/kara-holding-karafiber-tekstil-sanayi-ve-tic-a-elektrik-otomasyon-bakim-muhendisi-4401995",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4569311",
+      "original_url": "https://www.kariyer.net/is-ilani/kara-holding-karafiber-tekstil-sanayi-ve-tic-a-makine-muhendisi-4569311",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4569306",
+      "original_url": "https://www.kariyer.net/is-ilani/kara-holding-karafiber-tekstil-sanayi-ve-tic-a-vardiya-muhendisi-4569306",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4513802",
+      "original_url": "https://www.kariyer.net/is-ilani/merinos-hali-san-ve-tic-a-s-isletme-muhendisi-4513802",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4562484",
+      "original_url": "https://www.kariyer.net/is-ilani/merinos-hali-san-ve-tic-a-s-makine-enerji-muhendisi-4562484",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4570528",
+      "original_url": "https://www.kariyer.net/is-ilani/mir-yildiz-madencilik-anonim-sirketi-makine-muhendisi-4570528",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4425654",
+      "original_url": "https://www.kariyer.net/is-ilani/mst-is-ve-tarim-makinalari-san-ve-tic-a-s-boyahane-muhendisi-4425654",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4376580",
+      "original_url": "https://www.kariyer.net/is-ilani/mst-is-ve-tarim-makinalari-san-ve-tic-a-s-satin-alma-muhendisi-4376580",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4578315",
+      "original_url": "https://www.kariyer.net/is-ilani/ritas-holding-a-s-surec-gelistirme-ve-uygulama-yoneticisi-4578315",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4567310",
+      "original_url": "https://www.kariyer.net/is-ilani/solen-cikolata-gida-san-ve-tic-a-s-mekanik-bakim-uzman-uzman-yardimcisi-gaziantep-4567310",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4541732",
+      "original_url": "https://www.kariyer.net/is-ilani/solen-cikolata-gida-san-ve-tic-a-s-proses-muhendisi-gaziantep-4541732",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4561932",
+      "original_url": "https://www.kariyer.net/is-ilani/tatbak-gida-sanayi-ve-ticaret-ltd-sti-gida-muhendisi-gaziantep-4561932",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4575369",
+      "original_url": "https://www.kariyer.net/is-ilani/akinsan-kimya-kimya-muhendisi-4575369",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4564511",
+      "original_url": "https://www.kariyer.net/is-ilani/ferra-filtre-san-ve-tic-a-s-uretim-muhendisi-4564511",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4571062",
+      "original_url": "https://www.kariyer.net/is-ilani/yemekhane-yiyecek-ve-icecek-hizmetleri-sanayi-ve-t-gida-muhendisi-4571062",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4581136",
+      "original_url": "https://www.kariyer.net/is-ilani/akbasoglu-holding-donatim-muhendisi-4581136",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4567043",
+      "original_url": "https://www.kariyer.net/is-ilani/akbasoglu-holding-gemi-insa-muhendisi-4567043",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4563665",
+      "original_url": "https://www.kariyer.net/is-ilani/ankutsan-antalya-kutu-sanayi-oluklu-mukavva-kagit-kimyasal-proses-ve-uretim-gelistirme-muhendisi-4563665",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4563497",
+      "original_url": "https://www.kariyer.net/is-ilani/ankutsan-antalya-kutu-sanayi-oluklu-mukavva-kagit-pm1-uretim-muhendisi-4563497",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4562279",
+      "original_url": "https://www.kariyer.net/is-ilani/aydem-yenilenebilir-enerji-a-s-isletme-muhendisi-4562279",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4570958",
+      "original_url": "https://www.kariyer.net/is-ilani/form-endustri-tesisleri-sanayi-a-s-satis-muhendisi-4570958",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4579118",
+      "original_url": "https://www.kariyer.net/is-ilani/global-harita-insaat-cevre-tek-end-tur-san-ltd-makine-muhendisi-4579118",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4578449",
+      "original_url": "https://www.kariyer.net/is-ilani/marsa-yag-sanayi-ve-ticaret-as-uretim-vardiya-muhendisi-4578449",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4564465",
+      "original_url": "https://www.kariyer.net/is-ilani/sa-ra-enerji-ins-tic-ve-san-a-s-adana-kumlama-ve-boyahane-lider-muhendisi-4564465",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4567541",
+      "original_url": "https://www.kariyer.net/is-ilani/saytek-muhendislik-iklimlendirme-makine-muhendisi-4567541",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4562594",
+      "original_url": "https://www.kariyer.net/is-ilani/senpilic-gida-sanayi-a-s-bakim-yetkilisi-4562594",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4487223",
+      "original_url": "https://www.kariyer.net/is-ilani/tat-nisasta-ins-san-ve-tic-a-s-mekanik-bakim-muhendisi-4487223",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4568009",
+      "original_url": "https://www.kariyer.net/is-ilani/bildi-metal-makine-sanayi-ve-ticaret-ltd-sti-ar-ge-ur-ge-tasarim-muhendisi-yoneticisi-4568009",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4576968",
+      "original_url": "https://www.kariyer.net/is-ilani/innosis-makine-tasarim-arge-sanayi-ve-ticaret-ltd-arastirma-gelistirme-muhendisi-4576968",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4576522",
+      "original_url": "https://www.kariyer.net/is-ilani/isisan-isi-sanayi-a-s-imalat-muhendisi-4576522",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4578002",
+      "original_url": "https://www.kariyer.net/is-ilani/iz-yapi-malzeme-ve-ekipmanlari-san-ve-tic-a-s-planlama-muhendisi-4578002",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4562115",
+      "original_url": "https://www.kariyer.net/is-ilani/mhc-muhendislik-insaat-danismanlik-mim-ve-tic-a-s-insaat-muhendisi-4562115",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4562159",
+      "original_url": "https://www.kariyer.net/is-ilani/mhc-muhendislik-insaat-danismanlik-mim-ve-tic-a-s-makine-muhendisi-4562159",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4571813",
+      "original_url": "https://www.kariyer.net/is-ilani/oksut-madencilik-san-ve-tic-a-s-insaat-kalite-muhendisi-4571813",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4578996",
+      "original_url": "https://www.kariyer.net/is-ilani/osman-atici-adal-insaat-santiye-sefi-4578996",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "3715980",
+      "original_url": "https://www.kariyer.net/is-ilani/tomtas-havacilik-ve-teknoloji-a-s-cad-cam-muhendisi-kayseri-3715980",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4567375",
+      "original_url": "https://www.kariyer.net/is-ilani/tomtas-havacilik-ve-teknoloji-a-s-takimhane-muhendisi-4567375",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4440281",
+      "original_url": "https://www.kariyer.net/is-ilani/ozak-tekstil-uretim-muhendisi-malatya-4440281",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "2091901",
+      "original_url": "https://www.kariyer.net/is-ilani/taha-holding-a-s-uretim-planlama-muhendisi-2091901",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4325085",
+      "original_url": "https://www.kariyer.net/is-ilani/abs-alci-ve-blok-sanayi-a-s-maden-muhendisi-4325085",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4580562",
+      "original_url": "https://www.kariyer.net/is-ilani/akyurek-teknoloji-makina-a-s-urun-gelistirme-muhendisi-4580562",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4568390",
+      "original_url": "https://www.kariyer.net/is-ilani/aves-enerji-yagve-gida-sanayi-anonim-sirketi-uretim-muhendisi-4568390",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4563825",
+      "original_url": "https://www.kariyer.net/is-ilani/aves-enerji-yagve-gida-sanayi-anonim-sirketi-vardiya-muhendisi-4563825",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4564156",
+      "original_url": "https://www.kariyer.net/is-ilani/ergil-grup-ins-makiniml-ith-ihr-san-ve-tic-ltd-sti-teknik-satin-alma-muhendisi-4564156",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4565227",
+      "original_url": "https://www.kariyer.net/is-ilani/gkc-insaat-saha-sorumlusu-4565227",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4569056",
+      "original_url": "https://www.kariyer.net/is-ilani/maris-petrokimya-pazarlama-ve-ticaret-limited-sir-kidemli-makine-muhendisi-4569056",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4524191",
+      "original_url": "https://www.kariyer.net/is-ilani/servis365-tesis-yonetimi-a-s-bakim-operasyon-uzmani-muhendis-4524191",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4580312",
+      "original_url": "https://www.kariyer.net/is-ilani/andar-elektromekanik-sistemler-sanayi-ve-ticaret-a-donanim-tasarim-muhendisi-4580312",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4580628",
+      "original_url": "https://www.kariyer.net/is-ilani/andar-elektromekanik-sistemler-sanayi-ve-ticaret-a-uretim-muhendisi-proses-4580628",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4569038",
+      "original_url": "https://www.kariyer.net/is-ilani/asan-celik-yapi-mak-ins-ltd-sti-elektrik-elektronik-muhendisi-4569038",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4578796",
+      "original_url": "https://www.kariyer.net/is-ilani/bais-makina-muhendislik-otomotiv-sanayi-ticaret-an-mekanik-tasarim-muhendisi-4578796",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4578368",
+      "original_url": "https://www.kariyer.net/is-ilani/birlesim-muhendislik-isitma-sogutma-havalandirma-s-mekanik-saha-muhendisi-4578368",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4561388",
+      "original_url": "https://www.kariyer.net/is-ilani/eos-endustriyel-otomotiv-sistemleri-tasarim-makina-is-hazirlama-ar-ge-muhendisi-4561388",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4476949",
+      "original_url": "https://www.kariyer.net/is-ilani/hsn-proje-mekanik-tes-muh-dan-ins-san-tic-ltd-sti-mekanik-tesisat-dizayn-muhendisi-4476949",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4576292",
+      "original_url": "https://www.kariyer.net/is-ilani/klv-insaat-a-s-kaba-isler-sefi-4576292",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4291470",
+      "original_url": "https://www.kariyer.net/is-ilani/kologlu-holding-a-s-elektrik-dizayn-muhendisi-4291470",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4569624",
+      "original_url": "https://www.kariyer.net/is-ilani/pasifik-gayrimenkul-yatirim-insaat-a-s-beyaz-alan-muhendisi-4569624",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4569609",
+      "original_url": "https://www.kariyer.net/is-ilani/pasifik-gayrimenkul-yatirim-insaat-a-s-saha-elektrik-muhendisi-4569609",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4573366",
+      "original_url": "https://www.kariyer.net/is-ilani/petrotek-sondaj-mak-san-ve-tic-a-s-tasarim-muhendisi-4573366",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4581211",
+      "original_url": "https://www.kariyer.net/is-ilani/promec-mekanik-arge-muhendislik-teknoloji-sanayi-v-mekanik-tasarim-muhendisi-4581211",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4430415",
+      "original_url": "https://www.kariyer.net/is-ilani/prota-muhendislik-proje-danismanlik-hizmetleri-a-s-mekanik-tasarim-muhendisi-4430415",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4490834",
+      "original_url": "https://www.kariyer.net/is-ilani/proterm-enerji-san-ve-tic-a-s-gomulu-yazilim-muhendisi-4490834",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4357646",
+      "original_url": "https://www.kariyer.net/is-ilani/robolego-teknoloji-yazlim-limited-sirketi-ar-ge-tasarim-muhendisi-4357646",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4569361",
+      "original_url": "https://www.kariyer.net/is-ilani/sekiza-savunma-havacilik-ve-uzay-tek-im-yaz-telek-mekanik-tasarim-muhendisi-4569361",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4574509",
+      "original_url": "https://www.kariyer.net/is-ilani/sezgin-grup-insaat-bim-uzmani-4574509",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4580821",
+      "original_url": "https://www.kariyer.net/is-ilani/sf-yildiz-gayrimenkul-insaat-sanayi-ve-ticaret-ano-mekanik-saha-muhendisi-makine-muhendisi-4580821",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4566056",
+      "original_url": "https://www.kariyer.net/is-ilani/sumer-a-s-mekanik-tasarim-muhendisi-4566056",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4572803",
+      "original_url": "https://www.kariyer.net/is-ilani/sumitomo-rubber-ako-lastik-sanayi-ve-ticaret-anoni-mekanik-bakim-onarim-muhendisi-4572803",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4577076",
+      "original_url": "https://www.kariyer.net/is-ilani/tr-mekatronik-sistemler-san-ve-tic-a-s-mekanik-tasarim-muhendisi-4577076",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4579117",
+      "original_url": "https://www.kariyer.net/is-ilani/zirhlilar-savunma-havacilik-ve-ileri-teknolojiler-makine-muhendisi-4579117",
+      "status": "reviewed"
+    }
+  ]
+}
