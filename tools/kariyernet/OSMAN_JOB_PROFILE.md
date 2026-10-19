@@ -45,3 +45,7 @@ Kullanıcının doğruladığı yeni eğitim, beceri, hareketlilik, dil veya ter
 - Kompakt ilan panelinde **Sektör** ayrı görünür sütun olsun; bilinmiyorsa açıkça "doğrulanamadı" yaz.
 - Açılır şirket dosyasının **ilk iki bölümü**: (1) şirketin somut iş kolu, ürün/hizmetleri, müşterileri ve hizmet verdiği endüstriler; (2) üretim süreci/teknolojileri, makine parkı, tesisler ve makine mühendisinin işte fiilen ne yapacağı. Şirket adından veya ilan başlığından faaliyet uydurma.
 - Ardından ölçek, mali/operasyonel durum, bağımsız itibar ve çalışan deneyimi, riskler, CV uyumu ve mülakat soruları gelsin. İşveren açıklamalarını bağımsız kaynaklarla karşılaştır; teyit edilemeyenleri ayrıca işaretle.
+
+## Kullanıcının hariç tuttuğu işverenler (öneri engeli)
+- **Isısan Isı Sanayi A.Ş. — Kayseri**. Kullanıcı 2026-10-19 tarihinde bu şirketten yeniden öneri istemedi. Aynı şirketin tüm iş ilanlarını, ad ve unvan yazım varyasyonlarını da kapsayacak biçimde öneri panelinden çıkart. Şirketi ancak kullanıcı açıkça yasağı kaldırırsa yeniden öner.
+- Bu listeyi her ilan analizi öncesinde oku; yeni kullanıcı ban/kaldırma kararlarında güncelle. Geçmiş arşiv verisini silme. Şirketleri toplama sırasında görmek, kullanıcıya önerme izni vermez.
