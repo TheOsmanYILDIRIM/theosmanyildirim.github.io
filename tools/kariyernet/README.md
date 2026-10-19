@@ -21,3 +21,8 @@
 
 ## Güncelleme
 Tercih ve CV değişiklikleri yalnız doğrulanmış kullanıcı bilgisiyle [OSMAN_JOB_PROFILE.md](OSMAN_JOB_PROFILE.md) içinde güncellenir. Bu belgeyi ve ilgili AGENTS.md dosyasını sonraki oturumda ilk önce oku. Üretilen günlük arşivler salt okunur analizde değiştirilmez.
+
+## Standart çıktı sözleşmesi
+Kullanıcı arşivdeki ilanları incelettiğinde çıktı **tek kompakt, filtrelenebilir ve sıralanabilir karşılaştırma paneli** olmalı. Her aday satırında: CV puanı, şirket, pozisyon, şehir, deneyim, gerçek ilan/açık başvuru durumu, doğrudan ilan URL'si ve **açılır, ayrıntılı bağımsız şirket incelemesi** bulunur. Bütün uygun ilanları kapsa; keyfî 3/5/10 sınırı koyma. Tek bir uzun, parçalı şirket listesi üretme.
+
+Şirket ayrıntısı: yapılan iş/ürün/hizmetler, fiziksel ve ticari ölçek (kanıtlı göstergeler), bağımsız resmî/medya/sector kaynakları, ekonomik ve operasyonel durum, işveren itibarına dair olumlu/olumsuz sinyaller, çalışan yorumlarının kaynak ve örneklem sınırlamaları, ücret/mesai/İSG riskleri, kritik bilinmeyenler, mülakatta sorulacak sorular, kullanıcı için gerekçeli sonuç. Kaynakları ve tarihleri açıkça göster. Şirketin kendi reklâmını bağımsız araştırma sanma. Kanıt bulunamayan konuyu uydurma. Ayrıntı panelde açılır; satır görünümü kısa kalır.
