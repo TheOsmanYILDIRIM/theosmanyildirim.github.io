@@ -14,6 +14,20 @@ class CandidateFilterTests(unittest.TestCase):
         self.assertTrue(is_banned({"url":"https://www.kariyer.net/is-ilani/isisan-isi-sanayi-a-s-imalat-muhendisi-4576522"},ban))
         self.assertFalse(is_banned({"url":"https://www.kariyer.net/is-ilani/isisan-makina-baska-firma-muhendisi-4561234"},ban))
         self.assertFalse(is_banned({"url":"https://www.kariyer.net/is-ilani/baska-firma-isisan-isi-sanayi-a-s-9876543"},ban))
+    def test_ban_reason_precedes_reviewed_status(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            url="https://www.kariyer.net/is-ilani/isisan-isi-sanayi-a-s-imalat-102"
+            (root/"discovered_urls.json").write_text(json.dumps([{"url":url}]))
+            (root/"official_jobs.json").write_text("[]")
+            review=root/"review.json"
+            review.write_text(json.dumps({"listings":[{"provider":"kariyer.net","listing_id":"102"}]}))
+            profile=root/"profile.md"
+            profile.write_text("- company_key: kariyer.net/isisan-isi-sanayi-a-s\\n")
+            build(root,review,profile)
+            excluded=json.loads((root/"excluded_candidates.json").read_text())
+            self.assertEqual(excluded[0]["reason"],"banned_employer")
+
     def test_review_applies_only_to_listing(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d)
