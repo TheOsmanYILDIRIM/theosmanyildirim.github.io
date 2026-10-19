@@ -47,7 +47,7 @@ def build(folder, reviewed_path, profile_path):
         if not key or key in seen:
             continue
         seen.add(key)
-        reason = "reviewed_listing" if key in keys else "banned_employer" if is_banned(entry,banned) else None
+        reason = "banned_employer" if is_banned(entry,banned) else "reviewed_listing" if key in keys else None
         if reason:
             excluded.append({"url": entry["url"], "reason": reason, "listing_id":key[1]})
         else:
