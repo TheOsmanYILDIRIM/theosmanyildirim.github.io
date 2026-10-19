@@ -41,6 +41,8 @@ jobs:
         run: python tools/kariyernet/official_sources.py --output output/kariyernet
       - name: Export regional recruitment sources
         run: python tools/kariyernet/regional_sources.py --output output/kariyernet
+      - name: Remove previously reviewed and banned recommendations
+        run: python tools/kariyernet/filter_candidates.py --output output/kariyernet
       - name: Score jobs against CV and geography
         run: python tools/kariyernet/cv_rank.py --output output/kariyernet
       - uses: actions/upload-artifact@v4
