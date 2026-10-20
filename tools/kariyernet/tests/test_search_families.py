@@ -10,5 +10,8 @@ class SearchFamiliesTests(unittest.TestCase):
         self.assertEqual(len(queries),12)
         self.assertEqual(len(queries),len(set(queries)))
         self.assertTrue(all("İstanbul" not in q for q in queries))
+        self.assertGreaterEqual(len({q.split()[-1] for q in queries}),6)
+        self.assertTrue(any("kalite" in q for q in queries))
+        self.assertTrue(any("yeni mezun" in q for q in queries))
 if __name__=="__main__":
     unittest.main()
