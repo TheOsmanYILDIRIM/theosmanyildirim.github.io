@@ -17,6 +17,14 @@ class SmartRankTests(unittest.TestCase):
     def test_no_city_inference(self):
         x=evaluate({"title":"Production Engineer","location":"Turkey","description":""})
         self.assertEqual(x["location_score"],0)
+    def test_degree_other_discipline_needs_review(self):
+        x=evaluate({"title":"Production Engineer","location":"Gaziantep",
+                    "description":"Bachelor's degree in industrial engineering"})
+        self.assertEqual(x["requirements_state"],"degree_requires_review")
+    def test_explicit_incompatible_degree(self):
+        x=evaluate({"title":"Quality Engineer","location":"Kayseri",
+                    "description":"only electrical engineer"})
+        self.assertEqual(x["requirements_state"],"incompatible_degree")
     def test_istanbul_excluded(self):
         x=evaluate({"title":"Mechanical Engineer","location":"İstanbul","description":"new grad"})
         self.assertEqual(x["score"],0)
