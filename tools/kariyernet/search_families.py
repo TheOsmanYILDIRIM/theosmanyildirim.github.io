@@ -9,5 +9,12 @@ FAMILIES = {
 }
 PLACES=["Kahramanmaraş","Gaziantep","Osmaniye","Adana","Kayseri","Malatya","Mersin","Ankara"]
 def build_queries(limit=32):
-    # Deterministic and bounded; alternate technology queries are explicit.
-    return [f"{term} {city}" for family in FAMILIES.values() for term in family for city in PLACES][:limit]
+    """Bounded coverage across cities AND career families, not one family at a time."""
+    names=list(FAMILIES)
+    queries=[]
+    for i in range(max(0,min(limit,40))):
+        city=PLACES[i % len(PLACES)]
+        family=FAMILIES[names[i % len(names)]]
+        term=family[(i // (len(PLACES)*len(names))) % len(family)]
+        queries.append(f"{term} {city}")
+    return queries
