@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "description": "Only 48 Kariyer.net listings presented to and reviewed by user in prior comparison panel; other archive URLs remain new/unreviewed.",
+  "description": "Kariyer.net listing IDs explicitly shown to and reviewed by user; employer bans remain separate in OSMAN_JOB_PROFILE.md.",
   "reviewed_at": "2026-10-19",
   "source_archive": "data/kariyernet/daily/2026-10-18/discovered_urls.json",
   "source_count": 48,
@@ -292,6 +292,42 @@
       "listing_id": "4579117",
       "original_url": "https://www.kariyer.net/is-ilani/zirhlilar-savunma-havacilik-ve-ileri-teknolojiler-makine-muhendisi-4579117",
       "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4580110",
+      "status": "reviewed",
+      "reviewed_at": "2026-10-20"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4570958",
+      "status": "reviewed",
+      "reviewed_at": "2026-10-20"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4562279",
+      "status": "reviewed",
+      "reviewed_at": "2026-10-20"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4567043",
+      "status": "reviewed",
+      "reviewed_at": "2026-10-20"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4568009",
+      "status": "reviewed",
+      "reviewed_at": "2026-10-20"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4576968",
+      "status": "reviewed",
+      "reviewed_at": "2026-10-20"
     }
   ]
 }
