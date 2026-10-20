@@ -128,7 +128,7 @@ if __name__ == "__main__":
     p.add_argument("--pages", type=int, default=5)
     p.add_argument("--max-details", type=int, default=150)
     p.add_argument("--delay", type=float, default=3)
-    p.add_argument("--output", type=Path, default=Path("output/kariyernet"))
+    p.add_argument("--output", type=Path, default=Path("output/kariyernet"))\n    p.add_argument("--expand", action="store_true", help="Use bounded alternate CV search families")
     a = p.parse_args()
-    run(a.output, parse_keywords(a.keywords), min(10, max(5, a.pages)),
+    keywords = parse_keywords(a.keywords)\n    if a.expand:\n        from search_families import build_queries\n        keywords = list(dict.fromkeys(keywords + build_queries(limit=12)))[:20]\n    run(a.output, keywords, min(10, max(5, a.pages)),
         min(200, max(0, a.max_details)), max(2.5, a.delay))
