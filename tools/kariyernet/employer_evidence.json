@@ -1,5 +1,23 @@
 {
   "schema_version": 1,
   "note": "Only independently sourced, source-linked employer facts. Unknown employers remain unscored, and self-published claims are not independent evidence.",
-  "employers": []
+  "employers": [
+    {
+      "source": "lever",
+      "employer_id": "getmidas",
+      "company": "Midas",
+      "sources": [
+        {
+          "url": "https://www.invest.gov.tr/en/news/news-from-turkey/pages/midas-secures-massive-series-b-round-with-usd-80-million.aspx",
+          "independent": true,
+          "fact": "2025 yılı 80 milyon USD Series B duyurusu; bağımsız kamu yatırım ajansı haberi."
+        },
+        {
+          "url": "https://assets.kpmg.com/content/dam/kpmgsites/tr/pdf/2025/11/turkish-startup-investments-q3-2025.pdf",
+          "independent": true,
+          "fact": "KPMG 2025 üçüncü çeyrek girişim yatırımları raporunda Midas yatırımı."
+        }
+      ]
+    }
+  ]
 }
