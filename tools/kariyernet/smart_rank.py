@@ -46,10 +46,15 @@ def evaluate(job):
     senior=bool(re.search(r"senior|lead|manager|director|kidemli|yonetici|sef",title))
     english=bool(re.search(r"advanced english|fluent english|c1 english|ileri seviye ingilizce",description))
     wrong_degree=bool(re.search(r"only (electrical|chemical|civil) engineer|yalnizca (elektrik|kimya|insaat) muhendis",description))
+    degree_uncertain=bool(re.search(r"(?:degree in|bachelor.s degree in|mezunu)\s*(?:industrial|electrical|chemical|civil|endustri|elektrik|kimya|insaat)",description))
     if wrong_degree:
         requirements=0
         reqstate="incompatible_degree"
         reasons.append("Zorunlu farklı mühendislik diploması")
+    elif degree_uncertain:
+        requirements=8
+        reqstate="degree_requires_review"
+        reasons.append("İstenen mühendislik bölümü makine diplomasıyla ayrıca karşılaştırılmalı")
     elif years and min(years)>2:
         requirements=2
         reqstate="experience_gap"
@@ -93,10 +98,25 @@ def _record(job,status,score,dims,reqstate,open_state,reasons):
         status,score,*dims,reqstate,open_state,"; ".join(reasons),job.get("verification","")
     ]))
 
-def run(folder):
+def run(folder, evidence_path=Path("tools/kariyernet/employer_evidence.json")):
     source=folder/"new_official_candidates.json"
     entries=json.loads(source.read_text(encoding="utf-8"))
-    ranked=sorted((evaluate(x) for x in entries),key=lambda x:-x["score"])
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8")) if evidence_path.exists() else {"employers":[]}
+    registry={(x["source"],str(x["employer_id"])):x for x in evidence.get("employers",[])
+              if x.get("source") and x.get("employer_id")}
+    ranked=[]
+    for entry in entries:
+        record=evaluate(entry)
+        key=(entry.get("source"),str(entry.get("employer_id","")))
+        proof=registry.get(key)
+        if proof:
+            independent=[x for x in proof.get("sources",[]) if x.get("independent") is True
+                         and str(x.get("url","")).startswith("https://") and x.get("fact")]
+            record["employer_evidence"]=min(5,len(independent)*2)
+            record["score"]=min(100,record["score"]+record["employer_evidence"])
+            record["reasons"]+="; Bağımsız şirket kanıt sayısı: "+str(len(independent))
+        ranked.append(record)
+    ranked.sort(key=lambda x:-x["score"])
     (folder/"smart_ranked.json").write_text(json.dumps(ranked,ensure_ascii=False,indent=2),encoding="utf-8")
     with (folder/"smart_ranked.csv").open("w",newline="",encoding="utf-8") as out:
         writer=csv.DictWriter(out,fieldnames=FIELDS)
