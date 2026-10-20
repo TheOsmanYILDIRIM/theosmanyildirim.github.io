@@ -1,0 +1,260 @@
+name: YouTube subagent research
+
+on:
+  workflow_dispatch:
+    inputs:
+      video_id:
+        description: 'Optional 11-character YouTube ID for standalone 360 rig study'
+        required: false
+        type: string
+  push:
+    branches:
+      - experiment/youtube-subagent-research-20261018
+    paths:
+      - '.github/workflows/youtube-subagent-research.yml'
+      - 'tools/youtube_agents/**'
+      - 'skills/efficient-subagent-orchestration/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: youtube-subagent-research
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    if: ${{ !contains(github.event.head_commit.message, '[spine360]') && !(github.event_name == 'workflow_dispatch' && inputs.video_id != '') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout exact tested branch
+        uses: actions/checkout@v4
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Deno for YouTube JavaScript challenges
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: 'v2.x'
+      - name: Install yt-dlp and bundled EJS scripts
+        run: python -m pip install 'yt-dlp[default]>=2025.1,<2028'
+      - name: Prepare optional YouTube cookies securely
+        id: cookies
+        env:
+          YOUTUBE_COOKIES: ${{ secrets.YOUTUBE_COOKIES }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$YOUTUBE_COOKIES" ]]; then
+            echo 'configured=false' >> "$GITHUB_OUTPUT"
+            echo 'YOUTUBE_COOKIES secret unavailable; running unauthenticated.'
+            exit 0
+          fi
+          umask 077
+          COOKIE_FILE="$RUNNER_TEMP/youtube-session-cookies.txt"
+          printf '%s\n' "$YOUTUBE_COOKIES" > "$COOKIE_FILE"
+          unset YOUTUBE_COOKIES
+          if ! head -n 1 "$COOKIE_FILE" | grep -Eq '^# (Netscape HTTP Cookie File|HTTP Cookie File)'; then
+            echo 'Invalid Netscape cookies header; stopping without exposing contents.' >&2
+            exit 1
+          fi
+          echo "YTDLP_COOKIE_FILE=$COOKIE_FILE" >> "$GITHUB_ENV"
+          echo 'configured=true' >> "$GITHUB_OUTPUT"
+      - name: Probe Forn AI video with real extractor (diagnostic)
+        id: youtube_probe
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=(--no-playlist --list-subs)
+          if [[ -n "${YTDLP_COOKIE_FILE:-}" ]]; then
+            args+=(--cookies "$YTDLP_COOKIE_FILE")
+          fi
+          python -m yt_dlp "${args[@]}" 'https://www.youtube.com/watch?v=3RcSsjTgnhI' >/dev/null 2>&1
+      - name: Execute collector unit tests
+        run: python -m unittest discover -s tools/youtube_agents/tests -v
+      - name: Find Forn AI and Avenox agent videos and fetch captions
+        if: steps.youtube_probe.outcome == 'success'
+        run: |
+          python tools/youtube_agents/collect.py \
+            --output output/youtube-agents \
+            --scan-descriptions \
+            --max-captions 0 \
+            --timeout 120 \
+            --metadata-timeout 50
+      - name: Require YouTube video access for research acceptance
+        if: steps.youtube_probe.outcome == 'failure'
+        run: |
+          echo 'BLOCKED: YouTube video extraction unavailable; no transcript success is claimed.' >&2
+          exit 4
+      - name: Remove temporary authentication cookies
+        if: always()
+        shell: bash
+        run: |
+          if [[ -n "${YTDLP_COOKIE_FILE:-}" ]]; then
+            rm -f -- "$YTDLP_COOKIE_FILE"
+          fi
+      - name: Preserve real inventory, captions and blockers as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: youtube-subagent-research
+          path: output/youtube-agents/
+          if-no-files-found: warn
+          retention-days: 3
+
+  spine360:
+    if: ${{ contains(github.event.head_commit.message, '[spine360]') || (github.event_name == 'workflow_dispatch' && inputs.video_id != '') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      VIDEO_ID: ${{ inputs.video_id || 'gz9ybyTFkBc' }}
+    steps:
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Deno for yt-dlp YouTube JS challenges
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: 'v2.x'
+      - name: Install working yt-dlp and contact-sheet dependencies
+        run: python -m pip install 'yt-dlp[default]>=2025.1,<2028' pillow
+      - name: Ensure ffmpeg and ffprobe are available
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq ffmpeg
+          fi
+          ffmpeg -version
+      - name: Prepare optional cookies without exposing them
+        env:
+          YOUTUBE_COOKIES: ${{ secrets.YOUTUBE_COOKIES }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$YOUTUBE_COOKIES" ]]; then echo 'Cookie secret missing; continuing unauthenticated'; exit 0; fi
+          umask 077
+          printf '%s\n' "$YOUTUBE_COOKIES" > "$RUNNER_TEMP/spine360_cookie.txt"
+          if ! head -n 1 "$RUNNER_TEMP/spine360_cookie.txt" | grep -Eq '^# (Netscape HTTP Cookie File|HTTP Cookie File)'; then echo 'Invalid cookie file header' >&2; exit 1; fi
+          echo "YTDLP_COOKIE_FILE=$RUNNER_TEMP/spine360_cookie.txt" >> "$GITHUB_ENV"
+      - name: Download video and captions and inspect sampled frames
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import base64, html, json, os, pathlib, re, subprocess, sys
+          from PIL import Image, ImageDraw, ImageOps
+          
+          vid = os.environ["VIDEO_ID"].strip()
+          if not re.fullmatch(r"[A-Za-z0-9_-]{11}", vid):
+              raise SystemExit("Invalid YouTube video id")
+          url = "https://www.youtube.com/watch?v=" + vid
+          out = pathlib.Path("output/spine360")
+          frames = out / "frames"
+          sheets = out / "contact_sheets"
+          tmp = pathlib.Path(os.environ["RUNNER_TEMP"]) / "spine360_media"
+          for p in (out, frames, sheets, tmp):
+              p.mkdir(parents=True, exist_ok=True)
+          base = ["python", "-m", "yt_dlp", "--no-playlist", "--socket-timeout", "45", "--retries", "2"]
+          cookie = os.environ.get("YTDLP_COOKIE_FILE")
+          if cookie:
+              base += ["--cookies", cookie]
+          
+          def run(args, file_name):
+              p = subprocess.run(base + args + [url], capture_output=True, text=True, errors="replace")
+              (out / file_name).write_text(p.stdout + "\n" + p.stderr, encoding="utf-8")
+              print(file_name, "status", p.returncode, "output_chars", len(p.stdout) + len(p.stderr), flush=True)
+              return p.returncode
+          
+          run(["--list-subs"], "subtitle_inventory.txt")
+          run(["--skip-download", "--write-subs", "--write-auto-subs", "--sub-langs", "en.*,tr.*", "--sub-format", "vtt/best", "-o", str(out / "%(id)s.%(ext)s")], "caption_download_log.txt")
+          fmt = "bv*[height<=480]+ba/b[height<=480]/best"
+          result = run(["-f", fmt, "--merge-output-format", "mp4", "-o", str(tmp / "video.%(ext)s")], "video_download_log.txt")
+          media = sorted((p for p in tmp.glob("video.*") if p.suffix.lower() in {".mp4", ".webm", ".mkv"}), key=lambda p: p.stat().st_size, reverse=True)
+          if not media:
+              raise SystemExit("Video could not be downloaded; see video_download_log.txt")
+          video = media[0]
+          duration_res = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", str(video)], capture_output=True, text=True)
+          duration = float(duration_res.stdout.strip() or 0)
+          ff = subprocess.run(["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error", "-y", "-i", str(video), "-vf", "fps=1,scale=480:-2", "-frames:v", "240", str(frames / "frame_%04d.jpg")], capture_output=True, text=True)
+          if ff.returncode:
+              print(ff.stderr[:3000])
+              raise SystemExit("ffmpeg frame extraction failed")
+          image_paths = sorted(frames.glob("frame_*.jpg"))
+          if not image_paths:
+              raise SystemExit("No frames extracted")
+          print("DURATION_SECONDS", duration, "EXTRACTED_FRAMES", len(image_paths), flush=True)
+          
+          for k in range(0, len(image_paths), 30):
+              group = image_paths[k:k+30]
+              canvas = Image.new("RGB", (1200, 750), (28, 29, 32))
+              draw = ImageDraw.Draw(canvas)
+              for idx, path in enumerate(group):
+                  with Image.open(path) as im:
+                      thumb = ImageOps.contain(im.convert("RGB"), (196, 124))
+                  x, y = idx % 6 * 200 + (200-thumb.width)//2, idx // 6 * 150 + 2
+                  canvas.paste(thumb, (x, y))
+                  draw.text((idx % 6 * 200+8, idx // 6*150+126), f"{k+idx:03d}s", fill=(255, 255, 255))
+              dest = sheets / f"contact_{k//30+1:02d}.jpg"
+              canvas.save(dest, "JPEG", quality=64, optimize=True)
+              if k//30 < 9:
+                  print("FRAME_CONTACT_SHEET_B64", dest.name, base64.b64encode(dest.read_bytes()).decode("ascii"), flush=True)
+          
+          def vtt_lines(path):
+              src = path.read_text(encoding="utf-8", errors="replace")
+              blocks = re.split(r"\n\s*\n", src.replace("\r\n", "\n"))
+              prev = ""
+              for block in blocks:
+                  lines = block.split("\n")
+                  i = next((j for j, line in enumerate(lines) if "-->" in line), -1)
+                  if i == -1:
+                      continue
+                  stamp = lines[i].split("-->")[0].strip()
+                  content = html.unescape(re.sub(r"<[^>]+>", "", " ".join(lines[i+1:])))
+                  content = " ".join(content.split())
+                  if content and content != prev:
+                      if prev and content.startswith(prev):
+                          content = content[len(prev):].strip()
+                      if content:
+                          yield f"[{stamp}] {content}"
+                  prev = content or prev
+          
+          files = sorted(out.glob("*.vtt"))
+          written = []
+          for p in files:
+              lines = list(vtt_lines(p))
+              transcript = out / (p.stem + ".transcript.txt")
+              transcript.write_text("\n".join(lines)+"\n", encoding="utf-8")
+              written.append(str(transcript.name))
+              print("TRANSCRIPT_FILE", transcript.name, "LINES", len(lines), flush=True)
+              print("TRANSCRIPT_START", transcript.name, flush=True)
+              for line in lines[:450]:
+                  print(line, flush=True)
+              print("TRANSCRIPT_END", transcript.name, flush=True)
+          
+          meta = {"video_id": vid, "url": url, "duration_seconds": duration, "sample_fps": 1,
+                  "frames_extracted": len(image_paths), "contact_sheet_count": len(list(sheets.glob("*.jpg"))),
+                  "caption_files": [p.name for p in files], "normalized_transcripts": written,
+                  "source_video_stored_in_artifact": False}
+          (out/"manifest.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
+          print("MANIFEST", json.dumps(meta), flush=True)
+          PY
+      - name: Delete temporary cookie and raw video
+        if: always()
+        shell: bash
+        run: |
+          rm -f -- "$RUNNER_TEMP/spine360_cookie.txt"
+          rm -rf -- "$RUNNER_TEMP/spine360_media"
+      - name: Preserve frames, contact sheets, captions, manifest and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spine360-gz9ybyTFkBc
+          path: output/spine360/
+          if-no-files-found: warn
+          retention-days: 3
