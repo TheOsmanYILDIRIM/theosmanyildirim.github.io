@@ -5,6 +5,7 @@ import json
 import re
 import unicodedata
 from pathlib import Path
+from urllib.parse import urlparse
 
 DIMENSIONS = {"profession":25,"requirements":25,"skills":20,"career":15,"location":10,"employer_evidence":5}
 PRIMARY = ("kahramanmaras","gaziantep","osmaniye","adana","kayseri","malatya")
@@ -107,7 +108,9 @@ def run(folder, evidence_path=Path("tools/kariyernet/employer_evidence.json")):
     ranked=[]
     for entry in entries:
         record=evaluate(entry)
-        key=(entry.get("source"),str(entry.get("employer_id","")))
+        parsed=urlparse(entry.get("url", ""))
+        board_id=parsed.path.strip("/").split("/")[0] if parsed.hostname=="jobs.lever.co" else ""
+        key=(entry.get("source"),board_id)
         proof=registry.get(key)
         if proof:
             independent=[x for x in proof.get("sources",[]) if x.get("independent") is True
