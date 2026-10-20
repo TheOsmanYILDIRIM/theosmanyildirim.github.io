@@ -52,10 +52,6 @@ def evaluate(job):
         requirements=0
         reqstate="incompatible_degree"
         reasons.append("Zorunlu farklı mühendislik diploması")
-    elif degree_uncertain:
-        requirements=8
-        reqstate="degree_requires_review"
-        reasons.append("İstenen mühendislik bölümü makine diplomasıyla ayrıca karşılaştırılmalı")
     elif years and min(years)>2:
         requirements=2
         reqstate="experience_gap"
@@ -64,6 +60,10 @@ def evaluate(job):
         requirements=4
         reqstate="senior_role"
         reasons.append("Kıdemli/yönetici unvanı")
+    elif degree_uncertain:
+        requirements=8
+        reqstate="degree_requires_review"
+        reasons.append("İstenen mühendislik bölümü makine diplomasıyla ayrıca karşılaştırılmalı")
     elif new_grad:
         requirements=25
         reqstate="new_graduate_explicit"
