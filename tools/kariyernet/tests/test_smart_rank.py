@@ -21,6 +21,10 @@ class SmartRankTests(unittest.TestCase):
         x=evaluate({"title":"Production Engineer","location":"Gaziantep",
                     "description":"Bachelor's degree in industrial engineering"})
         self.assertEqual(x["requirements_state"],"degree_requires_review")
+    def test_experience_gap_has_priority(self):
+        x=evaluate({"title":"Production Engineer","location":"Gaziantep",
+                    "description":"Bachelor's degree in industrial engineering. Minimum 5 years"})
+        self.assertEqual(x["requirements_state"],"experience_gap")
     def test_explicit_incompatible_degree(self):
         x=evaluate({"title":"Quality Engineer","location":"Kayseri",
                     "description":"only electrical engineer"})
