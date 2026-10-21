@@ -1,0 +1,11 @@
+{
+  "discovered_total": 82,
+  "new_kariyernet_urls": 33,
+  "new_official_records": 319,
+  "excluded": 49,
+  "reviewed_key_count": 54,
+  "banned_employer_keys": [
+    "kariyer.net/isisan-isi-sanayi-a-s"
+  ],
+  "note": "Only new candidates; no claim of open applications. Full raw archive retained."
+}
