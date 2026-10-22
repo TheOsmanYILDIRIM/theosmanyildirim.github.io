@@ -50,10 +50,10 @@ def inspect_page(entry, session):
         result["requirements_state"] = "source_text_requires_review" if matches else "unknown"
         city = entry.get("city")
         # Only the returned page body can corroborate a configured city.
-        if city and city != "unknown" and re.search(r"(?<!\\w)" + re.escape(city) + r"(?!\\w)", text, re.I):
+        if city and city != "unknown" and re.search(r"(?<!\w)" + re.escape(city) + r"(?!\w)", text, re.I):
             result["source_city_evidence"] = city
         # An explicit closure can disqualify a listing; HTTP 200 cannot establish openness.
-        if re.search(r"başvurular\\s+(?:sona erdi|kapanmıştır)|başvuru süresi (?:doldu|sona erdi)", text, re.I):
+        if re.search(r"başvurular\s+(?:sona erdi|kapanmıştır)|başvuru süresi (?:doldu|sona erdi)", text, re.I):
             result["open_state"] = "source_says_closed"
         # A live web page is insufficient to establish open applications.
         result["verification"] = "public_page_accessible_open_not_verified"
