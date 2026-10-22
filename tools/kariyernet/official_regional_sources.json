@@ -22,6 +22,20 @@
       "type": "licensed_intermediary",
       "city": "Kayseri",
       "verification": "listing_directory_not_employer_official"
+    },
+    {
+      "name": "MKE Kariyer - Makine Mühendisi",
+      "url": "https://kariyer.mke.gov.tr/ilanlar/makine-muhendisi-263",
+      "type": "employer_official",
+      "city": "Ankara (doğrulanmadı)",
+      "verification": "listing_page_found_open_status_unverified"
+    },
+    {
+      "name": "MKE Kariyer - Makine Mühendisi (süreç iyileştirme)",
+      "url": "https://kariyer.mke.gov.tr/ilanlar/makine-muhendisi-surec-iyilestirme-104",
+      "type": "employer_official",
+      "city": "Ankara (doğrulanmadı)",
+      "verification": "listing_page_found_open_status_unverified"
     }
   ]
 }
