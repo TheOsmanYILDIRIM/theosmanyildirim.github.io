@@ -42,5 +42,29 @@ class CandidateFilterTests(unittest.TestCase):
             result=json.loads((root/"new_kariyernet_candidates.json").read_text())
             self.assertEqual([x["listing_id"] for x in result],["101"])
             self.assertEqual(len(json.loads((root/"excluded_candidates.json").read_text())),2)
+    def test_structured_evidence_not_open_proof(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            url = "https://www.kariyer.net/is-ilani/ornek-makine-muhendisi-555"
+            (root/"discovered_urls.json").write_text(json.dumps([{"url": url, "keyword": "Ankara"}]))
+            (root/"official_jobs.json").write_text("[]")
+            (root/"jobs.json").write_text(json.dumps([{"url":url, "title":"Makine Mühendisi",
+                "location":"Gaziantep", "company":"Örnek", "description":"Yeni mezun",
+                "verification":"public_jsonld_unverified_open"}]))
+            review = root/"review.json"
+            review.write_text('{"listings":[]}')
+            profile = root/"profile.md"
+            profile.write_text("- company_key: kariyer.net/isisan-isi-sanayi-a-s\\n")
+            build(root, review, profile)
+            candidates = json.loads((root/"new_kariyernet_candidates.json").read_text())
+            self.assertEqual(len(candidates), 1)
+            self.assertEqual(candidates[0]["location"], "Gaziantep")
+            self.assertEqual(candidates[0]["title"], "Makine Mühendisi")
+            self.assertEqual(candidates[0]["open_state"], "not_verified")
+            self.assertEqual(candidates[0]["requirements_state"], "requires_manual_verification")
+            report = json.loads((root/"candidate_filter_report.json").read_text())
+            self.assertEqual(report["structured_metadata_candidates"], 1)
+            self.assertEqual(report["verified_open_kariyernet"], 0)
+
 if __name__=="__main__":
     unittest.main()
