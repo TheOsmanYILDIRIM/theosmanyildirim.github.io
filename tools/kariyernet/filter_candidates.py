@@ -41,6 +41,14 @@ def build(folder, reviewed_path, profile_path):
     banned = banned_company_keys(profile_path)
     discovered = json.loads((folder / "discovered_urls.json").read_text(encoding="utf-8"))
     official = json.loads((folder / "official_jobs.json").read_text(encoding="utf-8"))
+    # Join only publicly extracted JobPosting metadata. URL/keyword are not proof.
+    details = {}
+    detail_path = folder / "jobs.json"
+    if detail_path.exists():
+        for item in json.loads(detail_path.read_text(encoding="utf-8")):
+            url = item.get("url", "")
+            if listing_key(url) and item.get("verification") == "public_jsonld_unverified_open":
+                details.setdefault(url, item)
     new_urls, excluded, seen = [], [], set()
     for entry in discovered:
         key = listing_key(entry["url"])
@@ -51,7 +59,22 @@ def build(folder, reviewed_path, profile_path):
         if reason:
             excluded.append({"url": entry["url"], "reason": reason, "listing_id":key[1]})
         else:
-            new_urls.append({**entry, "listing_id":key[1], "verification":"url_only_not_verified_open"})
+            detail = details.get(entry["url"], {})
+            title = str(detail.get("title") or "")
+            location = str(detail.get("location") or "")
+            new_urls.append({
+                **entry, "listing_id": key[1],
+                "verification": "public_jsonld_unverified_open" if detail else "url_only_not_verified_open",
+                "title": title, "company": str(detail.get("company") or ""),
+                "location": location, "date_posted": str(detail.get("date_posted") or ""),
+                "valid_through": str(detail.get("valid_through") or ""),
+                "description": str(detail.get("description") or ""),
+                "employment_type": str(detail.get("employment_type") or ""),
+                "city_state": "source_metadata_unverified" if location else "unknown",
+                "profession_state": "source_metadata_unverified" if title else "unknown",
+                "requirements_state": "requires_manual_verification",
+                "open_state": "not_verified",
+            })
     new_official = []
     for row in official:
         key=(row.get("source"),str(row.get("source_id", "")))
@@ -63,7 +86,9 @@ def build(folder, reviewed_path, profile_path):
     report={"discovered_total":len(discovered),"new_kariyernet_urls":len(new_urls),
             "new_official_records":len(new_official),"excluded":len(excluded),
             "reviewed_key_count":len(keys),"banned_employer_keys":sorted(banned),
-            "note":"Only new candidates; no claim of open applications. Full raw archive retained."}
+            "structured_metadata_candidates":sum(x["verification"]=="public_jsonld_unverified_open" for x in new_urls),
+            "verified_open_kariyernet":0,
+            "note":"Source-extracted metadata is not independent verification of location, profession, requirements, or open application. Full raw archive retained."}
     for name, data in (("new_kariyernet_candidates.json",new_urls),
                        ("new_official_candidates.json",new_official),
                        ("excluded_candidates.json",excluded),
