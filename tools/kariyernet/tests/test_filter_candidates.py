@@ -4,7 +4,7 @@ import unittest
 import json
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from filter_candidates import listing_key, is_banned, build
+from filter_candidates import listing_key, is_banned, build, extract_source_evidence
 
 class CandidateFilterTests(unittest.TestCase):
     def test_exact_id(self):
@@ -61,10 +61,24 @@ class CandidateFilterTests(unittest.TestCase):
             self.assertEqual(candidates[0]["location"], "Gaziantep")
             self.assertEqual(candidates[0]["title"], "Makine Mühendisi")
             self.assertEqual(candidates[0]["open_state"], "not_verified")
-            self.assertEqual(candidates[0]["requirements_state"], "requires_manual_verification")
+            self.assertEqual(candidates[0]["requirements_state"], "source_text_requires_review")
             report = json.loads((root/"candidate_filter_report.json").read_text())
             self.assertEqual(report["structured_metadata_candidates"], 1)
             self.assertEqual(report["verified_open_kariyernet"], 0)
+
+    def test_requirement_evidence_does_not_imply_open(self):
+        source = {"title":"Makine Mühendisi", "location":"Gaziantep",
+                  "description":"Yeni mezun makine mühendisliği mezunu veya en az 2 yıl deneyim"}
+        result = extract_source_evidence(source)
+        self.assertEqual(result["city_evidence"], "Gaziantep")
+        self.assertEqual(result["experience_min_years"], 2)
+        self.assertTrue(result["new_graduate_evidence"])
+        self.assertTrue(result["mechanical_degree_mentioned"])
+        self.assertEqual(result["open_state"], "not_verified")
+
+    def test_expired_source_date_cannot_be_open(self):
+        result = extract_source_evidence({"valid_through":"2020-01-01"})
+        self.assertEqual(result["open_state"], "expired_date")
 
 if __name__=="__main__":
     unittest.main()
