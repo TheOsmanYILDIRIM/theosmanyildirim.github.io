@@ -17,7 +17,9 @@ def inspect_page(entry, session):
     parsed = urlparse(url)
     result = {**entry, "checked_at": datetime.now(timezone.utc).isoformat(),
               "application_open_verified": False, "access_status": "unknown",
-              "job_title": None, "date_evidence": None, "experience_evidence": None}
+              "job_title": None, "date_evidence": None, "experience_evidence": None,
+              "source_city_evidence": None, "requirements_state": "unknown",
+              "open_state": "not_verified"}
     if parsed.scheme != "https" or parsed.hostname not in ALLOWED:
         result["access_status"] = "unapproved_domain"
         return result
@@ -45,6 +47,14 @@ def inspect_page(entry, session):
         result["date_evidence"] = dates[:3]
         matches = re.findall(r"(?:yeni mezun|0\s*[-–]\s*2 yıl|en az \d+ yıl|\d+ yıl deneyim)", text, re.I)
         result["experience_evidence"] = matches[:3]
+        result["requirements_state"] = "source_text_requires_review" if matches else "unknown"
+        city = entry.get("city")
+        # Only the returned page body can corroborate a configured city.
+        if city and city != "unknown" and re.search(r"(?<!\\w)" + re.escape(city) + r"(?!\\w)", text, re.I):
+            result["source_city_evidence"] = city
+        # An explicit closure can disqualify a listing; HTTP 200 cannot establish openness.
+        if re.search(r"başvurular\\s+(?:sona erdi|kapanmıştır)|başvuru süresi (?:doldu|sona erdi)", text, re.I):
+            result["open_state"] = "source_says_closed"
         # A live web page is insufficient to establish open applications.
         result["verification"] = "public_page_accessible_open_not_verified"
         return result
