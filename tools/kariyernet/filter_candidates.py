@@ -42,7 +42,7 @@ def extract_source_evidence(detail):
     title = str(detail.get("title") or "")
     location = str(detail.get("location") or "")
     normalized = description.casefold()
-    years = re.findall(r"(?:en az|minimum|at least)\\s*(\\d+)\\s*(?:yıl|years?)", normalized)
+    years = re.findall(r"(?:en az|minimum|at least)\s*(\d+)\s*(?:yıl|years?)", normalized)
     grad = bool(re.search(r"yeni mezun|new graduates?|entry.level|deneyimsiz", normalized))
     degree = bool(re.search(r"makine mühendisli(?:ği|ği)|mechanical engineering", normalized))
     expiry = str(detail.get("valid_through") or "").strip()
