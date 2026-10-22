@@ -4,6 +4,7 @@ Reviewed listing IDs are scoped to provider. Employer bans match exact source id
 import argparse
 import json
 import re
+from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -34,6 +35,34 @@ def is_banned(entry, banned):
             if slug.startswith(employer_slug + "-") and re.fullmatch(r"[^/?]+-\d+", slug):
                 return True
     return False
+
+def extract_source_evidence(detail):
+    """Conservative, source-backed fields. Never infer from keyword or URL slug."""
+    description = str(detail.get("description") or "")
+    title = str(detail.get("title") or "")
+    location = str(detail.get("location") or "")
+    normalized = description.casefold()
+    years = re.findall(r"(?:en az|minimum|at least)\\s*(\\d+)\\s*(?:yıl|years?)", normalized)
+    grad = bool(re.search(r"yeni mezun|new graduates?|entry.level|deneyimsiz", normalized))
+    degree = bool(re.search(r"makine mühendisli(?:ği|ği)|mechanical engineering", normalized))
+    expiry = str(detail.get("valid_through") or "").strip()
+    closed = False
+    if expiry:
+        try:
+            closed = date.fromisoformat(expiry[:10]) < date.today()
+        except ValueError:
+            pass
+    return {
+        "city_evidence": location,
+        "profession_evidence": title,
+        "experience_min_years": min(map(int, years)) if years else None,
+        "new_graduate_evidence": grad,
+        "mechanical_degree_mentioned": degree,
+        "requirements_state": "source_text_requires_review" if description else "unknown",
+        "open_state": "expired_date" if closed else "not_verified",
+        "open_evidence": "validThrough expired" if closed else None,
+    }
+
 
 def build(folder, reviewed_path, profile_path):
     folder.mkdir(parents=True, exist_ok=True)
@@ -72,8 +101,7 @@ def build(folder, reviewed_path, profile_path):
                 "employment_type": str(detail.get("employment_type") or ""),
                 "city_state": "source_metadata_unverified" if location else "unknown",
                 "profession_state": "source_metadata_unverified" if title else "unknown",
-                "requirements_state": "requires_manual_verification",
-                "open_state": "not_verified",
+                **extract_source_evidence(detail),
             })
     new_official = []
     for row in official:
@@ -88,6 +116,7 @@ def build(folder, reviewed_path, profile_path):
             "reviewed_key_count":len(keys),"banned_employer_keys":sorted(banned),
             "structured_metadata_candidates":sum(x["verification"]=="public_jsonld_unverified_open" for x in new_urls),
             "verified_open_kariyernet":0,
+            "expired_by_source_date":sum(x["open_state"]=="expired_date" for x in new_urls),
             "note":"Source-extracted metadata is not independent verification of location, profession, requirements, or open application. Full raw archive retained."}
     for name, data in (("new_kariyernet_candidates.json",new_urls),
                        ("new_official_candidates.json",new_official),
