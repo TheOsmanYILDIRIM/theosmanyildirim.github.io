@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "description": "Kariyer.net listing IDs explicitly shown to and reviewed by user; employer bans remain separate in OSMAN_JOB_PROFILE.md.",
-  "reviewed_at": "2026-10-19",
+  "reviewed_at": "2026-10-23",
   "source_archive": "data/kariyernet/daily/2026-10-18/discovered_urls.json",
   "source_count": 48,
   "listings": [
@@ -328,6 +328,42 @@
       "listing_id": "4576968",
       "status": "reviewed",
       "reviewed_at": "2026-10-20"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4583965",
+      "original_url": "https://www.kariyer.net/is-ilani/aselsan-gaziantep-elektromekanik-teknolojileri-san-surec-tasarim-muhendisi-makine-muhendisi-4583965",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4584446",
+      "original_url": "https://www.kariyer.net/is-ilani/abdiogullari-plastik-ve-ambalaj-sanayi-a-s-makine-bakim-muhendisi-4584446",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4584752",
+      "original_url": "https://www.kariyer.net/is-ilani/tomtas-havacilik-ve-teknoloji-a-s-kalite-muhendisi-4584752",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4584378",
+      "original_url": "https://www.kariyer.net/is-ilani/nero-endustri-savunma-sanayi-a-s-mekanik-tasarim-muhendisi-4584378",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4583484",
+      "original_url": "https://www.kariyer.net/is-ilani/mikropor-makina-san-tic-a-s-otomasyon-ve-bakim-muhendisi-4583484",
+      "status": "reviewed"
+    },
+    {
+      "provider": "kariyer.net",
+      "listing_id": "4582538",
+      "original_url": "https://www.kariyer.net/is-ilani/solen-cikolata-gida-san-ve-tic-a-s-mekanik-bakim-uzman-uzman-yardimcisi-gaziantep-4582538",
+      "status": "reviewed"
     }
   ]
 }
