@@ -1,0 +1,25 @@
+{
+  "timestamp_utc": "2026-10-23T14:45:03.242441+00:00",
+  "feeds": [
+    {
+      "company": "Ajax Systems",
+      "provider": "lever",
+      "status": "ok",
+      "count": 191
+    },
+    {
+      "company": "Insider One",
+      "provider": "lever",
+      "status": "ok",
+      "count": 119
+    },
+    {
+      "company": "Midas",
+      "provider": "lever",
+      "status": "ok",
+      "count": 14
+    }
+  ],
+  "valid_records": 324,
+  "errors": []
+}
