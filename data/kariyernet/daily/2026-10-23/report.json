@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-23T14:39:34.438075+00:00",
+  "checked_at": "2026-10-23T20:33:43.217187+00:00",
   "source": "kariyer.net",
   "keywords": [
     "makine mühendisi Kahramanmaraş",
@@ -208,8 +208,8 @@
       "page": 1,
       "url": "https://www.kariyer.net/is-ilanlari?kw=imalat+m%C3%BChendisi+Kayseri&cp=1",
       "status": "ok",
-      "found_links": 10,
-      "links_fingerprint": "ebf8e4a4580edb8a60eec4d500da69cfd57819a3c3b1d81092e0bb9aef0c8f72",
+      "found_links": 9,
+      "links_fingerprint": "de1de97ecf78a754113ea6fa0630759b490521b6f67de07c58bd63815ee262e8",
       "repeated_page_links": false
     },
     {
@@ -298,8 +298,8 @@
       "page": 1,
       "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Mersin&cp=1",
       "status": "ok",
-      "found_links": 8,
-      "links_fingerprint": "369ec19d65fda1350f76e240b4f42b3d676d097abcc1284418cc8f8f1c0b9158",
+      "found_links": 7,
+      "links_fingerprint": "3eb5e58af9b02e2c94c30e2feab2d200ddb03d9f2b1be4c74087d103d46843aa",
       "repeated_page_links": false
     },
     {
@@ -1039,7 +1039,7 @@
       "status": "detail_crawl_halted_after_access_restriction"
     }
   ],
-  "discovered_unique_urls": 88,
+  "discovered_unique_urls": 86,
   "detail_pages_fetched": 0,
   "jobposting_records": 0,
   "note": "HTTP 200 or extracted URLs do not prove pagination, open status or metadata.",
