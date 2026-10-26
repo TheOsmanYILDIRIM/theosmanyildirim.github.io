@@ -1,0 +1,97 @@
+[
+  {
+    "name": "MKE Kariyer - Kalite Mühendisi",
+    "url": "https://kariyer.mke.gov.tr/ilanlar/kalite-muhendisi-91",
+    "type": "employer_official",
+    "city": "Ankara",
+    "verification": "public_page_accessible_open_not_verified",
+    "checked_at": "2026-10-26T21:50:33.745602+00:00",
+    "application_open_verified": false,
+    "access_status": "http_200",
+    "job_title": null,
+    "date_evidence": [],
+    "experience_evidence": [
+      "Yeni Mezun",
+      "Yeni Mezun"
+    ],
+    "source_city_evidence": null,
+    "requirements_state": "source_text_requires_review",
+    "open_state": "not_verified"
+  },
+  {
+    "name": "Milat Halı - Yalın Üretim Mühendisi",
+    "url": "https://rc.hku.edu.tr/kariyer/milat-hali-yalin-uretim-muhendisi-ise-alim-ilani/",
+    "type": "university_employer_announcement",
+    "city": "Gaziantep",
+    "verification": "public_page_accessible_open_not_verified",
+    "checked_at": "2026-10-26T21:50:35.217528+00:00",
+    "application_open_verified": false,
+    "access_status": "http_200",
+    "job_title": "Milat Halı Yalın Üretim Mühendisi İşe Alım İlanı",
+    "date_evidence": [
+      "28.08.2026",
+      "21.08.2026",
+      "14.07.2026"
+    ],
+    "experience_evidence": [
+      "Yeni mezun"
+    ],
+    "source_city_evidence": "Gaziantep",
+    "requirements_state": "source_text_requires_review",
+    "open_state": "not_verified"
+  },
+  {
+    "name": "Kayseri Kariyer - employer listings",
+    "url": "https://www.kayserikariyer.com/",
+    "type": "licensed_intermediary",
+    "city": "Kayseri",
+    "verification": "listing_directory_not_employer_official",
+    "checked_at": "2026-10-26T21:50:36.057413+00:00",
+    "application_open_verified": false,
+    "access_status": "network_HTTPError",
+    "job_title": null,
+    "date_evidence": null,
+    "experience_evidence": null,
+    "source_city_evidence": null,
+    "requirements_state": "unknown",
+    "open_state": "not_verified"
+  },
+  {
+    "name": "MKE Kariyer - Makine Mühendisi",
+    "url": "https://kariyer.mke.gov.tr/ilanlar/makine-muhendisi-263",
+    "type": "employer_official",
+    "city": "unknown",
+    "verification": "public_page_accessible_open_not_verified",
+    "checked_at": "2026-10-26T21:50:36.936996+00:00",
+    "application_open_verified": false,
+    "access_status": "http_200",
+    "job_title": null,
+    "date_evidence": [],
+    "experience_evidence": [
+      "Yeni Mezun",
+      "Yeni Mezun"
+    ],
+    "source_city_evidence": null,
+    "requirements_state": "source_text_requires_review",
+    "open_state": "not_verified"
+  },
+  {
+    "name": "MKE Kariyer - Makine Mühendisi (süreç iyileştirme)",
+    "url": "https://kariyer.mke.gov.tr/ilanlar/makine-muhendisi-surec-iyilestirme-104",
+    "type": "employer_official",
+    "city": "unknown",
+    "verification": "public_page_accessible_open_not_verified",
+    "checked_at": "2026-10-26T21:50:37.347105+00:00",
+    "application_open_verified": false,
+    "access_status": "http_200",
+    "job_title": null,
+    "date_evidence": [],
+    "experience_evidence": [
+      "Yeni Mezun",
+      "Yeni Mezun"
+    ],
+    "source_city_evidence": null,
+    "requirements_state": "source_text_requires_review",
+    "open_state": "not_verified"
+  }
+]
