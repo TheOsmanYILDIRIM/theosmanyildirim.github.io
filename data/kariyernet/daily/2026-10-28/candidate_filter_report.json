@@ -1,0 +1,14 @@
+{
+  "discovered_total": 84,
+  "new_kariyernet_urls": 40,
+  "new_official_records": 320,
+  "excluded": 44,
+  "reviewed_key_count": 60,
+  "banned_employer_keys": [
+    "kariyer.net/isisan-isi-sanayi-a-s"
+  ],
+  "structured_metadata_candidates": 0,
+  "verified_open_kariyernet": 0,
+  "expired_by_source_date": 0,
+  "note": "Source-extracted metadata is not independent verification of location, profession, requirements, or open application. Full raw archive retained."
+}
