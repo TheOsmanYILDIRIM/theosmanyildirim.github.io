@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-30T21:39:04.305571+00:00",
+  "checked_at": "2026-10-31T20:33:56.009090+00:00",
   "source": "kariyer.net",
   "keywords": [
     "makine mühendisi Kahramanmaraş",
@@ -163,8 +163,8 @@
       "page": 1,
       "url": "https://www.kariyer.net/is-ilanlari?kw=makine+m%C3%BChendisi+Adana&cp=1",
       "status": "ok",
-      "found_links": 8,
-      "links_fingerprint": "3b02fadfba46d19234542be02d6d0ed67524ecea92f7fe01cc7b918660bb21a4",
+      "found_links": 9,
+      "links_fingerprint": "850963cab8090f9a7d63b908b5ae403f72d39d45d15ce7a483daa615e9d13437",
       "repeated_page_links": false
     },
     {
@@ -208,8 +208,8 @@
       "page": 1,
       "url": "https://www.kariyer.net/is-ilanlari?kw=imalat+m%C3%BChendisi+Kayseri&cp=1",
       "status": "ok",
-      "found_links": 9,
-      "links_fingerprint": "640562e941150b58e210959b5115d11f48b4c1b0865030477e63b6014246fbcf",
+      "found_links": 8,
+      "links_fingerprint": "69e75404ffa634c38fcb8c03aebfa0c37a47e0979b2e341a7fe8ac1e576e587d",
       "repeated_page_links": false
     },
     {
@@ -343,8 +343,8 @@
       "page": 1,
       "url": "https://www.kariyer.net/is-ilanlari?kw=mekanik+tasar%C4%B1m+m%C3%BChendisi+Ankara&cp=1",
       "status": "ok",
-      "found_links": 27,
-      "links_fingerprint": "cbafdadadee4f45c7bceffbebd1b2f5c8bffca0a3400959af6057b6a5ad7da89",
+      "found_links": 28,
+      "links_fingerprint": "f948d6e2b483c909dd44fdae0c25254cde3da6c3668614c120aaabce1dd5db2b",
       "repeated_page_links": false
     },
     {
@@ -1043,7 +1043,7 @@
       "status": "detail_crawl_halted_after_access_restriction"
     }
   ],
-  "discovered_unique_urls": 79,
+  "discovered_unique_urls": 80,
   "detail_pages_fetched": 0,
   "jobposting_records": 0,
   "note": "HTTP 200 or extracted URLs do not prove pagination, open status or metadata.",

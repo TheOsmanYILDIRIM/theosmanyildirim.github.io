@@ -1,8 +1,8 @@
 {
-  "discovered_total": 79,
-  "new_kariyernet_urls": 39,
+  "discovered_total": 80,
+  "new_kariyernet_urls": 41,
   "new_official_records": 323,
-  "excluded": 40,
+  "excluded": 39,
   "reviewed_key_count": 60,
   "banned_employer_keys": [
     "kariyer.net/isisan-isi-sanayi-a-s"
