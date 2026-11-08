@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Boruzi nominal boru ölçüleri ve SCH arama arayüzünün temsili">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#062f29"/><stop offset="1" stop-color="#031a18"/></linearGradient>
+    <linearGradient id="ring" x1="0" x2="1"><stop stop-color="#4e7872"/><stop offset=".45" stop-color="#d5e0d6"/><stop offset="1" stop-color="#47716a"/></linearGradient>
+    <style>text{font-family:Arial,Helvetica,sans-serif;fill:#f6f7f3}.head{font-size:26px;font-weight:700}.sub{font-size:17px;fill:#bed0cc}.label{font-size:14px;letter-spacing:.6px;fill:#bed0cc}.value{font-size:17px;font-weight:700}.active{fill:#092725;font-size:18px;font-weight:700}.foot{font-size:12px;fill:#b7cac4}</style>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg)"/>
+  <circle cx="480" cy="270" r="310" fill="none" stroke="#19453e" stroke-width="1"/>
+  <g transform="translate(64,22)">
+    <rect width="384" height="496" rx="26" fill="#062823" stroke="#4a746d" stroke-width="2"/>
+    <text x="192" y="47" text-anchor="middle" class="head">Boruzi</text>
+    <rect x="27" y="69" width="198" height="51" rx="13" fill="none" stroke="#567d74" stroke-width="2"/>
+    <text x="125" y="102" text-anchor="middle" class="value">NPS 6″⌄</text>
+    <rect x="235" y="69" width="64" height="51" rx="13" fill="#ffc43b"/>
+    <text x="267" y="101" text-anchor="middle" class="active">inch</text>
+    <text x="330" y="102" text-anchor="middle" class="value">mm</text>
+    <circle cx="191" cy="213" r="65" fill="#082e2a" stroke="url(#ring)" stroke-width="6"/>
+    <circle cx="191" cy="213" r="57" fill="none" stroke="#426e64" stroke-width="1"/>
+    <rect x="173" y="195" width="36" height="35" rx="7" fill="#031a18"/>
+    <text x="191" y="218" text-anchor="middle" class="label">ID</text>
+    <path d="M140 219H242 m-102 0 8 -5 m-8 5 8 5 m94 -5 -8 -5 m8 5 -8 5" stroke="#b6cbc6" stroke-width="2" fill="none"/>
+    <text x="57" y="221" font-size="36" fill="#ffc43b">‹</text><text x="321" y="221" font-size="36" fill="#ffc43b">›</text>
+    <text x="191" y="287" text-anchor="middle" class="label" style="fill:#ffc43b">OD</text>
+    <text x="25" y="330" class="value">SCH</text>
+    <rect x="75" y="299" width="55" height="45" rx="23" fill="#ffc43b"/>
+    <text x="102" y="329" text-anchor="middle" class="active">40</text>
+    <rect x="136" y="299" width="70" height="45" rx="23" fill="none" stroke="#50776f"/>
+    <text x="171" y="329" text-anchor="middle" class="value">40S</text>
+    <rect x="213" y="299" width="61" height="45" rx="23" fill="none" stroke="#50776f"/>
+    <text x="244" y="329" text-anchor="middle" class="value">80</text>
+    <rect x="281" y="299" width="70" height="45" rx="23" fill="none" stroke="#50776f"/>
+    <text x="316" y="329" text-anchor="middle" class="value">80S</text>
+    <rect x="24" y="357" width="336" height="100" rx="12" fill="#0c3833" stroke="#55736b"/>
+    <path d="M24 409H360" stroke="#55736b" stroke-width="1" opacity=".7"/>
+    <text x="40" y="390" class="label">Outside diameter (OD)</text>
+    <text x="344" y="390" text-anchor="end" class="value" style="fill:#ffc43b">6,625 in</text>
+    <text x="40" y="440" class="label">Inner diameter (ID)</text>
+    <text x="344" y="440" text-anchor="end" class="value">6,065 in</text>
+    <text x="40" y="480" class="foot">PIPE         FIND SCH         TABLE         SETTINGS</text>
+  </g>
+  <g transform="translate(512,22)">
+    <rect width="384" height="496" rx="26" fill="#062823" stroke="#4a746d" stroke-width="2"/>
+    <text x="192" y="47" text-anchor="middle" class="head">Boruzi</text>
+    <text x="29" y="101" class="head">Find SCH</text>
+    <text x="29" y="130" class="sub">Enter the measured OD and</text>
+    <text x="29" y="154" class="sub">wall thickness.</text>
+    <text x="29" y="206" class="sub">Unit</text>
+    <rect x="203" y="174" width="79" height="50" rx="14" fill="#ffc43b"/>
+    <text x="242" y="205" text-anchor="middle" class="active">inch</text>
+    <rect x="291" y="174" width="67" height="50" rx="14" fill="#0c3934"/>
+    <text x="324" y="205" text-anchor="middle" class="value">mm</text>
+    <rect x="27" y="244" width="330" height="69" rx="6" fill="none" stroke="#62847d"/>
+    <rect x="39" y="234" width="166" height="19" fill="#062823"/>
+    <text x="43" y="248" class="label">Outside diameter (inch)</text>
+    <text x="43" y="293" font-size="26">6.625</text>
+    <rect x="27" y="330" width="330" height="69" rx="6" fill="none" stroke="#62847d"/>
+    <rect x="39" y="320" width="164" height="19" fill="#062823"/>
+    <text x="43" y="335" class="label">Wall thickness (inch)</text>
+    <text x="43" y="379" font-size="26">0.280</text>
+    <text x="29" y="438" class="value">Wall thicknesses for this OD</text>
+    <rect x="27" y="451" width="153" height="32" rx="12" fill="#103d36"/>
+    <rect x="191" y="451" width="166" height="32" rx="12" fill="#103d36"/>
+    <text x="42" y="474" class="value" font-size="14">SCH 5</text>
+    <text x="206" y="474" class="value" font-size="14">SCH 5S</text>
+  </g>
+</svg>

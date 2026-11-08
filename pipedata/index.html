@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="PipeData: SQLite tabanlı borulama verisi, teknik çizimler ve ölçü hesaplamaları için mühendislik referans aracı.">
-  <title>PipeData — Osman Yıldırım</title>
+  <meta name="description" content="Boruzi: çevrimdışı NPS/SCH boru ölçüleri, nominal çap, et kalınlığı, ağırlık ve iç hacim hesapları sunan Android uygulaması.">
+  <title>Boruzi — Osman Yıldırım</title>
   <link rel="stylesheet" href="../css/portfolio.css">
   <link rel="stylesheet" href="../css/site-shell.css">
 </head>
@@ -15,51 +15,71 @@
   <main id="main">
     <section class="page-hero wrap">
       <a class="back-link" href="../#work">← Projelere dön</a>
-      <p class="eyebrow">MÜHENDİSLİK ARACI</p>
-      <h1>PipeData</h1>
-      <p class="lede">SQLite tabanlı borulama veritabanı, vektörel teknik çizimler ve ölçü hesaplamaları için referans aracı.</p>
-      <div class="page-meta"><span>BORULAMA</span><span>SQLite</span><span>SVG TEKNİK ÇİZİM</span></div>
+      <p class="eyebrow">ANDROID · MÜHENDİSLİK ARACI</p>
+      <h1>Boruzi</h1>
+      <p class="lede">NPS ve Schedule (SCH) seçimiyle boruların nominal ölçülerini incelemek ve temel hesapları çevrimdışı yapmak için geliştirdiğim Android uygulaması.</p>
+      <div class="page-meta"><span>JETPACK COMPOSE</span><span>NPS / SCH</span><span>ÇEVRİMDIŞI</span></div>
     </section>
 
-    <section class="case-grid wrap" aria-labelledby="approach-title">
+    <section class="case-grid wrap" aria-labelledby="boruzi-overview-title">
       <div>
-        <p class="eyebrow">01 / YAPI</p>
-        <h2 id="approach-title">Veri yapısı ve çizim</h2>
-        <p>Boru, flanş, bağlantı elemanı ve vana ölçüleri SQLite veritabanında tutulur. İlgili ölçüler SVG teknik çizimlerinde aynı kayıtlarla eşleştirilir.</p>
-        <p>Amaç, standart ölçüye bakma, çizimi kontrol etme ve temel hesaplamaları tek arayüzde yapmaktır.</p>
+        <p class="eyebrow">01 / ARAYÜZ</p>
+        <h2 id="boruzi-overview-title">Boru ölçüleri tek ekranda</h2>
+        <p>NPS boyutu ve SCH serisi seçildiğinde dış çap (OD), iç çap (ID), et kalınlığı ve birim uzunluktaki ağırlık aynı ekrandaki ölçü tablosunda gösterilir.</p>
+        <p>Türkçe, İngilizce ve Rusça arayüz, inç/mm seçimi ve ilk kullanım yönlendirmesi bulunur. Nominal hesaplar için internet bağlantısı gerekmez.</p>
+        <a class="text-link" href="https://github.com/TheOsmanYILDIRIM/pipedata" rel="noopener noreferrer">Kaynak kodu GitHub'da incele ↗</a>
       </div>
       <figure>
-        <img src="../images/projects/pipedata-showcase.png" alt="PipeData boru ve bağlantı elemanı teknik çizim ekranı" loading="lazy">
-        <figcaption>PipeData prototipinden teknik çizim görünümü.</figcaption>
+        <img src="../images/projects/boruzi-interface.svg" alt="Boruzi uygulamasının boru ölçüleri ve SCH arama ekranlarını temsil eden görsel" loading="lazy" width="960" height="540">
+        <figcaption>Güncel Android arayüzüne dayalı temsilî çizim; gerçek ekran görüntüsü değildir.</figcaption>
       </figure>
     </section>
 
-    <section class="case-grid wrap" aria-labelledby="scope-title">
+    <section class="case-grid wrap" aria-labelledby="boruzi-scope-title">
       <div>
         <p class="eyebrow">02 / KAPSAM</p>
-        <h2 id="scope-title">Teknik kapsam</h2>
-        <p>Proje; ASME ile ilişkili boru ve bağlantı elemanı verileri, SQLite veri tabanı, SVG teknik çizimleri ve ölçü/hesaplama ekranlarını içerir.</p>
-        <p>Kaynak deposu özeldir; bu sayfa projenin herkese açık teknik özetidir.</p>
+        <h2 id="boruzi-scope-title">Nominal boru verisi ve hesaplar</h2>
+        <p>Uygulama, yerel CSV kataloğundaki NPS/SCH ölçülerini kullanır. ASME B36.10M ve B36.19M ile ilişkili kayıtlar ayrı ele alınır; eksik ölçüler tahmin edilerek doldurulmaz.</p>
+        <p>İç çap, et kalınlığı, ağırlık ve iç hacim hesapları nominal değerler içindir. Basınç tasarımı, üretim toleransları ve sertifikasyonun yerini tutmaz.</p>
       </div>
       <div class="case-note">
-        <span class="eyebrow">BİLEŞENLER</span>
+        <span class="eyebrow">UYGULAMA BÖLÜMLERİ</span>
         <ul>
-          <li>Standartlara göre düzenlenen borulama verileri</li>
-          <li>Ölçülendirmeli SVG teknik çizimler</li>
-          <li>Veri arama ve temel hesaplamalar</li>
+          <li><strong>Boru:</strong> NPS/SCH seçimi ve ölçü tablosu</li>
+          <li><strong>SCH Bul:</strong> Ölçülen dış çap ve et kalınlığıyla nominal eşleşme arama</li>
+          <li><strong>Tablo / Standart:</strong> Katalog ölçüleri ve hesaplama bilgileri</li>
+          <li><strong>Araçlar ve Ayarlar:</strong> Yardımcı hesaplar, dil ve birim tercihleri</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-grid wrap" aria-labelledby="boruzi-testing-title">
+      <div>
+        <p class="eyebrow">03 / DOĞRULAMA</p>
+        <h2 id="boruzi-testing-title">Android testleri ve kaynak</h2>
+        <p>Kaynak deposunda nominal veriler için doğrulama betiği ve Android APK derleme iş akışı bulunur. Android emülatöründe ekran görüntüsü alan ayrı bir GitHub Actions iş akışı da vardır.</p>
+        <p>Gerçek ekran görüntüleri, test çıktıları ve olası başarısızlıklar GitHub Actions koşularından incelenebilir.</p>
+        <a class="text-link" href="https://github.com/TheOsmanYILDIRIM/pipedata/actions/workflows/ui-screenshots.yml" rel="noopener noreferrer">Android ekran testi koşuları ↗</a>
+      </div>
+      <div class="case-note">
+        <span class="eyebrow">TEKNİK YAPI</span>
+        <ul>
+          <li>Kotlin ve Jetpack Compose arayüzü</li>
+          <li>Cihaz içine gömülü nominal boru ölçü kataloğu</li>
+          <li>NPS / SCH seçeneklerine göre veri eşleştirme</li>
+          <li>İnç değerlerinden metrik birime hesaplanan dönüşümler</li>
         </ul>
       </div>
     </section>
 
     <section class="contact-band">
       <div class="wrap">
-        <p class="eyebrow">İLETİŞİM</p>
-        <h2>Proje hakkında iletişim</h2>
-        <a href="mailto:osman1429@hotmail.com">osman1429@hotmail.com <span aria-hidden="true">↗</span></a>
+        <p class="eyebrow">KAYNAK KOD</p>
+        <h2>Boruzi'yi GitHub'da incele</h2>
+        <a href="https://github.com/TheOsmanYILDIRIM/pipedata" rel="noopener noreferrer">TheOsmanYILDIRIM / pipedata <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   </main>
-
   <div data-site-shell="footer"></div>
   <script type="module" src="../js/site-shell.js"></script>
 </body>
