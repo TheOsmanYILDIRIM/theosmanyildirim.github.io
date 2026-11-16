@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: TheOsmanYILDIRIM/ConvertJavaTextureToBedrock
-          ref: 0e526a2a032728e85f780e27309fe90c557a0e57
+          ref: e805cb03e5b2876f14b0de2ed21f8c3070178fd8
           path: web
           fetch-depth: 1
 
@@ -53,10 +53,14 @@ jobs:
         run: |
           test -f web/build/index.html
           grep -q "Java 26.3 conversions enabled" web/build/index.html
+          grep -q "optifineRandomBlockVariantsSwitch" web/build/index.html
+          grep -q "customBlockModelsSwitch" web/build/index.html
           worker_count="$(find web/build -maxdepth 1 -name 'worker.*.js' | wc -l)"
           test "$worker_count" -ge 1
           grep -R -q "Custom Java block models detected" web/build/worker.*.js
           grep -R -q "j2b_companion/blocks/" web/build/worker.*.js
+          grep -R -q "optifineRandomBlockVariants" web/build/*.js web/build/worker.*.js
+          grep -R -q "customBlockModels" web/build/*.js web/build/worker.*.js
 
       - name: Publish under existing Pages site
         run: |
