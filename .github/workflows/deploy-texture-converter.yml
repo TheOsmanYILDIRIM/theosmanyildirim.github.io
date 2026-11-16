@@ -73,3 +73,19 @@ jobs:
           fi
           git commit -m "deploy: update Java-to-Bedrock converter"
           git push origin HEAD:master
+
+      - name: Verify live converter route
+        run: |
+          url="https://theosmanyildirim.github.io/converter/"
+          ok=0
+          for attempt in 1 2 3 4 5 6 7 8; do
+            code="$(curl -L -sS -o /tmp/converter.html -w '%{http_code}' "$url" || true)"
+            echo "attempt=$attempt status=$code"
+            if [ "$code" = "200" ] && grep -q "Java 26.3 conversions enabled" /tmp/converter.html; then
+              ok=1
+              break
+            fi
+            sleep 15
+          done
+          test "$ok" = "1"
+          echo "Live converter verified: $url"
