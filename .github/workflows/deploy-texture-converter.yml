@@ -1,0 +1,75 @@
+name: Deploy Java-to-Bedrock texture converter
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/deploy-texture-converter.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-texture-converter
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout Pages repository
+        uses: actions/checkout@v4
+        with:
+          path: site
+          ref: master
+          fetch-depth: 0
+
+      - name: Checkout converter web app
+        uses: actions/checkout@v4
+        with:
+          repository: TheOsmanYILDIRIM/ConvertJavaTextureToBedrock
+          ref: main
+          path: web
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install converter dependencies
+        working-directory: web
+        run: yarn install --ignore-engines
+
+      - name: Build converter
+        working-directory: web
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
+        run: yarn build
+
+      - name: Verify converter bundle
+        run: |
+          test -f web/build/index.html
+          grep -q "Java 26.3 conversions enabled" web/build/index.html
+          worker_count="$(find web/build -maxdepth 1 -name 'worker.*.js' | wc -l)"
+          test "$worker_count" -ge 1
+          grep -R -q "Custom Java block models detected" web/build/worker.*.js
+          grep -R -q "j2b_companion/blocks/" web/build/worker.*.js
+
+      - name: Publish under existing Pages site
+        run: |
+          rm -rf site/ConvertJavaTextureToBedrock
+          mkdir -p site/ConvertJavaTextureToBedrock
+          cp -a web/build/. site/ConvertJavaTextureToBedrock/
+          cd site
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ConvertJavaTextureToBedrock
+          if git diff --cached --quiet; then
+            echo "Converter bundle unchanged."
+            exit 0
+          fi
+          git commit -m "deploy: update Java-to-Bedrock converter"
+          git push origin HEAD:master
