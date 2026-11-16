@@ -16,6 +16,7 @@ on:
       - "js/site-shell.js"
       - "css/site-shell.css"
       - "components/inner-*.html"
+      - "ConvertJavaTextureToBedrock/**"
   workflow_dispatch:
 
 permissions:
@@ -50,7 +51,8 @@ jobs:
             { slug: 'cv', path: '/cv/' },
             { slug: 'bitirme', path: '/bitirme-projesi/' },
             { slug: 'pipedata', path: '/pipedata/' },
-            { slug: 'staj', path: '/me-200-yaz-staji-1/' }
+            { slug: 'staj', path: '/me-200-yaz-staji-1/' },
+            { slug: 'converter', path: '/ConvertJavaTextureToBedrock/', converter: true }
           ];
 
           for (const route of routes) {
@@ -68,6 +70,14 @@ jobs:
                     await page.waitForFunction(() => document.documentElement.dataset.portfolioReady === 'true', null, { timeout: 12000 });
                     const includeError = await page.evaluate(() => document.documentElement.dataset.includeError);
                     if (includeError) throw new Error('Portfolio component include failed');
+                  } else if (route.converter) {
+                    await page.waitForSelector('#selectInputFileButton', { timeout: 12000 });
+                    await page.waitForFunction(() => document.body.innerText.includes('Java 26.3 conversions enabled'), null, { timeout: 12000 });
+                    const workerUrl = await page.evaluate(() => {
+                      const scripts = [...document.scripts].map(s => s.src);
+                      return scripts.find(src => src.includes('index.')) || null;
+                    });
+                    if (!workerUrl) throw new Error('Converter index bundle missing');
                   } else {
                     await page.waitForFunction(() => document.documentElement.dataset.siteShellReady === 'true', null, { timeout: 12000 });
                     const shellError = await page.evaluate(() => document.documentElement.dataset.siteShellError);
