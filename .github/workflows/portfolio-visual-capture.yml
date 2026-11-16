@@ -16,7 +16,7 @@ on:
       - "js/site-shell.js"
       - "css/site-shell.css"
       - "components/inner-*.html"
-      - "ConvertJavaTextureToBedrock/**"
+      - "converter/**"
   workflow_dispatch:
 
 permissions:
@@ -52,7 +52,7 @@ jobs:
             { slug: 'bitirme', path: '/bitirme-projesi/' },
             { slug: 'pipedata', path: '/pipedata/' },
             { slug: 'staj', path: '/me-200-yaz-staji-1/' },
-            { slug: 'converter', path: '/ConvertJavaTextureToBedrock/', converter: true }
+            { slug: 'converter', path: '/converter/', converter: true }
           ];
 
           for (const route of routes) {
