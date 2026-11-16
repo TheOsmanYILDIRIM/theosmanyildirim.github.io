@@ -60,13 +60,13 @@ jobs:
 
       - name: Publish under existing Pages site
         run: |
-          rm -rf site/ConvertJavaTextureToBedrock
-          mkdir -p site/ConvertJavaTextureToBedrock
-          cp -a web/build/. site/ConvertJavaTextureToBedrock/
+          rm -rf site/converter
+          mkdir -p site/converter
+          cp -a web/build/. site/converter/
           cd site
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add ConvertJavaTextureToBedrock
+          git add converter
           if git diff --cached --quiet; then
             echo "Converter bundle unchanged."
             exit 0
