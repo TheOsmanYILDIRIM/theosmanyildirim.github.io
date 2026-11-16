@@ -71,7 +71,7 @@ jobs:
                     const includeError = await page.evaluate(() => document.documentElement.dataset.includeError);
                     if (includeError) throw new Error('Portfolio component include failed');
                   } else if (route.converter) {
-                    await page.waitForSelector('#selectInputFileButton', { timeout: 12000 });
+                    await page.waitForSelector('#selectInputFileButton', { state: 'attached', timeout: 12000 });
                     await page.waitForFunction(() => document.body.innerText.includes('Java 26.3 conversions enabled'), null, { timeout: 12000 });
                     const workerUrl = await page.evaluate(() => {
                       const scripts = [...document.scripts].map(s => s.src);
