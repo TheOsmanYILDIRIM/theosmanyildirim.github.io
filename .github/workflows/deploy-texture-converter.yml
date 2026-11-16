@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: TheOsmanYILDIRIM/ConvertJavaTextureToBedrock
-          ref: main
+          ref: 57d4ee7b5ac54ff8b1679baf3c1866bcf6b00a7d
           path: web
           fetch-depth: 1
 
